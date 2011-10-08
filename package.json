@@ -1,0 +1,15 @@
+{
+  "name": "passport",
+  "version": "0.1.0",
+  "description": "Authentication framework for Connect and Express.",
+  "author": "Jared Hanson <jaredhanson@gmail.com> (http://www.jaredhanson.net/)",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jaredhanson/passport.git"
+  },
+  "main": "./lib/passport",
+  "dependencies": {
+  },
+  "engines": { "node": ">= 0.4.0" },
+  "keywords": ["express", "connect", "auth", "authn", "authentication"]
+}
