@@ -1,8 +1,8 @@
 # Passport
 
 Passport is an authentication framework for [Connect](http://senchalabs.github.com/connect/)
-and [Express](http://nodejs.org), which is extensible through "plugins" known as
-_strategies_.
+and [Express](http://expressjs.com/), which is extensible through "plugins"
+known as _strategies_.
 
 ## Installation
 
