@@ -11,12 +11,17 @@ vows.describe('HttpServerRequest').addBatch({
     topic: function() {
       var req = new http.IncomingMessage();
       req._passport = {};
+      req._passport.session = {};
       return req;
     },
     
     'should not be authenticated': function (req) {
       assert.isFunction(req.isAuthenticated);
       assert.isFalse(req.isAuthenticated());
+    },
+    'should be unauthenticated': function (req) {
+      assert.isFunction(req.isUnauthenticated);
+      assert.isTrue(req.isUnauthenticated());
     },
   },
   
@@ -24,7 +29,8 @@ vows.describe('HttpServerRequest').addBatch({
     topic: function() {
       var req = new http.IncomingMessage();
       req._passport = {};
-      req._passport.user = { id: '1', username: 'root' }
+      req._passport.session = {};
+      req._passport.session.user = { id: '1', username: 'root' }
       return req;
     },
     
@@ -32,17 +38,20 @@ vows.describe('HttpServerRequest').addBatch({
       assert.isFunction(req.isAuthenticated);
       assert.isTrue(req.isAuthenticated());
     },
+    'should not be unauthenticated': function (req) {
+      assert.isFunction(req.isUnauthenticated);
+      assert.isFalse(req.isUnauthenticated());
+    },
   },
   
-  'request without an internal passport': {
+  'request without an internal passport object': {
     topic: function() {
       var req = new http.IncomingMessage();
       return req;
     },
     
-    'should not be authenticated': function (req) {
-      assert.isFunction(req.isAuthenticated);
-      assert.isFalse(req.isAuthenticated());
+    'should throw an error': function (req) {
+      assert.throws(function() { req.isAuthenticated() }, Error);
     },
   },
 
