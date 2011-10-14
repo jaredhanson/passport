@@ -39,6 +39,8 @@ vows.describe('authentication').addBatch({
       },
       'should set internal passport on the request' : function(err, req, res) {
         assert.isObject(req._passport);
+        assert.instanceOf(req._passport.instance, Passport);
+        assert.isObject(req._passport.session);
       },
     },
     
@@ -68,6 +70,8 @@ vows.describe('authentication').addBatch({
       },
       'should set internal passport on the request' : function(err, req, res) {
         assert.isObject(req._passport);
+        assert.instanceOf(req._passport.instance, Passport);
+        assert.isObject(req._passport.session);
       },
     },
     
@@ -101,6 +105,8 @@ vows.describe('authentication').addBatch({
       },
       'should set internal passport on the request' : function(err, req, res) {
         assert.isObject(req._passport);
+        assert.instanceOf(req._passport.instance, Passport);
+        assert.isObject(req._passport.session);
       },
     },
   },
