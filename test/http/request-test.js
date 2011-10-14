@@ -33,5 +33,17 @@ vows.describe('HttpServerRequest').addBatch({
       assert.isTrue(req.isAuthenticated());
     },
   },
+  
+  'request without an internal passport': {
+    topic: function() {
+      var req = new http.IncomingMessage();
+      return req;
+    },
+    
+    'should not be authenticated': function (req) {
+      assert.isFunction(req.isAuthenticated);
+      assert.isFalse(req.isAuthenticated());
+    },
+  },
 
 }).export(module);
