@@ -132,7 +132,95 @@ vows.describe('passport').addBatch({
       });
     },
     
-    'should serialize user': function (err, obj) {
+    'should fail to serialize user': function (err, obj) {
+      assert.instanceOf(err, Error);
+      assert.isUndefined(obj);
+    },
+  },
+  
+  'passport with no deserializers': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      function deserialized(err, user) {
+        self.callback(err, user);
+      }
+      process.nextTick(function () {
+        passport.deserializeUser({ id: '1', username: 'jared' }, deserialized);
+      });
+    },
+    
+    'should fail to deserialize user': function (err, user) {
+      assert.instanceOf(err, Error);
+      assert.isUndefined(user);
+    },
+  },
+  
+  'passport with one deserializer': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.deserializeUser(function(obj, done) {
+        done(null, obj.username);
+      });
+      function deserialized(err, user) {
+        self.callback(err, user);
+      }
+      process.nextTick(function () {
+        passport.deserializeUser({ id: '1', username: 'jared' }, deserialized);
+      });
+    },
+    
+    'should deserialize user': function (err, user) {
+      assert.isNull(err);
+      assert.equal(user, 'jared');
+    },
+  },
+  
+  'passport with multiple deserializers': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.deserializeUser(function(obj, done) {
+        done('pass');
+      });
+      passport.deserializeUser(function(obj, done) {
+        done(null, 'second-deserializer');
+      });
+      passport.deserializeUser(function(obj, done) {
+        done(null, 'should-not-execute');
+      });
+      function deserialized(err, user) {
+        self.callback(err, user);
+      }
+      process.nextTick(function () {
+        passport.deserializeUser({ id: '1', username: 'jared' }, deserialized);
+      });
+    },
+    
+    'should deserialize user': function (err, user) {
+      assert.isNull(err);
+      assert.equal(user, 'second-deserializer');
+    },
+  },
+  
+  'passport with a deserializer that throws an error': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.deserializeUser(function(obj, done) {
+        // throws ReferenceError: wtf is not defined
+        wtf
+      });
+      function deserialized(err, user) {
+        self.callback(err, user);
+      }
+      process.nextTick(function () {
+        passport.deserializeUser({ id: '1', username: 'jared' }, deserialized);
+      });
+    },
+    
+    'should fail to deserialize user': function (err, obj) {
       assert.instanceOf(err, Error);
       assert.isUndefined(obj);
     },
