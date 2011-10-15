@@ -10,8 +10,6 @@ vows.describe('HttpServerRequest').addBatch({
   'request without a user': {
     topic: function() {
       var req = new http.IncomingMessage();
-      req._passport = {};
-      req._passport.session = {};
       return req;
     },
     
@@ -28,9 +26,7 @@ vows.describe('HttpServerRequest').addBatch({
   'request with a user': {
     topic: function() {
       var req = new http.IncomingMessage();
-      req._passport = {};
-      req._passport.session = {};
-      req._passport.session.user = { id: '1', username: 'root' }
+      req.user = { id: '1', username: 'root' };
       return req;
     },
     
@@ -44,14 +40,20 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
-  'request without an internal passport object': {
+  'request without a null user': {
     topic: function() {
       var req = new http.IncomingMessage();
+      req.user = null;
       return req;
     },
     
-    'should throw an error': function (req) {
-      assert.throws(function() { req.isAuthenticated() }, Error);
+    'should not be authenticated': function (req) {
+      assert.isFunction(req.isAuthenticated);
+      assert.isFalse(req.isAuthenticated());
+    },
+    'should be unauthenticated': function (req) {
+      assert.isFunction(req.isUnauthenticated);
+      assert.isTrue(req.isUnauthenticated());
     },
   },
 
