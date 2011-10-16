@@ -1,6 +1,6 @@
 NODE = node
 TEST = vows
-TESTS ?= test/*-test.js test/**/*-test.js
+TESTS ?= test/*-test.js test/**/*-test.js test/context/http/*-test.js
 
 test:
 	@NODE_ENV=test NODE_PATH=lib $(TEST) $(TEST_FLAGS) $(TESTS)

@@ -7,6 +7,19 @@ require('passport/http/request');
 
 vows.describe('HttpServerRequest').addBatch({
   
+  'request': {
+    topic: function() {
+      return new http.IncomingMessage();
+    },
+    
+    'logIn should be aliased to login': function (req) {
+      assert.strictEqual(req.logIn, req.login);
+    },
+    'logOut should be aliased to logout': function (req) {
+      assert.strictEqual(req.logOut, req.logout);
+    },
+  },
+  
   'request to login with a session': {
     topic: function() {
       var self = this;
