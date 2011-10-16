@@ -11,8 +11,8 @@ vows.describe('actions').addBatch({
       var self = this;
       var context = {};
       context.delegate = {};
-      context.delegate.success = function(user, extra) {
-        self.callback(null, user, extra);
+      context.delegate.success = function(user, info) {
+        self.callback(null, user, info);
       }
       
       var success = actions.success.bind(context);
@@ -21,10 +21,10 @@ vows.describe('actions').addBatch({
       });
     },
     
-    'should forward function call to delegate': function (err, user, extra) {
+    'should forward function call to delegate': function (err, user, info) {
       assert.equal(user.id, '1');
       assert.equal(user.username, 'jaredhanson');
-      assert.equal(extra.location, 'Oakland, CA');
+      assert.equal(info.location, 'Oakland, CA');
     },
   },
   
@@ -33,8 +33,8 @@ vows.describe('actions').addBatch({
       var self = this;
       var context = {};
       context.delegate = {};
-      context.delegate.fail = function(a) {
-        self.callback(null, a);
+      context.delegate.fail = function(challenge) {
+        self.callback(null, challenge);
       }
       
       var fail = actions.fail.bind(context);
@@ -43,8 +43,8 @@ vows.describe('actions').addBatch({
       });
     },
     
-    'should forward function call to delegate without header argument': function (err, a) {
-      assert.isUndefined(a);
+    'should forward function call to delegate': function (err, challenge) {
+      assert.equal(challenge, 'Basic realm="Users"');
     },
   },
   
