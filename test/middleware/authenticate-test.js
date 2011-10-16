@@ -12,6 +12,13 @@ MockSuccessStrategy.prototype.authenticate = function(req) {
   this.success({ id: '1', username: 'jaredhanson' });
 }
 
+function MockFailureStrategy() {
+}
+
+MockFailureStrategy.prototype.authenticate = function(req) {
+  this.fail();
+}
+
 function MockRequest() {
 }
 
@@ -63,7 +70,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
-  'with a successful authentication but failed request login': {
+  'with a successful authentication but failed login': {
     topic: function() {
       var self = this;
       var passport = new Passport();
@@ -157,7 +164,7 @@ vows.describe('authenticate').addBatch({
         var req = new MockRequest();
         var res = new MockResponse();
         context.done = function(err, user) {
-          self.callback(err, user);
+          self.callback(err, req, res, user);
         }
         
         function next(err) {
@@ -168,13 +175,137 @@ vows.describe('authenticate').addBatch({
         });
       },
       
-      'should not generate an error' : function(err, user) {
+      'should not generate an error' : function(err, req, res, user) {
         assert.isNull(err);
       },
-      'should pass user to callback' : function(err, user) {
+      'should not set user on request' : function(err, req, res, user) {
+        assert.isUndefined(req.user);
+      },
+      'should pass user to callback' : function(err, req, res, user) {
         assert.isObject(user);
         assert.equal(user.id, '1');
         assert.equal(user.username, 'jaredhanson');
+      },
+    },
+  },
+  
+  
+  'with a failed authentication': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureStrategy());
+      return passport.authenticate('failure');
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        res.end = function() {
+          self.callback(null, req, res)
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set status code to unauthorized' : function(err, req, res) {
+        assert.equal(res.statusCode, 401);
+      },
+    },
+  },
+  
+  'with a failed authentication and redirect option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureStrategy());
+      return passport.authenticate('failure', { failureRedirect: 'http://www.example.com/login' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/login');
+      },
+    },
+  },
+  
+  'with a failed authentication and callback': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureStrategy());
+      var callback = function(err, user) {
+        this.done(err, user);
+      }
+      var context = {};
+      
+      var authenticate = passport.authenticate('failure', callback.bind(context));
+      process.nextTick(function () {
+        self.callback(null, authenticate, context);
+      });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate, context) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        context.done = function(err, user) {
+          self.callback(err, req, res, user);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res, user) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res, user) {
+        assert.isUndefined(req.user);
+      },
+      'should pass user to callback as false' : function(err, req, res, user) {
+        assert.isFalse(user);
       },
     },
   },
