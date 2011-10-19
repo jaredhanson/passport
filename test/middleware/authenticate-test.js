@@ -9,7 +9,7 @@ function MockSuccessStrategy() {
 }
 
 MockSuccessStrategy.prototype.authenticate = function(req) {
-  this.success({ id: '1', username: 'jaredhanson' });
+  this.success({ id: '1', username: 'jaredhanson' }, { location: 'Oakland, CA' });
 }
 
 function MockFailureStrategy() {
@@ -147,8 +147,8 @@ vows.describe('authenticate').addBatch({
       var self = this;
       var passport = new Passport();
       passport.use('success', new MockSuccessStrategy);
-      var callback = function(err, user) {
-        this.done(err, user);
+      var callback = function(err, user, profile) {
+        this.done(err, user, profile);
       }
       var context = {};
       
@@ -163,8 +163,8 @@ vows.describe('authenticate').addBatch({
         var self = this;
         var req = new MockRequest();
         var res = new MockResponse();
-        context.done = function(err, user) {
-          self.callback(err, req, res, user);
+        context.done = function(err, user, profile) {
+          self.callback(err, req, res, user, profile);
         }
         
         function next(err) {
@@ -175,16 +175,20 @@ vows.describe('authenticate').addBatch({
         });
       },
       
-      'should not generate an error' : function(err, req, res, user) {
+      'should not generate an error' : function(err, req, res, user, profile) {
         assert.isNull(err);
       },
-      'should not set user on request' : function(err, req, res, user) {
+      'should not set user on request' : function(err, req, res, user, profile) {
         assert.isUndefined(req.user);
       },
-      'should pass user to callback' : function(err, req, res, user) {
+      'should pass user to callback' : function(err, req, res, user, profile) {
         assert.isObject(user);
         assert.equal(user.id, '1');
         assert.equal(user.username, 'jaredhanson');
+      },
+      'should pass profile to callback' : function(err, req, res, user, profile) {
+        assert.isObject(profile);
+        assert.equal(profile.location, 'Oakland, CA');
       },
     },
   },
