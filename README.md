@@ -4,6 +4,14 @@ Passport is an authentication framework for [Connect](http://senchalabs.github.c
 and [Express](http://expressjs.com/), which is extensible through "plugins"
 known as _strategies_.
 
+Passport is designed to be a general-purpose, yet simple, modular, and
+unobtrusive, authentication framework.  Passport's sole purpose is to
+authenticate requests.  In being modular, it doesn't force any particular
+authentication strategy on your application.  In being unobtrusive, it doesn't
+mount routes in your application.  The API is simple: you give Passport a
+request to authenticate, and Passport provides hooks for controlling what occurs
+when authentication succeeds or fails.
+
 ## Installation
 
     $ npm install passport
@@ -85,6 +93,21 @@ For example, it can be used as route middleware in an Express application:
 
 For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-local/tree/master/examples/login)
 included in [Passport-Local](https://github.com/jaredhanson/passport-local).
+
+## Strategies
+
+<table>
+  <thead>
+    <tr><th>Strategy</th><th>Description</th>
+  </thead>
+  <tbody>
+    <tr><td><a href="https://github.com/jaredhanson/passport-local">Local</a></td><td>Local username and password authentication strategy.</td>
+    <tr><td><a href="https://github.com/jaredhanson/passport-facebook">Facebook</a></td><td>Facebook authentication strategy.</td>
+    <tr><td><a href="https://github.com/jaredhanson/passport-twitter">Twitter</a></td><td>Twitter authentication strategy.</td>
+    <tr><td><a href="https://github.com/jaredhanson/passport-foursquare">Foursquare</a></td><td>Foursquare authentication strategy.</td>
+    <tr><td><a href="https://github.com/jaredhanson/passport-oauth">OAuth</a></td><td>OAuth 1.0 and 2.0 authentication strategies.</td>
+  </tbody>
+</table>
 
 ## Credits
 
