@@ -1,6 +1,6 @@
 {
   "name": "passport",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Authentication framework for Connect and Express.",
   "author": "Jared Hanson <jaredhanson@gmail.com> (http://www.jaredhanson.net/)",
   "repository": {
