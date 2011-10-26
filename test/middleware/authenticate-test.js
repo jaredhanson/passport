@@ -19,6 +19,13 @@ MockFailureStrategy.prototype.authenticate = function(req) {
   this.fail();
 }
 
+function MockChallengeStrategy() {
+}
+
+MockChallengeStrategy.prototype.authenticate = function(req) {
+  this.fail('Mock challenge');
+}
+
 function MockRequest() {
 }
 
@@ -32,6 +39,11 @@ MockRequest.prototype.logIn = function(user, options, done) {
 }
 
 function MockResponse() {
+  this._headers = {};
+}
+
+MockResponse.prototype.setHeader = function(name, value) {
+  this._headers[name] = value;
 }
 
 
@@ -310,6 +322,46 @@ vows.describe('authenticate').addBatch({
       },
       'should pass user to callback as false' : function(err, req, res, user) {
         assert.isFalse(user);
+      },
+    },
+  },
+  
+  'with a challenged authentication': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('challenge', new MockChallengeStrategy());
+      return passport.authenticate('challenge');
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        res.end = function() {
+          self.callback(null, req, res)
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set status code to unauthorized' : function(err, req, res) {
+        assert.equal(res.statusCode, 401);
+      },
+      'should set WWW-Authenticate to challenge' : function(err, req, res) {
+        assert.equal(res._headers['WWW-Authenticate'], 'Mock challenge');
       },
     },
   },
