@@ -31,6 +31,13 @@ MockChallengeStrategy.prototype.authenticate = function(req) {
   this.fail('Mock challenge');
 }
 
+function MockForbiddenStrategy() {
+}
+
+MockForbiddenStrategy.prototype.authenticate = function(req) {
+  this.fail('Mock challenge', 403);
+}
+
 function MockBadRequestStrategy() {
 }
 
@@ -407,6 +414,46 @@ vows.describe('authenticate').addBatch({
       },
       'should set status code to unauthorized' : function(err, req, res) {
         assert.equal(res.statusCode, 401);
+      },
+      'should set WWW-Authenticate to challenge' : function(err, req, res) {
+        assert.equal(res._headers['WWW-Authenticate'], 'Mock challenge');
+      },
+    },
+  },
+  
+  'with a challenged authentication and status code': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('forbidden', new MockForbiddenStrategy());
+      return passport.authenticate('forbidden');
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        res.end = function() {
+          self.callback(null, req, res)
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set status code to unauthorized' : function(err, req, res) {
+        assert.equal(res.statusCode, 403);
       },
       'should set WWW-Authenticate to challenge' : function(err, req, res) {
         assert.equal(res._headers['WWW-Authenticate'], 'Mock challenge');
