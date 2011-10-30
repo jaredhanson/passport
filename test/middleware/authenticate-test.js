@@ -8,8 +8,13 @@ var Passport = require('passport').Passport;
 function MockSuccessStrategy() {
 }
 
-MockSuccessStrategy.prototype.authenticate = function(req) {
-  this.success({ id: '1', username: 'jaredhanson' }, { location: 'Oakland, CA' });
+MockSuccessStrategy.prototype.authenticate = function(req, options) {
+  var user = { id: '1', username: 'jaredhanson' };
+  if (options && options.scope) {
+    user.scope = options.scope;
+  }
+  
+  this.success(user, { location: 'Oakland, CA' });
 }
 
 function MockFailureStrategy() {
@@ -85,6 +90,42 @@ vows.describe('authenticate').addBatch({
         assert.isObject(req.user);
         assert.equal(req.user.id, '1');
         assert.equal(req.user.username, 'jaredhanson');
+      },
+    },
+  },
+  
+  'with a successful authentication passing options to strategy': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('success', new MockSuccessStrategy());
+      return passport.authenticate('success', { scope: 'email' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        
+        function next(err) {
+          self.callback(err, req, res);
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should set scope from options on user' : function(err, req, res) {
+        assert.equal(req.user.scope, 'email');
       },
     },
   },
