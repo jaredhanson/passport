@@ -48,6 +48,47 @@ vows.describe('actions').addBatch({
     },
   },
   
+  'fail with status code': {
+    topic: function() {
+      var self = this;
+      var context = {};
+      context.delegate = {};
+      context.delegate.fail = function(challenge) {
+        self.callback(null, challenge);
+      }
+      
+      var fail = actions.fail.bind(context);
+      process.nextTick(function () {
+        fail(400);
+      });
+    },
+    
+    'should forward function call to delegate': function (err, challenge) {
+      assert.equal(challenge, 400);
+    },
+  },
+  
+  'fail with challenge and status code': {
+    topic: function() {
+      var self = this;
+      var context = {};
+      context.delegate = {};
+      context.delegate.fail = function(challenge, code) {
+        self.callback(null, challenge, code);
+      }
+      
+      var fail = actions.fail.bind(context);
+      process.nextTick(function () {
+        fail('Basic realm="Users"', 400);
+      });
+    },
+    
+    'should forward function call to delegate': function (err, challenge, code) {
+      assert.equal(challenge, 'Basic realm="Users"');
+      assert.equal(code, 400);
+    },
+  },
+  
   'redirect': {
     topic: function() {
       var self = this;

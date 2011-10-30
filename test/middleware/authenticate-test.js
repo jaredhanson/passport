@@ -26,6 +26,13 @@ MockChallengeStrategy.prototype.authenticate = function(req) {
   this.fail('Mock challenge');
 }
 
+function MockBadRequestStrategy() {
+}
+
+MockBadRequestStrategy.prototype.authenticate = function(req) {
+  this.fail(400);
+}
+
 function MockRequest() {
 }
 
@@ -362,6 +369,46 @@ vows.describe('authenticate').addBatch({
       },
       'should set WWW-Authenticate to challenge' : function(err, req, res) {
         assert.equal(res._headers['WWW-Authenticate'], 'Mock challenge');
+      },
+    },
+  },
+  
+  'with a failed authentication due to bad request': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('bad-request', new MockBadRequestStrategy());
+      return passport.authenticate('bad-request');
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        res.end = function() {
+          self.callback(null, req, res)
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set status code to bad request' : function(err, req, res) {
+        assert.equal(res.statusCode, 400);
+      },
+      'should not set WWW-Authenticate header' : function(err, req, res) {
+        assert.isUndefined(res._headers['WWW-Authenticate']);
       },
     },
   },
