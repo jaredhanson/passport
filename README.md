@@ -112,6 +112,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-instagram">Instagram</a></td><td>Instagram authentication strategy.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-linkedin">LinkedIn</a></td><td>LinkedIn authentication strategy.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-meetup">Meetup</a></td><td>Meetup authentication strategy.</td>
+    <tr><td><a href="https://github.com/jaredhanson/passport-picplz">picplz</a></td><td>picplz authentication strategy.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-twitter">Twitter</a></td><td>Twitter authentication strategy.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-http">HTTP</a></td><td>HTTP Basic and Digest authentication strategies.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-http-bearer">HTTP-Bearer</a></td><td>HTTP Bearer authentication strategy.</td>
