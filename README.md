@@ -102,6 +102,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
   </thead>
   <tbody>
     <tr><td><a href="https://github.com/jaredhanson/passport-local">Local</a></td><td>Local username and password authentication strategy.</td>
+    <tr><td><a href="https://github.com/jaredhanson/passport-browserid">BrowserID</a></td><td>BrowserID authentication strategy.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-openid">OpenID</a></td><td>OpenID authentication strategy.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-oauth">OAuth</a></td><td>OAuth 1.0 and 2.0 authentication strategies.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-facebook">Facebook</a></td><td>Facebook authentication strategy.</td>
