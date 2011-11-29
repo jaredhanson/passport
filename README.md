@@ -117,6 +117,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-meetup">Meetup</a></td><td>Meetup authentication strategy.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-netflix">Netflix</a></td><td>Netflix authentication strategy.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-picplz">picplz</a></td><td>picplz authentication strategy.</td>
+    <tr><td><a href="https://github.com/jaredhanson/passport-rdio">Rdio</a></td><td>Rdio authentication strategy.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-readability">Readability</a></td><td>Readability authentication strategy.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-soundcloud">SoundCloud</a></td><td>SoundCloud authentication strategy.</td>
     <tr><td><a href="https://github.com/jaredhanson/passport-tripit">TripIt</a></td><td>TripIt authentication strategy.</td>
