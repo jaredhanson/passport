@@ -101,34 +101,34 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><th>Strategy</th><th>Description</th>
   </thead>
   <tbody>
-    <tr><td><a href="https://github.com/jaredhanson/passport-local">Local</a></td><td>Local username and password authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-openid">OpenID</a></td><td>OpenID authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-oauth">OAuth</a></td><td>OAuth 1.0 and 2.0 authentication strategies.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-browserid">BrowserID</a></td><td>BrowserID authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-digg">Digg</a></td><td>Digg authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-dropbox">Dropbox</a></td><td>Dropbox authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-facebook">Facebook</a></td><td>Facebook authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-fitbit">Fitbit</a></td><td>Fitbit authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-foursquare">Foursquare</a></td><td>Foursquare authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-github">GitHub</a></td><td>GitHub authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-google">Google</a></td><td>Google authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-gowalla">Gowalla</a></td><td>Gowalla authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-instagram">Instagram</a></td><td>Instagram authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-linkedin">LinkedIn</a></td><td>LinkedIn authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-meetup">Meetup</a></td><td>Meetup authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-netflix">Netflix</a></td><td>Netflix authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-picplz">picplz</a></td><td>picplz authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-rdio">Rdio</a></td><td>Rdio authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-readability">Readability</a></td><td>Readability authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-runkeeper">RunKeeper</a></td><td>RunKeeper authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-soundcloud">SoundCloud</a></td><td>SoundCloud authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-tripit">TripIt</a></td><td>TripIt authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-tumblr">Tumblr</a></td><td>Tumblr authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-twitter">Twitter</a></td><td>Twitter authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-vimeo">Vimeo</a></td><td>Vimeo authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-yahoo">Yahoo</a></td><td>Yahoo! authentication strategy.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-http">HTTP</a></td><td>HTTP Basic and Digest authentication strategies.</td>
-    <tr><td><a href="https://github.com/jaredhanson/passport-http-bearer">HTTP-Bearer</a></td><td>HTTP Bearer authentication strategy.</td>
+    <tr><td><a href="https://github.com/jaredhanson/passport-local">Local</a></td><td>Local username and password authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-openid">OpenID</a></td><td>OpenID authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-oauth">OAuth</a></td><td>OAuth 1.0 and 2.0 authentication strategies.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-browserid">BrowserID</a></td><td>BrowserID authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-digg">Digg</a></td><td>Digg authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-dropbox">Dropbox</a></td><td>Dropbox authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-facebook">Facebook</a></td><td>Facebook authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-fitbit">Fitbit</a></td><td>Fitbit authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-foursquare">Foursquare</a></td><td>Foursquare authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-github">GitHub</a></td><td>GitHub authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-google">Google</a></td><td>Google authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-gowalla">Gowalla</a></td><td>Gowalla authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-instagram">Instagram</a></td><td>Instagram authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-linkedin">LinkedIn</a></td><td>LinkedIn authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-meetup">Meetup</a></td><td>Meetup authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-netflix">Netflix</a></td><td>Netflix authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-picplz">picplz</a></td><td>picplz authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-rdio">Rdio</a></td><td>Rdio authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-readability">Readability</a></td><td>Readability authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-runkeeper">RunKeeper</a></td><td>RunKeeper authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-soundcloud">SoundCloud</a></td><td>SoundCloud authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-tripit">TripIt</a></td><td>TripIt authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-tumblr">Tumblr</a></td><td>Tumblr authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-twitter">Twitter</a></td><td>Twitter authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-vimeo">Vimeo</a></td><td>Vimeo authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-yahoo">Yahoo</a></td><td>Yahoo! authentication strategy.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-http">HTTP</a></td><td>HTTP Basic and Digest authentication strategies.</td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-http-bearer">HTTP-Bearer</a></td><td>HTTP Bearer authentication strategy.</td></tr>
   </tbody>
 </table>
 
