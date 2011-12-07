@@ -107,6 +107,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-browserid">BrowserID</a></td><td>BrowserID authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-digg">Digg</a></td><td>Digg authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-dropbox">Dropbox</a></td><td>Dropbox authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-dwolla">Dwolla</a></td><td>Dwolla authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-facebook">Facebook</a></td><td>Facebook authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-fitbit">Fitbit</a></td><td>Fitbit authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-foursquare">Foursquare</a></td><td>Foursquare authentication strategy.</td><td></td></tr>
