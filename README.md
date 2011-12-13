@@ -110,6 +110,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-dwolla">Dwolla</a></td><td>Dwolla authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-facebook">Facebook</a></td><td>Facebook authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-fitbit">Fitbit</a></td><td>Fitbit authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/johnnyhalife/passport-flickr">Flickr</a></td><td>Flickr authentication strategy.</td><td><a href="https://github.com/johnnyhalife">Johnny Halife</a></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-foursquare">Foursquare</a></td><td>Foursquare authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-github">GitHub</a></td><td>GitHub authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-google">Google</a></td><td>Google authentication strategy.</td><td></td></tr>
@@ -132,7 +133,6 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-yahoo">Yahoo</a></td><td>Yahoo! authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-http">HTTP</a></td><td>HTTP Basic and Digest authentication strategies.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-http-bearer">HTTP-Bearer</a></td><td>HTTP Bearer authentication strategy.</td><td></td></tr>
-    <tr><td><a href="https://github.com/johnnyhalife/passport-flickr">Flickr</a></td><td>Flickr authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/developmentseed/passport-dummy">Dummy</a></td><td>Dummy authentication strategy.</td><td><a href="https://github.com/developmentseed">Development Seed</a></td></tr>
   </tbody>
 </table>
