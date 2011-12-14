@@ -105,6 +105,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-openid">OpenID</a></td><td>OpenID authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-oauth">OAuth</a></td><td>OAuth 1.0 and 2.0 authentication strategies.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-browserid">BrowserID</a></td><td>BrowserID authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-angellist">AngelList</a></td><td>AngelList authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-digg">Digg</a></td><td>Digg authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-dropbox">Dropbox</a></td><td>Dropbox authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-dwolla">Dwolla</a></td><td>Dwolla authentication strategy.</td><td></td></tr>
