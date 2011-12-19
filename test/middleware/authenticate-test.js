@@ -209,6 +209,42 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  'with a successful authentication and assignProperty option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('success', new MockSuccessStrategy);
+      return passport.authenticate('success', { assignProperty: 'account' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        
+        function next(err) {
+          self.callback(err, req, res);
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set account on request' : function(err, req, res) {
+        assert.isObject(req.account);
+        assert.equal(req.account.id, '1');
+        assert.equal(req.account.username, 'jaredhanson');
+      },
+    },
+  },
+  
   'with a successful authentication and callback': {
     topic: function() {
       var self = this;
