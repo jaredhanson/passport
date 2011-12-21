@@ -115,6 +115,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/johnnyhalife/passport-flickr">Flickr</a></td><td>Flickr authentication strategy.</td><td><a href="https://github.com/johnnyhalife">Johnny Halife</a></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-foursquare">Foursquare</a></td><td>Foursquare authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-github">GitHub</a></td><td>GitHub authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-goodreads">Goodreads</a></td><td>Goodreads authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-google">Google</a></td><td>Google authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-gowalla">Gowalla</a></td><td>Gowalla authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-instagram">Instagram</a></td><td>Instagram authentication strategy.</td><td></td></tr>
