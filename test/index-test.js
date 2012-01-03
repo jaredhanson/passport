@@ -21,17 +21,17 @@ vows.describe('passport').addBatch({
     'should create initialization middleware': function (passport) {
       var initialize = passport.initialize();
       assert.isFunction(initialize);
-      assert.length(initialize, 3);
+      assert.equal(initialize.length, 3);
     },
     'should create session restoration middleware': function (passport) {
       var session = passport.session();
       assert.isFunction(session);
-      assert.length(session, 3);
+      assert.equal(session.length, 3);
     },
     'should create authentication middleware': function (passport) {
       var authenticate = passport.authenticate();
       assert.isFunction(authenticate);
-      assert.length(authenticate, 3);
+      assert.equal(authenticate.length, 3);
     },
   },
   
