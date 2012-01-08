@@ -88,6 +88,49 @@ vows.describe('SessionStrategy').addBatch({
     },
   },
   
+  'strategy handling a login session with a custom request user': {
+    topic: function() {
+      return new SessionStrategy();
+    },
+    
+    'after augmenting with actions': {
+      topic: function(strategy) {
+        var self = this;
+        var req = {};
+        strategy.pass = function() {
+          self.callback(null, req);
+        }
+        strategy.error = function(err) {
+          self.callback(err, req);
+        }
+        
+        req._passport = {};
+        req._passport.instance = {};
+        req._passport.instance.requestUser = 'customUser';
+        req._passport.instance.deserializeUser = function(user, done) {
+          done(null, { id: user });
+        }
+        req._passport.session = {};
+        req._passport.session.user = '123456';
+        
+        process.nextTick(function () {
+          strategy.authenticate(req);
+        });
+      },
+      
+      'should not generate an error' : function(err, req) {
+        assert.isNull(err);
+      },
+      'should not create a user called "user" on the request': function(err, req) {
+        assert.isUndefined(req.user);
+      },
+      'should set a user on the request called "customUser"' : function(err, req) {
+        assert.isObject(req.customUser);
+        assert.equal(req.customUser.id, '123456');
+      },
+    },
+  },
+
   'strategy handling a request with a login session but badly behaving user deserializer': {
     topic: function() {
       return new SessionStrategy();
