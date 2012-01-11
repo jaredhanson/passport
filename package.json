@@ -11,7 +11,7 @@
   "dependencies": {
   },
   "devDependencies": {
-    "vows": "0.5.11"
+    "vows": "0.6.x"
   },
   "engines": { "node": ">= 0.4.0" },
   "keywords": ["express", "connect", "auth", "authn", "authentication"]
