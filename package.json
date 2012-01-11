@@ -9,6 +9,7 @@
   },
   "main": "./lib/passport",
   "dependencies": {
+    "pkginfo": "0.2.x"
   },
   "devDependencies": {
     "vows": "0.6.x"
