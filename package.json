@@ -10,6 +10,9 @@
   "main": "./lib/passport",
   "dependencies": {
   },
+  "devDependencies": {
+    "vows": "0.5.11"
+  },
   "engines": { "node": ">= 0.4.0" },
   "keywords": ["express", "connect", "auth", "authn", "authentication"]
 }
