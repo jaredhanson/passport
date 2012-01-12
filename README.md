@@ -1,4 +1,5 @@
 # Passport
+[http://passportjs.org](http://passportjs.org)
 
 Passport is an authentication framework for [Connect](http://senchalabs.github.com/connect/)
 and [Express](http://expressjs.com/), which is extensible through "plugins"
