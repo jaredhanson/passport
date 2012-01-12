@@ -89,7 +89,7 @@ For example, it can be used as route middleware in an Express application:
         res.redirect('/');
       });
 
-#### Examples
+## Examples
 
 For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-local/tree/master/examples/login)
 included in [Passport-Local](https://github.com/jaredhanson/passport-local).
@@ -105,6 +105,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-openid">OpenID</a></td><td>OpenID authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-oauth">OAuth</a></td><td>OAuth 1.0 and 2.0 authentication strategies.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-browserid">BrowserID</a></td><td>BrowserID authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-37signals">37signals</a></td><td>37signals authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-angellist">AngelList</a></td><td>AngelList authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-digg">Digg</a></td><td>Digg authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-dropbox">Dropbox</a></td><td>Dropbox authentication strategy.</td><td></td></tr>
@@ -114,15 +115,19 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-fitbit">Fitbit</a></td><td>Fitbit authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/johnnyhalife/passport-flickr">Flickr</a></td><td>Flickr authentication strategy.</td><td><a href="https://github.com/johnnyhalife">Johnny Halife</a></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-foursquare">Foursquare</a></td><td>Foursquare authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-geoloqi">Geoloqi</a></td><td>Geoloqi authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-github">GitHub</a></td><td>GitHub authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-goodreads">Goodreads</a></td><td>Goodreads authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-google">Google</a></td><td>Google authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-google-oauth">Google</a> (OAuth)</td><td>Google (OAuth 1.0 and OAuth 2.0) authentication strategies.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-gowalla">Gowalla</a></td><td>Gowalla authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-instagram">Instagram</a></td><td>Instagram authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-justintv">Justin.tv</a></td><td>Justin.tv authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-linkedin">LinkedIn</a></td><td>LinkedIn authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-meetup">Meetup</a></td><td>Meetup authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-netflix">Netflix</a></td><td>Netflix authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-ohloh">Ohloh</a></td><td>Ohloh authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-openstreetmap">OpenStreetMap</a></td><td>OpenStreetMap authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-picplz">picplz</a></td><td>picplz authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-rdio">Rdio</a></td><td>Rdio authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-readability">Readability</a></td><td>Readability authentication strategy.</td><td></td></tr>
@@ -135,11 +140,17 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-vimeo">Vimeo</a></td><td>Vimeo authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-windowslive">Windows Live</a></td><td>Windows Live authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-yahoo">Yahoo</a></td><td>Yahoo! authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-yammer">Yammer</a></td><td>Yammer authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-http">HTTP</a></td><td>HTTP Basic and Digest authentication strategies.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-http-bearer">HTTP-Bearer</a></td><td>HTTP Bearer authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/developmentseed/passport-dummy">Dummy</a></td><td>Dummy authentication strategy.</td><td><a href="https://github.com/developmentseed">Development Seed</a></td></tr>
   </tbody>
 </table>
+
+## Tests
+
+    $ npm install --dev
+    $ make test
 
 ## Credits
 
