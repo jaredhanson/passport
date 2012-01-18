@@ -108,6 +108,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-browserid">BrowserID</a></td><td>BrowserID authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-37signals">37signals</a></td><td>37signals authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-angellist">AngelList</a></td><td>AngelList authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-bitbucket">Bitbucket</a></td><td>Bitbucket authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-digg">Digg</a></td><td>Digg authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-dropbox">Dropbox</a></td><td>Dropbox authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-dwolla">Dwolla</a></td><td>Dwolla authentication strategy.</td><td></td></tr>
@@ -140,7 +141,8 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-twitter">Twitter</a></td><td>Twitter authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-vimeo">Vimeo</a></td><td>Vimeo authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-windowslive">Windows Live</a></td><td>Windows Live authentication strategy.</td><td></td></tr>
-    <tr><td><a href="https://github.com/jaredhanson/passport-yahoo">Yahoo</a></td><td>Yahoo! authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-yahoo">Yahoo!</a></td><td>Yahoo! authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-yahoo-oauth">Yahoo!</a> (OAuth)</td><td>Google (OAuth 1.0) authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-yammer">Yammer</a></td><td>Yammer authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-http">HTTP</a></td><td>HTTP Basic and Digest authentication strategies.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-http-bearer">HTTP-Bearer</a></td><td>HTTP Bearer authentication strategy.</td><td></td></tr>
