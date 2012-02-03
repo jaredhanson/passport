@@ -88,7 +88,7 @@ vows.describe('SessionStrategy').addBatch({
     },
   },
   
-  'strategy handling a login session with a custom request user': {
+  'strategy handling a login session with a custom user property': {
     topic: function() {
       return new SessionStrategy();
     },
@@ -106,7 +106,7 @@ vows.describe('SessionStrategy').addBatch({
         
         req._passport = {};
         req._passport.instance = {};
-        req._passport.instance.requestUser = 'customUser';
+        req._passport.instance._userProperty = 'currentUser';
         req._passport.instance.deserializeUser = function(user, done) {
           done(null, { id: user });
         }
@@ -121,12 +121,12 @@ vows.describe('SessionStrategy').addBatch({
       'should not generate an error' : function(err, req) {
         assert.isNull(err);
       },
-      'should not create a user called "user" on the request': function(err, req) {
+      'should not set a property called "user" on the request': function(err, req) {
         assert.isUndefined(req.user);
       },
-      'should set a user on the request called "customUser"' : function(err, req) {
-        assert.isObject(req.customUser);
-        assert.equal(req.customUser.id, '123456');
+      'should set a a property called "currentUser" on the request' : function(err, req) {
+        assert.isObject(req.currentUser);
+        assert.equal(req.currentUser.id, '123456');
       },
     },
   },

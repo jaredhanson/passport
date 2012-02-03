@@ -58,6 +58,48 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  'request to login with a session using a custom user property': {
+    topic: function() {
+      var self = this;
+      var req = new http.IncomingMessage();
+      var user = { id: '1', username: 'root' };
+      req._passport = {};
+      req._passport.instance = {};
+      req._passport.instance._userProperty = 'currentUser';
+      req._passport.session = {};
+      req._passport.instance.serializeUser = function(user, done) {
+        done(null, user.id);
+      }
+      
+      function logIn() {
+        req.logIn(user, function(err) {
+          self.callback(err, req);
+        })
+      }
+      process.nextTick(function () {
+        logIn();
+      });
+    },
+    
+    'should not generate an error' : function(err, req) {
+      assert.isNull(err);
+    },
+    'should be authenticated': function (err, req) {
+      assert.isTrue(req.isAuthenticated());
+    },
+    'currentUser property should be available': function (err, req) {
+      assert.isObject(req.currentUser);
+      assert.equal(req.currentUser.id, '1');
+      assert.equal(req.currentUser.username, 'root');
+    },
+    'user property should not be available': function (err, req) {
+      assert.isUndefined(req.user);
+    },
+    'session user data should be set': function (err, req) {
+      assert.equal(req._passport.session.user, '1');
+    },
+  },
+  
   'request to login with a session but a badly behaving user serializer': {
     topic: function() {
       var self = this;
@@ -129,6 +171,45 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  'request to login without a session using a custom user property': {
+    topic: function() {
+      var self = this;
+      var req = new http.IncomingMessage();
+      var user = { id: '1', username: 'root' };
+      req._passport = {};
+      req._passport.instance = {};
+      req._passport.instance._userProperty = 'currentUser';
+      req._passport.session = {};
+      
+      function logIn() {
+        req.logIn(user, { session: false }, function(err) {
+          self.callback(err, req);
+        })
+      }
+      process.nextTick(function () {
+        logIn();
+      });
+    },
+    
+    'should not generate an error' : function(err, req) {
+      assert.isNull(err);
+    },
+    'should be authenticated': function (err, req) {
+      assert.isTrue(req.isAuthenticated());
+    },
+    'currentUser property should be available': function (err, req) {
+      assert.isObject(req.currentUser);
+      assert.equal(req.currentUser.id, '1');
+      assert.equal(req.currentUser.username, 'root');
+    },
+    'user property should not be available': function (err, req) {
+      assert.isUndefined(req.user);
+    },
+    'session user data should not be set': function (err, req) {
+      assert.isUndefined(req._passport.session.user);
+    },
+  },
+  
   'request to login without a session and no callback': {
     topic: function() {
       var self = this;
@@ -168,6 +249,7 @@ vows.describe('HttpServerRequest').addBatch({
       var req = new http.IncomingMessage();
       req.user = { id: '1', username: 'root' };
       req._passport = {};
+      req._passport.instance = {};
       req._passport.session = {};
       req._passport.session.user = '1';
       return req;
@@ -191,10 +273,61 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  'request with a login session using a custom user property': {
+    topic: function() {
+      var req = new http.IncomingMessage();
+      req.currentUser = { id: '1', username: 'root' };
+      req._passport = {};
+      req._passport.instance = {};
+      req._passport.instance._userProperty = 'currentUser';
+      req._passport.session = {};
+      req._passport.session.user = '1';
+      return req;
+    },
+    
+    'after being logged out': {
+      topic: function(req) {
+        req.logOut();
+        return req;
+      },
+      
+      'should not be authenticated': function (req) {
+        assert.isFalse(req.isAuthenticated());
+      },
+      'user property should be null': function (req) {
+        assert.isNull(req.currentUser);
+      },
+      'session user data should be null': function (req) {
+        assert.isUndefined(req._passport.session.user);
+      },
+    },
+  },
+  
   'request with a user': {
     topic: function() {
       var req = new http.IncomingMessage();
       req.user = { id: '1', username: 'root' };
+      return req;
+    },
+    
+    'should be authenticated': function (req) {
+      assert.isFunction(req.isAuthenticated);
+      assert.isTrue(req.isAuthenticated());
+    },
+    'should not be unauthenticated': function (req) {
+      assert.isFunction(req.isUnauthenticated);
+      assert.isFalse(req.isUnauthenticated());
+    },
+  },
+  
+  'request with a user stored in a custom user property': {
+    topic: function() {
+      var req = new http.IncomingMessage();
+      req._passport = {};
+      req._passport.instance = {};
+      req._passport.instance._userProperty = 'currentUser';
+      
+      req.currentUser = { id: '1', username: 'root' };
       return req;
     },
     
