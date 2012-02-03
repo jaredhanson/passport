@@ -2,10 +2,14 @@
   "name": "passport",
   "version": "0.1.5",
   "description": "Simple, unobtrusive authentication for Node.js.",
-  "author": "Jared Hanson <jaredhanson@gmail.com> (http://www.jaredhanson.net/)",
+  "author": { "name": "Jared Hanson", "email": "jaredhanson@gmail.com", "url": "http://www.jaredhanson.net/" },
+  "homepage": "http://passportjs.org/",
   "repository": {
     "type": "git",
-    "url": "http://github.com/jaredhanson/passport.git"
+    "url": "git://github.com/jaredhanson/passport.git"
+  },
+  "bugs": {
+    "url": "http://github.com/jaredhanson/passport/issues"
   },
   "main": "./lib/passport",
   "dependencies": {
@@ -15,5 +19,9 @@
     "vows": "0.6.x"
   },
   "engines": { "node": ">= 0.4.0" },
+  "licenses": [ {
+    "type": "MIT",
+    "url": "http://www.opensource.org/licenses/MIT" 
+  } ],
   "keywords": ["express", "connect", "auth", "authn", "authentication"]
 }
