@@ -99,7 +99,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 
 <table>
   <thead>
-    <tr><th>Strategy</th><th>Description</th><th>Developer</th>
+    <tr><th>Strategy</th><th>Description</th><th>Developer</th></tr>
   </thead>
   <tbody>
     <tr><td><a href="https://github.com/jaredhanson/passport-local">Local</a></td><td>Local username and password authentication strategy.</td><td></td></tr>
@@ -116,6 +116,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-facebook">Facebook</a></td><td>Facebook authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-fitbit">Fitbit</a></td><td>Fitbit authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/johnnyhalife/passport-flickr">Flickr</a></td><td>Flickr authentication strategy.</td><td><a href="https://github.com/johnnyhalife">Johnny Halife</a></td></tr>
+    <tr><td><a href="https://github.com/joshbirk/passport-forcedotcom">Force.com</a></td><td>Force.com (Salesforce, Database.com) authentication strategy.</td><td><a href="https://github.com/joshbirk">Joshua Birk</a></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-foursquare">Foursquare</a></td><td>Foursquare authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-geoloqi">Geoloqi</a></td><td>Geoloqi authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-github">GitHub</a></td><td>GitHub authentication strategy.</td><td></td></tr>
