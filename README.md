@@ -137,6 +137,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-runkeeper">RunKeeper</a></td><td>RunKeeper authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-smugmug">SmugMug</a></td><td>SmugMug authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-soundcloud">SoundCloud</a></td><td>SoundCloud authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/zoowar/passport-statusnet">StatusNet</a></td><td>StatusNet authentication strategy.</td><td><a href="https://github.com/zoowar">ZooWar</a></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-tripit">TripIt</a></td><td>TripIt authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-tumblr">Tumblr</a></td><td>Tumblr authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-twitter">Twitter</a></td><td>Twitter authentication strategy.</td><td></td></tr>
