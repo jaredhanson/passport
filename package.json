@@ -18,6 +18,9 @@
   "devDependencies": {
     "vows": "0.6.x"
   },
+  "scripts": {
+    "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js test/**/*-test.js test/context/http/*-test.js"
+  },
   "engines": { "node": ">= 0.4.0" },
   "licenses": [ {
     "type": "MIT",

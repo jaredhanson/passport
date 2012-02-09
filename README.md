@@ -157,6 +157,8 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     $ npm install --dev
     $ make test
 
+[![Build Status](https://secure.travis-ci.org/jaredhanson/passport.png)](http://travis-ci.org/jaredhanson/passport)
+
 ## Credits
 
   - [Jared Hanson](http://github.com/jaredhanson)
