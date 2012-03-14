@@ -24,6 +24,13 @@ MockFailureStrategy.prototype.authenticate = function(req) {
   this.fail();
 }
 
+function MockFailureInfoStrategy() {
+}
+
+MockFailureInfoStrategy.prototype.authenticate = function(req) {
+  this.fail({ message: 'Invalid password' });
+}
+
 function MockChallengeStrategy() {
 }
 
@@ -413,6 +420,55 @@ vows.describe('authenticate').addBatch({
       },
       'should pass user to callback as false' : function(err, req, res, user) {
         assert.isFalse(user);
+      },
+    },
+  },
+  
+  'with a failed authentication containing info and callback': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureInfoStrategy());
+      var callback = function(err, user, info) {
+        this.done(err, user, info);
+      }
+      var context = {};
+      
+      var authenticate = passport.authenticate('failure', callback.bind(context));
+      process.nextTick(function () {
+        self.callback(null, authenticate, context);
+      });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate, context) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        context.done = function(err, user, info) {
+          self.callback(err, req, res, user, info);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res, user) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res, user) {
+        assert.isUndefined(req.user);
+      },
+      'should pass user to callback as false' : function(err, req, res, user) {
+        assert.isFalse(user);
+      },
+      'should pass info to callback' : function(err, req, res, user, info) {
+        assert.isObject(info);
+        assert.equal(info.message, 'Invalid password');
       },
     },
   },
