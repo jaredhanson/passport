@@ -10,11 +10,11 @@ function MockSuccessStrategy() {
 
 MockSuccessStrategy.prototype.authenticate = function(req, options) {
   var user = { id: '1', username: 'jaredhanson' };
-  if (options && options.scope) {
-    user.scope = options.scope;
+  if (options && options.scope && options.scope === 'email') {
+    user.email = 'jaredhanson@example.com';
   }
   
-  this.success(user, { location: 'Oakland, CA' });
+  this.success(user, { message: 'Success!' });
 }
 
 function MockFailureStrategy() {
@@ -105,6 +105,9 @@ vows.describe('authenticate').addBatch({
         assert.equal(req.user.id, '1');
         assert.equal(req.user.username, 'jaredhanson');
       },
+      'should not set email on user according to scope' : function(err, req, res) {
+        assert.isUndefined(req.user.email);
+      },
     },
   },
   
@@ -138,8 +141,8 @@ vows.describe('authenticate').addBatch({
         assert.equal(req.user.id, '1');
         assert.equal(req.user.username, 'jaredhanson');
       },
-      'should set scope from options on user' : function(err, req, res) {
-        assert.equal(req.user.scope, 'email');
+      'should set email on user according to scope' : function(err, req, res) {
+        assert.equal(req.user.email, 'jaredhanson@example.com');
       },
     },
   },
@@ -257,8 +260,8 @@ vows.describe('authenticate').addBatch({
       var self = this;
       var passport = new Passport();
       passport.use('success', new MockSuccessStrategy);
-      var callback = function(err, user, profile) {
-        this.done(err, user, profile);
+      var callback = function(err, user, info) {
+        this.done(err, user, info);
       }
       var context = {};
       
@@ -273,8 +276,8 @@ vows.describe('authenticate').addBatch({
         var self = this;
         var req = new MockRequest();
         var res = new MockResponse();
-        context.done = function(err, user, profile) {
-          self.callback(err, req, res, user, profile);
+        context.done = function(err, user, info) {
+          self.callback(err, req, res, user, info);
         }
         
         function next(err) {
@@ -285,20 +288,20 @@ vows.describe('authenticate').addBatch({
         });
       },
       
-      'should not generate an error' : function(err, req, res, user, profile) {
+      'should not generate an error' : function(err, req, res, user, info) {
         assert.isNull(err);
       },
-      'should not set user on request' : function(err, req, res, user, profile) {
+      'should not set user on request' : function(err, req, res, user, info) {
         assert.isUndefined(req.user);
       },
-      'should pass user to callback' : function(err, req, res, user, profile) {
+      'should pass user to callback' : function(err, req, res, user, info) {
         assert.isObject(user);
         assert.equal(user.id, '1');
         assert.equal(user.username, 'jaredhanson');
       },
-      'should pass profile to callback' : function(err, req, res, user, profile) {
-        assert.isObject(profile);
-        assert.equal(profile.location, 'Oakland, CA');
+      'should pass profile to callback' : function(err, req, res, user, info) {
+        assert.isObject(info);
+        assert.equal(info.message, 'Success!');
       },
     },
   },
