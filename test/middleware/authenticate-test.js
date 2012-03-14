@@ -31,6 +31,13 @@ MockFailureInfoMessageStrategy.prototype.authenticate = function(req) {
   this.fail({ message: 'Invalid password' });
 }
 
+function MockFailureInfoTypeAndMessageStrategy() {
+}
+
+MockFailureInfoTypeAndMessageStrategy.prototype.authenticate = function(req) {
+  this.fail({ type: 'notice', message: 'Invite required' });
+}
+
 function MockChallengeStrategy() {
 }
 
@@ -427,7 +434,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
-  'with a failed authentication containing info message and boolean flash option': {
+  'with a failed authentication containing info message using boolean flash option': {
     topic: function() {
       var self = this;
       var passport = new Passport();
@@ -473,7 +480,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
-  'with a failed authentication containing info message and string flash option': {
+  'with a failed authentication containing info message using string flash option': {
     topic: function() {
       var self = this;
       var passport = new Passport();
@@ -519,7 +526,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
-  'with a failed authentication containing info message and flash option': {
+  'with a failed authentication containing info message using flash option': {
     topic: function() {
       var self = this;
       var passport = new Passport();
@@ -565,7 +572,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
-  'with a failed authentication containing info message and flash option with message only': {
+  'with a failed authentication containing info message using flash option with message only': {
     topic: function() {
       var self = this;
       var passport = new Passport();
@@ -611,7 +618,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
-  'with a failed authentication containing info message and flash option with type only': {
+  'with a failed authentication containing info message using flash option with type only': {
     topic: function() {
       var self = this;
       var passport = new Passport();
@@ -650,6 +657,236 @@ vows.describe('authenticate').addBatch({
       'should set flash on request' : function(err, req, res) {
         assert.equal(req.message.type, 'info');
         assert.equal(req.message.msg, 'Invalid password');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/login');
+      },
+    },
+  },
+  
+  'with a failed authentication containing info type and message using boolean flash option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureInfoTypeAndMessageStrategy());
+      return passport.authenticate('failure', { failureFlash: true,
+                                                failureRedirect: 'http://www.example.com/login' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.flash = function(type, msg) {
+          this.message = { type: type, msg: msg }
+        }
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.equal(req.message.type, 'notice');
+        assert.equal(req.message.msg, 'Invite required');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/login');
+      },
+    },
+  },
+  
+  'with a failed authentication containing info type and message using string flash option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureInfoTypeAndMessageStrategy());
+      return passport.authenticate('failure', { failureFlash: 'Wrong credentials',
+                                                failureRedirect: 'http://www.example.com/login' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.flash = function(type, msg) {
+          this.message = { type: type, msg: msg }
+        }
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.equal(req.message.type, 'error');
+        assert.equal(req.message.msg, 'Wrong credentials');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/login');
+      },
+    },
+  },
+  
+  'with a failed authentication containing info type and message using flash option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureInfoTypeAndMessageStrategy());
+      return passport.authenticate('failure', { failureFlash: { type: 'info', message: 'Try again' },
+                                                failureRedirect: 'http://www.example.com/login' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.flash = function(type, msg) {
+          this.message = { type: type, msg: msg }
+        }
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.equal(req.message.type, 'info');
+        assert.equal(req.message.msg, 'Try again');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/login');
+      },
+    },
+  },
+  
+  'with a failed authentication containing info type and message using flash option with message only': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureInfoTypeAndMessageStrategy());
+      return passport.authenticate('failure', { failureFlash: { message: 'Try again' },
+                                                failureRedirect: 'http://www.example.com/login' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.flash = function(type, msg) {
+          this.message = { type: type, msg: msg }
+        }
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.equal(req.message.type, 'error');
+        assert.equal(req.message.msg, 'Try again');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/login');
+      },
+    },
+  },
+  
+  'with a failed authentication containing info type and message using flash option with type only': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureInfoTypeAndMessageStrategy());
+      return passport.authenticate('failure', { failureFlash: { type: 'info' },
+                                                failureRedirect: 'http://www.example.com/login' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.flash = function(type, msg) {
+          this.message = { type: type, msg: msg }
+        }
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.equal(req.message.type, 'info');
+        assert.equal(req.message.msg, 'Invite required');
       },
       'should redirect response' : function(err, req, res) {
         assert.equal(res.location, 'http://www.example.com/login');
