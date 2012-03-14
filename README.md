@@ -106,6 +106,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-openid">OpenID</a></td><td>OpenID authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-oauth">OAuth</a></td><td>OAuth 1.0 and 2.0 authentication strategies.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-browserid">BrowserID</a></td><td>BrowserID authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/magnetik/passport-webid">WebID</a></td><td>WebID authentication strategy.</td><td><a href="https://github.com/magnetik">Baptiste Lafontaine</a></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-37signals">37signals</a></td><td>37signals authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-angellist">AngelList</a></td><td>AngelList authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-bitbucket">Bitbucket</a></td><td>Bitbucket authentication strategy.</td><td></td></tr>
@@ -115,6 +116,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-evernote">Evernote</a></td><td>Evernote authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-facebook">Facebook</a></td><td>Facebook authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-fitbit">Fitbit</a></td><td>Fitbit authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/freenerd/passport-flattr">Flattr</a></td><td>Flattr authentication strategy.</td><td><a href="https://github.com/freenerd">Johan Uhle</a></td></tr>
     <tr><td><a href="https://github.com/johnnyhalife/passport-flickr">Flickr</a></td><td>Flickr authentication strategy.</td><td><a href="https://github.com/johnnyhalife">Johnny Halife</a></td></tr>
     <tr><td><a href="https://github.com/joshbirk/passport-forcedotcom">Force.com</a></td><td>Force.com (Salesforce, Database.com) authentication strategy.</td><td><a href="https://github.com/joshbirk">Joshua Birk</a></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-foursquare">Foursquare</a></td><td>Foursquare authentication strategy.</td><td></td></tr>
