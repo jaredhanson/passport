@@ -977,6 +977,53 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  'with a successful authentication lacking info message using boolean flash option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('success', new MockSuccessStrategy);
+      return passport.authenticate('success', { successFlash: true,
+                                                successRedirect: 'http://www.example.com/account' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.flash = function(type, msg) {
+          this.message = { type: type, msg: msg }
+        }
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should not set flash on request' : function(err, req, res) {
+        assert.isUndefined(req.message);
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/account');
+      },
+    },
+  },
+  
   'with a successful authentication and assignProperty option': {
     topic: function() {
       var self = this;
