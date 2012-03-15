@@ -33,6 +33,14 @@ MockSuccessInfoTypeAndMessageStrategy.prototype.authenticate = function(req) {
   this.success(user, { type: 'info', message: 'Hello' });
 }
 
+function MockSuccessStringMessageStrategy() {
+}
+
+MockSuccessStringMessageStrategy.prototype.authenticate = function(req) {
+  var user = { id: '1', username: 'jaredhanson' };
+  this.success(user, 'Greetings');
+}
+
 function MockFailureStrategy() {
 }
 
@@ -722,6 +730,246 @@ vows.describe('authenticate').addBatch({
       'should set flash on request' : function(err, req, res) {
         assert.equal(req.message.type, 'ok');
         assert.equal(req.message.msg, 'Hello');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/account');
+      },
+    },
+  },
+  
+  'with a successful authentication containing string message using boolean flash option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('success', new MockSuccessStringMessageStrategy);
+      return passport.authenticate('success', { successFlash: true,
+                                                successRedirect: 'http://www.example.com/account' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.flash = function(type, msg) {
+          this.message = { type: type, msg: msg }
+        }
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.equal(req.message.type, 'success');
+        assert.equal(req.message.msg, 'Greetings');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/account');
+      },
+    },
+  },
+  
+  'with a successful authentication containing string message using string flash option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('success', new MockSuccessStringMessageStrategy);
+      return passport.authenticate('success', { successFlash: 'Login complete',
+                                                successRedirect: 'http://www.example.com/account' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.flash = function(type, msg) {
+          this.message = { type: type, msg: msg }
+        }
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.equal(req.message.type, 'success');
+        assert.equal(req.message.msg, 'Login complete');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/account');
+      },
+    },
+  },
+  
+  'with a successful authentication containing string message using flash option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('success', new MockSuccessStringMessageStrategy);
+      return passport.authenticate('success', { successFlash: { type: 'notice', message: 'Last login was yesterday' },
+                                                successRedirect: 'http://www.example.com/account' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.flash = function(type, msg) {
+          this.message = { type: type, msg: msg }
+        }
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.equal(req.message.type, 'notice');
+        assert.equal(req.message.msg, 'Last login was yesterday');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/account');
+      },
+    },
+  },
+  
+  'with a successful authentication containing string message using flash option with message only': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('success', new MockSuccessStringMessageStrategy);
+      return passport.authenticate('success', { successFlash: { message: 'OK' },
+                                                successRedirect: 'http://www.example.com/account' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.flash = function(type, msg) {
+          this.message = { type: type, msg: msg }
+        }
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.equal(req.message.type, 'success');
+        assert.equal(req.message.msg, 'OK');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/account');
+      },
+    },
+  },
+  
+  'with a successful authentication containing string message using flash option with type only': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('success', new MockSuccessStringMessageStrategy);
+      return passport.authenticate('success', { successFlash: { type: 'info' },
+                                                successRedirect: 'http://www.example.com/account' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.flash = function(type, msg) {
+          this.message = { type: type, msg: msg }
+        }
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.equal(req.message.type, 'info');
+        assert.equal(req.message.msg, 'Greetings');
       },
       'should redirect response' : function(err, req, res) {
         assert.equal(res.location, 'http://www.example.com/account');
