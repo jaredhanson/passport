@@ -85,6 +85,52 @@ vows.describe('SessionStrategy').addBatch({
         assert.isObject(req.user);
         assert.equal(req.user.id, '123456');
       },
+      'should maintain the session' : function(err, req) {
+        assert.isObject(req._passport.session);
+        assert.equal(req._passport.session.user, '123456');
+      },
+    },
+  },
+  
+  'strategy handling a request with a login session that has been invalidated': {
+    topic: function() {
+      return new SessionStrategy();
+    },
+    
+    'after augmenting with actions': {
+      topic: function(strategy) {
+        var self = this;
+        var req = {};
+        strategy.pass = function() {
+          self.callback(null, req);
+        }
+        strategy.error = function(err) {
+          self.callback(err, req);
+        }
+        
+        req._passport = {};
+        req._passport.instance = {};
+        req._passport.instance.deserializeUser = function(user, done) {
+          done(null, false);
+        }
+        req._passport.session = {};
+        req._passport.session.user = '123456';
+        
+        process.nextTick(function () {
+          strategy.authenticate(req);
+        });
+      },
+      
+      'should not generate an error' : function(err, req) {
+        assert.isNull(err);
+      },
+      'should not set a user on the request' : function(err, req) {
+        assert.isUndefined(req.user);
+      },
+      'should remove user from the session' : function(err, req) {
+        assert.isObject(req._passport.session);
+        assert.isUndefined(req._passport.session.user);
+      },
     },
   },
   

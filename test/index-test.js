@@ -226,6 +226,102 @@ vows.describe('passport').addBatch({
     },
   },
   
+  'passport with one deserializer that sets user to null': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.deserializeUser(function(obj, done) {
+        done(null, null);
+      });
+      function deserialized(err, user) {
+        self.callback(err, user);
+      }
+      process.nextTick(function () {
+        passport.deserializeUser({ id: '1', username: 'jared' }, deserialized);
+      });
+    },
+    
+    'should invalidate user': function (err, user) {
+      assert.isNull(err);
+      assert.strictEqual(user, false);
+    },
+  },
+  
+  'passport with one deserializer that sets user to false': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.deserializeUser(function(obj, done) {
+        done(null, false);
+      });
+      function deserialized(err, user) {
+        self.callback(err, user);
+      }
+      process.nextTick(function () {
+        passport.deserializeUser({ id: '1', username: 'jared' }, deserialized);
+      });
+    },
+    
+    'should invalidate user': function (err, user) {
+      assert.isNull(err);
+      assert.strictEqual(user, false);
+    },
+  },
+  
+  'passport with multiple deserializers, the second of which sets user to null': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.deserializeUser(function(obj, done) {
+        done('pass');
+      });
+      passport.deserializeUser(function(obj, done) {
+        done(null, null);
+      });
+      passport.deserializeUser(function(obj, done) {
+        done(null, 'should-not-execute');
+      });
+      function deserialized(err, user) {
+        self.callback(err, user);
+      }
+      process.nextTick(function () {
+        passport.deserializeUser({ id: '1', username: 'jared' }, deserialized);
+      });
+    },
+    
+    'should invalidate user': function (err, user) {
+      assert.isNull(err);
+      assert.strictEqual(user, false);
+    },
+  },
+  
+  'passport with multiple deserializers, the second of which sets user to false': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.deserializeUser(function(obj, done) {
+        done('pass');
+      });
+      passport.deserializeUser(function(obj, done) {
+        done(null, false);
+      });
+      passport.deserializeUser(function(obj, done) {
+        done(null, 'should-not-execute');
+      });
+      function deserialized(err, user) {
+        self.callback(err, user);
+      }
+      process.nextTick(function () {
+        passport.deserializeUser({ id: '1', username: 'jared' }, deserialized);
+      });
+    },
+    
+    'should invalidate user': function (err, user) {
+      assert.isNull(err);
+      assert.strictEqual(user, false);
+    },
+  },
+  
   'passport with a deserializer that throws an error': {
     topic: function() {
       var self = this;
