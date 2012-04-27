@@ -120,6 +120,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/johnnyhalife/passport-flickr">Flickr</a></td><td>Flickr authentication strategy.</td><td><a href="https://github.com/johnnyhalife">Johnny Halife</a></td></tr>
     <tr><td><a href="https://github.com/joshbirk/passport-forcedotcom">Force.com</a></td><td>Force.com (Salesforce, Database.com) authentication strategy.</td><td><a href="https://github.com/joshbirk">Joshua Birk</a></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-foursquare">Foursquare</a></td><td>Foursquare authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/carlos8f/passport-freedomworks">FreedomWorks</a></td><td>FreedomWorks authentication strategy.</td><td><a href="https://github.com/carlos8f">Carlos Rodriguez</a></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-geoloqi">Geoloqi</a></td><td>Geoloqi authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-github">GitHub</a></td><td>GitHub authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-goodreads">Goodreads</a></td><td>Goodreads authentication strategy.</td><td></td></tr>
@@ -155,6 +156,9 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/developmentseed/passport-dummy">Dummy</a></td><td>Dummy authentication strategy.</td><td><a href="https://github.com/developmentseed">Development Seed</a></td></tr>
   </tbody>
 </table>
+
+<strong>Attention Developers:</strong> If you implement a new authentication
+strategy for Passport, send me a message and I will update the list.
 
 ## Tests
 
