@@ -134,6 +134,8 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-netflix">Netflix</a></td><td>Netflix authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-ohloh">Ohloh</a></td><td>Ohloh authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-openstreetmap">OpenStreetMap</a></td><td>OpenStreetMap authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-paypal">PayPal</a> (OpenID)</td><td>PayPal authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-paypal-oauth">PayPal</a> (OAuth)</td><td>PayPal (OAuth 2.0) authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-picplz">picplz</a></td><td>picplz authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-rdio">Rdio</a></td><td>Rdio authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-readability">Readability</a></td><td>Readability authentication strategy.</td><td></td></tr>
