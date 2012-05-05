@@ -128,6 +128,8 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-google-oauth">Google</a> (OAuth)</td><td>Google (OAuth 1.0 and OAuth 2.0) authentication strategies.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-gowalla">Gowalla</a></td><td>Gowalla authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-instagram">Instagram</a></td><td>Instagram authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-intuit">Intuit</a> (OpenID)</td><td>Intuit authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-intuit-oauth">Intuit</a> (OAuth)</td><td>Intuit (OAuth 1.0) authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-justintv">Justin.tv</a></td><td>Justin.tv authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-linkedin">LinkedIn</a></td><td>LinkedIn authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-meetup">Meetup</a></td><td>Meetup authentication strategy.</td><td></td></tr>
