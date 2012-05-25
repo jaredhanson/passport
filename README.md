@@ -151,6 +151,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-tumblr">Tumblr</a></td><td>Tumblr authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-twitter">Twitter</a></td><td>Twitter authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-vimeo">Vimeo</a></td><td>Vimeo authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/stevebest/passport-vkontakte">VKontakte</a></td><td>VKontakte authentication strategy.</td><td><a href="https://github.com/stevebest">Stepan Stolyarov</a></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-windowslive">Windows Live</a></td><td>Windows Live authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-yahoo">Yahoo!</a> (OpenID)</td><td>Yahoo! authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-yahoo-oauth">Yahoo!</a> (OAuth)</td><td>Yahoo! (OAuth 1.0) authentication strategy.</td><td></td></tr>
