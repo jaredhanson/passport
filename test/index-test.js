@@ -72,6 +72,31 @@ vows.describe('passport').addBatch({
     },
   },
   
+  'passport with strategies to unuse': {
+    topic: function() {
+      return new Passport();
+    },
+    
+    'should unuse strategies': function (passport) {
+      var strategyOne = {};
+      strategyOne.name = 'one';
+      passport.use(strategyOne);
+      var strategyTwo = {};
+      strategyTwo.name = 'two';
+      passport.use(strategyTwo);
+      
+      // session is implicitly used
+      assert.lengthOf(Object.keys(passport._strategies), 3);
+      assert.isObject(passport._strategies['one']);
+      assert.isObject(passport._strategies['two']);
+      
+      passport.unuse('one');
+      assert.lengthOf(Object.keys(passport._strategies), 2);
+      assert.isUndefined(passport._strategies['one']);
+      assert.isObject(passport._strategies['two']);
+    },
+  },
+  
   'passport with no serializers': {
     topic: function() {
       var self = this;
