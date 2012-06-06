@@ -156,9 +156,10 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-yahoo">Yahoo!</a> (OpenID)</td><td>Yahoo! authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-yahoo-oauth">Yahoo!</a> (OAuth)</td><td>Yahoo! (OAuth 1.0) authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-yammer">Yammer</a></td><td>Yammer authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/gurugray/passport-yandex">Yandex</a></td><td>Yandex authentication strategy.</td><td><a href="https://github.com/gurugray">Sergey Sergeev</a></td></tr>
+    <tr><td><a href="https://github.com/alesium/passport-openam">OpenAM</a></td><td>OpenAM authentication strategy.</td><td><a href="https://github.com/alesium">Alesium</a></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-http">HTTP</a></td><td>HTTP Basic and Digest authentication strategies.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-http-bearer">HTTP-Bearer</a></td><td>HTTP Bearer authentication strategy.</td><td></td></tr>
-    <tr><td><a href="https://github.com/alesium/passport-openam">OpenAM</a></td><td>OpenAM authentication strategy.</td><td><a href="https://github.com/alesium">Alesium</a></td></tr>
     <tr><td><a href="https://github.com/developmentseed/passport-dummy">Dummy</a></td><td>Dummy authentication strategy.</td><td><a href="https://github.com/developmentseed">Development Seed</a></td></tr>
   </tbody>
 </table>
