@@ -1423,6 +1423,55 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  'with a failed authentication containing info message using callback': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureInfoMessageStrategy());
+      var callback = function(err, user, info) {
+        this.done(err, user, info);
+      }
+      var context = {};
+      
+      var authenticate = passport.authenticate('failure', callback.bind(context));
+      process.nextTick(function () {
+        self.callback(null, authenticate, context);
+      });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate, context) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        context.done = function(err, user, info) {
+          self.callback(err, req, res, user, info);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res, user) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res, user) {
+        assert.isUndefined(req.user);
+      },
+      'should pass user to callback as false' : function(err, req, res, user) {
+        assert.isFalse(user);
+      },
+      'should pass info to callback' : function(err, req, res, user, info) {
+        assert.isObject(info);
+        assert.equal(info.message, 'Invalid password');
+      },
+    },
+  },
+  
   'with a failed authentication containing info message using boolean flash option': {
     topic: function() {
       var self = this;
@@ -2154,55 +2203,6 @@ vows.describe('authenticate').addBatch({
       },
       'should redirect response' : function(err, req, res) {
         assert.equal(res.location, 'http://www.example.com/login');
-      },
-    },
-  },
-  
-  'with a failed authentication containing info message using callback': {
-    topic: function() {
-      var self = this;
-      var passport = new Passport();
-      passport.use('failure', new MockFailureInfoMessageStrategy());
-      var callback = function(err, user, info) {
-        this.done(err, user, info);
-      }
-      var context = {};
-      
-      var authenticate = passport.authenticate('failure', callback.bind(context));
-      process.nextTick(function () {
-        self.callback(null, authenticate, context);
-      });
-    },
-    
-    'when handling a request': {
-      topic: function(authenticate, context) {
-        var self = this;
-        var req = new MockRequest();
-        var res = new MockResponse();
-        context.done = function(err, user, info) {
-          self.callback(err, req, res, user, info);
-        }
-        
-        function next(err) {
-          self.callback(new Error('should not be called'));
-        }
-        process.nextTick(function () {
-          authenticate(req, res, next)
-        });
-      },
-      
-      'should not generate an error' : function(err, req, res, user) {
-        assert.isNull(err);
-      },
-      'should not set user on request' : function(err, req, res, user) {
-        assert.isUndefined(req.user);
-      },
-      'should pass user to callback as false' : function(err, req, res, user) {
-        assert.isFalse(user);
-      },
-      'should pass info to callback' : function(err, req, res, user, info) {
-        assert.isObject(info);
-        assert.equal(info.message, 'Invalid password');
       },
     },
   },
