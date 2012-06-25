@@ -116,6 +116,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
     <tr><td><a href="https://github.com/jaredhanson/passport-dwolla">Dwolla</a></td><td>Dwolla authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-evernote">Evernote</a></td><td>Evernote authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-facebook">Facebook</a></td><td>Facebook authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-familysearch">FamilySearch</a></td><td>FamilySearch authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-fitbit">Fitbit</a></td><td>Fitbit authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/freenerd/passport-flattr">Flattr</a></td><td>Flattr authentication strategy.</td><td><a href="https://github.com/freenerd">Johan Uhle</a></td></tr>
     <tr><td><a href="https://github.com/johnnyhalife/passport-flickr">Flickr</a></td><td>Flickr authentication strategy.</td><td><a href="https://github.com/johnnyhalife">Johnny Halife</a></td></tr>
