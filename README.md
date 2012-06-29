@@ -103,9 +103,10 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
   </thead>
   <tbody>
     <tr><td><a href="https://github.com/jaredhanson/passport-local">Local</a></td><td>Local username and password authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-browserid">BrowserID</a></td><td>BrowserID authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-openid">OpenID</a></td><td>OpenID authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-oauth">OAuth</a></td><td>OAuth 1.0 and 2.0 authentication strategies.</td><td></td></tr>
-    <tr><td><a href="https://github.com/jaredhanson/passport-browserid">BrowserID</a></td><td>BrowserID authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/bergie/passport-saml">SAML</a></td><td>SAML 2.0 authentication strategy.</td><td><a href="https://github.com/bergie">Henri Bergius</a></td></tr>
     <tr><td><a href="https://github.com/magnetik/passport-webid">WebID</a></td><td>WebID authentication strategy.</td><td><a href="https://github.com/magnetik">Baptiste Lafontaine</a></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-37signals">37signals</a></td><td>37signals authentication strategy.</td><td></td></tr>
     <tr><td><a href="https://github.com/jaredhanson/passport-angellist">AngelList</a></td><td>AngelList authentication strategy.</td><td></td></tr>
