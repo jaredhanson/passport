@@ -99,7 +99,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 
 <table>
   <tbody>
-    <tr><td><a href="https://github.com/jaredhanson/passport-local">Local</a></td><td>Local username and password authentication strategy.</td></tr>
+    <tr> <td> <a href="https://github.com/jaredhanson/passport-local">Local</a> </td> <td>Local username and password authentication strategy.</td> </tr>
   </tbody>
 </table>
 
