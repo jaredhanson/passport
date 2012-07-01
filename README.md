@@ -97,15 +97,78 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 
 ## Strategies
 
-* Red Apples
-* Purple Grapes
-* Green Kiwifruits
-
 <table>
+  <thead>
+    <tr><th>Strategy</th><th>Description</th><th>Developer</th></tr>
+  </thead>
   <tbody>
-    <tr> <td> <a href="https://github.com/jaredhanson/passport-local">Local</a> </td> <td>Local username and password authentication strategy.</td> </tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-local">Local</a></td><td>Local username and password authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-browserid">BrowserID</a></td><td>BrowserID authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-openid">OpenID</a></td><td>OpenID authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-oauth">OAuth</a></td><td>OAuth 1.0 and 2.0 authentication strategies.</td><td></td></tr>
+    <tr><td><a href="https://github.com/bergie/passport-saml">SAML</a></td><td>SAML 2.0 authentication strategy.</td><td><a href="https://github.com/bergie">Henri Bergius</a></td></tr>
+    <tr><td><a href="https://github.com/magnetik/passport-webid">WebID</a></td><td>WebID authentication strategy.</td><td><a href="https://github.com/magnetik">Baptiste Lafontaine</a></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-37signals">37signals</a></td><td>37signals authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-angellist">AngelList</a></td><td>AngelList authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-aol">AOL</a></td><td>AOL authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-bitbucket">Bitbucket</a></td><td>Bitbucket authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-digg">Digg</a></td><td>Digg authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-dropbox">Dropbox</a></td><td>Dropbox authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-dwolla">Dwolla</a></td><td>Dwolla authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-evernote">Evernote</a></td><td>Evernote authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-facebook">Facebook</a></td><td>Facebook authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-familysearch">FamilySearch</a></td><td>FamilySearch authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-fitbit">Fitbit</a></td><td>Fitbit authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/freenerd/passport-flattr">Flattr</a></td><td>Flattr authentication strategy.</td><td><a href="https://github.com/freenerd">Johan Uhle</a></td></tr>
+    <tr><td><a href="https://github.com/johnnyhalife/passport-flickr">Flickr</a></td><td>Flickr authentication strategy.</td><td><a href="https://github.com/johnnyhalife">Johnny Halife</a></td></tr>
+    <tr><td><a href="https://github.com/joshbirk/passport-forcedotcom">Force.com</a></td><td>Force.com (Salesforce, Database.com) authentication strategy.</td><td><a href="https://github.com/joshbirk">Joshua Birk</a></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-foursquare">Foursquare</a></td><td>Foursquare authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/carlos8f/passport-freedomworks">FreedomWorks</a></td><td>FreedomWorks authentication strategy.</td><td><a href="https://github.com/carlos8f">Carlos Rodriguez</a></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-geoloqi">Geoloqi</a></td><td>Geoloqi authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-github">GitHub</a></td><td>GitHub authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-goodreads">Goodreads</a></td><td>Goodreads authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-google">Google</a> (OpenID)</td><td>Google authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-google-oauth">Google</a> (OAuth)</td><td>Google (OAuth 1.0 and OAuth 2.0) authentication strategies.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-gowalla">Gowalla</a></td><td>Gowalla authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-instagram">Instagram</a></td><td>Instagram authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-intuit">Intuit</a> (OpenID)</td><td>Intuit authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-intuit-oauth">Intuit</a> (OAuth)</td><td>Intuit (OAuth 1.0) authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-justintv">Justin.tv</a></td><td>Justin.tv authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-linkedin">LinkedIn</a></td><td>LinkedIn authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-meetup">Meetup</a></td><td>Meetup authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-netflix">Netflix</a></td><td>Netflix authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-ohloh">Ohloh</a></td><td>Ohloh authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-openstreetmap">OpenStreetMap</a></td><td>OpenStreetMap authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-paypal">PayPal</a> (OpenID)</td><td>PayPal authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-paypal-oauth">PayPal</a> (OAuth)</td><td>PayPal (OAuth 2.0) authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-picplz">picplz</a></td><td>picplz authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-rdio">Rdio</a></td><td>Rdio authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-readability">Readability</a></td><td>Readability authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-runkeeper">RunKeeper</a></td><td>RunKeeper authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-smugmug">SmugMug</a></td><td>SmugMug authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-soundcloud">SoundCloud</a></td><td>SoundCloud authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/zoowar/passport-statusnet">StatusNet</a></td><td>StatusNet authentication strategy.</td><td><a href="https://github.com/zoowar">ZooWar</a></td></tr>
+    <tr><td><a href="https://github.com/liamcurry/passport-steam">Steam</a></td><td>Steam authentication strategy.</td><td><a href="https://github.com/liamcurry">Liam Curry</a></td></tr>
+    <tr><td><a href="https://github.com/godezinc/passport-supinfo">SUPINFO</a></td><td>SUPINFO authentication strategy.</td><td><a href="https://github.com/GodezInc">Vincent PEYROUSE</a></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-tripit">TripIt</a></td><td>TripIt authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-tumblr">Tumblr</a></td><td>Tumblr authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-twitter">Twitter</a></td><td>Twitter authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-vimeo">Vimeo</a></td><td>Vimeo authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/stevebest/passport-vkontakte">VKontakte</a></td><td>VKontakte authentication strategy.</td><td><a href="https://github.com/stevebest">Stepan Stolyarov</a></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-windowslive">Windows Live</a></td><td>Windows Live authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-yahoo">Yahoo!</a> (OpenID)</td><td>Yahoo! authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-yahoo-oauth">Yahoo!</a> (OAuth)</td><td>Yahoo! (OAuth 1.0) authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-yammer">Yammer</a></td><td>Yammer authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/gurugray/passport-yandex">Yandex</a></td><td>Yandex authentication strategy.</td><td><a href="https://github.com/gurugray">Sergey Sergeev</a></td></tr>
+    <tr><td><a href="https://github.com/alesium/passport-openam">OpenAM</a></td><td>OpenAM authentication strategy.</td><td><a href="https://github.com/alesium">Alesium</a></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-http">HTTP</a></td><td>HTTP Basic and Digest authentication strategies.</td><td></td></tr>
+    <tr><td><a href="https://github.com/jaredhanson/passport-http-bearer">HTTP-Bearer</a></td><td>HTTP Bearer authentication strategy.</td><td></td></tr>
+    <tr><td><a href="https://github.com/developmentseed/passport-dummy">Dummy</a></td><td>Dummy authentication strategy.</td><td><a href="https://github.com/developmentseed">Development Seed</a></td></tr>
   </tbody>
 </table>
+
+<strong>Attention Developers:</strong> If you implement a new authentication
+strategy for Passport, send me a message and I will update the list.
 
 ## Tests
 
