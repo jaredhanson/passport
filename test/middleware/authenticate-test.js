@@ -146,6 +146,10 @@ vows.describe('authenticate').addBatch({
       'should not set email on user according to scope' : function(err, req, res) {
         assert.isUndefined(req.user.email);
       },
+      'should have empty auth info' : function(err, req, res) {
+        assert.isObject(req.authInfo);
+        assert.lengthOf(Object.keys(req.authInfo), 0);
+      },
     },
   },
   
@@ -182,6 +186,10 @@ vows.describe('authenticate').addBatch({
       'should set email on user according to scope' : function(err, req, res) {
         assert.equal(req.user.email, 'jaredhanson@example.com');
       },
+      'should have empty auth info' : function(err, req, res) {
+        assert.isObject(req.authInfo);
+        assert.lengthOf(Object.keys(req.authInfo), 0);
+      },
     },
   },
   
@@ -213,6 +221,53 @@ vows.describe('authenticate').addBatch({
       },
       'should not set user on request' : function(err, req, res) {
         assert.isUndefined(req.user);
+      },
+      'should not set auth info on request' : function(err, req, res) {
+        assert.isUndefined(req.authInfo);
+      },
+    },
+  },
+  
+  'with a successful authentication and redirect option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('success', new MockSuccessStrategy);
+      return passport.authenticate('success', { successRedirect: 'http://www.example.com/account' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should have empty auth info' : function(err, req, res) {
+        assert.isObject(req.authInfo);
+        assert.lengthOf(Object.keys(req.authInfo), 0);
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/account');
       },
     },
   },
@@ -301,46 +356,6 @@ vows.describe('authenticate').addBatch({
     },
   },
   
-  'with a successful authentication and redirect option': {
-    topic: function() {
-      var self = this;
-      var passport = new Passport();
-      passport.use('success', new MockSuccessStrategy);
-      return passport.authenticate('success', { successRedirect: 'http://www.example.com/account' });
-    },
-    
-    'when handling a request': {
-      topic: function(authenticate) {
-        var self = this;
-        var req = new MockRequest();
-        var res = new MockResponse();
-        res.redirect = function(url) {
-          this.location = url;
-          self.callback(null, req, res);
-        }
-        
-        function next(err) {
-          self.callback(new Error('should not be called'));
-        }
-        process.nextTick(function () {
-          authenticate(req, res, next)
-        });
-      },
-      
-      'should not generate an error' : function(err, req, res) {
-        assert.isNull(err);
-      },
-      'should set user on request' : function(err, req, res) {
-        assert.isObject(req.user);
-        assert.equal(req.user.id, '1');
-        assert.equal(req.user.username, 'jaredhanson');
-      },
-      'should redirect response' : function(err, req, res) {
-        assert.equal(res.location, 'http://www.example.com/account');
-      },
-    },
-  },
-  
   'with a successful authentication containing info message using boolean flash option': {
     topic: function() {
       var self = this;
@@ -378,6 +393,11 @@ vows.describe('authenticate').addBatch({
         assert.isObject(req.user);
         assert.equal(req.user.id, '1');
         assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should set message in auth info' : function(err, req, res) {
+        assert.isObject(req.authInfo);
+        assert.lengthOf(Object.keys(req.authInfo), 1);
+        assert.equal(req.authInfo.message, 'Welcome!');
       },
       'should set flash on request' : function(err, req, res) {
         assert.equal(req.message.type, 'success');
