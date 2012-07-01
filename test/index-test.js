@@ -368,5 +368,98 @@ vows.describe('passport').addBatch({
       assert.isUndefined(obj);
     },
   },
+  
+  'passport with no auth info transformers': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      function transformed(err, obj) {
+        self.callback(err, obj);
+      }
+      process.nextTick(function () {
+        passport.transformAuthInfo({ clientId: '1', scope: 'write' }, transformed);
+      });
+    },
+    
+    'should leave info untransformed': function (err, obj) {
+      assert.isNull(err);
+      assert.equal(obj.clientId, '1');
+      assert.equal(obj.scope, 'write');
+    },
+  },
+  
+  'passport with one auth info transformer': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.transformAuthInfo(function(info, done) {
+        done(null, { clientId: info.clientId, client: { name: 'foo' }});
+      });
+      function transformed(err, obj) {
+        self.callback(err, obj);
+      }
+      process.nextTick(function () {
+        passport.transformAuthInfo({ clientId: '1', scope: 'write' }, transformed);
+      });
+    },
+    
+    'should transform info': function (err, obj) {
+      assert.isNull(err);
+      assert.equal(obj.clientId, '1');
+      assert.equal(obj.client.name, 'foo');
+      assert.isUndefined(obj.scope);
+    },
+  },
+  
+  'passport with multiple auth info transformers': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.transformAuthInfo(function(info, done) {
+        done('pass');
+      });
+      passport.transformAuthInfo(function(info, done) {
+        done(null, { clientId: info.clientId, client: { name: 'bar' }});
+      });
+      passport.transformAuthInfo(function(info, done) {
+        done(null, { clientId: info.clientId, client: { name: 'not-bar' }});
+      });
+      function transformed(err, obj) {
+        self.callback(err, obj);
+      }
+      process.nextTick(function () {
+        passport.transformAuthInfo({ clientId: '1', scope: 'write' }, transformed);
+      });
+    },
+    
+    'should transform info': function (err, obj) {
+      assert.isNull(err);
+      assert.equal(obj.clientId, '1');
+      assert.equal(obj.client.name, 'bar');
+      assert.isUndefined(obj.scope);
+    },
+  },
+  
+  'passport with an auth info transformer that throws an error': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.transformAuthInfo(function(user, done) {
+        // throws ReferenceError: wtf is not defined
+        wtf
+      });
+      function transformed(err, obj) {
+        self.callback(err, obj);
+      }
+      process.nextTick(function () {
+        passport.serializeUser({ clientId: '1', scope: 'write' }, transformed);
+      });
+    },
+    
+    'should fail to transform info': function (err, obj) {
+      assert.instanceOf(err, Error);
+      assert.isUndefined(obj);
+    },
+  },
 
 }).export(module);
