@@ -98,11 +98,10 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 ## Strategies
 
 <table>
-  <tr><td><a href="https://github.com/jaredhanson/passport-local">Local</a></td><td>Local username and password authentication strategy.</td></tr>
+  <tbody>
+    <tr><td><a href="https://github.com/jaredhanson/passport-local">Local</a></td><td>Local username and password authentication strategy.</td></tr>
+  </tbody>
 </table>
-
-<strong>Attention Developers:</strong> If you implement a new authentication
-strategy for Passport, send me a message and I will update the list.
 
 ## Tests
 
