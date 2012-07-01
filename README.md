@@ -98,14 +98,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 ## Strategies
 
 <table>
-  <thead>
-    <tr><th>Strategy</th><th>Description</th><th>Developer</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><a href="https://github.com/jaredhanson/passport-local">Local</a></td><td>Local username and password authentication strategy.</td><td></td></tr>
-    <tr><td><a href="https://github.com/jaredhanson/passport-browserid">BrowserID</a></td><td>BrowserID authentication strategy.</td><td></td></tr>
-    <tr><td><a href="https://github.com/jaredhanson/passport-openid">OpenID</a></td><td>OpenID authentication strategy.</td><td></td></tr>
-  </tbody>
+  <tr><td><a href="https://github.com/jaredhanson/passport-local">Local</a></td><td>Local username and password authentication strategy.</td><td></td></tr>
 </table>
 
 <strong>Attention Developers:</strong> If you implement a new authentication
