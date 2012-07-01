@@ -41,6 +41,14 @@ MockSuccessStringMessageStrategy.prototype.authenticate = function(req) {
   this.success(user, 'Greetings');
 }
 
+function MockSuccessTokenStrategy() {
+}
+
+MockSuccessTokenStrategy.prototype.authenticate = function(req) {
+  var user = { id: '1', username: 'jaredhanson' };
+  this.success(user, { token: 'abcd', clientId: '123' });
+}
+
 function MockFailureStrategy() {
 }
 
@@ -352,6 +360,163 @@ vows.describe('authenticate').addBatch({
       },
       'should redirect response' : function(err, req, res) {
         assert.equal(res.location, 'http://www.example.com/default');
+      },
+    },
+  },
+  
+  'with a successful authentication containing token info and no transforms': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('token', new MockSuccessTokenStrategy);
+      return passport.authenticate('token');
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        
+        function next(err) {
+          self.callback(err, req, res);
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should set authInfo on request' : function(err, req, res) {
+        assert.isObject(req.authInfo);
+        assert.lengthOf(Object.keys(req.authInfo), 2);
+        assert.equal(req.authInfo.token, 'abcd');
+        assert.equal(req.authInfo.clientId, '123');
+      },
+    },
+  },
+  
+  'with a successful authentication containing token info and a transform': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('token', new MockSuccessTokenStrategy);
+      passport.transformAuthInfo(function(info, done) {
+        done(null, { clientId: info.clientId, client: { name: 'foo' }});
+      });
+      return passport.authenticate('token');
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        
+        function next(err) {
+          self.callback(err, req, res);
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should set authInfo on request' : function(err, req, res) {
+        assert.isObject(req.authInfo);
+        assert.lengthOf(Object.keys(req.authInfo), 2);
+        assert.isUndefined(req.authInfo.token);
+        assert.equal(req.authInfo.clientId, '123');
+        assert.equal(req.authInfo.client.name, 'foo');
+      },
+    },
+  },
+  
+  'with a successful authentication containing token info and a transform that errors': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('token', new MockSuccessTokenStrategy);
+      passport.transformAuthInfo(function(info, done) {
+        done(new Error('something went wrong'));
+      });
+      return passport.authenticate('token');
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        
+        function next(err) {
+          self.callback(err, req, res);
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should generate an error' : function(err, req, res) {
+        assert.instanceOf(err, Error);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should not set authInfo on request' : function(err, req, res) {
+        assert.isUndefined(req.authInfo);
+      },
+    },
+  },
+  
+  'with a successful authentication containing token info and authInfo option set to false': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('token', new MockSuccessTokenStrategy);
+      return passport.authenticate('token', { authInfo: false });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        
+        function next(err) {
+          self.callback(err, req, res);
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should not set authInfo on request' : function(err, req, res) {
+        assert.isUndefined(req.authInfo);
       },
     },
   },
