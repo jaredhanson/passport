@@ -97,6 +97,14 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 
 ## Strategies
 
+- [Local](https://github.com/jaredhanson/passport-local) (username and password)
+- [BrowserID](https://github.com/jaredhanson/passport-browserid)
+- [OpenID](https://github.com/jaredhanson/passport-openid)
+- [OAuth](https://github.com/jaredhanson/passport-oauth)
+- [SAML](https://github.com/bergie/passport-saml) by [Henri Bergius](https://github.com/bergie)
+- [WebID](https://github.com/magnetik/passport-webid) by [Baptiste Lafontaine](https://github.com/magnetik)
+- [37signals](https://github.com/jaredhanson/passport-37signals)
+
 <table>
   <thead>
     <tr><th>Strategy</th><th>Description</th><th>Developer</th></tr>
