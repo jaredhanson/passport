@@ -151,6 +151,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 - [Vimeo](https://github.com/jaredhanson/passport-vimeo)
 - [VKontakte](https://github.com/stevebest/passport-vkontakte) by [Stepan Stolyarov](https://github.com/stevebest)
 - [Windows Live](https://github.com/jaredhanson/passport-windowslive)
+- [Withings](https://github.com/mowens/passport-withings) by [Michael Owens](https://github.com/mowens)
 - [Yahoo!](https://github.com/jaredhanson/passport-yahoo) (OpenID)
 - [Yahoo!](https://github.com/jaredhanson/passport-yahoo-oauth) (OAuth 1.0)
 - [Yammer](https://github.com/jaredhanson/passport-yammer)
@@ -158,6 +159,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 - [OpenAM](https://github.com/alesium/passport-openam) by [Alesium](https://github.com/alesium)
 - [HTTP](https://github.com/jaredhanson/passport-http) (HTTP Basic and Digest schemes)
 - [HTTP-Bearer](https://github.com/jaredhanson/passport-http-bearer) (HTTP Bearer scheme)
+- [HTTP-OAuth](https://github.com/jaredhanson/passport-http-oauth) (HTTP OAuth scheme)
 - [Dummy](https://github.com/developmentseed/passport-dummy) by [Development Seed](https://github.com/developmentseed)
 
 **Attention Developers:** If you implement a new authentication strategy for
