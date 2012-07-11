@@ -3153,4 +3153,65 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  'with a multiple API strategies failing with different status using custom callback': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('basic', new MockBasicStrategy({ fail: true, statusCode: 400 }));
+      passport.use('digest', new MockDigestStrategy({ fail: true, statusCode: 403 }));
+      passport.use('nc', new MockNoChallengeStrategy({ fail: true, statusCode: 402 }));
+      var callback = function(err, user, challenge, status) {
+        this.done(err, user, challenge, status);
+      }
+      var context = {};
+      
+      var authenticate = passport.authenticate(['basic', 'nc', 'digest'], callback.bind(context));
+      process.nextTick(function () {
+        self.callback(null, authenticate, context);
+      });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate, context) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        context.done = function(err, user, challenge, status) {
+          self.callback(err, req, res, user, challenge, status);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res, user, challenge, status) {
+        assert.isUndefined(req.user);
+      },
+      'should pass user to callback as false' : function(err, req, res, user, challenge, status) {
+        assert.isFalse(user);
+      },
+      'should pass challenges callback' : function(err, req, res, user, challenge, status) {
+        assert.isArray(challenge);
+        assert.lengthOf(challenge, 3);
+        assert.equal(challenge[0], 'Basic foo');
+        assert.equal(challenge[1], 402);
+        assert.equal(challenge[2], 'Digest foo');
+      },
+      'should pass statuses callback' : function(err, req, res, user, challenge, status) {
+        assert.isArray(status);
+        assert.lengthOf(status, 3);
+        assert.equal(status[0], 400);
+        assert.isUndefined(status[1]);
+        assert.equal(status[2], 403);
+      },
+    },
+  },
+  
 }).export(module);
