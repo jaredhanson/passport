@@ -98,6 +98,32 @@ MockBadRequestStrategy.prototype.authenticate = function(req) {
   this.fail(400);
 }
 
+
+function MockLocalStrategy(options) {
+  this.options = options || {};
+}
+
+MockLocalStrategy.prototype.authenticate = function(req) {
+  if (!this.options.fail) {
+    this.success({ username: 'bob-local' });
+  } else {
+    this.fail('Bad username or password');
+  }
+}
+
+function MockSingleUseTokenStrategy(options) {
+  this.options = options || {};
+}
+
+MockSingleUseTokenStrategy.prototype.authenticate = function(req) {
+  if (!this.options.fail) {
+    this.success({ username: 'bob-sut' });
+  } else {
+    this.fail('Bad token');
+  }
+}
+
+
 function MockRequest() {
 }
 
@@ -2775,6 +2801,72 @@ vows.describe('authenticate').addBatch({
       },
       'should not set WWW-Authenticate header' : function(err, req, res) {
         assert.isUndefined(res._headers['WWW-Authenticate']);
+      },
+    },
+  },
+  
+  'with a multiple UI strategies with the first one succeeding': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('local', new MockLocalStrategy());
+      passport.use('single-use-token', new MockSingleUseTokenStrategy());
+      return passport.authenticate(['local', 'single-use-token']);
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        
+        function next(err) {
+          self.callback(err, req, res);
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.username, 'bob-local');
+      },
+    },
+  },
+  
+  'with a multiple UI strategies with the second one succeeding': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('local', new MockLocalStrategy({ fail: true }));
+      passport.use('single-use-token', new MockSingleUseTokenStrategy());
+      return passport.authenticate(['local', 'single-use-token']);
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        
+        function next(err) {
+          self.callback(err, req, res);
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.username, 'bob-sut');
       },
     },
   },
