@@ -123,6 +123,42 @@ MockSingleUseTokenStrategy.prototype.authenticate = function(req) {
   }
 }
 
+function MockBasicStrategy(options) {
+  this.options = options || {};
+}
+
+MockBasicStrategy.prototype.authenticate = function(req) {
+  if (!this.options.fail) {
+    this.success({ username: 'bob-basic' });
+  } else {
+    this.fail('Basic foo', this.options.statusCode);
+  }
+}
+
+function MockDigestStrategy(options) {
+  this.options = options || {};
+}
+
+MockDigestStrategy.prototype.authenticate = function(req) {
+  if (!this.options.fail) {
+    this.success({ username: 'bob-digest' });
+  } else {
+    this.fail('Digest foo', this.options.statusCode);
+  }
+}
+
+function MockNoChallengeStrategy(options) {
+  this.options = options || {};
+}
+
+MockNoChallengeStrategy.prototype.authenticate = function(req) {
+  if (!this.options.fail) {
+    this.success({ username: 'bob-nc' });
+  } else {
+    this.fail(this.options.statusCode);
+  }
+}
+
 
 function MockRequest() {
 }
@@ -2867,6 +2903,52 @@ vows.describe('authenticate').addBatch({
       'should set user on request' : function(err, req, res) {
         assert.isObject(req.user);
         assert.equal(req.user.username, 'bob-sut');
+      },
+    },
+  },
+  
+  'with a multiple UI strategies with the both failing with flash message': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('local', new MockLocalStrategy({ fail: true }));
+      passport.use('single-use-token', new MockSingleUseTokenStrategy({ fail: true }));
+      return passport.authenticate(['local', 'single-use-token'], { failureFlash: true, failureRedirect: 'http://www.example.com/login' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        req.flash = function(type, msg) {
+          this.message = { type: type, msg: msg }
+        }
+        var res = new MockResponse();
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(err, req, res);
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set first flash on request' : function(err, req, res) {
+        assert.equal(req.message.type, 'error');
+        assert.equal(req.message.msg, 'Bad username or password');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/login');
       },
     },
   },
