@@ -2953,4 +2953,92 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  'with a multiple API strategies failing with default status': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('basic', new MockBasicStrategy({ fail: true }));
+      passport.use('digest', new MockDigestStrategy({ fail: true }));
+      passport.use('nc', new MockNoChallengeStrategy({ fail: true }));
+      return passport.authenticate(['basic', 'nc', 'digest'], { session: false });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        res.end = function() {
+          self.callback(null, req, res)
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set status code to unauthorized' : function(err, req, res) {
+        assert.equal(res.statusCode, 401);
+      },
+      'should set multiple WWW-Authenticate headers' : function(err, req, res) {
+        assert.lengthOf(res._headers['WWW-Authenticate'], 2);
+        assert.equal(res._headers['WWW-Authenticate'][0], 'Basic foo');
+        assert.equal(res._headers['WWW-Authenticate'][1], 'Digest foo');
+      },
+    },
+  },
+  
+  'with a multiple API strategies failing with different status': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('basic', new MockBasicStrategy({ fail: true, statusCode: 400 }));
+      passport.use('digest', new MockDigestStrategy({ fail: true, statusCode: 403 }));
+      passport.use('nc', new MockNoChallengeStrategy({ fail: true, statusCode: 402 }));
+      return passport.authenticate(['basic', 'nc', 'digest'], { session: false });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        res.end = function() {
+          self.callback(null, req, res)
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set status code to bad request' : function(err, req, res) {
+        assert.equal(res.statusCode, 400);
+      },
+      'should set multiple WWW-Authenticate headers' : function(err, req, res) {
+        assert.lengthOf(res._headers['WWW-Authenticate'], 2);
+        assert.equal(res._headers['WWW-Authenticate'][0], 'Basic foo');
+        assert.equal(res._headers['WWW-Authenticate'][1], 'Digest foo');
+      },
+    },
+  },
+  
 }).export(module);
