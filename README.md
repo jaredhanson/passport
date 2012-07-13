@@ -160,6 +160,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 - [HTTP](https://github.com/jaredhanson/passport-http) (HTTP Basic and Digest schemes)
 - [HTTP-Bearer](https://github.com/jaredhanson/passport-http-bearer) (HTTP Bearer scheme)
 - [HTTP-OAuth](https://github.com/jaredhanson/passport-http-oauth) (HTTP OAuth scheme)
+- [OAuth2-Client-Password](https://github.com/jaredhanson/passport-oauth2-client-password) (OAuth 2.0 client password)
 - [Dummy](https://github.com/developmentseed/passport-dummy) by [Development Seed](https://github.com/developmentseed)
 
 **Attention Developers:** If you implement a new authentication strategy for
