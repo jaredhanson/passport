@@ -148,6 +148,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 - [TripIt](https://github.com/jaredhanson/passport-tripit)
 - [Tumblr](https://github.com/jaredhanson/passport-tumblr)
 - [Twitter](https://github.com/jaredhanson/passport-twitter)
+- [TxSSC](https://github.com/TxSSC/passport-txssc) by [Texas School Safety Center](https://github.com/TxSSC)
 - [Vimeo](https://github.com/jaredhanson/passport-vimeo)
 - [VKontakte](https://github.com/stevebest/passport-vkontakte) by [Stepan Stolyarov](https://github.com/stevebest)
 - [Windows Live](https://github.com/jaredhanson/passport-windowslive)
@@ -161,6 +162,8 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 - [HTTP-Bearer](https://github.com/jaredhanson/passport-http-bearer) (HTTP Bearer scheme)
 - [HTTP-OAuth](https://github.com/jaredhanson/passport-http-oauth) (HTTP OAuth scheme)
 - [OAuth2-Client-Password](https://github.com/jaredhanson/passport-oauth2-client-password) (OAuth 2.0 client password)
+- [Hash](https://github.com/yuri-karadzhov/passport-hash) (hash parameter) by [Yuri Karadzhov](https://github.com/yuri-karadzhov)
+- [Anonymous](https://github.com/jaredhanson/passport-anonymous)
 - [Dummy](https://github.com/developmentseed/passport-dummy) by [Development Seed](https://github.com/developmentseed)
 
 **Attention Developers:** If you implement a new authentication strategy for
