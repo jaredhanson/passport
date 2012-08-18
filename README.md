@@ -106,6 +106,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 - [37signals](https://github.com/jaredhanson/passport-37signals)
 - [AngelList](https://github.com/jaredhanson/passport-angellist)
 - [AOL](https://github.com/jaredhanson/passport-aol)
+- [App.net](https://github.com/mowens/passport-appdotnet) by [Michael Owens](https://github.com/mowens)
 - [Bitbucket](https://github.com/jaredhanson/passport-bitbucket)
 - [DailyCred](https://github.com/hstove/passport-dailycred) by [Hank Stoever](https://github.com/hstove)
 - [Digg](https://github.com/jaredhanson/passport-digg)
