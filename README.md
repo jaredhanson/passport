@@ -104,6 +104,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 - [SAML](https://github.com/bergie/passport-saml) by [Henri Bergius](https://github.com/bergie)
 - [WebID](https://github.com/magnetik/passport-webid) by [Baptiste Lafontaine](https://github.com/magnetik)
 - [37signals](https://github.com/jaredhanson/passport-37signals)
+- [500px](https://github.com/jeremybenaim/passport-500px) by [Jeremy Benaim](https://github.com/jeremybenaim)
 - [AngelList](https://github.com/jaredhanson/passport-angellist)
 - [AOL](https://github.com/jaredhanson/passport-aol)
 - [App.net](https://github.com/mowens/passport-appdotnet) by [Michael Owens](https://github.com/mowens)
