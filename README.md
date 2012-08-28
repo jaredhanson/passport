@@ -102,6 +102,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 - [OpenID](https://github.com/jaredhanson/passport-openid)
 - [OAuth](https://github.com/jaredhanson/passport-oauth) (OAuth 1.0 and 2.0)
 - [SAML](https://github.com/bergie/passport-saml) by [Henri Bergius](https://github.com/bergie)
+- [WS-Federation + SAML 2.0](https://github.com/auth10/passport-wsfed-saml2) by [Auth10](https://github.com/auth10)
 - [WebID](https://github.com/magnetik/passport-webid) by [Baptiste Lafontaine](https://github.com/magnetik)
 - [37signals](https://github.com/jaredhanson/passport-37signals)
 - [500px](https://github.com/jeremybenaim/passport-500px) by [Jeremy Benaim](https://github.com/jeremybenaim)
