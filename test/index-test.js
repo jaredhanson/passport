@@ -163,6 +163,48 @@ vows.describe('passport').addBatch({
     },
   },
   
+  'passport with one serializer that sets user to null': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.serializeUser(function(user, done) {
+        done(null, null);
+      });
+      function serialized(err, obj) {
+        self.callback(err, obj);
+      }
+      process.nextTick(function () {
+        passport.serializeUser({ id: '1', username: 'jared' }, serialized);
+      });
+    },
+    
+    'should fail to serialize user': function (err, obj) {
+      assert.instanceOf(err, Error);
+      assert.isUndefined(obj);
+    },
+  },
+  
+  'passport with one serializer that sets user to false': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.serializeUser(function(user, done) {
+        done(null, false);
+      });
+      function serialized(err, obj) {
+        self.callback(err, obj);
+      }
+      process.nextTick(function () {
+        passport.serializeUser({ id: '1', username: 'jared' }, serialized);
+      });
+    },
+    
+    'should fail to serialize user': function (err, obj) {
+      assert.instanceOf(err, Error);
+      assert.isUndefined(obj);
+    },
+  },
+  
   'passport with a serializer that throws an error': {
     topic: function() {
       var self = this;
