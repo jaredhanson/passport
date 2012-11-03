@@ -163,6 +163,27 @@ vows.describe('passport').addBatch({
     },
   },
   
+  'passport with one serializer that sets user to 0': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.serializeUser(function(user, done) {
+        done(null, 0);
+      });
+      function serialized(err, obj) {
+        self.callback(err, obj);
+      }
+      process.nextTick(function () {
+        passport.serializeUser({ id: '1', username: 'jared' }, serialized);
+      });
+    },
+    
+    'should serialize user': function (err, obj) {
+      assert.isNull(err);
+      assert.equal(obj, 0);
+    },
+  },
+  
   'passport with one serializer that sets user to null': {
     topic: function() {
       var self = this;
