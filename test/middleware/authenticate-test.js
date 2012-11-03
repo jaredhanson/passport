@@ -583,6 +583,144 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  'with a successful authentication containing info message using string message option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('success', new MockSuccessInfoMessageStrategy);
+      return passport.authenticate('success', { successMessage: 'Login complete',
+                                                successRedirect: 'http://www.example.com/account' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.session = {};
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should set message on request' : function(err, req, res) {
+        assert.lengthOf(req.session.messages, 1);
+        assert.equal(req.session.messages[0], 'Login complete');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/account');
+      },
+    },
+  },
+  
+  'with a successful authentication containing info message using boolean message option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('success', new MockSuccessInfoMessageStrategy);
+      return passport.authenticate('success', { successMessage: true,
+                                                successRedirect: 'http://www.example.com/account' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.session = {};
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should set message on request' : function(err, req, res) {
+        assert.lengthOf(req.session.messages, 1);
+        assert.equal(req.session.messages[0], 'Welcome!');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/account');
+      },
+    },
+  },
+  
+  'with a successful authentication containing info type and message using boolean message option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('success', new MockSuccessInfoTypeAndMessageStrategy);
+      return passport.authenticate('success', { successMessage: true,
+                                                successRedirect: 'http://www.example.com/account' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.session = {};
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should set user on request' : function(err, req, res) {
+        assert.isObject(req.user);
+        assert.equal(req.user.id, '1');
+        assert.equal(req.user.username, 'jaredhanson');
+      },
+      'should set message on request' : function(err, req, res) {
+        assert.lengthOf(req.session.messages, 1);
+        assert.equal(req.session.messages[0], 'Hello');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/account');
+      },
+    },
+  },
+  
   'with a successful authentication containing info message using boolean flash option': {
     topic: function() {
       var self = this;
