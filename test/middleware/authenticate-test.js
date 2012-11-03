@@ -1989,6 +1989,138 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  'with a failed authentication containing info message using string message option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureInfoMessageStrategy());
+      return passport.authenticate('failure', { failureMessage: 'Wrong credentials',
+                                                failureRedirect: 'http://www.example.com/login' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.session = {};
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.lengthOf(req.session.messages, 1);
+        assert.equal(req.session.messages[0], 'Wrong credentials');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/login');
+      },
+    },
+  },
+  
+  'with a failed authentication containing info message using boolean message option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureInfoMessageStrategy());
+      return passport.authenticate('failure', { failureMessage: true,
+                                                failureRedirect: 'http://www.example.com/login' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.session = {};
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.lengthOf(req.session.messages, 1);
+        assert.equal(req.session.messages[0], 'Invalid password');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/login');
+      },
+    },
+  },
+  
+  'with a failed authentication containing info type and message using boolean message option': {
+    topic: function() {
+      var self = this;
+      var passport = new Passport();
+      passport.use('failure', new MockFailureInfoTypeAndMessageStrategy());
+      return passport.authenticate('failure', { failureMessage: true,
+                                                failureRedirect: 'http://www.example.com/login' });
+    },
+    
+    'when handling a request': {
+      topic: function(authenticate) {
+        var self = this;
+        var req = new MockRequest();
+        var res = new MockResponse();
+        req.session = {};
+        res.redirect = function(url) {
+          this.location = url;
+          self.callback(null, req, res);
+        }
+        
+        function next(err) {
+          self.callback(new Error('should not be called'));
+        }
+        process.nextTick(function () {
+          authenticate(req, res, next)
+        });
+      },
+      
+      'should not generate an error' : function(err, req, res) {
+        assert.isNull(err);
+      },
+      'should not set user on request' : function(err, req, res) {
+        assert.isUndefined(req.user);
+      },
+      'should set flash on request' : function(err, req, res) {
+        assert.lengthOf(req.session.messages, 1);
+        assert.equal(req.session.messages[0], 'Invite required');
+      },
+      'should redirect response' : function(err, req, res) {
+        assert.equal(res.location, 'http://www.example.com/login');
+      },
+    },
+  },
+  
   'with a failed authentication containing info message using boolean flash option': {
     topic: function() {
       var self = this;
