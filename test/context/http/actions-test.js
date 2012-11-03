@@ -141,6 +141,64 @@ vows.describe('actions').addBatch({
     },
   },
   
+  'redirect using framework function': {
+    topic: function() {
+      var self = this;
+      var mockRes = {};
+      mockRes.redirect = function(status, url) {
+        if (!url) {
+          url = status;
+          status = 302;
+        }
+        this.statusCode = status;
+        this.header = 'Location: ' + url;
+        self.callback(null, this);
+      }
+      
+      var context = {};
+      context.res = mockRes;
+      
+      var redirect = actions.redirect.bind(context);
+      process.nextTick(function () {
+        redirect('http://www.example.com/login', 303);
+      });
+    },
+    
+    'should redirect to url': function (err, res) {
+      assert.equal(res.statusCode, 303);
+      assert.equal(res.header, 'Location: http://www.example.com/login');
+    },
+  },
+  
+  'redirect with status code using framework function': {
+    topic: function() {
+      var self = this;
+      var mockRes = {};
+      mockRes.redirect = function(status, url) {
+        if (!url) {
+          url = status;
+          status = 302;
+        }
+        this.statusCode = status;
+        this.header = 'Location: ' + url;
+        self.callback(null, this);
+      }
+      
+      var context = {};
+      context.res = mockRes;
+      
+      var redirect = actions.redirect.bind(context);
+      process.nextTick(function () {
+        redirect('http://www.example.com/login');
+      });
+    },
+    
+    'should redirect to url': function (err, res) {
+      assert.equal(res.statusCode, 302);
+      assert.equal(res.header, 'Location: http://www.example.com/login');
+    },
+  },
+  
   'pass': {
     topic: function() {
       var self = this;
