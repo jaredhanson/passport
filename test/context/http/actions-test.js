@@ -94,7 +94,8 @@ vows.describe('actions').addBatch({
       var self = this;
       var mockRes = {};
       mockRes.setHeader = function(field, value) {
-        this.header = field + ': ' + value;
+        this.header = this.header || {};
+        this.header[field] = value;
       }
       mockRes.end = function() {
         self.callback(null, this);
@@ -111,7 +112,8 @@ vows.describe('actions').addBatch({
     
     'should redirect to url': function (err, res) {
       assert.equal(res.statusCode, 302);
-      assert.equal(res.header, 'Location: http://www.example.com/login');
+      assert.equal(res.header['Location'], 'http://www.example.com/login');
+      assert.equal(res.header['Content-Length'], '0');
     },
   },
   
@@ -120,7 +122,8 @@ vows.describe('actions').addBatch({
       var self = this;
       var mockRes = {};
       mockRes.setHeader = function(field, value) {
-        this.header = field + ': ' + value;
+        this.header = this.header || {};
+        this.header[field] = value;
       }
       mockRes.end = function() {
         self.callback(null, this);
@@ -137,7 +140,8 @@ vows.describe('actions').addBatch({
     
     'should redirect to url': function (err, res) {
       assert.equal(res.statusCode, 303);
-      assert.equal(res.header, 'Location: http://www.example.com/login');
+      assert.equal(res.header['Location'], 'http://www.example.com/login');
+      assert.equal(res.header['Content-Length'], '0');
     },
   },
   
