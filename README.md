@@ -155,6 +155,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 - [StatusNet](https://github.com/zoowar/passport-statusnet) by [ZooWar](https://github.com/zoowar)
 - [Steam](https://github.com/liamcurry/passport-steam) by [Liam Curry](https://github.com/liamcurry)
 - [SUPINFO](https://github.com/godezinc/passport-supinfo) by [Vincent PEYROUSE](https://github.com/GodezInc)
+- [Trade Me](https://github.com/Tumunu/passport-trademe) by [Tumunu](https://github.com/Tumunu)
 - [TripIt](https://github.com/jaredhanson/passport-tripit)
 - [Tumblr](https://github.com/jaredhanson/passport-tumblr)
 - [Twitter](https://github.com/jaredhanson/passport-twitter)
