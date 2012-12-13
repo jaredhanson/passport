@@ -169,6 +169,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 - [Yahoo!](https://github.com/jaredhanson/passport-yahoo-oauth) (OAuth 1.0)
 - [Yammer](https://github.com/jaredhanson/passport-yammer)
 - [Yandex](https://github.com/gurugray/passport-yandex) by [Sergey Sergeev](https://github.com/gurugray)
+- [Atlassian Crowd](https://bitbucket.org/knecht_andreas/passport-atlassian-crowd) by [Andreas Knecht](https://bitbucket.org/knecht_andreas)
 - [OpenSSO](https://github.com/oroce/passport-opensso) by [Róbert Oroszi](https://github.com/oroce)
 - [OpenAM](https://github.com/alesium/passport-openam) by [Alesium](https://github.com/alesium)
 - [Drupal](https://github.com/mixmarket/passport-drupal) by [Victor Kareh](https://github.com/vkareh) (for Drupal-powered sites using [OAuth Login Provider](http://drupal.org/project/oauthloginprovider) module)
