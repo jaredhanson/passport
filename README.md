@@ -152,7 +152,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 - [Readability](https://github.com/jaredhanson/passport-readability)
 - [RunKeeper](https://github.com/jaredhanson/passport-runkeeper)
 - [SmugMug](https://github.com/jaredhanson/passport-smugmug)
-- [SharePoint](https://github.com/QuePort/passport-sharepoint)
+- [SharePoint](https://github.com/QuePort/passport-sharepoint) by [QuePort](https://github.com/QuePort)
 - [SoundCloud](https://github.com/jaredhanson/passport-soundcloud)
 - [StatusNet](https://github.com/zoowar/passport-statusnet) by [ZooWar](https://github.com/zoowar)
 - [Steam](https://github.com/liamcurry/passport-steam) by [Liam Curry](https://github.com/liamcurry)
