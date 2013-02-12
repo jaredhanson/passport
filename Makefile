@@ -1,19 +1,24 @@
-NODE = node
-TEST = ./node_modules/.bin/vows
+SOURCES = lib/**/*.js
+
+# ==============================================================================
+# Node Tests
+# ==============================================================================
+
+VOWS = ./node_modules/.bin/vows
 TESTS ?= test/*-test.js test/**/*-test.js test/context/http/*-test.js
 
 test:
-	@NODE_ENV=test NODE_PATH=lib $(TEST) $(TEST_FLAGS) $(TESTS)
+	@NODE_ENV=test NODE_PATH=lib $(VOWS) $(TESTS)
 
-docs: docs/api.html
+# ==============================================================================
+# Static Analysis
+# ==============================================================================
 
-docs/api.html: lib/passport/*.js
-	dox \
-		--title Passport \
-		--desc "Authentication framework for Connect and Express" \
-		$(shell find lib/passport/* -type f) > $@
+JSHINT = jshint
 
-docclean:
-	rm -f docs/*.{1,html}
+hint: lint
+lint:
+	$(JSHINT) $(SOURCES)
 
-.PHONY: test docs docclean
+
+.PHONY: test hint lint
