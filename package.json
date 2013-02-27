@@ -1,6 +1,6 @@
 {
   "name": "passport",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Simple, unobtrusive authentication for Node.js.",
   "keywords": ["express", "connect", "auth", "authn", "authentication"],
   "homepage": "http://passportjs.org/",
