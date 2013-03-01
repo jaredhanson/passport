@@ -148,6 +148,7 @@ included in [Passport-Local](https://github.com/jaredhanson/passport-local).
 - [PayPal](https://github.com/jaredhanson/passport-paypal) (OpenID)
 - [PayPal](https://github.com/jaredhanson/passport-paypal-oauth) (OAuth 2.0)
 - [picplz](https://github.com/jaredhanson/passport-picplz)
+- [Raven](https://github.com/ForbesLindesay/passport-raven)
 - [Rdio](https://github.com/jaredhanson/passport-rdio)
 - [Readability](https://github.com/jaredhanson/passport-readability)
 - [RunKeeper](https://github.com/jaredhanson/passport-runkeeper)
