@@ -1,3 +1,4 @@
+<img src="http://passportjs.org/assets/images/logo-90px.png" align="right" />
 # Passport
 [http://passportjs.org](http://passportjs.org)
 
