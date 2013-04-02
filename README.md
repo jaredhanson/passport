@@ -1,17 +1,16 @@
 # Passport
 [http://passportjs.org](http://passportjs.org)
 
-Passport is an authentication framework for [Connect](http://senchalabs.github.com/connect/)
-and [Express](http://expressjs.com/), which is extensible through "plugins"
-known as _strategies_.
+Passport is [Express](http://expressjs.com/)-compatible authentication
+middleware for [Node.js](http://nodejs.org/).
 
-Passport is designed to be a general-purpose, yet simple, modular, and
-unobtrusive, authentication framework.  Passport's sole purpose is to
-authenticate requests.  In being modular, it doesn't force any particular
-authentication strategy on your application.  In being unobtrusive, it doesn't
-mount routes in your application.  The API is simple: you give Passport a
-request to authenticate, and Passport provides hooks for controlling what occurs
-when authentication succeeds or fails.
+Passport is both simple and unobtrusive.  Passport's sole purpose is to
+authenticate requests, which it does through an extensible set of plugins known
+as _strategies_.  Passport does not mount routes or assume any particular
+database schema - application-level decisions are left up to the developer.
+The API is simple: you provide Passport a request to authenticate, and Passport
+provides hooks for controlling what occurs when authentication succeeds or
+fails.
 
 ## Install
 
