@@ -4,13 +4,12 @@
 Passport is [Express](http://expressjs.com/)-compatible authentication
 middleware for [Node.js](http://nodejs.org/).
 
-Passport is both simple and unobtrusive.  Passport's sole purpose is to
-authenticate requests, which it does through an extensible set of plugins known
-as _strategies_.  Passport does not mount routes or assume any particular
-database schema - application-level decisions are left up to the developer.
-The API is simple: you provide Passport a request to authenticate, and Passport
-provides hooks for controlling what occurs when authentication succeeds or
-fails.
+Passport's sole purpose is to authenticate requests, which it does through an
+extensible set of plugins known as _strategies_.  Passport does not mount
+routes or assume any particular database schema, which maximizes flexiblity and
+allows application-level decisions to be made by the developer.  The API is
+simple: you provide Passport a request to authenticate, and Passport provides
+hooks for controlling what occurs when authentication succeeds or fails.
 
 ## Install
 
