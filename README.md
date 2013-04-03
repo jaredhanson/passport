@@ -62,7 +62,7 @@ deserializing.
 
 To use Passport in an [Express](http://expressjs.com/) or
 [Connect](http://senchalabs.github.com/connect/)-based application, configure it
-with the required `passport.initialize()` middleware.  If your applications uses
+with the required `passport.initialize()` middleware.  If your application uses
 persistent login sessions (recommended, but not required), `passport.session()`
 middleware must also be used.
 
