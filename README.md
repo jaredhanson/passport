@@ -94,109 +94,22 @@ included in [passport-local](https://github.com/jaredhanson/passport-local).
 
 ## Strategies
 
+Passport has a comprehensive set of **over 110** authentication strategies
+covering consumer applications, enterprise integration, API services, and more.
+The [complete list](https://github.com/jaredhanson/passport/wiki/Strategies) is
+available on the [wiki](https://github.com/jaredhanson/passport/wiki).
+
+The following table lists commonly used strategies:
+
 |Strategy                                                       | Protocol                 |Developer                                       |
 |---------------------------------------------------------------|--------------------------|------------------------------------------------|
 |[Local](https://github.com/jaredhanson/passport-local)         | HTML form                |[Jared Hanson](https://github.com/jaredhanson)  |
 |[OpenID](https://github.com/jaredhanson/passport-openid)       | OpenID                   |[Jared Hanson](https://github.com/jaredhanson)  |
 |[BrowserID](https://github.com/jaredhanson/passport-browserid) | BrowserID                |[Jared Hanson](https://github.com/jaredhanson)  |
 |[Facebook](https://github.com/jaredhanson/passport-facebook)   | OAuth 2.0                |[Jared Hanson](https://github.com/jaredhanson)  |
-|[GitHub](https://github.com/jaredhanson/passport-github)       | OAuth 2.0                |[Jared Hanson](https://github.com/jaredhanson)  |
 |[Google](https://github.com/jaredhanson/passport-google)       | OpenID                   |[Jared Hanson](https://github.com/jaredhanson)  |
 |[Google](https://github.com/jaredhanson/passport-google-oauth) | OAuth / OAuth 2.0        |[Jared Hanson](https://github.com/jaredhanson)  |
 |[Twitter](https://github.com/jaredhanson/passport-twitter)     | OAuth                    |[Jared Hanson](https://github.com/jaredhanson)  |
-
-
-- [Local](https://github.com/jaredhanson/passport-local) (username and password)
-- [BrowserID](https://github.com/jaredhanson/passport-browserid)
-- [OpenID](https://github.com/jaredhanson/passport-openid)
-- [OAuth](https://github.com/jaredhanson/passport-oauth) (OAuth 1.0 and 2.0)
-- [SAML](https://github.com/bergie/passport-saml) by [Henri Bergius](https://github.com/bergie)
-- [WS-Federation + SAML 2.0](https://github.com/auth10/passport-wsfed-saml2) by [Auth10](https://github.com/auth10)
-- [WebID](https://github.com/magnetik/passport-webid) by [Baptiste Lafontaine](https://github.com/magnetik)
-- [23andMe](https://github.com/mowens/passport-23andme) by [Michael Owens](https://github.com/mowens)
-- [37signals](https://github.com/jaredhanson/passport-37signals)
-- [500px](https://github.com/jeremybenaim/passport-500px) by [Jeremy Benaim](https://github.com/jeremybenaim)
-- [AngelList](https://github.com/jaredhanson/passport-angellist)
-- [AOL](https://github.com/jaredhanson/passport-aol)
-- [App.net](https://github.com/mowens/passport-appdotnet) by [Michael Owens](https://github.com/mowens)
-- [Bitbucket](https://github.com/jaredhanson/passport-bitbucket)
-- [Buffer](https://github.com/despekiroule/passport-bufferapp) by [Sébastien De Bollivier](https://github.com/despekiroule)
-- [DailyCred](https://github.com/hstove/passport-dailycred) by [Hank Stoever](https://github.com/hstove)
-- [Digg](https://github.com/jaredhanson/passport-digg)
-- [doctape](https://github.com/doctape/passport-doctape)
-- [Dropbox](https://github.com/jaredhanson/passport-dropbox)
-- [Dwolla](https://github.com/jaredhanson/passport-dwolla)
-- [Evernote](https://github.com/jaredhanson/passport-evernote)
-- [Facebook](https://github.com/jaredhanson/passport-facebook)
-- [FamilySearch](https://github.com/jaredhanson/passport-familysearch)
-- [Fitbit](https://github.com/jaredhanson/passport-fitbit)
-- [Flattr](https://github.com/freenerd/passport-flattr) by [Johan Uhle](https://github.com/freenerd)
-- [Flickr](https://github.com/johnnyhalife/passport-flickr) by [Johnny Halife](https://github.com/johnnyhalife)
-- [Force.com](https://github.com/joshbirk/passport-forcedotcom) (Salesforce, Database.com) by [Joshua Birk](https://github.com/joshbirk)
-- [Foursquare](https://github.com/jaredhanson/passport-foursquare)
-- [FreedomWorks](https://github.com/carlos8f/passport-freedomworks) by [Carlos Rodriguez](https://github.com/carlos8f)
-- [Geeklist](https://github.com/despekiroule/passport-geeklist) by [Sébastien De Bollivier](https://github.com/despekiroule)
-- [Geoloqi](https://github.com/jaredhanson/passport-geoloqi)
-- [GitHub](https://github.com/jaredhanson/passport-github)
-- [Goodreads](https://github.com/jaredhanson/passport-goodreads)
-- [Google](https://github.com/jaredhanson/passport-google) (OpenID)
-- [Google](https://github.com/jaredhanson/passport-google-oauth) (OAuth 1.0 and 2.0)
-- [Gowalla](https://github.com/jaredhanson/passport-gowalla)
-- [HackID](https://github.com/HackBerkeley/passport-hackid) by [Hackers @ Berkeley](https://github.com/HackBerkeley)
-- [Instagram](https://github.com/jaredhanson/passport-instagram)
-- [Intuit](https://github.com/jaredhanson/passport-intuit) (OpenID)
-- [Intuit](https://github.com/jaredhanson/passport-intuit-oauth) (OAuth 1.0)
-- [Justin.tv](https://github.com/jaredhanson/passport-justintv)
-- [LinkedIn](https://github.com/jaredhanson/passport-linkedin)
-- [me2day](https://github.com/outsideris/passport-me2day) by [JeongHoon Byun](https://github.com/outsideris)
-- [Meetup](https://github.com/jaredhanson/passport-meetup)
-- [Netflix](https://github.com/jaredhanson/passport-netflix)
-- [Odnoklassniki](https://github.com/ozon1234/passport-odnoklassniki) by [Alexey Kozlov](https://github.com/ozon1234)
-- [Ohloh](https://github.com/jaredhanson/passport-ohloh)
-- [OpenStreetMap](https://github.com/jaredhanson/passport-openstreetmap)
-- [PayPal](https://github.com/jaredhanson/passport-paypal) (OpenID)
-- [PayPal](https://github.com/jaredhanson/passport-paypal-oauth) (OAuth 2.0)
-- [picplz](https://github.com/jaredhanson/passport-picplz)
-- [Rakuten](https://github.com/gologo13/passport-rakuten)
-- [Raven](https://github.com/ForbesLindesay/passport-raven)
-- [Rdio](https://github.com/jaredhanson/passport-rdio)
-- [Readability](https://github.com/jaredhanson/passport-readability)
-- [RunKeeper](https://github.com/jaredhanson/passport-runkeeper)
-- [SmugMug](https://github.com/jaredhanson/passport-smugmug)
-- [SharePoint](https://github.com/QuePort/passport-sharepoint) by [QuePort](https://github.com/QuePort)
-- [SoundCloud](https://github.com/jaredhanson/passport-soundcloud)
-- [StatusNet](https://github.com/zoowar/passport-statusnet) by [ZooWar](https://github.com/zoowar)
-- [Steam](https://github.com/liamcurry/passport-steam) by [Liam Curry](https://github.com/liamcurry)
-- [SUPINFO](https://github.com/godezinc/passport-supinfo) by [Vincent PEYROUSE](https://github.com/GodezInc)
-- [Trade Me](https://github.com/Tumunu/passport-trademe) by [Tumunu](https://github.com/Tumunu)
-- [TripIt](https://github.com/jaredhanson/passport-tripit)
-- [Tumblr](https://github.com/jaredhanson/passport-tumblr)
-- [Twitter](https://github.com/jaredhanson/passport-twitter)
-- [TxSSC](https://github.com/TxSSC/passport-txssc) by [Texas School Safety Center](https://github.com/TxSSC)
-- [Urlship](https://github.com/urlship/passport-urlship) by [Urlship](https://github.com/urlship)
-- [Vimeo](https://github.com/jaredhanson/passport-vimeo)
-- [VKontakte](https://github.com/stevebest/passport-vkontakte) by [Stepan Stolyarov](https://github.com/stevebest)
-- [Windows Live](https://github.com/jaredhanson/passport-windowslive)
-- [Withings](https://github.com/mowens/passport-withings) by [Michael Owens](https://github.com/mowens)
-- [Yahoo!](https://github.com/jaredhanson/passport-yahoo) (OpenID)
-- [Yahoo!](https://github.com/jaredhanson/passport-yahoo-oauth) (OAuth 1.0)
-- [Yahoo!JAPAN](https://github.com/Lewuathe/passport-yj)
-- [Yammer](https://github.com/jaredhanson/passport-yammer)
-- [Yandex](https://github.com/gurugray/passport-yandex) by [Sergey Sergeev](https://github.com/gurugray)
-- [Atlassian Crowd](https://bitbucket.org/knecht_andreas/passport-atlassian-crowd) by [Andreas Knecht](https://bitbucket.org/knecht_andreas)
-- [OpenSSO](https://github.com/oroce/passport-opensso) by [Róbert Oroszi](https://github.com/oroce)
-- [OpenAM](https://github.com/alesium/passport-openam) by [Alesium](https://github.com/alesium)
-- [Drupal](https://github.com/mixmarket/passport-drupal) by [Victor Kareh](https://github.com/vkareh) (for Drupal-powered sites using [OAuth Login Provider](http://drupal.org/project/oauthloginprovider) module)
-- [HTTP](https://github.com/jaredhanson/passport-http) (HTTP Basic and Digest schemes)
-- [HTTP-Bearer](https://github.com/jaredhanson/passport-http-bearer) (HTTP Bearer scheme)
-- [HTTP-OAuth](https://github.com/jaredhanson/passport-http-oauth) (HTTP OAuth scheme)
-- [OAuth2-Client-Password](https://github.com/jaredhanson/passport-oauth2-client-password) (OAuth 2.0 client password)
-- [Hash](https://github.com/yuri-karadzhov/passport-hash) (hash parameter) by [Yuri Karadzhov](https://github.com/yuri-karadzhov)
-- [Anonymous](https://github.com/jaredhanson/passport-anonymous)
-- [Dummy](https://github.com/developmentseed/passport-dummy) by [Development Seed](https://github.com/developmentseed)
-
-**Attention Developers:** If you implement a new authentication strategy for
-Passport, send me a message and I will update the list.
 
 ## Tests
 
