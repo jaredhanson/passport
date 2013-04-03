@@ -25,8 +25,8 @@ can range from verifying username and password credentials, delegated
 authentication using [OAuth](http://oauth.net/) (for example, via [Facebook](http://www.facebook.com/)
 or [Twitter](http://twitter.com/)), or federated authentication using [OpenID](http://openid.net/).
 
-Before asking passport to authenticate a request, the strategy (or strategies)
-used by an application must be configured.
+Before authenticating requests, the strategy (or strategies) used by an
+application must be configured.
 
     passport.use(new LocalStrategy(
       function(username, password, done) {
@@ -43,8 +43,8 @@ sessions to work, the authenticated user must be serialized to the session, and
 deserialized when subsequent requests are made.
 
 Passport does not impose any restrictions on how your user records are stored.
-Instead, you provide a function to Passport which implements the necessary
-serialization and deserialization logic.  In typical applications, this will be
+Instead, you provide functions to Passport which implements the necessary
+serialization and deserialization logic.  In a typical application, this will be
 as simple as serializing the user ID, and finding the user by ID when
 deserializing.
 
@@ -58,30 +58,28 @@ deserializing.
       });
     });
 
-#### Connect/Express Middleware
+#### Middleware
 
-To use Passport in a [Connect](http://senchalabs.github.com/connect/) or
-[Express](http://expressjs.com/)-based application, configure it with the
-required `passport.initialize()` middleware.  If your applications uses
+To use Passport in an [Express](http://expressjs.com/) or
+[Connect](http://senchalabs.github.com/connect/)-based application, configure it
+with the required `passport.initialize()` middleware.  If your applications uses
 persistent login sessions (recommended, but not required), `passport.session()`
 middleware must also be used.
 
     app.configure(function() {
+      app.use(express.static(__dirname + '/../../public'));
       app.use(express.cookieParser());
       app.use(express.bodyParser());
       app.use(express.session({ secret: 'keyboard cat' }));
       app.use(passport.initialize());
       app.use(passport.session());
       app.use(app.router);
-      app.use(express.static(__dirname + '/../../public'));
     });
 
 #### Authenticate Requests
 
-Passport provides an `authenticate()` function (which is standard
-Connect/Express middleware), which is utilized to authenticate requests.
-
-For example, it can be used as route middleware in an Express application:
+Passport provides an `authenticate()` function, which is used as route
+middleware to authenticate requests.
 
     app.post('/login', 
       passport.authenticate('local', { failureRedirect: '/login' }),
@@ -92,7 +90,7 @@ For example, it can be used as route middleware in an Express application:
 ## Examples
 
 For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-local/tree/master/examples/login)
-included in [Passport-Local](https://github.com/jaredhanson/passport-local).
+included in [passport-local](https://github.com/jaredhanson/passport-local).
 
 ## Strategies
 
