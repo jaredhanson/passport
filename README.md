@@ -94,6 +94,18 @@ included in [passport-local](https://github.com/jaredhanson/passport-local).
 
 ## Strategies
 
+|Strategy                                                       | Protocol                 |Developer                                       |
+|---------------------------------------------------------------|--------------------------|------------------------------------------------|
+|[Local](https://github.com/jaredhanson/passport-local)         | HTML form                |[Jared Hanson](https://github.com/jaredhanson)  |
+|[OpenID](https://github.com/jaredhanson/passport-openid)       | OpenID                   |[Jared Hanson](https://github.com/jaredhanson)  |
+|[BrowserID](https://github.com/jaredhanson/passport-browserid) | BrowserID                |[Jared Hanson](https://github.com/jaredhanson)  |
+|[Facebook](https://github.com/jaredhanson/passport-facebook)   | OAuth 2.0                |[Jared Hanson](https://github.com/jaredhanson)  |
+|[GitHub](https://github.com/jaredhanson/passport-github)       | OAuth 2.0                |[Jared Hanson](https://github.com/jaredhanson)  |
+|[Google](https://github.com/jaredhanson/passport-google)       | OpenID                   |[Jared Hanson](https://github.com/jaredhanson)  |
+|[Google](https://github.com/jaredhanson/passport-google-oauth) | OAuth / OAuth 2.0        |[Jared Hanson](https://github.com/jaredhanson)  |
+|[Twitter](https://github.com/jaredhanson/passport-twitter)     | OAuth                    |[Jared Hanson](https://github.com/jaredhanson)  |
+
+
 - [Local](https://github.com/jaredhanson/passport-local) (username and password)
 - [BrowserID](https://github.com/jaredhanson/passport-browserid)
 - [OpenID](https://github.com/jaredhanson/passport-openid)
