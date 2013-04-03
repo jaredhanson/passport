@@ -111,6 +111,17 @@ The following table lists commonly used strategies:
 |[Google](https://github.com/jaredhanson/passport-google-oauth) | OAuth / OAuth 2.0        |[Jared Hanson](https://github.com/jaredhanson)  |
 |[Twitter](https://github.com/jaredhanson/passport-twitter)     | OAuth                    |[Jared Hanson](https://github.com/jaredhanson)  |
 
+## Related Modules
+
+- [Locomotive](https://github.com/jaredhanson/locomotive) — Powerful MVC web framework
+- [OAuthorize](https://github.com/jaredhanson/oauthorize) — OAuth service provider toolkit
+- [OAuth2orize](https://github.com/jaredhanson/oauth2orize) — OAuth 2.0 authorization server toolkit
+- [connect-ensure-login](https://github.com/jaredhanson/connect-ensure-login)  — middleware to ensure login sessions
+
+The [modules](https://github.com/jaredhanson/passport/wiki/Modules) page on the
+[wiki](https://github.com/jaredhanson/passport/wiki) lists other useful modules
+that build upon or integrate with Passport.
+
 ## Tests
 
     $ npm install --dev
