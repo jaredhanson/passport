@@ -94,7 +94,7 @@ included in [passport-local](https://github.com/jaredhanson/passport-local).
 ## Strategies
 
 Passport has a comprehensive set of **over 110** authentication strategies
-covering consumer applications, enterprise integration, API services, and more.
+covering social networking, enterprise integration, API services, and more.
 The [complete list](https://github.com/jaredhanson/passport/wiki/Strategies) is
 available on the [wiki](https://github.com/jaredhanson/passport/wiki).
 
