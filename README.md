@@ -1,5 +1,4 @@
 # Passport
-[http://passportjs.org/](http://passportjs.org/)
 
 Passport is [Express](http://expressjs.com/)-compatible authentication
 middleware for [Node.js](http://nodejs.org/).
