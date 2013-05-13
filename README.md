@@ -1,3 +1,4 @@
+<img src="http://passportjs.org/assets/images/logo-90px.png" align="right" />
 # Passport
 
 Passport is [Express](http://expressjs.com/)-compatible authentication
