@@ -1,3 +1,4 @@
+var Stream = require('stream');
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
@@ -24,7 +25,7 @@ vows.describe('SessionStrategy').addBatch({
     'after augmenting with actions': {
       topic: function(strategy) {
         var self = this;
-        var req = {};
+        var req = new Stream();
         strategy.pass = function() {
           self.callback(null, req);
         }
@@ -57,7 +58,7 @@ vows.describe('SessionStrategy').addBatch({
     'after augmenting with actions': {
       topic: function(strategy) {
         var self = this;
-        var req = {};
+        var req = new Stream();
         strategy.pass = function() {
           self.callback(null, req);
         }
@@ -100,7 +101,7 @@ vows.describe('SessionStrategy').addBatch({
     'after augmenting with actions': {
       topic: function(strategy) {
         var self = this;
-        var req = {};
+        var req = new Stream();
         strategy.pass = function() {
           self.callback(null, req);
         }
@@ -143,7 +144,7 @@ vows.describe('SessionStrategy').addBatch({
     'after augmenting with actions': {
       topic: function(strategy) {
         var self = this;
-        var req = {};
+        var req = new Stream();
         strategy.pass = function() {
           self.callback(null, req);
         }
@@ -185,7 +186,7 @@ vows.describe('SessionStrategy').addBatch({
     'after augmenting with actions': {
       topic: function(strategy) {
         var self = this;
-        var req = {};
+        var req = new Stream();
         strategy.pass = function() {
           self.callback(null, req);
         }
@@ -228,7 +229,7 @@ vows.describe('SessionStrategy').addBatch({
     'after augmenting with actions': {
       topic: function(strategy) {
         var self = this;
-        var req = {};
+        var req = new Stream();
         strategy.pass = function() {
           self.callback(null, req);
         }
@@ -266,7 +267,7 @@ vows.describe('SessionStrategy').addBatch({
     'after augmenting with actions': {
       topic: function(strategy) {
         var self = this;
-        var req = {};
+        var req = new Stream();
         strategy.error = function(err) {
           self.callback(err, req);
         }
