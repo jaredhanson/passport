@@ -85,11 +85,6 @@ middleware to authenticate requests.
         res.redirect('/');
       });
 
-## Examples
-
-For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-local/tree/master/examples/login)
-included in [passport-local](https://github.com/jaredhanson/passport-local).
-
 ## Strategies
 
 Passport has a comprehensive set of **over 140** authentication strategies
@@ -108,6 +103,11 @@ The following table lists commonly used strategies:
 |[Google](https://github.com/jaredhanson/passport-google)       | OpenID                   |[Jared Hanson](https://github.com/jaredhanson)  |
 |[Google](https://github.com/jaredhanson/passport-google-oauth) | OAuth / OAuth 2.0        |[Jared Hanson](https://github.com/jaredhanson)  |
 |[Twitter](https://github.com/jaredhanson/passport-twitter)     | OAuth                    |[Jared Hanson](https://github.com/jaredhanson)  |
+
+## Examples
+
+For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-local/tree/master/examples/login)
+included in [passport-local](https://github.com/jaredhanson/passport-local).
 
 ## Related Modules
 
