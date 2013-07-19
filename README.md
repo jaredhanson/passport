@@ -14,6 +14,12 @@ hooks for controlling what occurs when authentication succeeds or fails.
 
     $ npm install passport
 
+###### Donate
+
+Using Passport in your project?  [Donations](https://www.gittip.com/jaredhanson/)
+are greatly appreciated and help support development of this and other quality
+modules.
+
 ## Usage
 
 #### Strategies
