@@ -67,7 +67,7 @@ vows.describe('SessionStrategy').addBatch({
         
         req._passport = {};
         req._passport.instance = {};
-        req._passport.instance.deserializeUser = function(user, done) {
+        req._passport.instance.deserializeUser = function(user, req, done) {
           done(null, { id: user });
         }
         req._passport.session = {};
@@ -110,7 +110,7 @@ vows.describe('SessionStrategy').addBatch({
         
         req._passport = {};
         req._passport.instance = {};
-        req._passport.instance.deserializeUser = function(user, done) {
+        req._passport.instance.deserializeUser = function(user, req, done) {
           done(null, { id: user });
         }
         req._passport.session = {};
@@ -153,7 +153,7 @@ vows.describe('SessionStrategy').addBatch({
         
         req._passport = {};
         req._passport.instance = {};
-        req._passport.instance.deserializeUser = function(user, done) {
+        req._passport.instance.deserializeUser = function(user, req, done) {
           done(null, false);
         }
         req._passport.session = {};
@@ -196,7 +196,7 @@ vows.describe('SessionStrategy').addBatch({
         req._passport = {};
         req._passport.instance = {};
         req._passport.instance._userProperty = 'currentUser';
-        req._passport.instance.deserializeUser = function(user, done) {
+        req._passport.instance.deserializeUser = function(user, req, done) {
           done(null, { id: user });
         }
         req._passport.session = {};
@@ -238,7 +238,7 @@ vows.describe('SessionStrategy').addBatch({
         
         req._passport = {};
         req._passport.instance = {};
-        req._passport.instance.deserializeUser = function(user, done) {
+        req._passport.instance.deserializeUser = function(user, req, done) {
           done(new Error('failed to deserialize'));
         }
         req._passport.session = {};

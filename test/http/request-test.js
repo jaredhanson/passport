@@ -28,7 +28,7 @@ vows.describe('HttpServerRequest').addBatch({
       req._passport = {};
       req._passport.instance = {};
       req._passport.session = {};
-      req._passport.instance.serializeUser = function(user, done) {
+      req._passport.instance.serializeUser = function(user, req, done) {
         done(null, user.id);
       }
       
@@ -67,7 +67,7 @@ vows.describe('HttpServerRequest').addBatch({
       req._passport.instance = {};
       req._passport.instance._userProperty = 'currentUser';
       req._passport.session = {};
-      req._passport.instance.serializeUser = function(user, done) {
+      req._passport.instance.serializeUser = function(user, req, done) {
         done(null, user.id);
       }
       
@@ -108,7 +108,7 @@ vows.describe('HttpServerRequest').addBatch({
       req._passport = {};
       req._passport.instance = {};
       req._passport.session = {};
-      req._passport.instance.serializeUser = function(user, done) {
+      req._passport.instance.serializeUser = function(user, req, done) {
         done(new Error('failed to serialize'));
       }
       
