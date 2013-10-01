@@ -1,24 +1,50 @@
 SOURCES = lib/**/*.js
+TESTS ?= test/*.test.js test/**/*.test.js
+
+lint: lint-jshint
+test: test-mocha
+test-cov: test-istanbul-mocha
+view-cov: view-istanbul-report
+
 
 # ==============================================================================
-# Node Tests
+# Node.js
 # ==============================================================================
-
-VOWS = ./node_modules/.bin/vows
-TESTS ?= test/*-test.js test/**/*-test.js test/context/http/*-test.js
-
-test:
-	@NODE_ENV=test NODE_PATH=lib $(VOWS) $(TESTS)
+include support/mk/node.mk
+include support/mk/mocha.mk
+include support/mk/vows.mk
 
 # ==============================================================================
-# Static Analysis
+# Browserify
 # ==============================================================================
+BROWSERIFY_MAIN = ./lib/index.js
 
-JSHINT = jshint
+include support/mk/browserify.mk
+include support/mk/testling.mk
 
-hint: lint
-lint:
-	$(JSHINT) $(SOURCES)
+# ==============================================================================
+# Code Quality
+# ==============================================================================
+include support/mk/notes.mk
+include support/mk/jshint.mk
+include support/mk/istanbul.mk
+
+# ==============================================================================
+# Continuous Integration
+# ==============================================================================
+include support/mk/coveralls.mk
+
+ci-travis: test test-cov
+submit-coverage-to-coveralls: submit-istanbul-lcov-to-coveralls
+
+# ==============================================================================
+# Clean
+# ==============================================================================
+clean:
+	rm -rf build
+	rm -rf reports
+
+clobber: clean clobber-node
 
 
-.PHONY: test hint lint
+.PHONY: lint test test-cov view-cov ci-travis clean clobber

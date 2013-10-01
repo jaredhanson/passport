@@ -26,7 +26,9 @@
     "pause": "0.0.1"
   },
   "devDependencies": {
-    "vows": "0.6.x"
+    "vows": "0.6.x",
+    "mocha": "1.x.x",
+    "chai": "1.x.x"
   },
   "scripts": {
     "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js test/**/*-test.js test/context/http/*-test.js"
