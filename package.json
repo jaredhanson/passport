@@ -2,7 +2,13 @@
   "name": "passport",
   "version": "0.1.17",
   "description": "Simple, unobtrusive authentication for Node.js.",
-  "keywords": ["express", "connect", "auth", "authn", "authentication"],
+  "keywords": [
+    "express",
+    "connect",
+    "auth",
+    "authn",
+    "authentication"
+  ],
   "homepage": "http://passportjs.org/",
   "repository": {
     "type": "git",
@@ -16,20 +22,24 @@
     "email": "jaredhanson@gmail.com",
     "url": "http://www.jaredhanson.net/"
   },
-  "licenses": [ {
-    "type": "MIT",
-    "url": "http://www.opensource.org/licenses/MIT" 
-  } ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
   "main": "./lib/passport",
   "dependencies": {
     "pkginfo": "0.2.x",
     "pause": "0.0.1"
   },
   "devDependencies": {
-    "vows": "0.6.x"
+    "vows": "~0.7.0"
   },
   "scripts": {
     "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js test/**/*-test.js test/context/http/*-test.js"
   },
-  "engines": { "node": ">= 0.4.0" }
+  "engines": {
+    "node": ">= 0.4.0"
+  }
 }
