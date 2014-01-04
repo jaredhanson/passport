@@ -346,6 +346,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication and return to or redirect option': {
     topic: function() {
       var self = this;
@@ -390,6 +391,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication and return to or redirect option with no return to set in session': {
     topic: function() {
       var self = this;
