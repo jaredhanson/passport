@@ -183,6 +183,7 @@ MockResponse.prototype.setHeader = function(name, value) {
 
 vows.describe('authenticate').addBatch({
   
+  // OK
   'with a successful authentication': {
     topic: function() {
       var self = this;
@@ -223,6 +224,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication passing options to strategy': {
     topic: function() {
       var self = this;
