@@ -17,6 +17,7 @@ vows.describe('initialize').addBatch({
       return passport.initialize();
     },
     
+    // OK
     'when handling a request without a session': {
       topic: function(initialize) {
         var self = this;
