@@ -108,4 +108,47 @@ describe('middleware/authenticate', function() {
     });
   });
   
+  describe('success, but login that encounters an error', function() {
+    function Strategy() {
+    }
+    Strategy.prototype.authenticate = function(req) {
+      var user = { id: '1', username: 'jaredhanson' };
+      this.success(user);
+    }    
+    
+    var passport = new Passport();
+    passport.use('success', new Strategy());
+    
+    var request, error;
+
+    before(function(done) {
+      chai.connect.use(authenticate('success').bind(passport))
+        .req(function(req) {
+          request = req;
+          
+          req.logIn = function(user, options, done) {
+            done(new Error('something went wrong'));
+          }
+        })
+        .next(function(err) {
+          error = err;
+          done();
+        })
+        .dispatch();
+    });
+    
+    it('should error', function() {
+      expect(error).to.be.an.instanceOf(Error);
+      expect(error.message).to.equal('something went wrong');
+    });
+    
+    it('should not set user', function() {
+      expect(request.user).to.be.undefined;
+    });
+    
+    it('should not set authInfo', function() {
+      expect(request.authInfo).to.be.undefined;
+    });
+  });
+  
 });

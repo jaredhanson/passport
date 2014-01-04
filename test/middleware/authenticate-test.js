@@ -265,6 +265,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication but failed login': {
     topic: function() {
       var self = this;
