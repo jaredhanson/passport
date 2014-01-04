@@ -6,6 +6,7 @@ var SessionStrategy = require('passport/strategies/session');
 
 vows.describe('SessionStrategy').addBatch({
   
+  // OK
   'strategy': {
     topic: function() {
       return new SessionStrategy();
@@ -16,6 +17,7 @@ vows.describe('SessionStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy handling a request without a login session': {
     topic: function() {
       return new SessionStrategy();
@@ -49,6 +51,7 @@ vows.describe('SessionStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy handling a request with a login session': {
     topic: function() {
       return new SessionStrategy();
@@ -92,6 +95,7 @@ vows.describe('SessionStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy handling a request with a login session using user ID 0': {
     topic: function() {
       return new SessionStrategy();
