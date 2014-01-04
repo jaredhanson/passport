@@ -42,6 +42,7 @@ vows.describe('initialize').addBatch({
       },
     },
     
+    // OK
     'when handling a request with a session': {
       topic: function(initialize) {
         var self = this;
@@ -70,6 +71,7 @@ vows.describe('initialize').addBatch({
       },
     },
     
+    // OK
     'when handling a request with a session containing passport data': {
       topic: function(initialize) {
         var self = this;
