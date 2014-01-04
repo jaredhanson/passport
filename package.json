@@ -9,6 +9,11 @@
     "authn",
     "authentication"
   ],
+  "author": {
+    "name": "Jared Hanson",
+    "email": "jaredhanson@gmail.com",
+    "url": "http://www.jaredhanson.net/"
+  },
   "homepage": "http://passportjs.org/",
   "repository": {
     "type": "git",
@@ -16,11 +21,6 @@
   },
   "bugs": {
     "url": "http://github.com/jaredhanson/passport/issues"
-  },
-  "author": {
-    "name": "Jared Hanson",
-    "email": "jaredhanson@gmail.com",
-    "url": "http://www.jaredhanson.net/"
   },
   "licenses": [
     {
@@ -38,10 +38,10 @@
     "mocha": "1.x.x",
     "chai": "1.x.x"
   },
-  "scripts": {
-    "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js test/**/*-test.js test/context/http/*-test.js"
-  },
   "engines": {
     "node": ">= 0.4.0"
+  },
+  "scripts": {
+    "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js test/**/*-test.js test/context/http/*-test.js"
   }
 }

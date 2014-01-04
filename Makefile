@@ -1,10 +1,11 @@
-SOURCES = lib/**/*.js
+SOURCES ?= lib/*.js lib/**/*.js
 TESTS ?= test/*.test.js test/**/*.test.js
 
-lint: lint-jshint
 test: test-mocha
 test-cov: test-istanbul-mocha
 view-cov: view-istanbul-report
+lint: lint-jshint
+lint-tests: lint-tests-jshint
 
 
 # ==============================================================================
@@ -12,30 +13,26 @@ view-cov: view-istanbul-report
 # ==============================================================================
 include support/mk/node.mk
 include support/mk/mocha.mk
-include support/mk/vows.mk
+include support/mk/istanbul.mk
 
 # ==============================================================================
-# Browserify
-# ==============================================================================
-BROWSERIFY_MAIN = ./lib/index.js
-
-include support/mk/browserify.mk
-include support/mk/testling.mk
-
-# ==============================================================================
-# Code Quality
+# Analysis
 # ==============================================================================
 include support/mk/notes.mk
 include support/mk/jshint.mk
-include support/mk/istanbul.mk
+
+# ==============================================================================
+# Reports
+# ==============================================================================
+include support/mk/coveralls.mk
 
 # ==============================================================================
 # Continuous Integration
 # ==============================================================================
-include support/mk/coveralls.mk
+submit-cov-to-coveralls: submit-istanbul-lcov-to-coveralls
 
+# Travis CI
 ci-travis: test test-cov
-submit-coverage-to-coveralls: submit-istanbul-lcov-to-coveralls
 
 # ==============================================================================
 # Clean
@@ -47,4 +44,4 @@ clean:
 clobber: clean clobber-node
 
 
-.PHONY: lint test test-cov view-cov ci-travis clean clobber
+.PHONY: test test-cov view-cov lint lint-tests submit-cov-to-coveralls ci-travis clean clobber

@@ -7,7 +7,8 @@ test-mocha: node_modules
 	NODE_PATH=$(NODE_PATH_TEST) \
 	$(MOCHA) \
 		--reporter $(MOCHA_REPORTER) \
-		--require $(MOCHA_REQUIRE) $(TESTS)
+		--require $(MOCHA_REQUIRE) \
+		$(TESTS)
 
 
 .PHONY: test-mocha
