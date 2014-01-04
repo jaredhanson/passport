@@ -139,6 +139,7 @@ vows.describe('SessionStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy handling a request with a login session that has been invalidated': {
     topic: function() {
       return new SessionStrategy();
@@ -181,6 +182,7 @@ vows.describe('SessionStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy handling a login session with a custom user property': {
     topic: function() {
       return new SessionStrategy();
@@ -224,6 +226,7 @@ vows.describe('SessionStrategy').addBatch({
     },
   },
 
+  // OK
   'strategy handling a request with a login session but badly behaving user deserializer': {
     topic: function() {
       return new SessionStrategy();
@@ -262,6 +265,7 @@ vows.describe('SessionStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy handling a request without an initialized passport': {
     topic: function() {
       return new SessionStrategy();
