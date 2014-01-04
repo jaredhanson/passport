@@ -432,6 +432,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing token info and no transforms': {
     topic: function() {
       var self = this;
