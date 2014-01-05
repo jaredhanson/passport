@@ -689,6 +689,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing info message using boolean message option': {
     topic: function() {
       var self = this;
@@ -735,6 +736,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing info type and message using boolean message option': {
     topic: function() {
       var self = this;
