@@ -1374,6 +1374,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing string message using flash option': {
     topic: function() {
       var self = this;
@@ -1422,6 +1423,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing string message using flash option with message only': {
     topic: function() {
       var self = this;
