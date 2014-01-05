@@ -1764,6 +1764,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication and assignProperty option': {
     topic: function() {
       var self = this;
