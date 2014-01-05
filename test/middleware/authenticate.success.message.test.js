@@ -159,7 +159,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req, options) {
       var user = { id: '1', username: 'jaredhanson' };
-      this.success(user, { message: 'Hello', scope: 'read' });
+      this.success(user, { message: 'Welcome!', scope: 'read' });
     }    
     
     var passport = new Passport();
@@ -194,7 +194,7 @@ describe('middleware/authenticate', function() {
     
     it('should add message to session', function() {
       expect(request.session.messages).to.have.length(1)
-      expect(request.session.messages[0]).to.equal('Hello');
+      expect(request.session.messages[0]).to.equal('Welcome!');
     });
     
     it('should redirect', function() {

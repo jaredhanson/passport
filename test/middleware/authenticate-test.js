@@ -783,6 +783,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing info message using boolean flash option': {
     topic: function() {
       var self = this;
