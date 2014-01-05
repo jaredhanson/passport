@@ -40,4 +40,38 @@ describe('middleware/authenticate', function() {
     });
   });
   
+  describe('fail with redirect', function() {
+    function Strategy() {
+    }
+    Strategy.prototype.authenticate = function(req) {
+      this.fail();
+    }    
+    
+    var passport = new Passport();
+    passport.use('fail', new Strategy());
+    
+    var request, response;
+
+    before(function(done) {
+      chai.connect.use('express', authenticate('fail', { failureRedirect: 'http://www.example.com/login' }).bind(passport))
+        .req(function(req) {
+          request = req;
+        })
+        .end(function(res) {
+          response = res;
+          done();
+        })
+        .dispatch();
+    });
+    
+    it('should not set user', function() {
+      expect(request.user).to.be.undefined;
+    });
+    
+    it('should redirect', function() {
+      expect(response.statusCode).to.equal(302);
+      expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
+    });
+  });
+  
 });

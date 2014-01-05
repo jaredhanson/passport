@@ -1892,6 +1892,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a failed authentication and redirect option': {
     topic: function() {
       var self = this;
