@@ -57,7 +57,7 @@ describe('middleware/authenticate', function() {
     });
   });
   
-  describe('success with callback and options', function() {
+  describe('success with callback and options passed to middleware', function() {
     function Strategy() {
     }
     Strategy.prototype.authenticate = function(req) {

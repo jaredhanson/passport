@@ -1977,6 +1977,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a failed authentication containing info message using callback': {
     topic: function() {
       var self = this;
