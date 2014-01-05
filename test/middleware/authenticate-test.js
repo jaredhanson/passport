@@ -1082,6 +1082,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing info type and message using string flash option': {
     topic: function() {
       var self = this;
