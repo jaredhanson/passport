@@ -3270,6 +3270,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a multiple UI strategies with the first one succeeding': {
     topic: function() {
       var self = this;
@@ -3303,6 +3304,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a multiple UI strategies with the second one succeeding': {
     topic: function() {
       var self = this;
@@ -3336,6 +3338,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a multiple UI strategies with the both failing with flash message': {
     topic: function() {
       var self = this;
