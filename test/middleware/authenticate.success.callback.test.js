@@ -16,7 +16,7 @@ describe('middleware/authenticate', function() {
     var passport = new Passport();
     passport.use('success', new Strategy());
     
-    var error, user, info;
+    var request, error, user, info;
 
     before(function(done) {
       function callback(e, u, i) {
