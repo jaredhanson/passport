@@ -2444,6 +2444,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a failed authentication containing info type and message using boolean flash option': {
     topic: function() {
       var self = this;
@@ -2490,6 +2491,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a failed authentication containing info type and message using string flash option': {
     topic: function() {
       var self = this;
@@ -2536,6 +2538,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a failed authentication containing info type and message using flash option': {
     topic: function() {
       var self = this;
@@ -2582,6 +2585,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a failed authentication containing info type and message using flash option with message only': {
     topic: function() {
       var self = this;
@@ -2628,6 +2632,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a failed authentication containing info type and message using flash option with type only': {
     topic: function() {
       var self = this;

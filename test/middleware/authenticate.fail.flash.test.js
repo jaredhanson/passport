@@ -234,4 +234,234 @@ describe('middleware/authenticate', function() {
     
   });
   
+  
+  describe('using strategy that specifies message and type', function() {
+    
+    describe('fail with flash message', function() {
+      function Strategy() {
+      }
+      Strategy.prototype.authenticate = function(req) {
+        this.fail({ type: 'notice', message: 'Invite required' });
+      }    
+    
+      var passport = new Passport();
+      passport.use('fail', new Strategy());
+    
+      var request, response;
+
+      before(function(done) {
+        chai.connect.use('express', authenticate('fail', { failureFlash: true,
+                                                           failureRedirect: 'http://www.example.com/login' }).bind(passport))
+          .req(function(req) {
+            request = req;
+            req.session = {};
+            
+            req.flash = function(type, msg) {
+              this.message = { type: type, msg: msg }
+            }
+          })
+          .end(function(res) {
+            response = res;
+            done();
+          })
+          .dispatch();
+      });
+    
+      it('should not set user', function() {
+        expect(request.user).to.be.undefined;
+      });
+    
+      it('should flash message', function() {
+        expect(request.message.type).to.equal('notice');
+        expect(request.message.msg).to.equal('Invite required');
+      });
+    
+      it('should redirect', function() {
+        expect(response.statusCode).to.equal(302);
+        expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
+      });
+    });
+    
+    describe('fail with flash message using type set by route', function() {
+      function Strategy() {
+      }
+      Strategy.prototype.authenticate = function(req) {
+        this.fail({ type: 'notice', message: 'Invite required' });
+      }    
+    
+      var passport = new Passport();
+      passport.use('fail', new Strategy());
+    
+      var request, response;
+
+      before(function(done) {
+        chai.connect.use('express', authenticate('fail', { failureFlash: { type: 'info' },
+                                                           failureRedirect: 'http://www.example.com/login' }).bind(passport))
+          .req(function(req) {
+            request = req;
+            req.session = {};
+            
+            req.flash = function(type, msg) {
+              this.message = { type: type, msg: msg }
+            }
+          })
+          .end(function(res) {
+            response = res;
+            done();
+          })
+          .dispatch();
+      });
+    
+      it('should not set user', function() {
+        expect(request.user).to.be.undefined;
+      });
+    
+      it('should flash message', function() {
+        expect(request.message.type).to.equal('info');
+        expect(request.message.msg).to.equal('Invite required');
+      });
+    
+      it('should redirect', function() {
+        expect(response.statusCode).to.equal(302);
+        expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
+      });
+    });
+    
+    describe('fail with flash message overridden by route as string', function() {
+      function Strategy() {
+      }
+      Strategy.prototype.authenticate = function(req) {
+        this.fail({ type: 'notice', message: 'Invite required' });
+      }    
+    
+      var passport = new Passport();
+      passport.use('fail', new Strategy());
+    
+      var request, response;
+
+      before(function(done) {
+        chai.connect.use('express', authenticate('fail', { failureFlash: 'Wrong credentials',
+                                                           failureRedirect: 'http://www.example.com/login' }).bind(passport))
+          .req(function(req) {
+            request = req;
+            req.session = {};
+            
+            req.flash = function(type, msg) {
+              this.message = { type: type, msg: msg }
+            }
+          })
+          .end(function(res) {
+            response = res;
+            done();
+          })
+          .dispatch();
+      });
+    
+      it('should not set user', function() {
+        expect(request.user).to.be.undefined;
+      });
+    
+      it('should flash message', function() {
+        expect(request.message.type).to.equal('error');
+        expect(request.message.msg).to.equal('Wrong credentials');
+      });
+    
+      it('should redirect', function() {
+        expect(response.statusCode).to.equal(302);
+        expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
+      });
+    });
+    
+    describe('fail with flash message overridden by route using options', function() {
+      function Strategy() {
+      }
+      Strategy.prototype.authenticate = function(req) {
+        this.fail({ type: 'notice', message: 'Invite required' });
+      }    
+    
+      var passport = new Passport();
+      passport.use('fail', new Strategy());
+    
+      var request, response;
+
+      before(function(done) {
+        chai.connect.use('express', authenticate('fail', { failureFlash: { message: 'Try again' },
+                                                           failureRedirect: 'http://www.example.com/login' }).bind(passport))
+          .req(function(req) {
+            request = req;
+            req.session = {};
+            
+            req.flash = function(type, msg) {
+              this.message = { type: type, msg: msg }
+            }
+          })
+          .end(function(res) {
+            response = res;
+            done();
+          })
+          .dispatch();
+      });
+    
+      it('should not set user', function() {
+        expect(request.user).to.be.undefined;
+      });
+    
+      it('should flash message', function() {
+        expect(request.message.type).to.equal('error');
+        expect(request.message.msg).to.equal('Try again');
+      });
+    
+      it('should redirect', function() {
+        expect(response.statusCode).to.equal(302);
+        expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
+      });
+    });
+    
+    describe('fail with flash message overridden by route using options with type', function() {
+      function Strategy() {
+      }
+      Strategy.prototype.authenticate = function(req) {
+        this.fail({ type: 'notice', message: 'Invite required' });
+      }    
+    
+      var passport = new Passport();
+      passport.use('fail', new Strategy());
+    
+      var request, response;
+
+      before(function(done) {
+        chai.connect.use('express', authenticate('fail', { failureFlash: { type: 'info', message: 'Try again' },
+                                                           failureRedirect: 'http://www.example.com/login' }).bind(passport))
+          .req(function(req) {
+            request = req;
+            req.session = {};
+            
+            req.flash = function(type, msg) {
+              this.message = { type: type, msg: msg }
+            }
+          })
+          .end(function(res) {
+            response = res;
+            done();
+          })
+          .dispatch();
+      });
+    
+      it('should not set user', function() {
+        expect(request.user).to.be.undefined;
+      });
+    
+      it('should flash message', function() {
+        expect(request.message.type).to.equal('info');
+        expect(request.message.msg).to.equal('Try again');
+      });
+    
+      it('should redirect', function() {
+        expect(response.statusCode).to.equal(302);
+        expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
+      });
+    });
+    
+  });
+  
 });
