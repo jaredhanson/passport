@@ -984,6 +984,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing info message using flash option with type only': {
     topic: function() {
       var self = this;
@@ -1032,6 +1033,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing info type and message using boolean flash option': {
     topic: function() {
       var self = this;
