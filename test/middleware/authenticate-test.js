@@ -556,6 +556,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing token info and authInfo option set to false': {
     topic: function() {
       var self = this;
