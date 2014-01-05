@@ -3475,6 +3475,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a single API strategy failing with challenge and status using custom callback': {
     topic: function() {
       var self = this;
