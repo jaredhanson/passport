@@ -3385,6 +3385,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a multiple API strategies failing with default status': {
     topic: function() {
       var self = this;
