@@ -472,6 +472,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing token info and a transform': {
     topic: function() {
       var self = this;
@@ -515,6 +516,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing token info and a transform that errors': {
     topic: function() {
       var self = this;
