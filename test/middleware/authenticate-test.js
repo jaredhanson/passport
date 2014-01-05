@@ -593,6 +593,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing info message using string message option': {
     topic: function() {
       var self = this;
@@ -639,6 +640,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication containing info message using string message option with existing messages': {
     topic: function() {
       var self = this;
