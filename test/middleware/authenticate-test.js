@@ -1801,6 +1801,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication and callback': {
     topic: function() {
       var self = this;
