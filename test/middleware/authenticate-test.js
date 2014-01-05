@@ -1854,6 +1854,7 @@ vows.describe('authenticate').addBatch({
   },
   
   
+  // OK
   'with a failed authentication': {
     topic: function() {
       var self = this;
