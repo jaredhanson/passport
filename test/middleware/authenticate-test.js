@@ -1521,6 +1521,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication lacking info message using boolean flash option': {
     topic: function() {
       var self = this;
@@ -1568,6 +1569,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a successful authentication lacking info message using string flash option': {
     topic: function() {
       var self = this;
