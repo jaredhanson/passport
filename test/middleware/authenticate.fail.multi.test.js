@@ -241,4 +241,75 @@ describe('middleware/authenticate', function() {
     });
   });
   
+  describe('with multiple strategies, all of which fail with specific status, and invoking callback', function() {
+    function BasicStrategy() {
+    }
+    BasicStrategy.prototype.authenticate = function(req) {
+      this.fail('BASIC challenge', 400);
+    }
+    
+    function BearerStrategy() {
+    }
+    BearerStrategy.prototype.authenticate = function(req) {
+      this.fail('BEARER challenge', 403);
+    }
+    
+    function NoChallengeStrategy() {
+    }
+    NoChallengeStrategy.prototype.authenticate = function(req) {
+      this.fail(402);
+    }
+    
+    var passport = new Passport();
+    passport.use('basic', new BasicStrategy());
+    passport.use('bearer', new BearerStrategy());
+    passport.use('no-challenge', new NoChallengeStrategy());
+    
+    var request, error, user, challenge, status;
+
+    before(function(done) {
+      function callback(e, u, c, s) {
+        error = e;
+        user = u;
+        challenge = c;
+        status = s;
+        done();
+      }
+      
+      chai.connect.use(authenticate(['basic', 'no-challenge', 'bearer'], callback).bind(passport))
+        .req(function(req) {
+          request = req;
+        })
+        .dispatch();
+    });
+    
+    it('should not error', function() {
+      expect(error).to.be.null;
+    });
+    
+    it('should pass false to callback', function() {
+      expect(user).to.equal(false);
+    });
+    
+    it('should pass challenges to callback', function() {
+      expect(challenge).to.be.an('array');
+      expect(challenge).to.have.length(3);
+      expect(challenge[0]).to.equal('BASIC challenge');
+      expect(challenge[1]).to.equal(402);
+      expect(challenge[2]).to.equal('BEARER challenge');
+    });
+    
+    it('should pass statuses to callback', function() {
+      expect(status).to.be.an('array');
+      expect(status).to.have.length(3);
+      expect(status[0]).to.equal(400);
+      expect(status[1]).to.be.undefined;
+      expect(status[2]).to.equal(403);
+    });
+    
+    it('should not set user on request', function() {
+      expect(request.user).to.be.undefined;
+    });
+  });
+  
 });
