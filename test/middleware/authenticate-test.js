@@ -3527,6 +3527,7 @@ vows.describe('authenticate').addBatch({
     },
   },
   
+  // OK
   'with a multiple API strategies failing with default status using custom callback': {
     topic: function() {
       var self = this;
