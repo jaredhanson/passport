@@ -312,4 +312,57 @@ describe('middleware/authenticate', function() {
     });
   });
   
+  describe('with single strategy in list, which fails with unauthorized status, and invoking callback', function() {
+    function BasicStrategy() {
+    }
+    BasicStrategy.prototype.authenticate = function(req) {
+      this.fail('BASIC challenge');
+    }
+    
+    var passport = new Passport();
+    passport.use('basic', new BasicStrategy());
+    
+    var request, error, user, challenge, status;
+
+    before(function(done) {
+      function callback(e, u, c, s) {
+        error = e;
+        user = u;
+        challenge = c;
+        status = s;
+        done();
+      }
+      
+      chai.connect.use(authenticate(['basic'], callback).bind(passport))
+        .req(function(req) {
+          request = req;
+        })
+        .dispatch();
+    });
+    
+    it('should not error', function() {
+      expect(error).to.be.null;
+    });
+    
+    it('should pass false to callback', function() {
+      expect(user).to.equal(false);
+    });
+    
+    it('should pass challenges to callback', function() {
+      expect(challenge).to.be.an('array');
+      expect(challenge).to.have.length(1);
+      expect(challenge[0]).to.equal('BASIC challenge');
+    });
+    
+    it('should pass statuses to callback', function() {
+      expect(status).to.be.an('array');
+      expect(status).to.have.length(1);
+      expect(status[0]).to.be.undefined;
+    });
+    
+    it('should not set user on request', function() {
+      expect(request.user).to.be.undefined;
+    });
+  });
+  
 });
