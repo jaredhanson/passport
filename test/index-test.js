@@ -35,6 +35,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with strategies': {
     topic: function() {
       return new Passport();
