@@ -86,4 +86,31 @@ describe('Authenticator', function() {
     });
   });
   
+  
+  describe('#serializeUser', function() {
+    
+    describe('without serializers', function() {
+      var authenticator = new Authenticator();
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.serializeUser({ id: '1', username: 'jared' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('failed to serialize user into session');
+      });
+      
+      it('should not serialize user', function() {
+        expect(obj).to.be.undefined;
+      });
+    });
+    
+  });
+  
 });

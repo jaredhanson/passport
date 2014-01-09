@@ -73,6 +73,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with strategies to unuse': {
     topic: function() {
       return new Passport();
