@@ -64,4 +64,26 @@ describe('Authenticator', function() {
     });
   });
   
+  
+  describe('#unuse', function() {
+    function Strategy() {
+    }
+    Strategy.prototype.authenticate = function(req) {
+    }
+    
+    var authenticator = new Authenticator();
+    authenticator.use('one', new Strategy());
+    authenticator.use('two', new Strategy());
+    
+    expect(authenticator._strategies['one']).to.be.an('object');
+    expect(authenticator._strategies['two']).to.be.an('object');
+    
+    authenticator.unuse('one');
+      
+    it('should unregister strategy', function() {
+      expect(authenticator._strategies['one']).to.be.undefined;
+      expect(authenticator._strategies['two']).to.be.an('object');
+    });
+  });
+  
 });
