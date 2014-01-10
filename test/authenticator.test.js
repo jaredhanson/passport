@@ -298,4 +298,56 @@ describe('Authenticator', function() {
     
   });
   
+  
+  describe('#deserializeUser', function() {
+    
+    describe('without deserializers', function() {
+      var authenticator = new Authenticator();
+      var error, user;
+    
+      before(function(done) {
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('failed to deserialize user out of session');
+      });
+      
+      it('should not deserialize user', function() {
+        expect(user).to.be.undefined;
+      });
+    });
+    
+    describe('without one deserializer', function() {
+      var authenticator = new Authenticator();
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, obj.username);
+      });
+      
+      var error, user;
+    
+      before(function(done) {
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should deserialize user', function() {
+        expect(user).to.equal('jared');
+      });
+    });
+    
+  });
+  
 });

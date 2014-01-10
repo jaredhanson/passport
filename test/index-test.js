@@ -257,6 +257,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with no deserializers': {
     topic: function() {
       var self = this;
@@ -275,6 +276,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with one deserializer': {
     topic: function() {
       var self = this;
