@@ -114,7 +114,8 @@ The following table lists commonly used strategies:
 
 - For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-local/tree/master/examples/login)
 included in [passport-local](https://github.com/jaredhanson/passport-local).
-- Please refer to this [tutorial](http://mherman.org/blog/2013/11/10/social-authentication-with-passport-dot-js/) on setting up various social authentication strategies, including a working example found on this [repo](https://github.com/mjhea0/passport-examples).
+- **Local Strategy**: Refer to this [tutorial](http://mherman.org/blog/2013/11/11/user-authentication-with-passport-dot-js/) on setting up user authentication via LocalStrategy (`passport-local`), including a working example found on this [repo](https://github.com/mjhea0/passport-local).
+- **Social Authentication**: Refer to this [tutorial](http://mherman.org/blog/2013/11/10/social-authentication-with-passport-dot-js/) for setting up various social authentication strategies, including a working example found on this [repo](https://github.com/mjhea0/passport-examples).
 
 ## Related Modules
 
