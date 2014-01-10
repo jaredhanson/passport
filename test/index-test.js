@@ -212,6 +212,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with one serializer that sets user to false': {
     topic: function() {
       var self = this;
@@ -233,6 +234,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with a serializer that throws an error': {
     topic: function() {
       var self = this;

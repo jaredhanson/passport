@@ -161,6 +161,32 @@ describe('Authenticator', function() {
       });
     });
     
+    describe('with one serializer that serializes to false', function() {
+      var authenticator = new Authenticator();
+      authenticator.serializeUser(function(user, done) {
+        done(null, false);
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.serializeUser({ id: '1', username: 'jared' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('failed to serialize user into session');
+      });
+      
+      it('should not serialize user', function() {
+        expect(obj).to.be.undefined;
+      });
+    });
+    
     describe('with one serializer that serializes to null', function() {
       var authenticator = new Authenticator();
       authenticator.serializeUser(function(user, done) {
@@ -180,6 +206,58 @@ describe('Authenticator', function() {
       it('should error', function() {
         expect(error).to.be.an.instanceOf(Error);
         expect(error.message).to.equal('failed to serialize user into session');
+      });
+      
+      it('should not serialize user', function() {
+        expect(obj).to.be.undefined;
+      });
+    });
+    
+    describe('with one serializer that serializes to undefined', function() {
+      var authenticator = new Authenticator();
+      authenticator.serializeUser(function(user, done) {
+        done(null, undefined);
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.serializeUser({ id: '1', username: 'jared' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('failed to serialize user into session');
+      });
+      
+      it('should not serialize user', function() {
+        expect(obj).to.be.undefined;
+      });
+    });
+    
+    describe('with one serializer that throws an exception', function() {
+      var authenticator = new Authenticator();
+      authenticator.serializeUser(function(user, done) {
+        throw new Error('something went horribly wrong');
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.serializeUser({ id: '1', username: 'jared' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('something went horribly wrong');
       });
       
       it('should not serialize user', function() {
