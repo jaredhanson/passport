@@ -239,6 +239,32 @@ describe('Authenticator', function() {
       });
     });
     
+    describe('with one serializer that encounters an error', function() {
+      var authenticator = new Authenticator();
+      authenticator.serializeUser(function(user, done) {
+        done(new Error('something went wrong'));
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.serializeUser({ id: '1', username: 'jared' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('something went wrong');
+      });
+      
+      it('should not serialize user', function() {
+        expect(obj).to.be.undefined;
+      });
+    });
+    
     describe('with one serializer that throws an exception', function() {
       var authenticator = new Authenticator();
       authenticator.serializeUser(function(user, done) {
@@ -293,6 +319,68 @@ describe('Authenticator', function() {
       
       it('should serialize user', function() {
         expect(obj).to.equal('two');
+      });
+    });
+    
+    describe('with three serializers, the first of which passes and the second of which does not serialize by no argument', function() {
+      var authenticator = new Authenticator();
+      authenticator.serializeUser(function(user, done) {
+        done('pass');
+      });
+      authenticator.serializeUser(function(user, done) {
+        done(null);
+      });
+      authenticator.serializeUser(function(user, done) {
+        done(null, 'three');
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.serializeUser({ id: '1', username: 'jared' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should serialize user', function() {
+        expect(obj).to.equal('three');
+      });
+    });
+    
+    describe('with three serializers, the first of which passes and the second of which does not serialize by undefined', function() {
+      var authenticator = new Authenticator();
+      authenticator.serializeUser(function(user, done) {
+        done('pass');
+      });
+      authenticator.serializeUser(function(user, done) {
+        done(null, undefined);
+      });
+      authenticator.serializeUser(function(user, done) {
+        done(null, 'three');
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.serializeUser({ id: '1', username: 'jared' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should serialize user', function() {
+        expect(obj).to.equal('three');
       });
     });
     
@@ -420,6 +508,32 @@ describe('Authenticator', function() {
       });
       
       it('should not deserialize user', function() {
+        expect(user).to.be.undefined;
+      });
+    });
+    
+    describe('with one deserializer that encounters an error', function() {
+      var authenticator = new Authenticator();
+      authenticator.deserializeUser(function(obj, done) {
+        done(new Error('something went wrong'));
+      });
+      
+      var error, user;
+    
+      before(function(done) {
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('something went wrong');
+      });
+      
+      it('should invalidate session', function() {
         expect(user).to.be.undefined;
       });
     });
@@ -602,6 +716,34 @@ describe('Authenticator', function() {
       
       it('should invalidate session', function() {
         expect(user).to.be.false;
+      });
+    });
+    
+  });
+  
+  
+  describe('#transformAuthInfo', function() {
+    
+    describe('without transforms', function() {
+      var authenticator = new Authenticator();
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.transformAuthInfo({ clientId: '1', scope: 'write' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should not transfor info', function() {
+        expect(Object.keys(obj)).to.have.length(2);
+        expect(obj.clientId).to.equal('1');
+        expect(obj.scope).to.equal('write');
       });
     });
     

@@ -449,6 +449,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with no auth info transformers': {
     topic: function() {
       var self = this;
