@@ -99,6 +99,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with no serializers': {
     topic: function() {
       var self = this;
@@ -117,6 +118,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with one serializer': {
     topic: function() {
       var self = this;
@@ -138,6 +140,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with multiple serializers': {
     topic: function() {
       var self = this;
@@ -165,6 +168,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with one serializer that sets user to 0': {
     topic: function() {
       var self = this;
@@ -186,6 +190,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with one serializer that sets user to null': {
     topic: function() {
       var self = this;

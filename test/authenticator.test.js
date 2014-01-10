@@ -111,6 +111,113 @@ describe('Authenticator', function() {
       });
     });
     
+    describe('with one serializer', function() {
+      var authenticator = new Authenticator();
+      authenticator.serializeUser(function(user, done) {
+        done(null, user.id);
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.serializeUser({ id: '1', username: 'jared' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should serialize user', function() {
+        expect(obj).to.equal('1');
+      });
+    });
+    
+    describe('with one serializer that serializes to 0', function() {
+      var authenticator = new Authenticator();
+      authenticator.serializeUser(function(user, done) {
+        done(null, 0);
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.serializeUser({ id: '1', username: 'jared' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should serialize user', function() {
+        expect(obj).to.equal(0);
+      });
+    });
+    
+    describe('with one serializer that serializes to null', function() {
+      var authenticator = new Authenticator();
+      authenticator.serializeUser(function(user, done) {
+        done(null, null);
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.serializeUser({ id: '1', username: 'jared' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('failed to serialize user into session');
+      });
+      
+      it('should not serialize user', function() {
+        expect(obj).to.be.undefined;
+      });
+    });
+    
+    describe('with three serializers, the first of which passes and the second of which serializes', function() {
+      var authenticator = new Authenticator();
+      authenticator.serializeUser(function(user, done) {
+        done('pass');
+      });
+      authenticator.serializeUser(function(user, done) {
+        done(null, 'two');
+      });
+      authenticator.serializeUser(function(user, done) {
+        done(null, 'three');
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.serializeUser({ id: '1', username: 'jared' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should serialize user', function() {
+        expect(obj).to.equal('two');
+      });
+    });
+    
   });
   
 });
