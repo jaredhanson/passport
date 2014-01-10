@@ -323,7 +323,7 @@ describe('Authenticator', function() {
       });
     });
     
-    describe('without one deserializer', function() {
+    describe('with one deserializer', function() {
       var authenticator = new Authenticator();
       authenticator.deserializeUser(function(obj, done) {
         done(null, obj.username);
@@ -345,6 +345,113 @@ describe('Authenticator', function() {
       
       it('should deserialize user', function() {
         expect(user).to.equal('jared');
+      });
+    });
+    
+    describe('with one deserializer that deserializes to false', function() {
+      var authenticator = new Authenticator();
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, false);
+      });
+      
+      var error, user;
+    
+      before(function(done) {
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should invalidate session', function() {
+        expect(user).to.be.false;
+      });
+    });
+    
+    describe('with one deserializer that deserializes to null', function() {
+      var authenticator = new Authenticator();
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, null);
+      });
+      
+      var error, user;
+    
+      before(function(done) {
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should invalidate session', function() {
+        expect(user).to.be.false;
+      });
+    });
+    
+    describe('with one deserializer that deserializes to undefined', function() {
+      var authenticator = new Authenticator();
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, undefined);
+      });
+      
+      var error, user;
+    
+      before(function(done) {
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('failed to deserialize user out of session');
+      });
+      
+      it('should not deserialize user', function() {
+        expect(user).to.be.undefined;
+      });
+    });
+    
+    describe('with three deserializers, the first of which passes and the second of which serializes', function() {
+      var authenticator = new Authenticator();
+      authenticator.deserializeUser(function(obj, done) {
+        done('pass');
+      });
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, 'two');
+      });
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, 'three');
+      });
+      
+      var error, user;
+    
+      before(function(done) {
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should deserialize user', function() {
+        expect(user).to.equal('two');
       });
     });
     
