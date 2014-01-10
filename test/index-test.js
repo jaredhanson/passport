@@ -426,6 +426,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with a deserializer that throws an error': {
     topic: function() {
       var self = this;

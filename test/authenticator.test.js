@@ -424,6 +424,32 @@ describe('Authenticator', function() {
       });
     });
     
+    describe('with one deserializer that throws an exception', function() {
+      var authenticator = new Authenticator();
+      authenticator.deserializeUser(function(obj, done) {
+        throw new Error('something went horribly wrong');
+      });
+      
+      var error, user;
+    
+      before(function(done) {
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('something went horribly wrong');
+      });
+      
+      it('should invalidate session', function() {
+        expect(user).to.be.undefined;
+      });
+    });
+    
     describe('with three deserializers, the first of which passes and the second of which deserializes', function() {
       var authenticator = new Authenticator();
       authenticator.deserializeUser(function(obj, done) {
