@@ -424,7 +424,7 @@ describe('Authenticator', function() {
       });
     });
     
-    describe('with three deserializers, the first of which passes and the second of which serializes', function() {
+    describe('with three deserializers, the first of which passes and the second of which deserializes', function() {
       var authenticator = new Authenticator();
       authenticator.deserializeUser(function(obj, done) {
         done('pass');
@@ -452,6 +452,130 @@ describe('Authenticator', function() {
       
       it('should deserialize user', function() {
         expect(user).to.equal('two');
+      });
+    });
+    
+    describe('with three deserializers, the first of which passes and the second of which does not deserialize by no argument', function() {
+      var authenticator = new Authenticator();
+      authenticator.deserializeUser(function(obj, done) {
+        done('pass');
+      });
+      authenticator.deserializeUser(function(obj, done) {
+        done(null);
+      });
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, 'three');
+      });
+      
+      var error, user;
+    
+      before(function(done) {
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should deserialize user', function() {
+        expect(user).to.equal('three');
+      });
+    });
+    
+    describe('with three deserializers, the first of which passes and the second of which does not deserialize by undefined', function() {
+      var authenticator = new Authenticator();
+      authenticator.deserializeUser(function(obj, done) {
+        done('pass');
+      });
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, undefined);
+      });
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, 'three');
+      });
+      
+      var error, user;
+    
+      before(function(done) {
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should deserialize user', function() {
+        expect(user).to.equal('three');
+      });
+    });
+    
+    describe('with three deserializers, the first of which passes and the second of which invalidates session by false', function() {
+      var authenticator = new Authenticator();
+      authenticator.deserializeUser(function(obj, done) {
+        done('pass');
+      });
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, false);
+      });
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, 'three');
+      });
+      
+      var error, user;
+    
+      before(function(done) {
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should invalidate session', function() {
+        expect(user).to.be.false;
+      });
+    });
+    
+    describe('with three deserializers, the first of which passes and the second of which invalidates session by null', function() {
+      var authenticator = new Authenticator();
+      authenticator.deserializeUser(function(obj, done) {
+        done('pass');
+      });
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, null);
+      });
+      authenticator.deserializeUser(function(obj, done) {
+        done(null, 'three');
+      });
+      
+      var error, user;
+    
+      before(function(done) {
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should invalidate session', function() {
+        expect(user).to.be.false;
       });
     });
     

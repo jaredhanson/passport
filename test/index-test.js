@@ -370,6 +370,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with multiple deserializers, the second of which sets user to null': {
     topic: function() {
       var self = this;
@@ -397,6 +398,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with multiple deserializers, the second of which sets user to false': {
     topic: function() {
       var self = this;
