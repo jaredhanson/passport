@@ -51,7 +51,7 @@ describe('SessionStrategy', function() {
           
           req._passport = {};
           req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, done) {
+          req._passport.instance.deserializeUser = function(user, req, done) {
             done(null, { id: user });
           };
           req._passport.session = {};
@@ -89,7 +89,7 @@ describe('SessionStrategy', function() {
           
           req._passport = {};
           req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, done) {
+          req._passport.instance.deserializeUser = function(user, req, done) {
             done(null, { id: user });
           };
           req._passport.session = {};
@@ -127,7 +127,7 @@ describe('SessionStrategy', function() {
           
           req._passport = {};
           req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, done) {
+          req._passport.instance.deserializeUser = function(user, req, done) {
             done(null, false);
           };
           req._passport.session = {};
@@ -165,7 +165,7 @@ describe('SessionStrategy', function() {
           req._passport = {};
           req._passport.instance = {};
           req._passport.instance._userProperty = 'currentUser';
-          req._passport.instance.deserializeUser = function(user, done) {
+          req._passport.instance.deserializeUser = function(user, req, done) {
             done(null, { id: user });
           };
           req._passport.session = {};
@@ -202,7 +202,7 @@ describe('SessionStrategy', function() {
           
           req._passport = {};
           req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, done) {
+          req._passport.instance.deserializeUser = function(user, req, done) {
             done(new Error('something went wrong'));
           };
           req._passport.session = {};
