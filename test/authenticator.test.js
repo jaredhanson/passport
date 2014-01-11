@@ -827,6 +827,34 @@ describe('Authenticator', function() {
       });
     });
     
+    describe('with one sync transform', function() {
+      var authenticator = new Authenticator();
+      authenticator.transformAuthInfo(function(info) {
+        return { clientId: info.clientId, client: { name: 'Foo' }};
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        authenticator.transformAuthInfo({ clientId: '1', scope: 'write' }, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should not transform info', function() {
+        expect(Object.keys(obj)).to.have.length(2);
+        expect(obj.clientId).to.equal('1');
+        expect(obj.client.name).to.equal('Foo');
+        expect(obj.scope).to.be.undefined;
+      });
+    });
+    
     describe('with three transform, the first of which passes and the second of which transforms', function() {
       var authenticator = new Authenticator();
       authenticator.transformAuthInfo(function(info, done) {
