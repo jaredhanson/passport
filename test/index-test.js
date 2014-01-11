@@ -469,6 +469,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with one auth info transformer': {
     topic: function() {
       var self = this;
@@ -492,6 +493,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with multiple auth info transformers': {
     topic: function() {
       var self = this;
@@ -521,6 +523,7 @@ vows.describe('passport').addBatch({
     },
   },
   
+  // OK
   'passport with an auth info transformer that throws an error': {
     topic: function() {
       var self = this;
