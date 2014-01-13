@@ -28,6 +28,11 @@ describe('middleware/authenticate', function() {
     passport.use('basic', new BasicStrategy());
     passport.use('digest', new DigestStrategy());
     passport.use('no-challenge', new NoChallengeStrategy());
+
+    var received = null;
+    passport.on('fail', function(req) {
+      received = req;
+    });
     
     var request, response;
 
@@ -64,6 +69,10 @@ describe('middleware/authenticate', function() {
       expect(val[0]).to.equal('BASIC challenge');
       expect(val[1]).to.equal('DIGEST challenge');
     });
+
+    it('should emit event', function() {
+      expect(received).to.equal(request);
+    });
   });
   
   describe('with multiple strategies, all of which fail, and responding with specified status', function() {
@@ -89,6 +98,11 @@ describe('middleware/authenticate', function() {
     passport.use('basic', new BasicStrategy());
     passport.use('bearer', new BearerStrategy());
     passport.use('no-challenge', new NoChallengeStrategy());
+
+    var received = null;
+    passport.on('fail', function(req) {
+      received = req;
+    });
     
     var request, response;
 
@@ -117,6 +131,10 @@ describe('middleware/authenticate', function() {
       expect(response.getHeader('WWW-Authenticate')).to.be.undefined;
       expect(response.body).to.equal('Bad Request');
     });
+
+    it('should emit event', function() {
+      expect(received).to.equal(request);
+    });
   });
   
   describe('with multiple strategies, all of which fail, and flashing message', function() {
@@ -135,6 +153,11 @@ describe('middleware/authenticate', function() {
     var passport = new Passport();
     passport.use('a', new StrategyA());
     passport.use('b', new StrategyB());
+
+    var received = null;
+    passport.on('fail', function(req) {
+      received = req;
+    });
     
     var request, response;
 
@@ -168,6 +191,10 @@ describe('middleware/authenticate', function() {
       expect(response.statusCode).to.equal(302);
       expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
     });
+
+    it('should emit event', function() {
+      expect(received).to.equal(request);
+    });
   });
   
   describe('with multiple strategies, all of which fail with unauthorized status, and invoking callback', function() {
@@ -193,6 +220,11 @@ describe('middleware/authenticate', function() {
     passport.use('basic', new BasicStrategy());
     passport.use('digest', new DigestStrategy());
     passport.use('no-challenge', new NoChallengeStrategy());
+
+    var received = null;
+    passport.on('fail', function(req) {
+      received = req;
+    });
     
     var request, error, user, challenge, status;
 
@@ -239,6 +271,10 @@ describe('middleware/authenticate', function() {
     it('should not set user on request', function() {
       expect(request.user).to.be.undefined;
     });
+
+    it('should not emit event', function() {
+      expect(received).to.be.null;
+    });
   });
   
   describe('with multiple strategies, all of which fail with specific status, and invoking callback', function() {
@@ -264,6 +300,11 @@ describe('middleware/authenticate', function() {
     passport.use('basic', new BasicStrategy());
     passport.use('bearer', new BearerStrategy());
     passport.use('no-challenge', new NoChallengeStrategy());
+
+    var received = null;
+    passport.on('fail', function(req) {
+      received = req;
+    });
     
     var request, error, user, challenge, status;
 
@@ -310,6 +351,10 @@ describe('middleware/authenticate', function() {
     it('should not set user on request', function() {
       expect(request.user).to.be.undefined;
     });
+
+    it('should not emit event', function() {
+      expect(received).to.be.null;
+    });
   });
   
   describe('with single strategy in list, which fails with unauthorized status, and invoking callback', function() {
@@ -321,6 +366,11 @@ describe('middleware/authenticate', function() {
     
     var passport = new Passport();
     passport.use('basic', new BasicStrategy());
+
+    var received = null;
+    passport.on('fail', function(req) {
+      received = req;
+    });
     
     var request, error, user, challenge, status;
 
@@ -362,6 +412,10 @@ describe('middleware/authenticate', function() {
     
     it('should not set user on request', function() {
       expect(request.user).to.be.undefined;
+    });
+
+    it('should not emit event', function() {
+      expect(received).to.be.null;
     });
   });
   

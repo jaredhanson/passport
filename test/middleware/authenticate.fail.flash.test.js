@@ -16,6 +16,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -50,6 +55,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message using type set by route', function() {
@@ -61,6 +70,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -95,6 +109,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message overridden by route as string', function() {
@@ -106,6 +124,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -140,6 +163,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message overridden by route using options', function() {
@@ -151,6 +178,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -185,6 +217,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message overridden by route using options with type', function() {
@@ -196,6 +232,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -230,6 +271,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
   });
@@ -246,6 +291,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -280,6 +330,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message using type set by route', function() {
@@ -291,6 +345,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -325,6 +384,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message overridden by route as string', function() {
@@ -336,6 +399,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -370,6 +438,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message overridden by route using options', function() {
@@ -381,6 +453,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -415,6 +492,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message overridden by route using options with type', function() {
@@ -426,6 +507,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -460,6 +546,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
   });
@@ -476,6 +566,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -510,6 +605,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message using type set by route', function() {
@@ -521,6 +620,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -555,6 +659,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message overridden by route as string', function() {
@@ -566,6 +674,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -600,6 +713,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message overridden by route using options', function() {
@@ -611,6 +728,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -645,6 +767,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message overridden by route using options with type', function() {
@@ -656,6 +782,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -690,6 +821,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
   });
@@ -706,6 +841,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -739,6 +879,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message left up to strategy using type set by route', function() {
@@ -750,6 +894,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -783,6 +932,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message specified by route as string', function() {
@@ -794,6 +947,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -828,6 +986,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message specified by route using options', function() {
@@ -839,6 +1001,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -873,6 +1040,10 @@ describe('middleware/authenticate', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
       });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
+      });
     });
     
     describe('fail with flash message specified by route using options with type', function() {
@@ -884,6 +1055,11 @@ describe('middleware/authenticate', function() {
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
+
+      var received = null;
+      passport.on('fail', function(req) {
+        received = req;
+      });
     
       var request, response;
 
@@ -917,6 +1093,10 @@ describe('middleware/authenticate', function() {
       it('should redirect', function() {
         expect(response.statusCode).to.equal(302);
         expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
+      });
+
+      it('should emit event', function() {
+        expect(received).to.equal(request);
       });
     });
     
