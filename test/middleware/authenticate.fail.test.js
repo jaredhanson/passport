@@ -217,6 +217,7 @@ describe('middleware/authenticate', function() {
       expect(error).to.be.an.instanceOf(Error);
       expect(error.constructor.name).to.equal('AuthenticationError')
       expect(error.message).to.equal('Unauthorized');
+      expect(error.status).to.equal(401);
     });
     
     it('should not set user', function() {
@@ -225,7 +226,7 @@ describe('middleware/authenticate', function() {
     
     it('should not set body of response', function() {
       expect(response.statusCode).to.equal(401);
-      expect(response.getHeader('Location')).to.be.undefined;
+      expect(response.getHeader('WWW-Authenticate')).to.be.undefined;
       expect(response.body).to.be.undefined;
     });
   });
@@ -261,6 +262,7 @@ describe('middleware/authenticate', function() {
       expect(error).to.be.an.instanceOf(Error);
       expect(error.constructor.name).to.equal('AuthenticationError')
       expect(error.message).to.equal('Unauthorized');
+      expect(error.status).to.equal(401);
     });
     
     it('should not set user', function() {
@@ -269,7 +271,149 @@ describe('middleware/authenticate', function() {
     
     it('should not set body of response', function() {
       expect(response.statusCode).to.equal(401);
-      expect(response.getHeader('Location')).to.be.undefined;
+      expect(response.getHeader('WWW-Authenticate')).to.be.undefined;
+      expect(response.body).to.be.undefined;
+    });
+  });
+  
+  describe('fail with error, passing info and status to fail', function() {
+    function Strategy() {
+    }
+    Strategy.prototype.authenticate = function(req) {
+      this.fail({ message: 'Multiple credentials' }, 400);
+    }    
+    
+    var passport = new Passport();
+    passport.use('fail', new Strategy());
+    
+    var request, response, error;
+
+    before(function(done) {
+      chai.connect.use('express', authenticate('fail', { failWithError: true }).bind(passport))
+        .req(function(req) {
+          request = req;
+        })
+        .res(function(res) {
+          response = res;
+        })
+        .next(function(err) {
+          error = err;
+          done();
+        })
+        .dispatch();
+    });
+    
+    it('should error', function() {
+      expect(error).to.be.an.instanceOf(Error);
+      expect(error.constructor.name).to.equal('AuthenticationError')
+      expect(error.message).to.equal('Bad Request');
+      expect(error.status).to.equal(400);
+    });
+    
+    it('should not set user', function() {
+      expect(request.user).to.be.undefined;
+    });
+    
+    it('should not set body of response', function() {
+      expect(response.statusCode).to.equal(400);
+      expect(response.getHeader('WWW-Authenticate')).to.be.undefined;
+      expect(response.body).to.be.undefined;
+    });
+  });
+  
+  describe('fail with error, passing challenge to fail', function() {
+    function Strategy() {
+    }
+    Strategy.prototype.authenticate = function(req) {
+      this.fail('Bearer challenge');
+    }    
+    
+    var passport = new Passport();
+    passport.use('fail', new Strategy());
+    
+    var request, response, error;
+
+    before(function(done) {
+      chai.connect.use('express', authenticate('fail', { failWithError: true }).bind(passport))
+        .req(function(req) {
+          request = req;
+        })
+        .res(function(res) {
+          response = res;
+        })
+        .next(function(err) {
+          error = err;
+          done();
+        })
+        .dispatch();
+    });
+    
+    it('should error', function() {
+      expect(error).to.be.an.instanceOf(Error);
+      expect(error.constructor.name).to.equal('AuthenticationError')
+      expect(error.message).to.equal('Unauthorized');
+      expect(error.status).to.equal(401);
+    });
+    
+    it('should not set user', function() {
+      expect(request.user).to.be.undefined;
+    });
+    
+    it('should not set body of response', function() {
+      expect(response.statusCode).to.equal(401);
+      expect(response.body).to.be.undefined;
+    });
+    
+    it('should set authenticate header on response', function() {
+      var val = response.getHeader('WWW-Authenticate');
+      expect(val).to.be.an('array');
+      expect(val).to.have.length(1);
+      
+      expect(val[0]).to.equal('Bearer challenge');
+    });
+  });
+  
+  describe('fail with error, passing challenge and status to fail', function() {
+    function Strategy() {
+    }
+    Strategy.prototype.authenticate = function(req) {
+      this.fail('Bearer challenge', 403);
+    }    
+    
+    var passport = new Passport();
+    passport.use('fail', new Strategy());
+    
+    var request, response, error;
+
+    before(function(done) {
+      chai.connect.use('express', authenticate('fail', { failWithError: true }).bind(passport))
+        .req(function(req) {
+          request = req;
+        })
+        .res(function(res) {
+          response = res;
+        })
+        .next(function(err) {
+          error = err;
+          done();
+        })
+        .dispatch();
+    });
+    
+    it('should error', function() {
+      expect(error).to.be.an.instanceOf(Error);
+      expect(error.constructor.name).to.equal('AuthenticationError')
+      expect(error.message).to.equal('Forbidden');
+      expect(error.status).to.equal(403);
+    });
+    
+    it('should not set user', function() {
+      expect(request.user).to.be.undefined;
+    });
+    
+    it('should not set body of response', function() {
+      expect(response.statusCode).to.equal(403);
+      expect(response.getHeader('WWW-Authenticate')).to.be.undefined;
       expect(response.body).to.be.undefined;
     });
   });
