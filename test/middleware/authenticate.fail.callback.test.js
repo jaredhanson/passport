@@ -54,13 +54,14 @@ describe('middleware/authenticate', function() {
     var passport = new Passport();
     passport.use('fail', new Strategy());
     
-    var request, error, user, info;
+    var request, error, user, info, status;
 
     before(function(done) {
-      function callback(e, u, i) {
+      function callback(e, u, i, s) {
         error = e;
         user = u;
         info = i;
+        status = s;
         done();
       }
       
@@ -82,6 +83,60 @@ describe('middleware/authenticate', function() {
     it('should pass info to callback', function() {
       expect(info).to.be.an('object');
       expect(info.message).to.equal('Invalid password');
+    });
+    
+    it('should pass status to callback', function() {
+      expect(status).to.be.undefined;
+    });
+    
+    it('should not set user on request', function() {
+      expect(request.user).to.be.undefined;
+    });
+  });
+  
+  describe('fail with callback, passing info and status', function() {
+    function Strategy() {
+    }
+    Strategy.prototype.authenticate = function(req) {
+      this.fail({ message: 'Invalid password' }, 403);
+    }    
+    
+    var passport = new Passport();
+    passport.use('fail', new Strategy());
+    
+    var request, error, user, info, status;
+
+    before(function(done) {
+      function callback(e, u, i, s) {
+        error = e;
+        user = u;
+        info = i;
+        status = s;
+        done();
+      }
+      
+      chai.connect.use(authenticate('fail', callback).bind(passport))
+        .req(function(req) {
+          request = req;
+        })
+        .dispatch();
+    });
+    
+    it('should not error', function() {
+      expect(error).to.be.null;
+    });
+    
+    it('should pass false to callback', function() {
+      expect(user).to.equal(false);
+    });
+    
+    it('should pass info to callback', function() {
+      expect(info).to.be.an('object');
+      expect(info.message).to.equal('Invalid password');
+    });
+    
+    it('should pass status to callback', function() {
+      expect(status).to.equal(403);
     });
     
     it('should not set user on request', function() {
