@@ -186,4 +186,48 @@ describe('middleware/authenticate', function() {
     });
   });
   
+  describe('fail with error', function() {
+    function Strategy() {
+    }
+    Strategy.prototype.authenticate = function(req) {
+      this.fail();
+    }    
+    
+    var passport = new Passport();
+    passport.use('fail', new Strategy());
+    
+    var request, response, error;
+
+    before(function(done) {
+      chai.connect.use('express', authenticate('fail', { failWithError: true }).bind(passport))
+        .req(function(req) {
+          request = req;
+        })
+        .res(function(res) {
+          response = res;
+        })
+        .next(function(err) {
+          error = err;
+          done();
+        })
+        .dispatch();
+    });
+    
+    it('should error', function() {
+      expect(error).to.be.an.instanceOf(Error);
+      expect(error.constructor.name).to.equal('AuthenticationError')
+      expect(error.message).to.equal('Unauthorized');
+    });
+    
+    it('should not set user', function() {
+      expect(request.user).to.be.undefined;
+    });
+    
+    it('should not set body of response', function() {
+      expect(response.statusCode).to.equal(401);
+      expect(response.getHeader('Location')).to.be.undefined;
+      expect(response.body).to.be.undefined;
+    });
+  });
+  
 });
