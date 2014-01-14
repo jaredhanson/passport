@@ -295,7 +295,7 @@ describe('middleware/authenticate', function() {
       expect(challenge).to.be.an('array');
       expect(challenge).to.have.length(3);
       expect(challenge[0]).to.equal('BASIC challenge');
-      expect(challenge[1]).to.equal(402);
+      expect(challenge[1]).to.be.undefined;
       expect(challenge[2]).to.equal('BEARER challenge');
     });
     
@@ -303,7 +303,7 @@ describe('middleware/authenticate', function() {
       expect(status).to.be.an('array');
       expect(status).to.have.length(3);
       expect(status[0]).to.equal(400);
-      expect(status[1]).to.be.undefined;
+      expect(status[1]).to.equal(402);
       expect(status[2]).to.equal(403);
     });
     
