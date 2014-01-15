@@ -14,6 +14,11 @@ describe('middleware/authenticate', function() {
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
+
+    var received = null;
+    passport.on('unauthorized', function(req) {
+      received = req;
+    });
     
     var request, error, user;
 
@@ -42,6 +47,10 @@ describe('middleware/authenticate', function() {
     it('should not set user on request', function() {
       expect(request.user).to.be.undefined;
     });
+
+    it('should not emit event', function() {
+      expect(received).to.be.null;
+    });
   });
   
   describe('fail with callback, passing info', function() {
@@ -53,6 +62,11 @@ describe('middleware/authenticate', function() {
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
+
+    var received = null;
+    passport.on('unauthorized', function(req) {
+      received = req;
+    });
     
     var request, error, user, info, status;
 
@@ -191,6 +205,10 @@ describe('middleware/authenticate', function() {
     it('should not set user on request', function() {
       expect(request.user).to.be.undefined;
     });
+
+    it('should not emit event', function() {
+      expect(received).to.be.null;
+    });
   });
   
   describe('fail with callback, passing challenge and status', function() {
@@ -202,6 +220,11 @@ describe('middleware/authenticate', function() {
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
+
+    var received = null;
+    passport.on('unauthorized', function(req) {
+      received = req;
+    });
     
     var request, error, user, challenge, status;
 
@@ -240,6 +263,10 @@ describe('middleware/authenticate', function() {
     it('should not set user on request', function() {
       expect(request.user).to.be.undefined;
     });
+
+    it('should not emit event', function() {
+      expect(received).to.be.null;
+    });
   });
   
   describe('fail with callback, passing status', function() {
@@ -251,6 +278,11 @@ describe('middleware/authenticate', function() {
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
+
+    var received = null;
+    passport.on('unauthorized', function(req) {
+      received = req;
+    });
     
     var request, error, user, challenge, status;
 
@@ -289,6 +321,10 @@ describe('middleware/authenticate', function() {
     it('should not set user on request', function() {
       expect(request.user).to.be.undefined;
     });
+
+    it('should not emit event', function() {
+      expect(received).to.be.null;
+    });
   });
   
   describe('fail with callback and options passed to middleware', function() {
@@ -300,6 +336,11 @@ describe('middleware/authenticate', function() {
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
+
+    var received = null;
+    passport.on('unauthorized', function(req) {
+      received = req;
+    });
     
     var request, error, user;
 
@@ -327,6 +368,10 @@ describe('middleware/authenticate', function() {
     
     it('should not set user on request', function() {
       expect(request.user).to.be.undefined;
+    });
+
+    it('should not emit event', function() {
+      expect(received).to.be.null;
     });
   });
   

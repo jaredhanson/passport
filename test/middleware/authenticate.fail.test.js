@@ -14,6 +14,11 @@ describe('middleware/authenticate', function() {
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
+
+    var received = null;
+    passport.on('fail', function(req) {
+      received = req;
+    });
     
     var request, response;
 
@@ -38,6 +43,10 @@ describe('middleware/authenticate', function() {
       expect(response.getHeader('WWW-Authenticate')).to.be.undefined;
       expect(response.body).to.equal('Unauthorized');
     });
+
+    it('should emit event', function() {
+      expect(received).to.equal(request);
+    });
   });
   
   describe('fail with redirect', function() {
@@ -49,6 +58,11 @@ describe('middleware/authenticate', function() {
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
+
+    var received = null;
+    passport.on('fail', function(req) {
+      received = req;
+    });
     
     var request, response;
 
@@ -72,6 +86,10 @@ describe('middleware/authenticate', function() {
       expect(response.statusCode).to.equal(302);
       expect(response.getHeader('Location')).to.equal('http://www.example.com/login');
     });
+
+    it('should emit event', function() {
+      expect(received).to.equal(request);
+    });
   });
   
   describe('fail with challenge', function() {
@@ -83,6 +101,11 @@ describe('middleware/authenticate', function() {
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
+
+    var received = null;
+    passport.on('fail', function(req) {
+      received = req;
+    });
     
     var request, response;
 
@@ -114,6 +137,10 @@ describe('middleware/authenticate', function() {
       
       expect(val[0]).to.equal('MOCK challenge');
     });
+
+    it('should emit event', function() {
+      expect(received).to.equal(request);
+    });
   });
   
   describe('fail with challenge and status', function() {
@@ -125,6 +152,11 @@ describe('middleware/authenticate', function() {
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
+
+    var received = null;
+    passport.on('fail', function(req) {
+      received = req;
+    });
     
     var request, response;
 
@@ -149,6 +181,10 @@ describe('middleware/authenticate', function() {
       expect(response.getHeader('WWW-Authenticate')).to.be.undefined;
       expect(response.body).to.equal('Forbidden');
     });
+
+    it('should emit event', function() {
+      expect(received).to.equal(request);
+    });
   });
   
   describe('fail with status', function() {
@@ -160,6 +196,11 @@ describe('middleware/authenticate', function() {
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
+
+    var received = null;
+    passport.on('fail', function(req) {
+      received = req;
+    });
     
     var request, response;
 
@@ -183,6 +224,10 @@ describe('middleware/authenticate', function() {
       expect(response.statusCode).to.equal(400);
       expect(response.getHeader('WWW-Authenticate')).to.be.undefined;
       expect(response.body).to.equal('Bad Request');
+    });
+
+    it('should emit event', function() {
+      expect(received).to.equal(request);
     });
   });
   
