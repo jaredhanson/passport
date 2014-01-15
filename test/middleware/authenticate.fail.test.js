@@ -418,4 +418,49 @@ describe('middleware/authenticate', function() {
     });
   });
   
+  describe('fail with error, passing status to fail', function() {
+    function Strategy() {
+    }
+    Strategy.prototype.authenticate = function(req) {
+      this.fail(402);
+    }    
+    
+    var passport = new Passport();
+    passport.use('fail', new Strategy());
+    
+    var request, response, error;
+
+    before(function(done) {
+      chai.connect.use('express', authenticate('fail', { failWithError: true }).bind(passport))
+        .req(function(req) {
+          request = req;
+        })
+        .res(function(res) {
+          response = res;
+        })
+        .next(function(err) {
+          error = err;
+          done();
+        })
+        .dispatch();
+    });
+    
+    it('should error', function() {
+      expect(error).to.be.an.instanceOf(Error);
+      expect(error.constructor.name).to.equal('AuthenticationError')
+      expect(error.message).to.equal('Payment Required');
+      expect(error.status).to.equal(402);
+    });
+    
+    it('should not set user', function() {
+      expect(request.user).to.be.undefined;
+    });
+    
+    it('should not set body of response', function() {
+      expect(response.statusCode).to.equal(402);
+      expect(response.getHeader('WWW-Authenticate')).to.be.undefined;
+      expect(response.body).to.be.undefined;
+    });
+  });
+  
 });
