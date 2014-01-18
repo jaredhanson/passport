@@ -6,6 +6,7 @@ describe('passport', function() {
   
   it('should expose singleton authenticator', function() {
     expect(passport).to.be.an('object');
+    expect(passport).to.be.an.instanceOf(passport.Authenticator);
   });
   
   it('should export constructors', function() {
