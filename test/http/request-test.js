@@ -60,6 +60,7 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  // OK
   'request to login with a session using a custom user property': {
     topic: function() {
       var self = this;
@@ -102,6 +103,7 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  // OK
   'request to login with a session but a badly behaving user serializer': {
     topic: function() {
       var self = this;
