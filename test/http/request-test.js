@@ -7,6 +7,7 @@ require('passport/http/request');
 
 vows.describe('HttpServerRequest').addBatch({
   
+  // OK
   'request': {
     topic: function() {
       return new http.IncomingMessage();
@@ -20,6 +21,7 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  // OK
   'request to login with a session': {
     topic: function() {
       var self = this;
