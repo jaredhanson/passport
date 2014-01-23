@@ -140,6 +140,7 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  // OK
   'request to login without a session': {
     topic: function() {
       var self = this;
@@ -175,6 +176,7 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  // OK
   'request to login without a session using a custom user property': {
     topic: function() {
       var self = this;
