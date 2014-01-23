@@ -328,6 +328,24 @@ describe('http.ServerRequest', function() {
       });
     });
     
+    describe('existing session, without passport.initialize() middleware', function() {
+      var passport = new Passport();
+      
+      var req = new http.IncomingMessage();
+      req.user = { id: '1', username: 'root' };
+      
+      req.logout();
+      
+      it('should not be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.false;
+        expect(req.isUnauthenticated()).to.be.true;
+      });
+      
+      it('should clear user', function() {
+        expect(req.user).to.be.null;
+      });
+    });
+    
   });
   
   
