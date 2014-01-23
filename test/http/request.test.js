@@ -140,6 +140,36 @@ describe('http.ServerRequest', function() {
       });
     });
     
+    describe('not establishing a session, without passport.initialize() middleware', function() {
+      var req = new http.IncomingMessage();
+      
+      var error;
+      
+      before(function(done) {
+        var user = { id: '1', username: 'root' };
+        
+        req.login(user, { session: false }, function(err) {
+          error = err;
+          done();
+        });
+      });
+      
+      it('should not error', function() {
+        expect(error).to.be.undefined;
+      });
+      
+      it('should be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.true;
+        expect(req.isUnauthenticated()).to.be.false;
+      });
+      
+      it('should set user', function() {
+        expect(req.user).to.be.an('object');
+        expect(req.user.id).to.equal('1');
+        expect(req.user.username).to.equal('root');
+      });
+    });
+    
     describe('establishing a session', function() {
       var passport = new Passport();
       passport.serializeUser(function(user, done) {
@@ -267,6 +297,17 @@ describe('http.ServerRequest', function() {
       
       it('should not serialize user', function() {
         expect(req._passport.session.user).to.be.undefined;
+      });
+    });
+    
+    describe('establishing a session, without passport.initialize() middleware', function() {
+      var req = new http.IncomingMessage();
+      var user = { id: '1', username: 'root' };
+      
+      it('should throw an exception', function() {
+        expect(function() {
+          req.login(user, function(err) {});
+        }).to.throw(Error, 'passport.initialize() middleware not in use');
       });
     });
     
