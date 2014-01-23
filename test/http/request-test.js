@@ -312,6 +312,7 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  // OK
   'request with a user': {
     topic: function() {
       var req = new http.IncomingMessage();
@@ -329,6 +330,7 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  // OK
   'request with a user stored in a custom user property': {
     topic: function() {
       var req = new http.IncomingMessage();
@@ -350,6 +352,7 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  // OK
   'request without a user': {
     topic: function() {
       var req = new http.IncomingMessage();
@@ -366,6 +369,7 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  // OK
   'request with a null user': {
     topic: function() {
       var req = new http.IncomingMessage();

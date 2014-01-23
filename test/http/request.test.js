@@ -330,4 +330,51 @@ describe('http.ServerRequest', function() {
     
   });
   
+  
+  describe('#isAuthenticated', function() {
+    
+    describe('with a user', function() {
+      var req = new http.IncomingMessage();
+      req.user = { id: '1', username: 'root' };
+      
+      it('should be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.true;
+        expect(req.isUnauthenticated()).to.be.false;
+      });
+    });
+    
+    describe('with a user set on custom property', function() {
+      var req = new http.IncomingMessage();
+      req.currentUser = { id: '1', username: 'root' };
+      req._passport = {};
+      req._passport.instance = {};
+      req._passport.instance._userProperty = 'currentUser';
+      
+      it('should be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.true;
+        expect(req.isUnauthenticated()).to.be.false;
+      });
+    });
+    
+    describe('without a user', function() {
+      var req = new http.IncomingMessage();
+      
+      it('should not be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.false;
+        expect(req.isUnauthenticated()).to.be.true;
+      });
+    });
+    
+    describe('with a null user', function() {
+      var req = new http.IncomingMessage();
+      req.user = null;
+      
+      it('should not be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.false;
+        expect(req.isUnauthenticated()).to.be.true;
+      });
+    });
+    
+  });
+  
 });
