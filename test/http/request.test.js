@@ -113,6 +113,33 @@ describe('http.ServerRequest', function() {
       });
     });
     
+    describe('not establishing a session and invoked without a callback', function() {
+      var passport = new Passport();
+      
+      var req = new http.IncomingMessage();
+      req._passport = {};
+      req._passport.instance = passport;
+      req._passport.session = {};
+      
+      var user = { id: '1', username: 'root' };
+      req.login(user, { session: false });
+      
+      it('should be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.true;
+        expect(req.isUnauthenticated()).to.be.false;
+      });
+      
+      it('should set user', function() {
+        expect(req.user).to.be.an('object');
+        expect(req.user.id).to.equal('1');
+        expect(req.user.username).to.equal('root');
+      });
+      
+      it('should not serialize user', function() {
+        expect(req._passport.session.user).to.be.undefined;
+      });
+    });
+    
     describe('establishing a session', function() {
       var passport = new Passport();
       passport.serializeUser(function(user, done) {
@@ -239,6 +266,64 @@ describe('http.ServerRequest', function() {
       });
       
       it('should not serialize user', function() {
+        expect(req._passport.session.user).to.be.undefined;
+      });
+    });
+    
+  });
+  
+  
+  describe('#logout', function() {
+    
+    describe('existing session', function() {
+      var passport = new Passport();
+      
+      var req = new http.IncomingMessage();
+      req.user = { id: '1', username: 'root' };
+      req._passport = {};
+      req._passport.instance = passport;
+      req._passport.session = {};
+      req._passport.session.user = '1';
+      
+      req.logout();
+      
+      it('should not be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.false;
+        expect(req.isUnauthenticated()).to.be.true;
+      });
+      
+      it('should clear user', function() {
+        expect(req.user).to.be.null;
+      });
+      
+      it('should clear serialized user', function() {
+        expect(req._passport.session.user).to.be.undefined;
+      });
+    });
+    
+    describe('existing session and clearing custom user property', function() {
+      var passport = new Passport();
+      
+      var req = new http.IncomingMessage();
+      req.currentUser = { id: '1', username: 'root' };
+      req._passport = {};
+      req._passport.instance = passport;
+      req._passport.instance._userProperty = 'currentUser';
+      req._passport.session = {};
+      req._passport.session.user = '1';
+      
+      req.logout();
+      
+      it('should not be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.false;
+        expect(req.isUnauthenticated()).to.be.true;
+      });
+      
+      it('should clear user', function() {
+        expect(req.currentUser).to.be.null;
+      });
+      
+      it('should clear serialized user', function() {
         expect(req._passport.session.user).to.be.undefined;
       });
     });

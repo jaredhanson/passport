@@ -216,6 +216,7 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  // OK
   'request to login without a session and no callback': {
     topic: function() {
       var self = this;
@@ -250,6 +251,7 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  // OK
   'request with a login session': {
     topic: function() {
       var req = new http.IncomingMessage();
@@ -279,6 +281,7 @@ vows.describe('HttpServerRequest').addBatch({
     },
   },
   
+  // OK
   'request with a login session using a custom user property': {
     topic: function() {
       var req = new http.IncomingMessage();
