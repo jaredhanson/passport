@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , initialize = require('../../lib/middleware/initialize')
   , Passport = require('../..').Passport;
@@ -36,7 +39,7 @@ describe('middleware/initialize', function() {
     });
     
     it('should expose empty object as session storage on internal request property', function() {
-      expect(request._passport.session).to.be.an('object')
+      expect(request._passport.session).to.be.an('object');
       expect(Object.keys(request._passport.session)).to.have.length(0);
     });
   });

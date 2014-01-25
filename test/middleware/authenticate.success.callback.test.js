@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , authenticate = require('../../lib/middleware/authenticate')
   , Passport = require('../..').Passport;
@@ -11,7 +14,7 @@ describe('middleware/authenticate', function() {
     Strategy.prototype.authenticate = function(req) {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { message: 'Hello' });
-    }    
+    };
     
     var passport = new Passport();
     passport.use('success', new Strategy());
@@ -63,12 +66,12 @@ describe('middleware/authenticate', function() {
     Strategy.prototype.authenticate = function(req) {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { message: 'Hello' });
-    }    
+    };
     
     var passport = new Passport();
     passport.use('success', new Strategy());
     
-    var error, user, info;
+    var request, error, user, info;
 
     before(function(done) {
       function callback(e, u, i) {

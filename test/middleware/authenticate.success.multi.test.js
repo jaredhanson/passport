@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , authenticate = require('../../lib/middleware/authenticate')
   , Passport = require('../..').Passport;
@@ -10,13 +13,13 @@ describe('middleware/authenticate', function() {
     }
     StrategyA.prototype.authenticate = function(req) {
       this.success({ username: 'bob-a' });
-    }
+    };
     
     function StrategyB() {
     }
     StrategyB.prototype.authenticate = function(req) {
       this.success({ username: 'bob-b' });
-    }
+    };
     
     var passport = new Passport();
     passport.use('a', new StrategyA());
@@ -32,7 +35,7 @@ describe('middleware/authenticate', function() {
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
-          }
+          };
         })
         .next(function(err) {
           error = err;
@@ -56,13 +59,13 @@ describe('middleware/authenticate', function() {
     }
     StrategyA.prototype.authenticate = function(req) {
       this.fail('A challenge');
-    }
+    };
     
     function StrategyB() {
     }
     StrategyB.prototype.authenticate = function(req) {
       this.success({ username: 'bob-b' });
-    }
+    };
     
     var passport = new Passport();
     passport.use('a', new StrategyA());
@@ -78,7 +81,7 @@ describe('middleware/authenticate', function() {
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
-          }
+          };
         })
         .next(function(err) {
           error = err;

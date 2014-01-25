@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , authenticate = require('../../lib/middleware/authenticate')
   , Passport = require('../..').Passport;
@@ -22,7 +25,7 @@ describe('middleware/authenticate', function() {
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
-          }
+          };
         })
         .next(function(err) {
           error = err;

@@ -1,3 +1,5 @@
+/* global describe, it, expect, before */
+
 var chai = require('chai')
   , authenticate = require('../../lib/middleware/authenticate')
   , Passport = require('../..').Passport;
@@ -11,7 +13,7 @@ describe('middleware/authenticate', function() {
     Strategy.prototype.authenticate = function(req, options) {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { message: 'Welcome!' });
-    }    
+    };
     
     var passport = new Passport();
     passport.use('success', new Strategy());
@@ -28,7 +30,7 @@ describe('middleware/authenticate', function() {
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
-          }
+          };
         })
         .end(function(res) {
           response = res;
@@ -44,7 +46,7 @@ describe('middleware/authenticate', function() {
     });
     
     it('should add message to session', function() {
-      expect(request.session.messages).to.have.length(1)
+      expect(request.session.messages).to.have.length(1);
       expect(request.session.messages[0]).to.equal('Login complete');
     });
     
@@ -60,7 +62,7 @@ describe('middleware/authenticate', function() {
     Strategy.prototype.authenticate = function(req, options) {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { message: 'Welcome!' });
-    }    
+    };
     
     var passport = new Passport();
     passport.use('success', new Strategy());
@@ -78,7 +80,7 @@ describe('middleware/authenticate', function() {
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
-          }
+          };
         })
         .end(function(res) {
           response = res;
@@ -94,7 +96,7 @@ describe('middleware/authenticate', function() {
     });
     
     it('should add message to session', function() {
-      expect(request.session.messages).to.have.length(2)
+      expect(request.session.messages).to.have.length(2);
       expect(request.session.messages[0]).to.equal('I exist!');
       expect(request.session.messages[1]).to.equal('Login complete');
     });
@@ -111,7 +113,7 @@ describe('middleware/authenticate', function() {
     Strategy.prototype.authenticate = function(req, options) {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { message: 'Welcome!' });
-    }    
+    };
     
     var passport = new Passport();
     passport.use('success', new Strategy());
@@ -128,7 +130,7 @@ describe('middleware/authenticate', function() {
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
-          }
+          };
         })
         .end(function(res) {
           response = res;
@@ -144,7 +146,7 @@ describe('middleware/authenticate', function() {
     });
     
     it('should add message to session', function() {
-      expect(request.session.messages).to.have.length(1)
+      expect(request.session.messages).to.have.length(1);
       expect(request.session.messages[0]).to.equal('Welcome!');
     });
     
@@ -160,7 +162,7 @@ describe('middleware/authenticate', function() {
     Strategy.prototype.authenticate = function(req, options) {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { message: 'Welcome!', scope: 'read' });
-    }    
+    };
     
     var passport = new Passport();
     passport.use('success', new Strategy());
@@ -177,7 +179,7 @@ describe('middleware/authenticate', function() {
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
-          }
+          };
         })
         .end(function(res) {
           response = res;
@@ -193,7 +195,7 @@ describe('middleware/authenticate', function() {
     });
     
     it('should add message to session', function() {
-      expect(request.session.messages).to.have.length(1)
+      expect(request.session.messages).to.have.length(1);
       expect(request.session.messages[0]).to.equal('Welcome!');
     });
     

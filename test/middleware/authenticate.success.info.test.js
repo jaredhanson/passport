@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , authenticate = require('../../lib/middleware/authenticate')
   , Passport = require('../..').Passport;
@@ -11,7 +14,7 @@ describe('middleware/authenticate', function() {
     Strategy.prototype.authenticate = function(req) {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { clientId: '123', scope: 'read' });
-    }
+    };
     
     var passport = new Passport();
     passport.use('success', new Strategy());
@@ -26,7 +29,7 @@ describe('middleware/authenticate', function() {
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
-          }
+          };
         })
         .next(function(err) {
           error = err;
@@ -59,7 +62,7 @@ describe('middleware/authenticate', function() {
     Strategy.prototype.authenticate = function(req) {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { clientId: '123', scope: 'read' });
-    }
+    };
     
     var passport = new Passport();
     passport.use('success', new Strategy());
@@ -77,7 +80,7 @@ describe('middleware/authenticate', function() {
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
-          }
+          };
         })
         .next(function(err) {
           error = err;
@@ -111,7 +114,7 @@ describe('middleware/authenticate', function() {
     Strategy.prototype.authenticate = function(req) {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { clientId: '123', scope: 'read' });
-    }
+    };
     
     var passport = new Passport();
     passport.use('success', new Strategy());
@@ -129,7 +132,7 @@ describe('middleware/authenticate', function() {
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
-          }
+          };
         })
         .next(function(err) {
           error = err;
@@ -160,7 +163,7 @@ describe('middleware/authenticate', function() {
     Strategy.prototype.authenticate = function(req) {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { clientId: '123', scope: 'read' });
-    }
+    };
     
     var passport = new Passport();
     passport.use('success', new Strategy());
@@ -175,7 +178,7 @@ describe('middleware/authenticate', function() {
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
-          }
+          };
         })
         .next(function(err) {
           error = err;

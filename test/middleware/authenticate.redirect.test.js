@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , authenticate = require('../../lib/middleware/authenticate')
   , Passport = require('../..').Passport;
@@ -10,7 +13,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.redirect('http://www.example.com/idp');
-    }    
+    };
     
     var passport = new Passport();
     passport.use('redirect', new Strategy());
@@ -45,7 +48,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.redirect('http://www.example.com/idp', 303);
-    }    
+    };
     
     var passport = new Passport();
     passport.use('redirect', new Strategy());
@@ -80,7 +83,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.redirect('http://www.example.com/idp');
-    }    
+    };
     
     var passport = new Passport();
     passport.use('redirect', new Strategy());
@@ -114,7 +117,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.redirect('http://www.example.com/idp', 303);
-    }    
+    };
     
     var passport = new Passport();
     passport.use('redirect', new Strategy());
