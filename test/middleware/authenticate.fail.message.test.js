@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , authenticate = require('../../lib/middleware/authenticate')
   , Passport = require('../..').Passport;
@@ -10,7 +13,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail({ message: 'Invalid password' });
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -36,7 +39,7 @@ describe('middleware/authenticate', function() {
     });
     
     it('should add message to session', function() {
-      expect(request.session.messages).to.have.length(1)
+      expect(request.session.messages).to.have.length(1);
       expect(request.session.messages[0]).to.equal('Wrong credentials');
     });
     
@@ -51,7 +54,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail({ message: 'Invalid password' });
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -94,7 +97,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail({ message: 'Invalid password' });
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -120,7 +123,7 @@ describe('middleware/authenticate', function() {
     });
     
     it('should add message to session', function() {
-      expect(request.session.messages).to.have.length(1)
+      expect(request.session.messages).to.have.length(1);
       expect(request.session.messages[0]).to.equal('Invalid password');
     });
     
@@ -135,7 +138,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail({ message: 'Invalid password', scope: 'read' });
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -161,7 +164,7 @@ describe('middleware/authenticate', function() {
     });
     
     it('should add message to session', function() {
-      expect(request.session.messages).to.have.length(1)
+      expect(request.session.messages).to.have.length(1);
       expect(request.session.messages[0]).to.equal('Invalid password');
     });
     

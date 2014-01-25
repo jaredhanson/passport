@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , authenticate = require('../../lib/middleware/authenticate')
   , Passport = require('../..').Passport;
@@ -10,7 +13,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail();
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -45,7 +48,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail();
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -79,7 +82,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail('MOCK challenge');
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -121,7 +124,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail('MOCK challenge', 403);
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -156,7 +159,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail(400);
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -191,7 +194,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail();
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -215,7 +218,7 @@ describe('middleware/authenticate', function() {
     
     it('should error', function() {
       expect(error).to.be.an.instanceOf(Error);
-      expect(error.constructor.name).to.equal('AuthenticationError')
+      expect(error.constructor.name).to.equal('AuthenticationError');
       expect(error.message).to.equal('Unauthorized');
       expect(error.status).to.equal(401);
     });
@@ -236,7 +239,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail({ message: 'Invalid credentials' });
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -260,7 +263,7 @@ describe('middleware/authenticate', function() {
     
     it('should error', function() {
       expect(error).to.be.an.instanceOf(Error);
-      expect(error.constructor.name).to.equal('AuthenticationError')
+      expect(error.constructor.name).to.equal('AuthenticationError');
       expect(error.message).to.equal('Unauthorized');
       expect(error.status).to.equal(401);
     });
@@ -281,7 +284,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail({ message: 'Multiple credentials' }, 400);
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -305,7 +308,7 @@ describe('middleware/authenticate', function() {
     
     it('should error', function() {
       expect(error).to.be.an.instanceOf(Error);
-      expect(error.constructor.name).to.equal('AuthenticationError')
+      expect(error.constructor.name).to.equal('AuthenticationError');
       expect(error.message).to.equal('Bad Request');
       expect(error.status).to.equal(400);
     });
@@ -326,7 +329,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail('Bearer challenge');
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -350,7 +353,7 @@ describe('middleware/authenticate', function() {
     
     it('should error', function() {
       expect(error).to.be.an.instanceOf(Error);
-      expect(error.constructor.name).to.equal('AuthenticationError')
+      expect(error.constructor.name).to.equal('AuthenticationError');
       expect(error.message).to.equal('Unauthorized');
       expect(error.status).to.equal(401);
     });
@@ -378,7 +381,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail('Bearer challenge', 403);
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -402,7 +405,7 @@ describe('middleware/authenticate', function() {
     
     it('should error', function() {
       expect(error).to.be.an.instanceOf(Error);
-      expect(error.constructor.name).to.equal('AuthenticationError')
+      expect(error.constructor.name).to.equal('AuthenticationError');
       expect(error.message).to.equal('Forbidden');
       expect(error.status).to.equal(403);
     });
@@ -423,7 +426,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail(402);
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -447,7 +450,7 @@ describe('middleware/authenticate', function() {
     
     it('should error', function() {
       expect(error).to.be.an.instanceOf(Error);
-      expect(error.constructor.name).to.equal('AuthenticationError')
+      expect(error.constructor.name).to.equal('AuthenticationError');
       expect(error.message).to.equal('Payment Required');
       expect(error.status).to.equal(402);
     });

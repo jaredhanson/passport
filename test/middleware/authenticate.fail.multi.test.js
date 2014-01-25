@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , authenticate = require('../../lib/middleware/authenticate')
   , Passport = require('../..').Passport;
@@ -10,19 +13,19 @@ describe('middleware/authenticate', function() {
     }
     BasicStrategy.prototype.authenticate = function(req) {
       this.fail('BASIC challenge');
-    }
+    };
     
     function DigestStrategy() {
     }
     DigestStrategy.prototype.authenticate = function(req) {
       this.fail('DIGEST challenge');
-    }
+    };
     
     function NoChallengeStrategy() {
     }
     NoChallengeStrategy.prototype.authenticate = function(req) {
       this.fail();
-    }
+    };
     
     var passport = new Passport();
     passport.use('basic', new BasicStrategy());
@@ -37,8 +40,8 @@ describe('middleware/authenticate', function() {
           request = req;
           
           req.flash = function(type, msg) {
-            this.message = { type: type, msg: msg }
-          }
+            this.message = { type: type, msg: msg };
+          };
         })
         .end(function(res) {
           response = res;
@@ -71,19 +74,19 @@ describe('middleware/authenticate', function() {
     }
     BasicStrategy.prototype.authenticate = function(req) {
       this.fail('BASIC challenge', 400);
-    }
+    };
     
     function BearerStrategy() {
     }
     BearerStrategy.prototype.authenticate = function(req) {
       this.fail('BEARER challenge', 403);
-    }
+    };
     
     function NoChallengeStrategy() {
     }
     NoChallengeStrategy.prototype.authenticate = function(req) {
       this.fail(402);
-    }
+    };
     
     var passport = new Passport();
     passport.use('basic', new BasicStrategy());
@@ -98,8 +101,8 @@ describe('middleware/authenticate', function() {
           request = req;
           
           req.flash = function(type, msg) {
-            this.message = { type: type, msg: msg }
-          }
+            this.message = { type: type, msg: msg };
+          };
         })
         .end(function(res) {
           response = res;
@@ -124,13 +127,13 @@ describe('middleware/authenticate', function() {
     }
     StrategyA.prototype.authenticate = function(req) {
       this.fail('A message');
-    }
+    };
     
     function StrategyB() {
     }
     StrategyB.prototype.authenticate = function(req) {
       this.fail('B message');
-    }
+    };
     
     var passport = new Passport();
     passport.use('a', new StrategyA());
@@ -145,8 +148,8 @@ describe('middleware/authenticate', function() {
           request = req;
           
           req.flash = function(type, msg) {
-            this.message = { type: type, msg: msg }
-          }
+            this.message = { type: type, msg: msg };
+          };
         })
         .end(function(res) {
           response = res;
@@ -175,19 +178,19 @@ describe('middleware/authenticate', function() {
     }
     BasicStrategy.prototype.authenticate = function(req) {
       this.fail('BASIC challenge');
-    }
+    };
     
     function DigestStrategy() {
     }
     DigestStrategy.prototype.authenticate = function(req) {
       this.fail('DIGEST challenge');
-    }
+    };
     
     function NoChallengeStrategy() {
     }
     NoChallengeStrategy.prototype.authenticate = function(req) {
       this.fail();
-    }
+    };
     
     var passport = new Passport();
     passport.use('basic', new BasicStrategy());
@@ -246,19 +249,19 @@ describe('middleware/authenticate', function() {
     }
     BasicStrategy.prototype.authenticate = function(req) {
       this.fail('BASIC challenge', 400);
-    }
+    };
     
     function BearerStrategy() {
     }
     BearerStrategy.prototype.authenticate = function(req) {
       this.fail('BEARER challenge', 403);
-    }
+    };
     
     function NoChallengeStrategy() {
     }
     NoChallengeStrategy.prototype.authenticate = function(req) {
       this.fail(402);
-    }
+    };
     
     var passport = new Passport();
     passport.use('basic', new BasicStrategy());
@@ -317,7 +320,7 @@ describe('middleware/authenticate', function() {
     }
     BasicStrategy.prototype.authenticate = function(req) {
       this.fail('BASIC challenge');
-    }
+    };
     
     var passport = new Passport();
     passport.use('basic', new BasicStrategy());

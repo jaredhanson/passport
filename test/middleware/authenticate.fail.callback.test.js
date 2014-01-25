@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , authenticate = require('../../lib/middleware/authenticate')
   , Passport = require('../..').Passport;
@@ -10,7 +13,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail();
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -49,7 +52,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail({ message: 'Invalid password' });
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -99,7 +102,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail({ message: 'Invalid password' }, 403);
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -149,7 +152,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail('Bearer challenge');
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -181,7 +184,7 @@ describe('middleware/authenticate', function() {
     });
     
     it('should pass challenge to callback', function() {
-      expect(challenge).to.equal('Bearer challenge')
+      expect(challenge).to.equal('Bearer challenge');
     });
     
     it('should pass status to callback', function() {
@@ -198,7 +201,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail('Bearer challenge', 403);
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -230,11 +233,11 @@ describe('middleware/authenticate', function() {
     });
     
     it('should pass challenge to callback', function() {
-      expect(challenge).to.equal('Bearer challenge')
+      expect(challenge).to.equal('Bearer challenge');
     });
     
     it('should pass status to callback', function() {
-      expect(status).to.equal(403)
+      expect(status).to.equal(403);
     });
     
     it('should not set user on request', function() {
@@ -247,7 +250,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail(402);
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());
@@ -283,7 +286,7 @@ describe('middleware/authenticate', function() {
     });
     
     it('should pass status to callback', function() {
-      expect(status).to.equal(402)
+      expect(status).to.equal(402);
     });
     
     it('should not set user on request', function() {
@@ -296,7 +299,7 @@ describe('middleware/authenticate', function() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.fail();
-    }    
+    };
     
     var passport = new Passport();
     passport.use('fail', new Strategy());

@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , authenticate = require('../../lib/middleware/authenticate')
   , Passport = require('../..').Passport;
@@ -12,7 +15,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail({ message: 'Invalid password' });
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -27,8 +30,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -57,7 +60,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail({ message: 'Invalid password' });
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -72,8 +75,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -102,7 +105,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail({ message: 'Invalid password' });
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -117,8 +120,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -147,7 +150,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail({ message: 'Invalid password' });
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -162,8 +165,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -192,7 +195,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail({ message: 'Invalid password' });
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -207,8 +210,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -242,7 +245,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail({ type: 'notice', message: 'Invite required' });
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -257,8 +260,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -287,7 +290,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail({ type: 'notice', message: 'Invite required' });
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -302,8 +305,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -332,7 +335,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail({ type: 'notice', message: 'Invite required' });
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -347,8 +350,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -377,7 +380,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail({ type: 'notice', message: 'Invite required' });
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -392,8 +395,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -422,7 +425,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail({ type: 'notice', message: 'Invite required' });
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -437,8 +440,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -472,7 +475,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail('Access denied');
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -487,8 +490,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -517,7 +520,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail('Access denied');
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -532,8 +535,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -562,7 +565,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail('Access denied');
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -577,8 +580,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -607,7 +610,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail('Access denied');
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -622,8 +625,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -652,7 +655,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail('Access denied');
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -667,8 +670,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -702,7 +705,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail();
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -717,8 +720,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -746,7 +749,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail();
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -761,8 +764,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -790,7 +793,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail();
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -805,8 +808,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -835,7 +838,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail();
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -850,8 +853,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
@@ -880,7 +883,7 @@ describe('middleware/authenticate', function() {
       }
       Strategy.prototype.authenticate = function(req) {
         this.fail();
-      }    
+      };
     
       var passport = new Passport();
       passport.use('fail', new Strategy());
@@ -895,8 +898,8 @@ describe('middleware/authenticate', function() {
             req.session = {};
             
             req.flash = function(type, msg) {
-              this.message = { type: type, msg: msg }
-            }
+              this.message = { type: type, msg: msg };
+            };
           })
           .end(function(res) {
             response = res;
