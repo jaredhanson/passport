@@ -1,5 +1,7 @@
-var chai = require('chai')
-  , Authenticator = require('../lib/authenticator');
+/* global describe, it, expect, before */
+/* jshint expr: true, sub: true */
+
+var Authenticator = require('../lib/authenticator');
 
 
 describe('Authenticator', function() {
@@ -11,7 +13,7 @@ describe('Authenticator', function() {
         this.name = 'default';
       }
       Strategy.prototype.authenticate = function(req) {
-      }
+      };
       
       var authenticator = new Authenticator();
       authenticator.use(new Strategy());
@@ -25,7 +27,7 @@ describe('Authenticator', function() {
       function Strategy() {
       }
       Strategy.prototype.authenticate = function(req) {
-      }
+      };
       
       var authenticator = new Authenticator();
       authenticator.use('foo', new Strategy());
@@ -40,7 +42,7 @@ describe('Authenticator', function() {
         this.name = 'default';
       }
       Strategy.prototype.authenticate = function(req) {
-      }
+      };
       
       var authenticator = new Authenticator();
       authenticator.use('bar', new Strategy());
@@ -55,7 +57,7 @@ describe('Authenticator', function() {
       function Strategy() {
       }
       Strategy.prototype.authenticate = function(req) {
-      }
+      };
       
       expect(function() {
         var authenticator = new Authenticator();
@@ -69,7 +71,7 @@ describe('Authenticator', function() {
     function Strategy() {
     }
     Strategy.prototype.authenticate = function(req) {
-    }
+    };
     
     var authenticator = new Authenticator();
     authenticator.use('one', new Strategy());
@@ -860,7 +862,7 @@ describe('Authenticator', function() {
     describe('with one transform that throws an exception', function() {
       var authenticator = new Authenticator();
       authenticator.transformAuthInfo(function(info, done) {
-        throw new Error('something went horribly wrong')
+        throw new Error('something went horribly wrong');
       });
       
       var error, obj;

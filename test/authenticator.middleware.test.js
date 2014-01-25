@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var chai = require('chai')
   , Authenticator = require('../lib/authenticator');
 
@@ -33,7 +36,7 @@ describe('Authenticator', function() {
       });
       
       it('should set user property on authenticator', function() {
-        expect(passport._userProperty).to.equal('user')
+        expect(passport._userProperty).to.equal('user');
       });
     
       it('should initialize namespace within session', function() {
@@ -75,7 +78,7 @@ describe('Authenticator', function() {
       });
       
       it('should set user property on authenticator', function() {
-        expect(passport._userProperty).to.equal('currentUser')
+        expect(passport._userProperty).to.equal('currentUser');
       });
     
       it('should initialize namespace within session', function() {
@@ -111,7 +114,7 @@ describe('Authenticator', function() {
       Strategy.prototype.authenticate = function(req) {
         var user = { id: '1', username: 'jaredhanson' };
         this.success(user);
-      }    
+      };
     
       var passport = new Authenticator();
       passport.use('success', new Strategy());
@@ -126,7 +129,7 @@ describe('Authenticator', function() {
             req.logIn = function(user, options, done) {
               this.user = user;
               done();
-            }
+            };
           })
           .next(function(err) {
             error = err;
@@ -167,7 +170,7 @@ describe('Authenticator', function() {
       Strategy.prototype.authenticate = function(req) {
         var user = { id: '1', username: 'jaredhanson' };
         this.success(user);
-      }    
+      };
     
       var passport = new Authenticator();
       passport.use('success', new Strategy());
@@ -182,7 +185,7 @@ describe('Authenticator', function() {
             req.logIn = function(user, options, done) {
               this.user = user;
               done();
-            }
+            };
           })
           .next(function(err) {
             error = err;

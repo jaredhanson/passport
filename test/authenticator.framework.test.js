@@ -1,5 +1,6 @@
-var chai = require('chai')
-  , Authenticator = require('../lib/authenticator');
+/* global describe, it, expect */
+
+var Authenticator = require('../lib/authenticator');
 
 
 describe('Authenticator', function() {

@@ -1,3 +1,6 @@
+/* global describe, it, expect, before */
+/* jshint expr: true */
+
 var http = require('http')
   , Passport = require('../..').Passport;
 
@@ -390,8 +393,6 @@ describe('http.ServerRequest', function() {
     });
     
     describe('existing session, without passport.initialize() middleware', function() {
-      var passport = new Passport();
-      
       var req = new http.IncomingMessage();
       req.user = { id: '1', username: 'root' };
       
