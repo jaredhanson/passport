@@ -60,7 +60,7 @@ describe('Authenticator', function() {
       expect(function() {
         var authenticator = new Authenticator();
         authenticator.use(new Strategy());
-      }).to.throw(Error, 'authentication strategies must have a name');
+      }).to.throw(Error, 'Authentication strategies must have a name');
     });
   });
   
