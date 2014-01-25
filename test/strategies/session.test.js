@@ -1,5 +1,5 @@
 var chai = require('chai')
-  , SessionStrategy = require('../../lib/passport/strategies/session');
+  , SessionStrategy = require('../../lib/strategies/session');
 
 
 describe('SessionStrategy', function() {

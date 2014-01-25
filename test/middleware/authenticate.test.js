@@ -1,5 +1,5 @@
 var chai = require('chai')
-  , authenticate = require('../../lib/passport/middleware/authenticate');
+  , authenticate = require('../../lib/middleware/authenticate');
 
 
 describe('middleware/authenticate', function() {

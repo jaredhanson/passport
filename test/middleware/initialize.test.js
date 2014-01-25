@@ -1,5 +1,5 @@
 var chai = require('chai')
-  , initialize = require('../../lib/passport/middleware/initialize')
+  , initialize = require('../../lib/middleware/initialize')
   , Passport = require('../..').Passport;
 
 

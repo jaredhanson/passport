@@ -28,7 +28,7 @@
       "url": "http://www.opensource.org/licenses/MIT"
     }
   ],
-  "main": "./lib/passport",
+  "main": "./lib",
   "dependencies": {
     "pkginfo": "0.2.x",
     "passport-strategy": "1.x.x",

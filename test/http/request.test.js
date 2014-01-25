@@ -1,7 +1,7 @@
 var http = require('http')
   , Passport = require('../..').Passport;
 
-require('../../lib/passport/http/request');
+require('../../lib/http/request');
 
 
 describe('http.ServerRequest', function() {
