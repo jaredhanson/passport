@@ -18,8 +18,8 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('fail', { failureMessage: 'Wrong credentials',
-                                                         failureRedirect: 'http://www.example.com/login' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'fail', { failureMessage: 'Wrong credentials',
+                                                         failureRedirect: 'http://www.example.com/login' }))
         .req(function(req) {
           request = req;
           req.session = {};
@@ -59,8 +59,8 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('fail', { failureMessage: 'Wrong credentials',
-                                                         failureRedirect: 'http://www.example.com/login' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'fail', { failureMessage: 'Wrong credentials',
+                                                         failureRedirect: 'http://www.example.com/login' }))
         .req(function(req) {
           request = req;
           req.session = {};
@@ -102,8 +102,8 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('fail', { failureMessage: true,
-                                                         failureRedirect: 'http://www.example.com/login' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'fail', { failureMessage: true,
+                                                         failureRedirect: 'http://www.example.com/login' }))
         .req(function(req) {
           request = req;
           req.session = {};
@@ -143,8 +143,8 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('fail', { failureMessage: true,
-                                                         failureRedirect: 'http://www.example.com/login' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'fail', { failureMessage: true,
+                                                         failureRedirect: 'http://www.example.com/login' }))
         .req(function(req) {
           request = req;
           req.session = {};

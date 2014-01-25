@@ -32,7 +32,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use(authenticate(['basic', 'no-challenge', 'digest']).bind(passport))
+      chai.connect.use(authenticate(passport, ['basic', 'no-challenge', 'digest']))
         .req(function(req) {
           request = req;
           
@@ -93,7 +93,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use(authenticate(['basic', 'no-challenge', 'bearer']).bind(passport))
+      chai.connect.use(authenticate(passport, ['basic', 'no-challenge', 'bearer']))
         .req(function(req) {
           request = req;
           
@@ -139,8 +139,8 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate(['a', 'b'], { failureFlash: true,
-                                                             failureRedirect: 'http://www.example.com/login' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, ['a', 'b'], { failureFlash: true,
+                                                             failureRedirect: 'http://www.example.com/login' }))
         .req(function(req) {
           request = req;
           
@@ -205,7 +205,7 @@ describe('middleware/authenticate', function() {
         done();
       }
       
-      chai.connect.use(authenticate(['basic', 'no-challenge', 'digest'], callback).bind(passport))
+      chai.connect.use(authenticate(passport, ['basic', 'no-challenge', 'digest'], callback))
         .req(function(req) {
           request = req;
         })
@@ -276,7 +276,7 @@ describe('middleware/authenticate', function() {
         done();
       }
       
-      chai.connect.use(authenticate(['basic', 'no-challenge', 'bearer'], callback).bind(passport))
+      chai.connect.use(authenticate(passport, ['basic', 'no-challenge', 'bearer'], callback))
         .req(function(req) {
           request = req;
         })
@@ -333,7 +333,7 @@ describe('middleware/authenticate', function() {
         done();
       }
       
-      chai.connect.use(authenticate(['basic'], callback).bind(passport))
+      chai.connect.use(authenticate(passport, ['basic'], callback))
         .req(function(req) {
           request = req;
         })

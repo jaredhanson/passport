@@ -19,7 +19,7 @@ describe('middleware/authenticate', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(authenticate('success').bind(passport))
+      chai.connect.use(authenticate(passport, 'success'))
         .req(function(req) {
           request = req;
           
@@ -65,7 +65,7 @@ describe('middleware/authenticate', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(authenticate('success', { assignProperty: 'account' }).bind(passport))
+      chai.connect.use(authenticate(passport, 'success', { assignProperty: 'account' }))
         .req(function(req) {
           request = req;
           
@@ -117,7 +117,7 @@ describe('middleware/authenticate', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(authenticate('success', { scope: 'email' }).bind(passport))
+      chai.connect.use(authenticate(passport, 'success', { scope: 'email' }))
         .req(function(req) {
           request = req;
           
@@ -165,7 +165,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('success', { successRedirect: 'http://www.example.com/account' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'success', { successRedirect: 'http://www.example.com/account' }))
         .req(function(req) {
           request = req;
           
@@ -212,7 +212,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('success', { successReturnToOrRedirect: 'http://www.example.com/default' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'success', { successReturnToOrRedirect: 'http://www.example.com/default' }))
         .req(function(req) {
           request = req;
           req.session = { returnTo: 'http://www.example.com/return' }
@@ -264,7 +264,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('success', { successReturnToOrRedirect: 'http://www.example.com/default' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'success', { successReturnToOrRedirect: 'http://www.example.com/default' }))
         .req(function(req) {
           request = req;
           
@@ -311,7 +311,7 @@ describe('middleware/authenticate', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(authenticate('success').bind(passport))
+      chai.connect.use(authenticate(passport, 'success'))
         .req(function(req) {
           request = req;
           

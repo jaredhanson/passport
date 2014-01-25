@@ -24,7 +24,7 @@ describe('middleware/authenticate', function() {
         done();
       }
       
-      chai.connect.use(authenticate('fail', callback).bind(passport))
+      chai.connect.use(authenticate(passport, 'fail', callback))
         .req(function(req) {
           request = req;
         })
@@ -65,7 +65,7 @@ describe('middleware/authenticate', function() {
         done();
       }
       
-      chai.connect.use(authenticate('fail', callback).bind(passport))
+      chai.connect.use(authenticate(passport, 'fail', callback))
         .req(function(req) {
           request = req;
         })
@@ -115,7 +115,7 @@ describe('middleware/authenticate', function() {
         done();
       }
       
-      chai.connect.use(authenticate('fail', callback).bind(passport))
+      chai.connect.use(authenticate(passport, 'fail', callback))
         .req(function(req) {
           request = req;
         })
@@ -165,7 +165,7 @@ describe('middleware/authenticate', function() {
         done();
       }
       
-      chai.connect.use(authenticate('fail', callback).bind(passport))
+      chai.connect.use(authenticate(passport, 'fail', callback))
         .req(function(req) {
           request = req;
         })
@@ -214,7 +214,7 @@ describe('middleware/authenticate', function() {
         done();
       }
       
-      chai.connect.use(authenticate('fail', callback).bind(passport))
+      chai.connect.use(authenticate(passport, 'fail', callback))
         .req(function(req) {
           request = req;
         })
@@ -263,7 +263,7 @@ describe('middleware/authenticate', function() {
         done();
       }
       
-      chai.connect.use(authenticate('fail', callback).bind(passport))
+      chai.connect.use(authenticate(passport, 'fail', callback))
         .req(function(req) {
           request = req;
         })
@@ -310,7 +310,7 @@ describe('middleware/authenticate', function() {
         done();
       }
       
-      chai.connect.use(authenticate('fail', { foo: 'bar' }, callback).bind(passport))
+      chai.connect.use(authenticate(passport, 'fail', { foo: 'bar' }, callback))
         .req(function(req) {
           request = req;
         })

@@ -19,8 +19,8 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('success', { successMessage: 'Login complete',
-                                                            successRedirect: 'http://www.example.com/account' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'success', { successMessage: 'Login complete',
+                                                            successRedirect: 'http://www.example.com/account' }))
         .req(function(req) {
           request = req;
           req.session = {};
@@ -68,8 +68,8 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('success', { successMessage: 'Login complete',
-                                                            successRedirect: 'http://www.example.com/account' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'success', { successMessage: 'Login complete',
+                                                            successRedirect: 'http://www.example.com/account' }))
         .req(function(req) {
           request = req;
           req.session = {};
@@ -119,8 +119,8 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('success', { successMessage: true,
-                                                            successRedirect: 'http://www.example.com/account' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'success', { successMessage: true,
+                                                            successRedirect: 'http://www.example.com/account' }))
         .req(function(req) {
           request = req;
           req.session = {};
@@ -168,8 +168,8 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('success', { successMessage: true,
-                                                            successRedirect: 'http://www.example.com/account' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'success', { successMessage: true,
+                                                            successRedirect: 'http://www.example.com/account' }))
         .req(function(req) {
           request = req;
           req.session = {};

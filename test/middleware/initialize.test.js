@@ -14,7 +14,7 @@ describe('middleware/initialize', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(initialize().bind(passport))
+      chai.connect.use(initialize(passport))
         .req(function(req) {
           request = req;
         })
@@ -46,7 +46,7 @@ describe('middleware/initialize', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(initialize().bind(passport))
+      chai.connect.use(initialize(passport))
         .req(function(req) {
           request = req;
           
@@ -85,7 +85,7 @@ describe('middleware/initialize', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(initialize().bind(passport))
+      chai.connect.use(initialize(passport))
         .req(function(req) {
           request = req;
           
@@ -129,7 +129,7 @@ describe('middleware/initialize', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(initialize().bind(passport))
+      chai.connect.use(initialize(passport))
         .req(function(req) {
           request = req;
           

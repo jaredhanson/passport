@@ -19,7 +19,7 @@ describe('middleware/authenticate', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(authenticate('success').bind(passport))
+      chai.connect.use(authenticate(passport, 'success'))
         .req(function(req) {
           request = req;
           
@@ -70,7 +70,7 @@ describe('middleware/authenticate', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(authenticate('success').bind(passport))
+      chai.connect.use(authenticate(passport, 'success'))
         .req(function(req) {
           request = req;
           
@@ -122,7 +122,7 @@ describe('middleware/authenticate', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(authenticate('success').bind(passport))
+      chai.connect.use(authenticate(passport, 'success'))
         .req(function(req) {
           request = req;
           
@@ -168,7 +168,7 @@ describe('middleware/authenticate', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(authenticate('success', { authInfo: false }).bind(passport))
+      chai.connect.use(authenticate(passport, 'success', { authInfo: false }))
         .req(function(req) {
           request = req;
           

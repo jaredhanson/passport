@@ -24,7 +24,7 @@ describe('middleware/authenticate', function() {
         done();
       }
       
-      chai.connect.use(authenticate('error', callback).bind(passport))
+      chai.connect.use(authenticate(passport, 'error', callback))
         .req(function(req) {
           request = req;
         })
@@ -64,7 +64,7 @@ describe('middleware/authenticate', function() {
         done();
       }
       
-      chai.connect.use(authenticate('error', { foo: 'bar' }, callback).bind(passport))
+      chai.connect.use(authenticate(passport, 'error', { foo: 'bar' }, callback))
         .req(function(req) {
           request = req;
         })

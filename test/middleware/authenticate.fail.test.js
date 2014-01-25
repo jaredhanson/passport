@@ -18,7 +18,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use(authenticate('fail').bind(passport))
+      chai.connect.use(authenticate(passport, 'fail'))
         .req(function(req) {
           request = req;
         })
@@ -53,7 +53,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('fail', { failureRedirect: 'http://www.example.com/login' }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'fail', { failureRedirect: 'http://www.example.com/login' }))
         .req(function(req) {
           request = req;
         })
@@ -87,7 +87,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use(authenticate('fail').bind(passport))
+      chai.connect.use(authenticate(passport, 'fail'))
         .req(function(req) {
           request = req;
         })
@@ -129,7 +129,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use(authenticate('fail').bind(passport))
+      chai.connect.use(authenticate(passport, 'fail'))
         .req(function(req) {
           request = req;
         })
@@ -164,7 +164,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use(authenticate('fail').bind(passport))
+      chai.connect.use(authenticate(passport, 'fail'))
         .req(function(req) {
           request = req;
         })
@@ -199,7 +199,7 @@ describe('middleware/authenticate', function() {
     var request, response, error;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('fail', { failWithError: true }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'fail', { failWithError: true }))
         .req(function(req) {
           request = req;
         })
@@ -244,7 +244,7 @@ describe('middleware/authenticate', function() {
     var request, response, error;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('fail', { failWithError: true }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'fail', { failWithError: true }))
         .req(function(req) {
           request = req;
         })
@@ -289,7 +289,7 @@ describe('middleware/authenticate', function() {
     var request, response, error;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('fail', { failWithError: true }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'fail', { failWithError: true }))
         .req(function(req) {
           request = req;
         })
@@ -334,7 +334,7 @@ describe('middleware/authenticate', function() {
     var request, response, error;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('fail', { failWithError: true }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'fail', { failWithError: true }))
         .req(function(req) {
           request = req;
         })
@@ -386,7 +386,7 @@ describe('middleware/authenticate', function() {
     var request, response, error;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('fail', { failWithError: true }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'fail', { failWithError: true }))
         .req(function(req) {
           request = req;
         })
@@ -431,7 +431,7 @@ describe('middleware/authenticate', function() {
     var request, response, error;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('fail', { failWithError: true }).bind(passport))
+      chai.connect.use('express', authenticate(passport, 'fail', { failWithError: true }))
         .req(function(req) {
           request = req;
         })

@@ -18,7 +18,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use(authenticate('redirect').bind(passport))
+      chai.connect.use(authenticate(passport, 'redirect'))
         .req(function(req) {
           request = req;
         })
@@ -53,7 +53,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use(authenticate('redirect').bind(passport))
+      chai.connect.use(authenticate(passport, 'redirect'))
         .req(function(req) {
           request = req;
         })
@@ -88,7 +88,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('redirect').bind(passport))
+      chai.connect.use('express', authenticate(passport, 'redirect'))
         .req(function(req) {
           request = req;
         })
@@ -122,7 +122,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate('redirect').bind(passport))
+      chai.connect.use('express', authenticate(passport, 'redirect'))
         .req(function(req) {
           request = req;
         })

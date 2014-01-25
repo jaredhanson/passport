@@ -25,7 +25,7 @@ describe('middleware/authenticate', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(authenticate(['a', 'b']).bind(passport))
+      chai.connect.use(authenticate(passport, ['a', 'b']))
         .req(function(req) {
           request = req;
           
@@ -71,7 +71,7 @@ describe('middleware/authenticate', function() {
     var request, error;
 
     before(function(done) {
-      chai.connect.use(authenticate(['a', 'b']).bind(passport))
+      chai.connect.use(authenticate(passport, ['a', 'b']))
         .req(function(req) {
           request = req;
           
