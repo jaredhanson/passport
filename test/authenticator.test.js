@@ -103,7 +103,7 @@ describe('Authenticator', function() {
     
       it('should error', function() {
         expect(error).to.be.an.instanceOf(Error);
-        expect(error.message).to.equal('failed to serialize user into session');
+        expect(error.message).to.equal('Failed to serialize user into session');
       });
       
       it('should not serialize user', function() {
@@ -179,7 +179,7 @@ describe('Authenticator', function() {
     
       it('should error', function() {
         expect(error).to.be.an.instanceOf(Error);
-        expect(error.message).to.equal('failed to serialize user into session');
+        expect(error.message).to.equal('Failed to serialize user into session');
       });
       
       it('should not serialize user', function() {
@@ -205,7 +205,7 @@ describe('Authenticator', function() {
     
       it('should error', function() {
         expect(error).to.be.an.instanceOf(Error);
-        expect(error.message).to.equal('failed to serialize user into session');
+        expect(error.message).to.equal('Failed to serialize user into session');
       });
       
       it('should not serialize user', function() {
@@ -231,7 +231,7 @@ describe('Authenticator', function() {
     
       it('should error', function() {
         expect(error).to.be.an.instanceOf(Error);
-        expect(error.message).to.equal('failed to serialize user into session');
+        expect(error.message).to.equal('Failed to serialize user into session');
       });
       
       it('should not serialize user', function() {
@@ -403,7 +403,7 @@ describe('Authenticator', function() {
     
       it('should error', function() {
         expect(error).to.be.an.instanceOf(Error);
-        expect(error.message).to.equal('failed to deserialize user out of session');
+        expect(error.message).to.equal('Failed to deserialize user out of session');
       });
       
       it('should not deserialize user', function() {
@@ -504,7 +504,7 @@ describe('Authenticator', function() {
     
       it('should error', function() {
         expect(error).to.be.an.instanceOf(Error);
-        expect(error.message).to.equal('failed to deserialize user out of session');
+        expect(error.message).to.equal('Failed to deserialize user out of session');
       });
       
       it('should not deserialize user', function() {
