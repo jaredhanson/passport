@@ -1,8 +1,8 @@
 var vows = require('vows');
 var assert = require('assert');
-var passport = require('passport');
+var passport = require('..');
 var util = require('util');
-var Passport = require('passport').Passport;
+var Passport = require('..').Passport;
 
 
 vows.describe('passport').addBatch({
