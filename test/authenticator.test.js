@@ -384,6 +384,34 @@ describe('Authenticator', function() {
       });
     });
     
+    describe('with one serializer that takes request as argument', function() {
+      var authenticator = new Authenticator();
+      authenticator.serializeUser(function(req, user, done) {
+        if (req.url !== '/foo') { return done(new Error('incorrect req argument')); }
+        done(null, user.id);
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        var req = { url: '/foo' };
+        
+        authenticator.serializeUser({ id: '1', username: 'jared' }, req, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should serialize user', function() {
+        expect(obj).to.equal('1');
+      });
+    });
+    
   });
   
   
@@ -719,6 +747,34 @@ describe('Authenticator', function() {
       });
     });
     
+    describe('with one deserializer that takes request as argument', function() {
+      var authenticator = new Authenticator();
+      authenticator.deserializeUser(function(req, obj, done) {
+        if (req.url !== '/foo') { return done(new Error('incorrect req argument')); }
+        done(null, obj.username);
+      });
+      
+      var error, user;
+    
+      before(function(done) {
+        var req = { url: '/foo' };
+        
+        authenticator.deserializeUser({ id: '1', username: 'jared' }, req, function(err, u) {
+          error = err;
+          user = u;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should deserialize user', function() {
+        expect(user).to.equal('jared');
+      });
+    });
+    
   });
   
   
@@ -885,6 +941,37 @@ describe('Authenticator', function() {
         expect(Object.keys(obj)).to.have.length(2);
         expect(obj.clientId).to.equal('1');
         expect(obj.client.name).to.equal('Two');
+        expect(obj.scope).to.be.undefined;
+      });
+    });
+    
+    describe('with one transform that takes request as argument', function() {
+      var authenticator = new Authenticator();
+      authenticator.transformAuthInfo(function(req, info, done) {
+        if (req.url !== '/foo') { return done(new Error('incorrect req argument')); }
+        done(null, { clientId: info.clientId, client: { name: 'Foo' }});
+      });
+      
+      var error, obj;
+    
+      before(function(done) {
+        var req = { url: '/foo' };
+        
+        authenticator.transformAuthInfo({ clientId: '1', scope: 'write' }, req, function(err, o) {
+          error = err;
+          obj = o;
+          done();
+        });
+      });
+    
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+      
+      it('should not transform info', function() {
+        expect(Object.keys(obj)).to.have.length(2);
+        expect(obj.clientId).to.equal('1');
+        expect(obj.client.name).to.equal('Foo');
         expect(obj.scope).to.be.undefined;
       });
     });
