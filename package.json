@@ -34,7 +34,6 @@
     "pause": "0.0.1"
   },
   "devDependencies": {
-    "vows": "~0.7.x",
     "mocha": "1.x.x",
     "chai": "1.x.x",
     "chai-connect-middleware": "0.3.x",
@@ -44,6 +43,6 @@
     "node": ">= 0.4.0"
   },
   "scripts": {
-    "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js test/**/*-test.js"
+    "test": "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js test/**/*.test.js"
   }
 }
