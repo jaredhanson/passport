@@ -1,5 +1,5 @@
 var chai = require('chai')
-  , Authenticator = require('..').Authenticator;
+  , Authenticator = require('../lib/authenticator');
 
 
 describe('Authenticator', function() {
