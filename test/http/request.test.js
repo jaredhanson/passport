@@ -311,6 +311,26 @@ describe('http.ServerRequest', function() {
       });
     });
     
+    describe('establishing a session, but not passing a callback argument', function() {
+      var passport = new Passport();
+      passport.serializeUser(function(user, done) {
+        done(null, user.id);
+      });
+      
+      var req = new http.IncomingMessage();
+      req._passport = {};
+      req._passport.instance = passport;
+      req._passport.session = {};
+      
+      var user = { id: '1', username: 'root' };
+      
+      it('should throw an exception', function() {
+        expect(function() {
+          req.login(user);
+        }).to.throw(Error, 'req#login requires a callback function');
+      });
+    });
+    
   });
   
   
