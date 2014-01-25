@@ -1,5 +1,12 @@
 # Passport
 
+[![Build](https://travis-ci.org/jaredhanson/passport.png)](https://travis-ci.org/jaredhanson/passport)
+[![Coverage](https://coveralls.io/repos/jaredhanson/passport/badge.png)](https://coveralls.io/r/jaredhanson/passport)
+[![Quality](https://codeclimate.com/github/jaredhanson/passport.png)](https://codeclimate.com/github/jaredhanson/passport)
+[![Dependencies](https://david-dm.org/jaredhanson/passport.png)](https://david-dm.org/jaredhanson/passport)
+[![Tips](http://img.shields.io/gittip/jaredhanson.png)](https://www.gittip.com/jaredhanson/)
+
+
 Passport is [Express](http://expressjs.com/)-compatible authentication
 middleware for [Node.js](http://nodejs.org/).
 
@@ -13,12 +20,6 @@ hooks for controlling what occurs when authentication succeeds or fails.
 ## Install
 
     $ npm install passport
-
-###### Donate
-
-Using Passport in your project?  [Donations](https://www.gittip.com/jaredhanson/)
-are greatly appreciated and help support development of this and other quality
-modules.
 
 ## Usage
 
@@ -130,10 +131,8 @@ that build upon or integrate with Passport.
 
 ## Tests
 
-    $ npm install --dev
+    $ npm install
     $ make test
-
-[![Build Status](https://secure.travis-ci.org/jaredhanson/passport.png)](http://travis-ci.org/jaredhanson/passport)
 
 ## Credits
 
@@ -143,4 +142,4 @@ that build upon or integrate with Passport.
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2011-2013 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2011-2014 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
