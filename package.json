@@ -31,7 +31,8 @@
   "main": "./lib",
   "dependencies": {
     "passport-strategy": "1.x.x",
-    "pause": "0.0.1"
+    "pause": "0.0.1",
+    "q": "~1.0.1"
   },
   "devDependencies": {
     "mocha": "1.x.x",
