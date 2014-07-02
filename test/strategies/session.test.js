@@ -172,7 +172,7 @@ describe('SessionStrategy', function() {
             done(null, { id: user });
           };
           req._passport.session = {};
-          req._passport.session.user = '123456';
+          req._passport.session[req._passport.instance._userProperty] = '123456';
         })
         .authenticate();
     });
