@@ -313,26 +313,48 @@ describe('http.ServerRequest', function() {
         }).to.throw(Error, 'passport.initialize() middleware not in use');
       });
     });
-    
-    describe('establishing a session, but not passing a callback argument', function() {
-      var passport = new Passport();
-      passport.serializeUser(function(user, done) {
-        done(null, user.id);
-      });
-      
-      var req = new http.IncomingMessage();
-      req._passport = {};
-      req._passport.instance = passport;
-      req._passport.session = {};
-      
-      var user = { id: '1', username: 'root' };
-      
-      it('should throw an exception', function() {
-        expect(function() {
-          req.login(user);
-        }).to.throw(Error, 'req#login requires a callback function');
-      });
-    });
+
+	  describe('using a promise', function() {
+		  var passport = new Passport();
+
+		  var req = new http.IncomingMessage();
+		  req._passport = {};
+		  req._passport.instance = passport;
+		  req._passport.session = {};
+
+		  var error;
+
+		  before(function(done) {
+			  var user = { id: '1', username: 'root' };
+
+        req.login(user, { session: false })
+          .then(function () {
+            done();
+          }, function (err) {
+            error = err;
+            done();
+          })
+		  });
+
+		  it('should not error', function() {
+			  expect(error).to.be.undefined;
+		  });
+
+		  it('should be authenticated', function() {
+			  expect(req.isAuthenticated()).to.be.true;
+			  expect(req.isUnauthenticated()).to.be.false;
+		  });
+
+		  it('should set user', function() {
+			  expect(req.user).to.be.an('object');
+			  expect(req.user.id).to.equal('1');
+			  expect(req.user.username).to.equal('root');
+		  });
+
+		  it('should not serialize user', function() {
+			  expect(req._passport.session.user).to.be.undefined;
+		  });
+	  });
     
   });
   
