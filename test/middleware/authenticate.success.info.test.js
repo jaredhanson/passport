@@ -7,7 +7,7 @@ var chai = require('chai')
 
 
 describe('middleware/authenticate', function() {
-  
+
   describe('success with info', function() {
     function Strategy() {
     }
@@ -15,17 +15,17 @@ describe('middleware/authenticate', function() {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { clientId: '123', scope: 'read' });
     };
-    
+
     var passport = new Passport();
     passport.use('success', new Strategy());
-    
+
     var request, error;
 
     before(function(done) {
       chai.connect.use(authenticate(passport, 'success'))
         .req(function(req) {
           request = req;
-          
+
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
@@ -37,17 +37,17 @@ describe('middleware/authenticate', function() {
         })
         .dispatch();
     });
-    
+
     it('should not error', function() {
       expect(error).to.be.undefined;
     });
-    
+
     it('should set user', function() {
       expect(request.user).to.be.an('object');
       expect(request.user.id).to.equal('1');
       expect(request.user.username).to.equal('jaredhanson');
     });
-    
+
     it('should set authInfo', function() {
       expect(request.authInfo).to.be.an('object');
       expect(Object.keys(request.authInfo)).to.have.length(2);
@@ -55,7 +55,7 @@ describe('middleware/authenticate', function() {
       expect(request.authInfo.scope).to.equal('read');
     });
   });
-  
+
   describe('success with info that is transformed', function() {
     function Strategy() {
     }
@@ -63,20 +63,20 @@ describe('middleware/authenticate', function() {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { clientId: '123', scope: 'read' });
     };
-    
+
     var passport = new Passport();
     passport.use('success', new Strategy());
     passport.transformAuthInfo(function(info, done) {
       done(null, { clientId: info.clientId, client: { name: 'Foo' }, scope: info.scope });
     });
-    
+
     var request, error;
 
     before(function(done) {
       chai.connect.use(authenticate(passport, 'success'))
         .req(function(req) {
           request = req;
-          
+
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
@@ -88,17 +88,17 @@ describe('middleware/authenticate', function() {
         })
         .dispatch();
     });
-    
+
     it('should not error', function() {
       expect(error).to.be.undefined;
     });
-    
+
     it('should set user', function() {
       expect(request.user).to.be.an('object');
       expect(request.user.id).to.equal('1');
       expect(request.user.username).to.equal('jaredhanson');
     });
-    
+
     it('should set authInfo', function() {
       expect(request.authInfo).to.be.an('object');
       expect(Object.keys(request.authInfo)).to.have.length(3);
@@ -107,7 +107,7 @@ describe('middleware/authenticate', function() {
       expect(request.authInfo.scope).to.equal('read');
     });
   });
-  
+
   describe('success with info, but transform that encounters an error', function() {
     function Strategy() {
     }
@@ -115,20 +115,20 @@ describe('middleware/authenticate', function() {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { clientId: '123', scope: 'read' });
     };
-    
+
     var passport = new Passport();
     passport.use('success', new Strategy());
     passport.transformAuthInfo(function(info, done) {
       done(new Error('something went wrong'));
     });
-    
+
     var request, error;
 
     before(function(done) {
       chai.connect.use(authenticate(passport, 'success'))
         .req(function(req) {
           request = req;
-          
+
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
@@ -140,23 +140,23 @@ describe('middleware/authenticate', function() {
         })
         .dispatch();
     });
-    
+
     it('should error', function() {
       expect(error).to.be.an.instanceOf(Error);
       expect(error.message).to.equal('something went wrong');
     });
-    
+
     it('should set user', function() {
       expect(request.user).to.be.an('object');
       expect(request.user.id).to.equal('1');
       expect(request.user.username).to.equal('jaredhanson');
     });
-    
+
     it('should not set authInfo', function() {
       expect(request.authInfo).to.be.undefined;
     });
   });
-  
+
   describe('success with info, but option that disables info', function() {
     function Strategy() {
     }
@@ -164,17 +164,17 @@ describe('middleware/authenticate', function() {
       var user = { id: '1', username: 'jaredhanson' };
       this.success(user, { clientId: '123', scope: 'read' });
     };
-    
+
     var passport = new Passport();
     passport.use('success', new Strategy());
-    
+
     var request, error;
 
     before(function(done) {
       chai.connect.use(authenticate(passport, 'success', { authInfo: false }))
         .req(function(req) {
           request = req;
-          
+
           req.logIn = function(user, options, done) {
             this.user = user;
             done();
@@ -186,20 +186,20 @@ describe('middleware/authenticate', function() {
         })
         .dispatch();
     });
-    
+
     it('should not error', function() {
       expect(error).to.be.undefined;
     });
-    
+
     it('should set user', function() {
       expect(request.user).to.be.an('object');
       expect(request.user.id).to.equal('1');
       expect(request.user.username).to.equal('jaredhanson');
     });
-    
+
     it('should not set authInfo', function() {
       expect(request.authInfo).to.be.undefined;
     });
   });
-  
+
 });

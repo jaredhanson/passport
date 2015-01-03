@@ -7,17 +7,17 @@ var chai = require('chai')
 
 
 describe('middleware/authenticate', function() {
-  
+
   describe('pass', function() {
     function Strategy() {
     }
     Strategy.prototype.authenticate = function(req) {
       this.pass();
     };
-    
+
     var passport = new Passport();
     passport.use('pass', new Strategy());
-    
+
     var request, error;
 
     before(function(done) {
@@ -31,14 +31,14 @@ describe('middleware/authenticate', function() {
         })
         .dispatch();
     });
-    
+
     it('should not error', function() {
       expect(error).to.be.undefined;
     });
-    
+
     it('should not set user', function() {
       expect(request.user).to.be.undefined;
     });
   });
-  
+
 });
