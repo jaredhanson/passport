@@ -981,3 +981,12 @@ describe('Authenticator', function() {
   });
   
 });
+
+// Try to execute generator functions tests
+try {
+  require('./authenticator.generators.subtest.js');
+} catch (e) {
+  if (!e instanceof SyntaxError) {
+    throw e;
+  }
+}
