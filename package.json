@@ -30,8 +30,8 @@
   ],
   "main": "./lib",
   "dependencies": {
-    "co": "^4.1.0",
-    "es6-promise": "^2.0.1",
+    "co": "4.1.x",
+    "es6-promise": "2.0.x",
     "passport-strategy": "1.x.x",
     "pause": "0.0.1"
   },
