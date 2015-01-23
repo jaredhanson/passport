@@ -39,8 +39,7 @@ describe('middleware/initialize', function() {
     });
     
     it('should expose empty object as session storage on internal request property', function() {
-      expect(request._passport.session).to.be.an('object');
-      expect(Object.keys(request._passport.session)).to.have.length(0);
+      expect(request._passport.session).to.be.undefined;
     });
   });
   
@@ -67,8 +66,7 @@ describe('middleware/initialize', function() {
     });
     
     it('should initialize namespace within session', function() {
-      expect(request.session.passport).to.be.an('object');
-      expect(Object.keys(request.session.passport)).to.have.length(0);
+      expect(request.session.passport).to.be.undefined;
     });
     
     it('should expose authenticator on internal request property', function() {
@@ -78,8 +76,7 @@ describe('middleware/initialize', function() {
     });
     
     it('should expose session storage on internal request property', function() {
-      expect(request._passport.session).to.be.an('object');
-      expect(Object.keys(request._passport.session)).to.have.length(0);
+      expect(request._passport.session).to.be.undefined;
     });
   });
   
