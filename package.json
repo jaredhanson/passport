@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "mocha": "2.x.x",
-    "chai": "1.x.x",
+    "chai": "2.x.x",
     "chai-connect-middleware": "0.3.x",
     "chai-passport-strategy": "0.2.x",
     "proxyquire": "1.x.x"
