@@ -70,15 +70,22 @@ deserializing.
 
 To use Passport in an [Express](http://expressjs.com/) or
 [Connect](http://senchalabs.github.com/connect/)-based application, configure it
-with the required `passport.initialize()` middleware.  If your application uses
+with the required `passport.initialize()` middleware. You will also need to include
+cookie-parser, body-parser, and express-session dependencies, as they are not 
+included in [Express](http://expressjs.com/) anymore. Require these and 
+use them in the app.configure() function. If your application uses
 persistent login sessions (recommended, but not required), `passport.session()`
 middleware must also be used.
 
     app.configure(function() {
       app.use(express.static(__dirname + '/../../public'));
-      app.use(express.cookieParser());
-      app.use(express.bodyParser());
-      app.use(express.session({ secret: 'keyboard cat' }));
+      app.use(cookieParser());
+      app.use(bodyParser());
+      app.use(session({ 
+        secret: 'keyboard cat',
+        saveUninitialized: false, //You should choose this boolean from the docs
+        resave: false //You shold choose this boolean from the docs
+      }));
       app.use(passport.initialize());
       app.use(passport.session());
       app.use(app.router);
