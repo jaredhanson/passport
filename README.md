@@ -74,15 +74,14 @@ with the required `passport.initialize()` middleware.  If your application uses
 persistent login sessions (recommended, but not required), `passport.session()`
 middleware must also be used.
 
-    app.configure(function() {
-      app.use(express.static(__dirname + '/../../public'));
-      app.use(express.cookieParser());
-      app.use(express.bodyParser());
-      app.use(express.session({ secret: 'keyboard cat' }));
-      app.use(passport.initialize());
-      app.use(passport.session());
-      app.use(app.router);
-    });
+    var app = express();
+    app.use(express.static(__dirname + '/../../public'));
+    app.use(express.cookieParser());
+    app.use(express.bodyParser());
+    app.use(express.session({ secret: 'keyboard cat' }));
+    app.use(passport.initialize());
+    app.use(passport.session());
+    app.use(app.router);
 
 #### Authenticate Requests
 
