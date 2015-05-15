@@ -1,3 +1,5 @@
+[![passport banner](http://cdn.auth0.com/img/passport-banner-github.png)](http://passportjs.org)
+
 # Passport
 
 [![Build](https://travis-ci.org/jaredhanson/passport.svg?branch=master)](https://travis-ci.org/jaredhanson/passport)
@@ -43,6 +45,8 @@ application must be configured.
         });
       }
     ));
+
+There are 300+ strategies. Find the ones you want at: [passportjs.org](http://passportjs.org)
 
 #### Sessions
 
@@ -97,10 +101,12 @@ middleware to authenticate requests.
 
 ## Strategies
 
-Passport has a comprehensive set of **over 140** authentication strategies
+Passport has a comprehensive set of **over 300** authentication strategies
 covering social networking, enterprise integration, API services, and more.
-The [complete list](https://github.com/jaredhanson/passport/wiki/Strategies) is
-available on the [wiki](https://github.com/jaredhanson/passport/wiki).
+
+## Search all strategies
+
+There is a **Strategy Search** at [passportjs.org](http://passportjs.org)
 
 The following table lists commonly used strategies:
 
@@ -143,8 +149,13 @@ that build upon or integrate with Passport.
 
   - [Jared Hanson](http://github.com/jaredhanson)
 
+## Supporters
+
+This project is supported by ![](http://passportjs.org/images/supported_logo.svg) [Auth0](https://auth0.com) 
+
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
 Copyright (c) 2011-2015 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+
