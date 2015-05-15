@@ -1,4 +1,4 @@
-[![passport banner](http://cdn.auth0.com/img/passport-twitter-card.png)](http://passportjs.org)
+[![passport banner](http://cdn.auth0.com/img/passport-banner-github.png)](http://passportjs.org)
 
 # Passport
 
