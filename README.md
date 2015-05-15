@@ -46,7 +46,7 @@ application must be configured.
       }
     ));
 
-There are 300+ strategies. There is a **Strategy Search** at [passportjs.org](http://passportjs.org)
+There are 300+ strategies. Find the ones you want at: [passportjs.org](http://passportjs.org)
 
 #### Sessions
 
@@ -103,6 +103,8 @@ middleware to authenticate requests.
 
 Passport has a comprehensive set of **over 300** authentication strategies
 covering social networking, enterprise integration, API services, and more.
+
+## Search all strategies
 
 There is a **Strategy Search** at [passportjs.org](http://passportjs.org)
 
