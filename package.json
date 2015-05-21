@@ -22,12 +22,7 @@
   "bugs": {
     "url": "http://github.com/jaredhanson/passport/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/MIT"
-    }
-  ],
+  "license": "MIT",
   "main": "./lib",
   "dependencies": {
     "passport-strategy": "1.x.x",
