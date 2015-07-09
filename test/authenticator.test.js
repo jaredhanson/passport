@@ -980,4 +980,242 @@ describe('Authenticator', function() {
     
   });
   
+
+  describe('#findStrategy', function() {
+
+    describe('without strategies', function() {
+      var authenticator = new Authenticator();
+      var error, strategy;
+
+      before(function(done) {
+        authenticator.findStrategy('foo', {}, function(err, s) {
+          error = err;
+          strategy = s;
+          done();
+        });
+      });
+
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+
+      it('should return no strategy', function() {
+        expect(strategy).to.be.undefined;
+      });
+    });
+
+    describe('with no matching strategy', function() {
+      function Strategy() {
+        this.name = 'foo';
+      }
+      Strategy.prototype.authenticate = function(req) {
+      };
+
+      var authenticator = new Authenticator();
+      authenticator.use(new Strategy());
+
+      var error, strategy;
+
+      before(function(done) {
+        authenticator.findStrategy('bar', {}, function(err, s) {
+          error = err;
+          strategy = s;
+          done();
+        });
+      });
+
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+
+      it('should return no strategy', function() {
+        expect(strategy).to.be.undefined;
+      });
+    });
+
+    describe('with a matching strategy', function() {
+      function Strategy() {
+        this.name = 'foo';
+      }
+      Strategy.prototype.authenticate = function(req) {
+      };
+
+      var authenticator = new Authenticator();
+      authenticator.use(new Strategy());
+
+      var error, strategy;
+
+      before(function(done) {
+        authenticator.findStrategy('foo', {}, function(err, s) {
+          error = err;
+          strategy = s;
+          done();
+        });
+      });
+
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+
+      it('should return the strategy', function() {
+        expect(strategy.name).to.equal('foo');
+      });
+    });
+
+    describe('with one find function that encounters an error', function() {
+      var authenticator = new Authenticator();
+      authenticator.findStrategy(function(name, done) {
+        done(new Error('something went wrong'));
+      });
+
+      var error, strategy;
+
+      before(function(done) {
+        authenticator.findStrategy('foo', {}, function(err, s) {
+          error = err;
+          strategy = s;
+          done();
+        });
+      });
+
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('something went wrong');
+      });
+
+      it('should return no strategy', function() {
+        expect(strategy).to.be.undefined;
+      });
+    });
+
+    describe('with one find function that throws an exception', function() {
+      var authenticator = new Authenticator();
+      authenticator.findStrategy(function(name, done) {
+        throw new Error('something went horribly wrong');
+      });
+
+      var error, strategy;
+
+      before(function(done) {
+        authenticator.findStrategy('foo', {}, function(err, s) {
+          error = err;
+          strategy = s;
+          done();
+        });
+      });
+
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('something went horribly wrong');
+      });
+
+      it('should return no strategy', function() {
+        expect(strategy).to.be.undefined;
+      });
+    });
+
+    describe('with one sync find function', function() {
+      function Strategy(name) {
+        this.name = name;
+      }
+      Strategy.prototype.authenticate = function(req) {
+      };
+
+      var authenticator = new Authenticator();
+      authenticator.findStrategy(function(name) {
+        return new Strategy(name);
+      });
+
+      var error, strategy;
+
+      before(function(done) {
+        authenticator.findStrategy('foo', {}, function(err, s) {
+          error = err;
+          strategy = s;
+          done();
+        });
+      });
+
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+
+      it('should return the strategy', function() {
+        expect(strategy.name).to.equal('foo');
+      });
+    });
+
+    describe('with three find functions, the first of which passes and the second of which matches', function() {
+      function Strategy(name) {
+        this.name = name;
+      }
+      Strategy.prototype.authenticate = function(req) {
+      };
+
+      var authenticator = new Authenticator();
+      authenticator.findStrategy(function(name, done) {
+        done(null, undefined);
+      });
+      authenticator.findStrategy(function(name, done) {
+        done(null, new Strategy('foo'));
+      });
+      authenticator.findStrategy(function(name, done) {
+        done(null, new Strategy('bar'));
+      });
+
+      var error, strategy;
+
+      before(function(done) {
+        authenticator.findStrategy('foo', {}, function(err, s) {
+          error = err;
+          strategy = s;
+          done();
+        });
+      });
+
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+
+      it('should return the strategy', function() {
+        expect(strategy.name).to.equal('foo');
+      });
+    });
+
+    describe('with one find function that takes request as argument', function() {
+      function Strategy(name) {
+        this.name = name;
+      }
+      Strategy.prototype.authenticate = function(req) {
+      };
+
+      var authenticator = new Authenticator();
+      authenticator.findStrategy(function(req, name, done) {
+        if (req.url !== '/foo') { return done(new Error('incorrect req argument')); }
+        done(null, new Strategy(name));
+      });
+
+      var error, strategy;
+
+      before(function(done) {
+        var req = { url: '/foo' };
+
+        authenticator.findStrategy('foo', req, function(err, s) {
+          error = err;
+          strategy = s;
+          done();
+        });
+      });
+
+      it('should not error', function() {
+        expect(error).to.be.null;
+      });
+
+      it('should return the strategy', function() {
+        expect(strategy.name).to.equal('foo');
+      });
+    });
+
+  });
+
 });
