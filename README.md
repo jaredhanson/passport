@@ -79,13 +79,12 @@ persistent login sessions (recommended, but not required), `passport.session()`
 middleware must also be used.
 
     var app = express();
-    app.use(express.static(__dirname + '/../../public'));
-    app.use(express.cookieParser());
-    app.use(express.bodyParser());
-    app.use(express.session({ secret: 'keyboard cat' }));
+    app.use(require('serve-static')(__dirname + '/../../public'));
+    app.use(require('cookie-parser')());
+    app.use(require('body-parser').urlencoded({ extended: true }));
+    app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
     app.use(passport.initialize());
     app.use(passport.session());
-    app.use(app.router);
 
 #### Authenticate Requests
 
