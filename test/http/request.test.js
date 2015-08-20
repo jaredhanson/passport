@@ -258,7 +258,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should serialize user', function() {
-        expect(req._passport.session.user).to.equal('1');
+        expect(req._passport.session[passport._userProperty]).to.equal('1');
       });
     });
     
@@ -361,7 +361,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should clear serialized user', function() {
-        expect(req._passport.session.user).to.be.undefined;
+        expect(req._passport.session[passport._userProperty]).to.be.undefined;
       });
     });
     
@@ -388,7 +388,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should clear serialized user', function() {
-        expect(req._passport.session.user).to.be.undefined;
+        expect(req._passport.session[passport._userProperty]).to.be.undefined;
       });
     });
     
