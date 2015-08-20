@@ -49,7 +49,7 @@ describe('Authenticator', function() {
         expect(request._passport.instance).to.equal(passport);
       });
     
-      it('should expose session storage on internal request property', function() {
+      it('should not expose session storage on internal request property', function() {
         expect(request._passport.session).to.be.undefined;
       });
     });
@@ -79,7 +79,7 @@ describe('Authenticator', function() {
         expect(passport._userProperty).to.equal('currentUser');
       });
     
-      it('should initialize namespace within session', function() {
+      it('should not initialize namespace within session', function() {
         expect(request.session.passport).to.be.undefined;
       });
     
@@ -89,7 +89,7 @@ describe('Authenticator', function() {
         expect(request._passport.instance).to.equal(passport);
       });
     
-      it('should expose session storage on internal request property', function() {
+      it('should not expose session storage on internal request property', function() {
         expect(request._passport.session).to.be.undefined;
       });
     });
