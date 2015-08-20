@@ -34,7 +34,7 @@ describe('middleware/authenticate', function() {
         .dispatch();
     });
     
-    it('should not error', function() {
+    it('should error', function() {
       expect(error).to.be.an.instanceOf(Error);
       expect(error.message).to.equal('Unknown authentication strategy "foo"');
     });
