@@ -45,6 +45,28 @@
     "node": ">= 0.4.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js test/**/*.test.js"
-  }
+    "test": "mocha --reporter spec --require test/bootstrap/node test/*.test.js test/**/*.test.js"
+  },
+  "gitHead": "4dce9d99a009fdec8a6b83a8cbc99d119a73c561",
+  "_id": "passport@0.2.1",
+  "_shasum": "a7d34c07b30fb605be885edbc8c93e5142e38574",
+  "_from": "passport@^0.2.1",
+  "_npmVersion": "1.4.23",
+  "_npmUser": {
+    "name": "jaredhanson",
+    "email": "jaredhanson@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "jaredhanson",
+      "email": "jaredhanson@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "a7d34c07b30fb605be885edbc8c93e5142e38574",
+    "tarball": "http://registry.npmjs.org/passport/-/passport-0.2.1.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/passport/-/passport-0.2.1.tgz",
+  "readme": "ERROR: No README data found!"
 }
