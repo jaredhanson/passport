@@ -39,9 +39,8 @@ describe('Authenticator', function() {
         expect(passport._userProperty).to.equal('user');
       });
     
-      it('should initialize namespace within session', function() {
-        expect(request.session.passport).to.be.an('object');
-        expect(Object.keys(request.session.passport)).to.have.length(0);
+      it('should not initialize namespace within session', function() {
+        expect(request.session.passport).to.be.undefined;
       });
     
       it('should expose authenticator on internal request property', function() {
@@ -50,9 +49,8 @@ describe('Authenticator', function() {
         expect(request._passport.instance).to.equal(passport);
       });
     
-      it('should expose session storage on internal request property', function() {
-        expect(request._passport.session).to.be.an('object');
-        expect(Object.keys(request._passport.session)).to.have.length(0);
+      it('should not expose session storage on internal request property', function() {
+        expect(request._passport.session).to.be.undefined;
       });
     });
     
@@ -81,9 +79,8 @@ describe('Authenticator', function() {
         expect(passport._userProperty).to.equal('currentUser');
       });
     
-      it('should initialize namespace within session', function() {
-        expect(request.session.passport).to.be.an('object');
-        expect(Object.keys(request.session.passport)).to.have.length(0);
+      it('should not initialize namespace within session', function() {
+        expect(request.session.passport).to.be.undefined;
       });
     
       it('should expose authenticator on internal request property', function() {
@@ -92,9 +89,8 @@ describe('Authenticator', function() {
         expect(request._passport.instance).to.equal(passport);
       });
     
-      it('should expose session storage on internal request property', function() {
-        expect(request._passport.session).to.be.an('object');
-        expect(Object.keys(request._passport.session)).to.have.length(0);
+      it('should not expose session storage on internal request property', function() {
+        expect(request._passport.session).to.be.undefined;
       });
     });
     

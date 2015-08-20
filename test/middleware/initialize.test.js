@@ -38,9 +38,8 @@ describe('middleware/initialize', function() {
       expect(request._passport.instance).to.equal(passport);
     });
     
-    it('should expose empty object as session storage on internal request property', function() {
-      expect(request._passport.session).to.be.an('object');
-      expect(Object.keys(request._passport.session)).to.have.length(0);
+    it('should not expose empty object as session storage on internal request property', function() {
+      expect(request._passport.session).to.be.undefined;
     });
   });
   
@@ -66,9 +65,8 @@ describe('middleware/initialize', function() {
       expect(error).to.be.undefined;
     });
     
-    it('should initialize namespace within session', function() {
-      expect(request.session.passport).to.be.an('object');
-      expect(Object.keys(request.session.passport)).to.have.length(0);
+    it('should not initialize namespace within session', function() {
+      expect(request.session.passport).to.be.undefined;
     });
     
     it('should expose authenticator on internal request property', function() {
@@ -77,9 +75,8 @@ describe('middleware/initialize', function() {
       expect(request._passport.instance).to.equal(passport);
     });
     
-    it('should expose session storage on internal request property', function() {
-      expect(request._passport.session).to.be.an('object');
-      expect(Object.keys(request._passport.session)).to.have.length(0);
+    it('should not expose session storage on internal request property', function() {
+      expect(request._passport.session).to.be.undefined;
     });
   });
   
