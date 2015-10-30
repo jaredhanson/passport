@@ -35,6 +35,7 @@ or [Twitter](http://twitter.com/)), or federated authentication using [OpenID](h
 Before authenticating requests, the strategy (or strategies) used by an
 application must be configured.
 
+```js
     passport.use(new LocalStrategy(
       function(username, password, done) {
         User.findOne({ username: username }, function (err, user) {
@@ -45,6 +46,7 @@ application must be configured.
         });
       }
     ));
+```
 
 There are 300+ strategies. Find the ones you want at: [passportjs.org](http://passportjs.org)
 
@@ -60,6 +62,7 @@ serialization and deserialization logic.  In a typical application, this will be
 as simple as serializing the user ID, and finding the user by ID when
 deserializing.
 
+```js
     passport.serializeUser(function(user, done) {
       done(null, user.id);
     });
@@ -69,6 +72,7 @@ deserializing.
         done(err, user);
       });
     });
+```
 
 #### Middleware
 
@@ -78,6 +82,7 @@ with the required `passport.initialize()` middleware.  If your application uses
 persistent login sessions (recommended, but not required), `passport.session()`
 middleware must also be used.
 
+```js
     var app = express();
     app.use(require('serve-static')(__dirname + '/../../public'));
     app.use(require('cookie-parser')());
@@ -85,17 +90,20 @@ middleware must also be used.
     app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
     app.use(passport.initialize());
     app.use(passport.session());
+```
 
 #### Authenticate Requests
 
 Passport provides an `authenticate()` function, which is used as route
 middleware to authenticate requests.
 
+```js
     app.post('/login', 
       passport.authenticate('local', { failureRedirect: '/login' }),
       function(req, res) {
         res.redirect('/');
       });
+```
 
 ## Strategies
 
