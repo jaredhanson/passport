@@ -2,8 +2,7 @@
 /* jshint expr: true */
 
 var http = require('http')
-  , Passport = require('../..').Passport
-  , IncomingMessageExt = require('../../lib/http/request');
+  , Passport = require('../..').Passport;
 
 require('../../lib/framework/connect').__monkeypatchNode();
 
@@ -12,12 +11,6 @@ describe('http.ServerRequest', function() {
   
   describe('prototoype', function() {
     var req = new http.IncomingMessage();
-    req.login = IncomingMessageExt.login;
-    req.logIn = IncomingMessageExt.logIn;
-    req.logout = IncomingMessageExt.logout;
-    req.logOut = IncomingMessageExt.logOut;
-    req.isAuthenticated = IncomingMessageExt.isAuthenticated;
-    req.isUnauthenticated = IncomingMessageExt.isUnauthenticated;
     
     it('should be extended with login', function() {
       expect(req.login).to.be.an('function');
@@ -44,7 +37,6 @@ describe('http.ServerRequest', function() {
       var passport = new Passport();
       
       var req = new http.IncomingMessage();
-      req.login = IncomingMessageExt.login;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -85,7 +77,6 @@ describe('http.ServerRequest', function() {
       passport._userProperty = 'currentUser';
       
       var req = new http.IncomingMessage();
-      req.login = IncomingMessageExt.login;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -129,7 +120,6 @@ describe('http.ServerRequest', function() {
       var passport = new Passport();
       
       var req = new http.IncomingMessage();
-      req.login = IncomingMessageExt.login;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -155,7 +145,6 @@ describe('http.ServerRequest', function() {
     
     describe('not establishing a session, without passport.initialize() middleware', function() {
       var req = new http.IncomingMessage();
-      req.login = IncomingMessageExt.login;
       
       var error;
       
@@ -191,7 +180,6 @@ describe('http.ServerRequest', function() {
       });
       
       var req = new http.IncomingMessage();
-      req.login = IncomingMessageExt.login;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -235,7 +223,6 @@ describe('http.ServerRequest', function() {
       passport._userProperty = 'currentUser';
       
       var req = new http.IncomingMessage();
-      req.login = IncomingMessageExt.login;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -282,7 +269,6 @@ describe('http.ServerRequest', function() {
       });
       
       var req = new http.IncomingMessage();
-      req.login = IncomingMessageExt.login;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -319,7 +305,6 @@ describe('http.ServerRequest', function() {
     
     describe('establishing a session, without passport.initialize() middleware', function() {
       var req = new http.IncomingMessage();
-      req.login = IncomingMessageExt.login;
       var user = { id: '1', username: 'root' };
       
       it('should throw an exception', function() {
@@ -336,7 +321,6 @@ describe('http.ServerRequest', function() {
       });
       
       var req = new http.IncomingMessage();
-      req.login = IncomingMessageExt.login;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -359,7 +343,6 @@ describe('http.ServerRequest', function() {
       var passport = new Passport();
       
       var req = new http.IncomingMessage();
-      req.logout = IncomingMessageExt.logout;
       req.user = { id: '1', username: 'root' };
       req._passport = {};
       req._passport.instance = passport;
@@ -386,7 +369,6 @@ describe('http.ServerRequest', function() {
       var passport = new Passport();
       
       var req = new http.IncomingMessage();
-      req.logout = IncomingMessageExt.logout;
       req.currentUser = { id: '1', username: 'root' };
       req._passport = {};
       req._passport.instance = passport;
@@ -412,7 +394,6 @@ describe('http.ServerRequest', function() {
     
     describe('existing session, without passport.initialize() middleware', function() {
       var req = new http.IncomingMessage();
-      req.logout = IncomingMessageExt.logout;
       req.user = { id: '1', username: 'root' };
       
       req.logout();
