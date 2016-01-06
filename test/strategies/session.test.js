@@ -254,28 +254,41 @@ describe('SessionStrategy', function() {
     });
   });
 
-  describe('handling a request that lacks an authenticator', function() {
-    var request, error;
+  describe('handling a request with a login session, passing for deserialization', function() {
+    var request, pass = false;
 
     before(function(done) {
       chai.passport.use(strategy)
-        .error(function(err) {
-          error = err;
+        .pass(function() {
+          pass = true;
           done();
         })
         .req(function(req) {
+          req.path = '/public/main.js';
           request = req;
+
+          req._passport = {};
+          req._passport.instance = {};
+          req._passport.instance.deserializeUser = function(user, req, done) {
+            done(null, { id: user });
+          };
+          req._passport.session = {};
+          req._passport.session.user = '123456';
         })
-        .authenticate();
+        .authenticate({ pass: function(req) { return /^\/public/.test(req.path); } });
     });
 
-    it('should error', function() {
-      expect(error).to.be.an.instanceOf(Error);
-      expect(error.message).to.equal('passport.initialize() middleware not in use');
+    it('should pass', function() {
+      expect(pass).to.be.true;
     });
 
     it('should not set user on request', function() {
-      expect(request.user).to.be.undefined;
+      expect(request.user).to.be.an('undefined');
+    });
+
+    it('should maintain session', function() {
+      expect(request._passport.session).to.be.an('object');
+      expect(request._passport.session.user).to.equal('123456');
     });
   });
 
