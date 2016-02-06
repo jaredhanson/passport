@@ -96,6 +96,25 @@ middleware to authenticate requests.
       function(req, res) {
         res.redirect('/');
       });
+      
+**or we ca make the above code as**
+
+ >First load the login
+     ```javascript
+          app.get('/login',function(req,res){
+                res.render('login.ejs',{message : req.flash('someLoginMessage')});
+          });
+     ```
+    
+>And then we have to process the form
+       ```javascript
+            app.post('/login',passport.authenticate('local-login',{
+                successRedirect : '/profile',
+                failureRedirect : '/login',
+                failureFlash  : true
+             }));
+       ```
+       *Note that we are using connect-flash module to send some message if something goes wrong*
 
 ## Strategies
 
