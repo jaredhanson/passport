@@ -132,10 +132,12 @@ The following table lists commonly used strategies:
 
 - For a complete, working example, refer to the [example](https://github.com/passport/express-4.x-local-example)
 that uses [passport-local](https://github.com/jaredhanson/passport-local).
-- **Local Strategy**: Refer to the following tutorials for setting up user authentication via LocalStrategy (`passport-local`)
+- **Local Strategy**: Refer to the following tutorials for setting up user authentication via LocalStrategy (`passport-local`):
     - Express v3x - [Tutorial](http://mherman.org/blog/2013/11/11/user-authentication-with-passport-dot-js/) / [working example](https://github.com/mjhea0/passport-local)
     - Express v4x - [Tutorial](http://mherman.org/blog/2015/01/31/local-authentication-with-passport-and-express-4/) / [working example](https://github.com/mjhea0/passport-local-express4)
-- **Social Authentication**: Refer to this [tutorial](http://mherman.org/blog/2013/11/10/social-authentication-with-passport-dot-js/) for setting up various social authentication strategies, including a working example found on this [repo](https://github.com/mjhea0/passport-examples).
+- **Social Authentication**: Refer to the following tutorials for setting up various social authentication strategies:
+    - Express v3x - [Tutorial](http://mherman.org/blog/2013/11/10/social-authentication-with-passport-dot-js/) / [working example](https://github.com/mjhea0/passport-examples)
+    - Express v4x - [Tutorial](http://mherman.org/blog/2015/09/26/social-authentication-in-node-dot-js-with-passport) / [working example](https://github.com/mjhea0/passport-social-auth)
 
 ## Related Modules
 
