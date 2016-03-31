@@ -21,7 +21,9 @@ hooks for controlling what occurs when authentication succeeds or fails.
 
 ## Install
 
-    $ npm install passport
+```
+$ npm install passport
+```
 
 ## Usage
 
@@ -35,16 +37,18 @@ or [Twitter](http://twitter.com/)), or federated authentication using [OpenID](h
 Before authenticating requests, the strategy (or strategies) used by an
 application must be configured.
 
-    passport.use(new LocalStrategy(
-      function(username, password, done) {
-        User.findOne({ username: username }, function (err, user) {
-          if (err) { return done(err); }
-          if (!user) { return done(null, false); }
-          if (!user.verifyPassword(password)) { return done(null, false); }
-          return done(null, user);
-        });
-      }
-    ));
+```javascript
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      if (!user.verifyPassword(password)) { return done(null, false); }
+      return done(null, user);
+    });
+  }
+));
+```
 
 There are 300+ strategies. Find the ones you want at: [passportjs.org](http://passportjs.org)
 
@@ -60,15 +64,17 @@ serialization and deserialization logic.  In a typical application, this will be
 as simple as serializing the user ID, and finding the user by ID when
 deserializing.
 
-    passport.serializeUser(function(user, done) {
-      done(null, user.id);
-    });
+```javascript
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
 
-    passport.deserializeUser(function(id, done) {
-      User.findById(id, function (err, user) {
-        done(err, user);
-      });
-    });
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
+```
 
 #### Middleware
 
@@ -78,24 +84,28 @@ with the required `passport.initialize()` middleware.  If your application uses
 persistent login sessions (recommended, but not required), `passport.session()`
 middleware must also be used.
 
-    var app = express();
-    app.use(require('serve-static')(__dirname + '/../../public'));
-    app.use(require('cookie-parser')());
-    app.use(require('body-parser').urlencoded({ extended: true }));
-    app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
-    app.use(passport.initialize());
-    app.use(passport.session());
+```javascript
+var app = express();
+app.use(require('serve-static')(__dirname + '/../../public'));
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+```
 
 #### Authenticate Requests
 
 Passport provides an `authenticate()` function, which is used as route
 middleware to authenticate requests.
 
-    app.post('/login', 
-      passport.authenticate('local', { failureRedirect: '/login' }),
-      function(req, res) {
-        res.redirect('/');
-      });
+```javascript
+app.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+```
 
 ## Strategies
 
@@ -140,8 +150,10 @@ that build upon or integrate with Passport.
 
 ## Tests
 
-    $ npm install
-    $ make test
+```
+$ npm install
+$ make test
+```
 
 ## Credits
 
