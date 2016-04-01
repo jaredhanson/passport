@@ -26,7 +26,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://www.opensource.org/licenses/MIT"
+      "url": "http://opensource.org/licenses/MIT"
     }
   ],
   "main": "./lib",
@@ -35,6 +35,7 @@
     "pause": "0.0.1"
   },
   "devDependencies": {
+    "make-node": "0.3.x",
     "mocha": "2.x.x",
     "chai": "2.x.x",
     "chai-connect-middleware": "0.3.x",
