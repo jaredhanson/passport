@@ -4,7 +4,7 @@
 var http = require('http')
   , Passport = require('../..').Passport;
 
-require('../../lib/http/request');
+require('../../lib/framework/connect').__monkeypatchNode();
 
 
 describe('http.ServerRequest', function() {
