@@ -40,7 +40,7 @@
     "chai": "2.x.x",
     "chai-connect-middleware": "0.3.x",
     "chai-passport-strategy": "0.2.x",
-    "proxyquire": "1.x.x"
+    "proxyquire": "1.4.x"
   },
   "engines": {
     "node": ">= 0.4.0"
