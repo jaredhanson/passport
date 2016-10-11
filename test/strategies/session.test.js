@@ -26,7 +26,8 @@ describe('SessionStrategy', function() {
           request = req;
           
           req._passport = {};
-          req._passport.session = {};
+          req.session = {};
+          req.session.passport = {};
         })
         .authenticate();
     });
@@ -57,8 +58,9 @@ describe('SessionStrategy', function() {
           req._passport.instance.deserializeUser = function(user, req, done) {
             done(null, { id: user });
           };
-          req._passport.session = {};
-          req._passport.session.user = '123456';
+          req.session = {};
+          req.session.passport = {};
+          req.session.passport.user = '123456';
         })
         .authenticate();
     });
@@ -73,8 +75,8 @@ describe('SessionStrategy', function() {
     });
     
     it('should maintain session', function() {
-      expect(request._passport.session).to.be.an('object');
-      expect(request._passport.session.user).to.equal('123456');
+      expect(request.session.passport).to.be.an('object');
+      expect(request.session.passport.user).to.equal('123456');
     });
   });
   
@@ -95,8 +97,9 @@ describe('SessionStrategy', function() {
           req._passport.instance.deserializeUser = function(user, req, done) {
             done(null, { id: user });
           };
-          req._passport.session = {};
-          req._passport.session.user = 0;
+          req.session = {};
+          req.session.passport = {};
+          req.session.passport.user = 0;
         })
         .authenticate();
     });
@@ -111,8 +114,8 @@ describe('SessionStrategy', function() {
     });
     
     it('should maintain session', function() {
-      expect(request._passport.session).to.be.an('object');
-      expect(request._passport.session.user).to.equal(0);
+      expect(request.session.passport).to.be.an('object');
+      expect(request.session.passport.user).to.equal(0);
     });
   });
   
@@ -133,8 +136,9 @@ describe('SessionStrategy', function() {
           req._passport.instance.deserializeUser = function(user, req, done) {
             done(null, false);
           };
-          req._passport.session = {};
-          req._passport.session.user = '123456';
+          req.session = {};
+          req.session.passport = {};
+          req.session.passport.user = '123456';
         })
         .authenticate();
     });
@@ -148,8 +152,8 @@ describe('SessionStrategy', function() {
     });
     
     it('should remove user from session', function() {
-      expect(request._passport.session).to.be.an('object');
-      expect(request._passport.session.user).to.be.undefined;
+      expect(request.session.passport).to.be.an('object');
+      expect(request.session.passport.user).to.be.undefined;
     });
   });
   
@@ -171,8 +175,9 @@ describe('SessionStrategy', function() {
           req._passport.instance.deserializeUser = function(user, req, done) {
             done(null, { id: user });
           };
-          req._passport.session = {};
-          req._passport.session.user = '123456';
+          req.session = {};
+          req.session.passport = {};
+          req.session.passport.user = '123456';
         })
         .authenticate();
     });
@@ -208,8 +213,9 @@ describe('SessionStrategy', function() {
           req._passport.instance.deserializeUser = function(user, req, done) {
             done(new Error('something went wrong'));
           };
-          req._passport.session = {};
-          req._passport.session.user = '123456';
+          req.session = {};
+          req.session.passport = {};
+          req.session.passport.user = '123456';
         })
         .authenticate();
     });
@@ -224,8 +230,8 @@ describe('SessionStrategy', function() {
     });
     
     it('should maintain session', function() {
-      expect(request._passport.session).to.be.an('object');
-      expect(request._passport.session.user).to.equal('123456');
+      expect(request.session.passport).to.be.an('object');
+      expect(request.session.passport.user).to.equal('123456');
     });
   });
   
