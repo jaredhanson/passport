@@ -211,7 +211,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should serialize user', function() {
-        expect(req._passport.session.user).to.equal('1');
+        expect(req.session.passport.user).to.equal('1');
       });
     });
     
@@ -258,7 +258,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should serialize user', function() {
-        expect(req._passport.session.user).to.equal('1');
+        expect(req.session.passport.user).to.equal('1');
       });
     });
     
