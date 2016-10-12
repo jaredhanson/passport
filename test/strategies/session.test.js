@@ -45,6 +45,10 @@ describe('SessionStrategy', function() {
     var request, pass = false;
   
     before(function(done) {
+      var strategy = new SessionStrategy(function(user, req, done) {
+        done(null, { id: user });
+      });
+      
       chai.passport.use(strategy)
         .pass(function() {
           pass = true;
@@ -84,6 +88,10 @@ describe('SessionStrategy', function() {
     var request, pass = false;
   
     before(function(done) {
+      var strategy = new SessionStrategy(function(user, req, done) {
+        done(null, { id: user });
+      });
+      
       chai.passport.use(strategy)
         .pass(function() {
           pass = true;
@@ -123,6 +131,10 @@ describe('SessionStrategy', function() {
     var request, pass = false;
   
     before(function(done) {
+      var strategy = new SessionStrategy(function(user, req, done) {
+        done(null, false);
+      });
+      
       chai.passport.use(strategy)
         .pass(function() {
           pass = true;
@@ -161,6 +173,10 @@ describe('SessionStrategy', function() {
     var request, pass = false;
   
     before(function(done) {
+      var strategy = new SessionStrategy(function(user, req, done) {
+        done(null, { id: user });
+      });
+      
       chai.passport.use(strategy)
         .pass(function() {
           pass = true;
@@ -200,6 +216,10 @@ describe('SessionStrategy', function() {
     var request, error;
   
     before(function(done) {
+      var strategy = new SessionStrategy(function(user, req, done) {
+        done(new Error('something went wrong'));
+      });
+      
       chai.passport.use(strategy)
         .error(function(err) {
           error = err;
