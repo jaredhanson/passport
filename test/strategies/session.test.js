@@ -13,6 +13,34 @@ describe('SessionStrategy', function() {
     expect(strategy.name).to.equal('session');
   });
   
+  describe('handling a request with a session but without a login session', function() {
+    var strategy = new SessionStrategy();
+    
+    var request, pass = false;
+  
+    before(function(done) {
+      chai.passport.use(strategy)
+        .pass(function() {
+          pass = true;
+          done();
+        })
+        .req(function(req) {
+          request = req;
+          
+          req.session = {};
+        })
+        .authenticate();
+    });
+  
+    it('should pass', function() {
+      expect(pass).to.be.true;
+    });
+    
+    it('should not set user on request', function() {
+      expect(request.user).to.be.undefined;
+    });
+  });
+  
   describe('handling a request without a login session', function() {
     var strategy = new SessionStrategy();
     
