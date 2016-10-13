@@ -14,6 +14,8 @@ describe('SessionStrategy', function() {
   });
   
   describe('handling a request without a login session', function() {
+    var strategy = new SessionStrategy();
+    
     var request, pass = false;
   
     before(function(done) {
@@ -25,7 +27,6 @@ describe('SessionStrategy', function() {
         .req(function(req) {
           request = req;
           
-          req._passport = {};
           req.session = {};
           req.session.passport = {};
         })
@@ -42,13 +43,13 @@ describe('SessionStrategy', function() {
   });
   
   describe('handling a request with a login session', function() {
+    var strategy = new SessionStrategy(function(user, req, done) {
+      done(null, { id: user });
+    });
+    
     var request, pass = false;
   
     before(function(done) {
-      var strategy = new SessionStrategy(function(user, req, done) {
-        done(null, { id: user });
-      });
-      
       chai.passport.use(strategy)
         .pass(function() {
           pass = true;
@@ -57,11 +58,6 @@ describe('SessionStrategy', function() {
         .req(function(req) {
           request = req;
           
-          req._passport = {};
-          req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, req, done) {
-            done(null, { id: user });
-          };
           req.session = {};
           req.session.passport = {};
           req.session.passport.user = '123456';
@@ -85,13 +81,13 @@ describe('SessionStrategy', function() {
   });
   
   describe('handling a request with a login session serialized to 0', function() {
+    var strategy = new SessionStrategy(function(user, req, done) {
+      done(null, { id: user });
+    });
+
     var request, pass = false;
   
     before(function(done) {
-      var strategy = new SessionStrategy(function(user, req, done) {
-        done(null, { id: user });
-      });
-      
       chai.passport.use(strategy)
         .pass(function() {
           pass = true;
@@ -100,11 +96,6 @@ describe('SessionStrategy', function() {
         .req(function(req) {
           request = req;
           
-          req._passport = {};
-          req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, req, done) {
-            done(null, { id: user });
-          };
           req.session = {};
           req.session.passport = {};
           req.session.passport.user = 0;
@@ -128,13 +119,13 @@ describe('SessionStrategy', function() {
   });
   
   describe('handling a request with a login session that has been invalidated', function() {
+    var strategy = new SessionStrategy(function(user, req, done) {
+      done(null, false);
+    });
+
     var request, pass = false;
   
     before(function(done) {
-      var strategy = new SessionStrategy(function(user, req, done) {
-        done(null, false);
-      });
-      
       chai.passport.use(strategy)
         .pass(function() {
           pass = true;
@@ -143,11 +134,6 @@ describe('SessionStrategy', function() {
         .req(function(req) {
           request = req;
           
-          req._passport = {};
-          req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, req, done) {
-            done(null, false);
-          };
           req.session = {};
           req.session.passport = {};
           req.session.passport.user = '123456';
@@ -169,14 +155,15 @@ describe('SessionStrategy', function() {
     });
   });
   
-  describe('handling a request with a login session and setting custom user property', function() {
+  describe('handling a request with a login session and setting custom user property as specified via passport.initialize', function() {
+    var strategy = new SessionStrategy(function(user, req, done) {
+      done(null, { id: user });
+    });
+    strategy._userProperty = 'currentUser';
+    
     var request, pass = false;
   
     before(function(done) {
-      var strategy = new SessionStrategy(function(user, req, done) {
-        done(null, { id: user });
-      });
-      
       chai.passport.use(strategy)
         .pass(function() {
           pass = true;
@@ -185,12 +172,6 @@ describe('SessionStrategy', function() {
         .req(function(req) {
           request = req;
           
-          req._passport = {};
-          req._passport.instance = {};
-          req._passport.instance._userProperty = 'currentUser';
-          req._passport.instance.deserializeUser = function(user, req, done) {
-            done(null, { id: user });
-          };
           req.session = {};
           req.session.passport = {};
           req.session.passport.user = '123456';
@@ -213,13 +194,13 @@ describe('SessionStrategy', function() {
   });
   
   describe('handling a request with a login session that encounters an error when deserializing', function() {
+    var strategy = new SessionStrategy(function(user, req, done) {
+      done(new Error('something went wrong'));
+    });
+
     var request, error;
   
     before(function(done) {
-      var strategy = new SessionStrategy(function(user, req, done) {
-        done(new Error('something went wrong'));
-      });
-      
       chai.passport.use(strategy)
         .error(function(err) {
           error = err;
@@ -228,11 +209,6 @@ describe('SessionStrategy', function() {
         .req(function(req) {
           request = req;
           
-          req._passport = {};
-          req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, req, done) {
-            done(new Error('something went wrong'));
-          };
           req.session = {};
           req.session.passport = {};
           req.session.passport.user = '123456';
@@ -255,7 +231,9 @@ describe('SessionStrategy', function() {
     });
   });
   
-  describe('handling a request that lacks an authenticator', function() {
+  describe('handling a request that lacks a session', function() {
+    var strategy = new SessionStrategy();
+    
     var request, error;
   
     before(function(done) {
@@ -272,7 +250,7 @@ describe('SessionStrategy', function() {
   
     it('should error', function() {
       expect(error).to.be.an.instanceOf(Error);
-      expect(error.message).to.equal('passport.initialize() middleware not in use');
+      expect(error.message).to.equal('Login session requires session support. Did you forget to use express-session middleware?');
     });
     
     it('should not set user on request', function() {
