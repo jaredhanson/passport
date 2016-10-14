@@ -350,6 +350,7 @@ describe('http.ServerRequest', function() {
       req.user = { id: '1', username: 'root' };
       req._passport = {};
       req._passport.instance = passport;
+      req._passport.sm = passport._sm;
       req.session = {};
       req.session.passport = {};
       req.session.passport.user = '1';
