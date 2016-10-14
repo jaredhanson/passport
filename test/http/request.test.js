@@ -184,6 +184,7 @@ describe('http.ServerRequest', function() {
       var req = new http.IncomingMessage();
       req._passport = {};
       req._passport.instance = passport;
+      req._passport.sm = passport._sm;
       req._passport.session = {};
       
       var error;
@@ -228,7 +229,7 @@ describe('http.ServerRequest', function() {
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
-      req._passport.sm = {};
+      req._passport.sm = passport._sm;
       req._passport.sm._userProperty = 'currentUser';
       
       var error;
@@ -275,6 +276,7 @@ describe('http.ServerRequest', function() {
       var req = new http.IncomingMessage();
       req._passport = {};
       req._passport.instance = passport;
+      req._passport.sm = passport._sm;
       req._passport.session = {};
       
       var error;
