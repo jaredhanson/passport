@@ -372,12 +372,16 @@ describe('http.ServerRequest', function() {
     
     describe('existing session and clearing custom user property', function() {
       var passport = new Passport();
+      // TODO: Why doesn't this work?
+      //passport.initialize({ userProperty: 'currentUser' });
+      passport._sm._userProperty = 'currentUser';
       
       var req = new http.IncomingMessage();
       req.currentUser = { id: '1', username: 'root' };
       req._passport = {};
       req._passport.instance = passport;
       req._passport.instance._userProperty = 'currentUser';
+      req._passport.sm = passport._sm;
       req.session = {};
       req.session.passport = {};
       req.session.passport.user = '1';
