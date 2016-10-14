@@ -80,6 +80,8 @@ describe('http.ServerRequest', function() {
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
+      req._passport.sm = {};
+      req._passport.sm._userProperty = 'currentUser';
       
       var error;
       
@@ -226,6 +228,8 @@ describe('http.ServerRequest', function() {
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
+      req._passport.sm = {};
+      req._passport.sm._userProperty = 'currentUser';
       
       var error;
       
@@ -429,8 +433,8 @@ describe('http.ServerRequest', function() {
       var req = new http.IncomingMessage();
       req.currentUser = { id: '1', username: 'root' };
       req._passport = {};
-      req._passport.instance = {};
-      req._passport.instance._userProperty = 'currentUser';
+      req._passport.sm = {};
+      req._passport.sm._userProperty = 'currentUser';
       
       it('should be authenticated', function() {
         expect(req.isAuthenticated()).to.be.true;
