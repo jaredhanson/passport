@@ -29,7 +29,7 @@
       "url": "http://opensource.org/licenses/MIT"
     }
   ],
-  "main": "./lib",
+  "main": "./lib/index.js",
   "dependencies": {
     "passport-strategy": "1.x.x",
     "pause": "0.0.1"
