@@ -55,7 +55,7 @@ module.exports = new Proxy({}, {
       return this[prop];
     }
 
-    return this.data[target.id][prop];
+    return this.data[this.id][prop];
   }
 
 });
