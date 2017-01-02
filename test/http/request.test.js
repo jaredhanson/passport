@@ -34,7 +34,7 @@ describe('http.ServerRequest', function() {
   describe('#login', function() {
 
     var passport, sessionDouble, req;
-    sessionDouble = require('./../session_test_double');
+    sessionDouble = require('./../session_test_double')([ "passport" ]);
 
     var resetPassport = function() {
       passport = new Passport();

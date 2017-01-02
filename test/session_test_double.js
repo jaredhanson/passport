@@ -1,5 +1,9 @@
 /**
- * Allows to:
+ * Session test double factory.
+ *
+ * Takes a list of names of session variables that are going to be used in the test.
+ *
+ * The session test double allows to:
  *   - set and get properties (like session.user = "john")
  *   - generate new session with new id (like express-session's regenerate)
  *   - clear the current session (without destroying it)
@@ -19,43 +23,63 @@
  *
  */
 
-module.exports = new Proxy({}, {
+module.exports = function (names_of_all_session_variables) {
 
-  regeneration_should_fail: false,
-  regeneration_error: "forced error",
-  data: {1: {}},
-  id: 1,
+  var data = {1: {}};
+  var id = 1;
 
-  regenerate: function (cb) {
-    this.id += 1;
-    this.data[this.id] = {};
-    cb(this.regeneration_should_fail ? this.regeneration_error : undefined);
-  },
+  //provides access to internal state and methods like regenerate,
+  //but doesn't provide setters and getters yet
+  var session = {
 
-  clear: function () {
-    this.data = {1: {}};
-    this.id = 1;
-  },
+    regeneration_should_fail: false,
+    regeneration_error: "forced error",
+    get data() { return data; },
+    get id() { return id; },
 
-  get empty () {
-    return Object.keys(this.data[this.id]).length === 0;
-  },
+    regenerate: function (cb) {
+      if (this.regeneration_should_fail) {
+        cb(this.regeneration_error);
+      } else {
+        id++;
+        data[id] = {};
+        cb();
+      }
+    },
 
-  set: function (target, prop, val) {
-    if (typeof this[prop] !== 'undefined') {
-      this[prop] = val;
-      return;
+    clear: function () {
+      data = {1: {}};
+      id = 1;
+    },
+
+    get empty() {
+      return Object.keys(data[id]).length === 0;
     }
 
-    this.data[this.id][prop] = val;
-  },
+  };
 
-  get: function (target, prop) {
-    if (typeof this[prop] !== 'undefined') {
-      return this[prop];
-    }
+  //generate descriptions of session variables under test
+  //in order to provide getters and setters
+  var propDescs = {};
+  names_of_all_session_variables.forEach(function (var_name) {
+    propDescs[var_name] = {
 
-    return this.data[this.id][prop];
-  }
+      writtable: true,
 
-});
+      get: function() {
+        return data[id][var_name];
+      },
+
+      set: function (val) {
+        data[id][var_name] = val;
+      },
+
+    };
+  });
+
+  //assign getters and setters of session variables
+  Object.defineProperties(session, propDescs);
+
+  //session test double which supports setters and getters
+  return session;
+}
