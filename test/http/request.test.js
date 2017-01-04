@@ -165,43 +165,71 @@ describe('http.ServerRequest', function() {
     });
 
     describe('establishing a session', function() {
-      var error;
-      before(function(done) {
-        resetPassport();
-        passport.serializeUser(function(user, done) {
-          done(null, user.id);
+
+      //It asserts the user is correctly authenticated.
+      //The difference may be what does the session look like after authentication
+      //depending on the given options.
+      var loginWithSession = function (options, expected_session) {
+
+        var error;
+        before(function(done) {
+          resetPassport();
+          passport.serializeUser(function(user, done) {
+            done(null, user.id);
+          });
+          var user = { id: '1', username: 'root' };
+          req.login(user, options, function(err) {
+            error = err;
+            done();
+          });
+
         });
-        var user = { id: '1', username: 'root' };
-        req.login(user, function(err) {
-          error = err;
-          done();
+
+        it('should not error', function() {
+          expect(error).to.be.undefined;
         });
 
-      });
+        it('should be authenticated', function() {
+          expect(req.isAuthenticated()).to.be.true;
+          expect(req.isUnauthenticated()).to.be.false;
+        });
 
-      it('should not error', function() {
-        expect(error).to.be.undefined;
-      });
+        it('should set user', function() {
+          expect(req.user).to.be.an('object');
+          expect(req.user.id).to.equal('1');
+          expect(req.user.username).to.equal('root');
+        });
 
-      it('should be authenticated', function() {
-        expect(req.isAuthenticated()).to.be.true;
-        expect(req.isUnauthenticated()).to.be.false;
-      });
+        it('should serialize user', function() {
+          expect(sessionDouble.data).to.eql(expected_session);
+        });
 
-      it('should set user', function() {
-        expect(req.user).to.be.an('object');
-        expect(req.user.id).to.equal('1');
-        expect(req.user.username).to.equal('root');
-      });
+      };
 
-      it('should serialize user', function() {
-        expect(sessionDouble.data).to.eql({
-          '1': {},
-          '2': {
-            passport: { user: '1' }
+      describe('with regenerating the session id', function () {
+        loginWithSession(
+          {}, // it's the default behavior, so no extra options are required
+          {
+            '1': {}, //this sessions hasn't been filled
+            '2': { //user data has been stored in this new session
+              passport: { user: '1' }
+            }
           }
-        })
+        );
       });
+
+      describe('without regenerating the session id', function () {
+        loginWithSession(
+          { regenerate_session: false },
+          {
+            '1': { //no new session has been created
+              passport: { user: '1' }
+            }
+          }
+        );
+      });
+
+
     });
 
     describe('establishing a session and setting custom user property', function() {
