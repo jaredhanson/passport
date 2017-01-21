@@ -22,7 +22,7 @@ hooks for controlling what occurs when authentication succeeds or fails.
 ## Install
 
 ```
-$ npm install passport
+$ npm install passport --save
 ```
 
 ## Usage
