@@ -220,6 +220,9 @@ describe('Authenticator', function() {
     
     describe('handling a request', function() {
       var passport = new Authenticator();
+      passport.deserializeUser(function(user, done) {
+        done(null, { id: user });
+      });
     
       var request, error;
 
@@ -230,9 +233,6 @@ describe('Authenticator', function() {
             
             req._passport = {};
             req._passport.instance = {};
-            req._passport.instance.deserializeUser = function(user, req, done) {
-              done(null, { id: user });
-            };
             req._passport.session = {};
             req._passport.session.user = '123456';
           })

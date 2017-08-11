@@ -16,7 +16,9 @@ describe('SessionStrategy', function() {
     
     
     var SessionStrategy = $require('../../lib/strategies/session', { pause: pause });
-    var strategy = new SessionStrategy();
+    var strategy = new SessionStrategy(function(user, req, done) {
+      done(null, { id: user });
+    });
     
     var request, pass = false;
   
@@ -31,9 +33,6 @@ describe('SessionStrategy', function() {
           
           req._passport = {};
           req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, req, done) {
-            done(null, { id: user });
-          };
           req._passport.session = {};
           req._passport.session.user = '123456';
         })
@@ -79,7 +78,9 @@ describe('SessionStrategy', function() {
     
     
     var SessionStrategy = $require('../../lib/strategies/session', { pause: pause });
-    var strategy = new SessionStrategy();
+    var strategy = new SessionStrategy(function(user, req, done) {
+      done(null, false);
+    });
     
     var request, pass = false;
   
@@ -94,9 +95,6 @@ describe('SessionStrategy', function() {
           
           req._passport = {};
           req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, req, done) {
-            done(null, false);
-          };
           req._passport.session = {};
           req._passport.session.user = '123456';
         })
