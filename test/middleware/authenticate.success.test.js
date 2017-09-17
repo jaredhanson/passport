@@ -168,7 +168,7 @@ describe('middleware/authenticate', function() {
     var request, response;
 
     before(function(done) {
-      chai.connect.use('express', authenticate(passport, 'success', { successRedirect: 'http://www.example.com/account' }))
+      chai.connect.use('express', authenticate(passport, 'success', { successRedirect: 'http://www.example.com/account', redirectStatus: 303 }))
         .req(function(req) {
           request = req;
           
@@ -196,7 +196,7 @@ describe('middleware/authenticate', function() {
     });
     
     it('should redirect', function() {
-      expect(response.statusCode).to.equal(302);
+      expect(response.statusCode).to.equal(303);
       expect(response.getHeader('Location')).to.equal('http://www.example.com/account');
     });
   });
