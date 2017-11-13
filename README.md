@@ -145,6 +145,7 @@ that uses [passport-local](https://github.com/jaredhanson/passport-local).
 
 ## Related Modules
 
+- [Ooth](https://github.com/nmaro/ooth) - User accounts library built on top of passport.js
 - [Locomotive](https://github.com/jaredhanson/locomotive) — Powerful MVC web framework
 - [OAuthorize](https://github.com/jaredhanson/oauthorize) — OAuth service provider toolkit
 - [OAuth2orize](https://github.com/jaredhanson/oauth2orize) — OAuth 2.0 authorization server toolkit
