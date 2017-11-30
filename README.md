@@ -4,7 +4,6 @@
 
 [![Build](https://travis-ci.org/jaredhanson/passport.svg?branch=master)](https://travis-ci.org/jaredhanson/passport)
 [![Coverage](https://coveralls.io/repos/jaredhanson/passport/badge.svg?branch=master)](https://coveralls.io/r/jaredhanson/passport)
-[![Quality](https://codeclimate.com/github/jaredhanson/passport/badges/gpa.svg)](https://codeclimate.com/github/jaredhanson/passport)
 [![Dependencies](https://david-dm.org/jaredhanson/passport.svg)](https://david-dm.org/jaredhanson/passport)
 [![Tips](https://img.shields.io/gratipay/jaredhanson.svg)](https://gratipay.com/jaredhanson/)
 
