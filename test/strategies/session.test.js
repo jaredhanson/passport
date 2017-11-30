@@ -41,6 +41,10 @@ describe('SessionStrategy', function() {
   });
   
   describe('handling a request with a login session', function() {
+    var strategy = new SessionStrategy(function(user, req, done) {
+      done(null, { id: user });
+    });
+    
     var request, pass = false;
   
     before(function(done) {
@@ -54,9 +58,6 @@ describe('SessionStrategy', function() {
           
           req._passport = {};
           req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, req, done) {
-            done(null, { id: user });
-          };
           req._passport.session = {};
           req._passport.session.user = '123456';
         })
@@ -79,6 +80,10 @@ describe('SessionStrategy', function() {
   });
   
   describe('handling a request with a login session serialized to 0', function() {
+    var strategy = new SessionStrategy(function(user, req, done) {
+      done(null, { id: user });
+    });
+    
     var request, pass = false;
   
     before(function(done) {
@@ -92,9 +97,6 @@ describe('SessionStrategy', function() {
           
           req._passport = {};
           req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, req, done) {
-            done(null, { id: user });
-          };
           req._passport.session = {};
           req._passport.session.user = 0;
         })
@@ -117,6 +119,10 @@ describe('SessionStrategy', function() {
   });
   
   describe('handling a request with a login session that has been invalidated', function() {
+    var strategy = new SessionStrategy(function(user, req, done) {
+      done(null, false);
+    });
+    
     var request, pass = false;
   
     before(function(done) {
@@ -130,9 +136,6 @@ describe('SessionStrategy', function() {
           
           req._passport = {};
           req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, req, done) {
-            done(null, false);
-          };
           req._passport.session = {};
           req._passport.session.user = '123456';
         })
@@ -154,6 +157,10 @@ describe('SessionStrategy', function() {
   });
   
   describe('handling a request with a login session and setting custom user property', function() {
+    var strategy = new SessionStrategy(function(user, req, done) {
+      done(null, { id: user });
+    });
+    
     var request, pass = false;
   
     before(function(done) {
@@ -168,9 +175,6 @@ describe('SessionStrategy', function() {
           req._passport = {};
           req._passport.instance = {};
           req._passport.instance._userProperty = 'currentUser';
-          req._passport.instance.deserializeUser = function(user, req, done) {
-            done(null, { id: user });
-          };
           req._passport.session = {};
           req._passport.session.user = '123456';
         })
@@ -192,6 +196,10 @@ describe('SessionStrategy', function() {
   });
   
   describe('handling a request with a login session that encounters an error when deserializing', function() {
+    var strategy = new SessionStrategy(function(user, req, done) {
+      done(new Error('something went wrong'));
+    });
+    
     var request, error;
   
     before(function(done) {
@@ -205,9 +213,6 @@ describe('SessionStrategy', function() {
           
           req._passport = {};
           req._passport.instance = {};
-          req._passport.instance.deserializeUser = function(user, req, done) {
-            done(new Error('something went wrong'));
-          };
           req._passport.session = {};
           req._passport.session.user = '123456';
         })
