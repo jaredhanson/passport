@@ -18,6 +18,13 @@ allows application-level decisions to be made by the developer.  The API is
 simple: you provide Passport a request to authenticate, and Passport provides
 hooks for controlling what occurs when authentication succeeds or fails.
 
+## Sponsorship
+
+Passport is proudly sponsored by [Rollbar](https://cs.berry.sh/c/f049ac4d-0d95-4f3e-9582-4fa1ab791591
+). They provide real-time error monitoring, alerting, and analytics for developers.
+You can try Rollbar for free at [https://rollbar.com](https://cs.berry.sh/c/f049ac4d-0d95-4f3e-9582-4fa1ab791591
+) <img src="https://cs.berry.sh/l/f049ac4d-0d95-4f3e-9582-4fa1ab791591/pixel.png" />
+
 ## Install
 
 ```
@@ -173,6 +180,3 @@ This project is supported by ![](http://passportjs.org/images/supported_logo.svg
 [The MIT License](http://opensource.org/licenses/MIT)
 
 Copyright (c) 2011-2015 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
-
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/vK9dyjRnnWsMzzJTQ57fRJpH/jaredhanson/passport'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/vK9dyjRnnWsMzzJTQ57fRJpH/jaredhanson/passport.svg' /></a>
-
