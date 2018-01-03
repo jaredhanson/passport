@@ -179,4 +179,4 @@ This project is supported by ![](http://passportjs.org/images/supported_logo.svg
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2011-2015 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2011-2018 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
