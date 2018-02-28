@@ -54,7 +54,7 @@ passport.use(new LocalStrategy(
 ));
 ```
 
-There are 300+ strategies. Find the ones you want at: [passportjs.org](http://passportjs.org)
+There are 480+ strategies. Find the ones you want at: [passportjs.org](http://passportjs.org)
 
 #### Sessions
 
@@ -113,7 +113,7 @@ app.post('/login',
 
 ## Strategies
 
-Passport has a comprehensive set of **over 300** authentication strategies
+Passport has a comprehensive set of **over 480** authentication strategies
 covering social networking, enterprise integration, API services, and more.
 
 ## Search all strategies
