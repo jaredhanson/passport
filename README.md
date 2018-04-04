@@ -18,11 +18,6 @@ allows application-level decisions to be made by the developer.  The API is
 simple: you provide Passport a request to authenticate, and Passport provides
 hooks for controlling what occurs when authentication succeeds or fails.
 
-## Sponsorship
-
-Passport is proudly sponsored by [Rollbar](https://codesponsor.io/t/c/6df783a2b92582fb72f9fac89f1fda2a/). They provide real-time error monitoring, alerting, and analytics for developers.
-You can try Rollbar for free at [https://rollbar.com](https://codesponsor.io/t/c/6df783a2b92582fb72f9fac89f1fda2a/) <img src="https://codesponsor.io/t/l/6df783a2b92582fb72f9fac89f1fda2a/pixel.png" />
-
 ## Install
 
 ```
