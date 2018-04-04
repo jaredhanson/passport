@@ -2,12 +2,6 @@
 
 # Passport
 
-[![Build](https://travis-ci.org/jaredhanson/passport.svg?branch=master)](https://travis-ci.org/jaredhanson/passport)
-[![Coverage](https://coveralls.io/repos/jaredhanson/passport/badge.svg?branch=master)](https://coveralls.io/r/jaredhanson/passport)
-[![Dependencies](https://david-dm.org/jaredhanson/passport.svg)](https://david-dm.org/jaredhanson/passport)
-[![Tips](https://img.shields.io/gratipay/jaredhanson.svg)](https://gratipay.com/jaredhanson/)
-
-
 Passport is [Express](http://expressjs.com/)-compatible authentication
 middleware for [Node.js](http://nodejs.org/).
 
@@ -17,6 +11,12 @@ routes or assume any particular database schema, which maximizes flexibility and
 allows application-level decisions to be made by the developer.  The API is
 simple: you provide Passport a request to authenticate, and Passport provides
 hooks for controlling what occurs when authentication succeeds or fails.
+
+Status:
+[![Build](https://travis-ci.org/jaredhanson/passport.svg?branch=master)](https://travis-ci.org/jaredhanson/passport)
+[![Coverage](https://coveralls.io/repos/jaredhanson/passport/badge.svg?branch=master)](https://coveralls.io/r/jaredhanson/passport)
+[![Dependencies](https://david-dm.org/jaredhanson/passport.svg)](https://david-dm.org/jaredhanson/passport)
+
 
 ## Install
 
