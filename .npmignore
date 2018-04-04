@@ -1,8 +1,11 @@
+CONTRIBUTING.md
 Makefile
+SPONSORS.md
 docs/
 examples/
 reports/
 test/
 
+.github/
 .jshintrc
 .travis.yml

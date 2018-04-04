@@ -18,6 +18,13 @@ Status:
 [![Dependencies](https://david-dm.org/jaredhanson/passport.svg)](https://david-dm.org/jaredhanson/passport)
 
 
+## Sponsorship
+
+Passport is open source software.  Ongoing development is made possible by
+generous contributions from [individuals and corporations](https://github.com/jaredhanson/passport/blob/master/SPONSORS.md).
+To learn more about how you can help keep this project financially sustainable,
+please visit Jared Hanson's page on [Patreon](https://www.patreon.com/jaredhanson).
+
 ## Install
 
 ```
