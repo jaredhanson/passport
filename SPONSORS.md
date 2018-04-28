@@ -1,3 +1,4 @@
 ## Sponsors
 
-- [Jared Hanson](https://github.com/jaredhanson)
+- [CodePilot.ai](https://codepilot.ai/)
+- Kelly Burke
