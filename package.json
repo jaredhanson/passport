@@ -2,13 +2,7 @@
   "name": "passport",
   "version": "0.4.0",
   "description": "Simple, unobtrusive authentication for Node.js.",
-  "keywords": [
-    "express",
-    "connect",
-    "auth",
-    "authn",
-    "authentication"
-  ],
+  "keywords": ["express", "connect", "auth", "authn", "authentication"],
   "author": {
     "name": "Jared Hanson",
     "email": "jaredhanson@gmail.com",
@@ -46,6 +40,7 @@
     "node": ">= 0.4.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js test/**/*.test.js"
+    "test":
+      "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js test/**/*.test.js"
   }
 }

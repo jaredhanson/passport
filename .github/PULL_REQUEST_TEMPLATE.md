@@ -11,12 +11,11 @@ to the relevant discussion along with the pull request.
 
 #### Is this a security patch?
 
-Do not open pull requests that might have security implications.  Potential
+Do not open pull requests that might have security implications. Potential
 security vulnerabilities should be reported privately to jaredhanson@gmail.com.
 Once any vulerabilities have been repaired, the details will be disclosed
-publicly in a responsible manner.  This also allows time for coordinating with
+publicly in a responsible manner. This also allows time for coordinating with
 affected parties in order to mitigate negative consequences.
-
 
 <!-- Provide a brief summary of the request in the title field above. -->
 
@@ -30,8 +29,8 @@ affected parties in order to mitigate negative consequences.
 <!-- Place an `x` in the boxes that apply.  If you are unsure, please ask and -->
 <!-- we will help. -->
 
-- [ ] I have read the [CONTRIBUTING](https://github.com/jaredhanson/passport/blob/master/CONTRIBUTING.md) guidelines.
-- [ ] I have added test cases which verify the correct operation of this feature or patch.
-- [ ] I have added documentation pertaining to this feature or patch.
-- [ ] The automated test suite (`$ make test`) executes successfully.
-- [ ] The automated code linting (`$ make lint`) executes successfully.
+-   [ ] I have read the [CONTRIBUTING](https://github.com/jaredhanson/passport/blob/master/CONTRIBUTING.md) guidelines.
+-   [ ] I have added test cases which verify the correct operation of this feature or patch.
+-   [ ] I have added documentation pertaining to this feature or patch.
+-   [ ] The automated test suite (`$ make test`) executes successfully.
+-   [ ] The automated code linting (`$ make lint`) executes successfully.
