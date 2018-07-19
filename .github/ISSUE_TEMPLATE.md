@@ -12,12 +12,11 @@ rather than filing an issue.
 
 #### Is this a security issue?
 
-Do not open issues that might have security implications.  Potential security
-vulnerabilities should be reported privately to jaredhanson@gmail.com.  Once any
+Do not open issues that might have security implications. Potential security
+vulnerabilities should be reported privately to jaredhanson@gmail.com. Once any
 vulerabilities have been repaired, the details will be disclosed publicly in a
-responsible manner.  This also allows time for coordinating with affected parties
+responsible manner. This also allows time for coordinating with affected parties
 in order to mitigate negative consequences.
-
 
 <!-- Provide a brief summary of the issue in the title field above. -->
 
@@ -25,14 +24,17 @@ in order to mitigate negative consequences.
 <!-- detail as possible about what you are trying to accomplish and why. -->
 
 ### Expected behavior
+
 <!-- Provide a detailed description of how you expected the software to -->
 <!-- behave. -->
 
 ### Actual behavior
+
 <!-- Provide a detailed description of how the software actually behaved, -->
 <!-- including any rationale for why that behavior is incorrect. -->
 
 ### Steps to reproduce
+
 <!-- Provide an unambiguous series of steps that can be used to reproduce -->
 <!-- this issue, including any code if applicable. -->
 
@@ -42,6 +44,6 @@ in order to mitigate negative consequences.
 
 ### Environment
 
-* Operating System: 
-* Node version: <!-- $ node -v -->
-* passport version: <!-- $ npm list passport -->
+-   Operating System:
+-   Node version: <!-- $ node -v -->
+-   passport version: <!-- $ npm list passport -->

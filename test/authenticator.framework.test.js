@@ -2,11 +2,8 @@
 
 var Authenticator = require('../lib/authenticator');
 
-
 describe('Authenticator', function() {
-  
   describe('#framework', function() {
-    
     describe('with an authenticate function used for authorization', function() {
       var passport = new Authenticator();
       passport.framework({
@@ -19,13 +16,13 @@ describe('Authenticator', function() {
           };
         }
       });
-      
+
       var rv = passport.authorize('foo')();
       it('should call authenticate', function() {
         expect(rv).to.equal('authenticate(): foo account');
       });
     });
-    
+
     describe('with an authorize function used for authorization', function() {
       var passport = new Authenticator();
       passport.framework({
@@ -43,13 +40,11 @@ describe('Authenticator', function() {
           };
         }
       });
-      
+
       var rv = passport.authorize('foo')();
       it('should call authorize', function() {
         expect(rv).to.equal('authorize(): foo account');
       });
     });
-    
   });
-  
 });
