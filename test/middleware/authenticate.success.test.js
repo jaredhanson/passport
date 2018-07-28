@@ -97,9 +97,10 @@ describe('middleware/authenticate', function() {
       expect(request.account.id).to.equal('1');
       expect(request.account.username).to.equal('jaredhanson');
     });
-    
-    it('should not set authInfo', function() {
-      expect(request.authInfo).to.be.undefined;
+
+    it('should set authInfo', function() {
+      expect(request.authInfo).to.be.an('object');
+      expect(Object.keys(request.authInfo)).to.have.length(0);
     });
   });
   
