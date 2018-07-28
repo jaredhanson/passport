@@ -151,8 +151,67 @@ describe('Authenticator', function() {
     });
     
   });
-  
-  
+
+
+  describe('#authenticateWith', function() {
+
+    it('should have correct arity', function() {
+      var passport = new Authenticator();
+      expect(passport.authenticate).to.have.length(3);
+    });
+
+    describe('handling a request', function() {
+      function Strategy() {
+      }
+      Strategy.prototype.authenticate = function(req) {
+        var user = { id: '1', username: 'jaredhanson' };
+        this.success(user);
+      };
+
+      function config(req, done) {
+        return done(null, new Strategy());
+      };
+
+      var passport = new Authenticator();
+
+      var request, error;
+
+      before(function(done) {
+        chai.connect.use(passport.authenticateWith(config))
+          .req(function(req) {
+            request = req;
+
+            req.logIn = function(user, options, done) {
+              this.user = user;
+              done();
+            };
+          })
+          .next(function(err) {
+            error = err;
+            done();
+          })
+          .dispatch();
+      });
+
+      it('should not error', function() {
+        expect(error).to.be.undefined;
+      });
+
+      it('should set user', function() {
+        expect(request.user).to.be.an('object');
+        expect(request.user.id).to.equal('1');
+        expect(request.user.username).to.equal('jaredhanson');
+      });
+
+      it('should set authInfo', function() {
+        expect(request.authInfo).to.be.an('object');
+        expect(Object.keys(request.authInfo)).to.have.length(0);
+      });
+    });
+
+  });
+
+
   describe('#authorize', function() {
     
     it('should have correct arity', function() {
