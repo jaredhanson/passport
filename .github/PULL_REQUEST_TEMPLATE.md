@@ -2,7 +2,7 @@
 
 #### Are you implementing a new feature?
 
-Requests for new features should first be discussed on the [discussion forum](https://github.com/passport/discuss).
+Requests for new features should first be discussed on the [developer forum](https://github.com/passport/develop).
 This allows the community to gather feedback and assess whether or not there is
 an existing way to achieve the desired functionality.
 
@@ -17,6 +17,10 @@ Once any vulerabilities have been repaired, the details will be disclosed
 publicly in a responsible manner.  This also allows time for coordinating with
 affected parties in order to mitigate negative consequences.
 
+
+If neither of the above two scenarios apply to your situation, you should open
+a pull request.  Delete this paragraph and the text above, and fill in the
+information requested below.
 
 <!-- Provide a brief summary of the request in the title field above. -->
 

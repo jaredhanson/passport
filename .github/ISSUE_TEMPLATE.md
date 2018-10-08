@@ -2,6 +2,8 @@
 
 #### Are you looking for help?
 
+Reminder: The issue tracker is not a support forum.
+
 Issues should only be filed in this project once they are able to be reproduced
 and confirmed as a flaw in the software or incorrect information in associated
 documention.
@@ -18,6 +20,10 @@ vulerabilities have been repaired, the details will be disclosed publicly in a
 responsible manner.  This also allows time for coordinating with affected parties
 in order to mitigate negative consequences.
 
+
+If neither of the above two scenarios apply to your situation, you should open
+an issue.  Delete this paragraph and the text above, and fill in the information
+requested below.
 
 <!-- Provide a brief summary of the issue in the title field above. -->
 
