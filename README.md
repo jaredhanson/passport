@@ -99,11 +99,29 @@ Passport provides an `authenticate()` function, which is used as route
 middleware to authenticate requests.
 
 ```javascript
-app.post('/login', 
+app.post('/login',
   passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
   });
+```
+
+Passport provides an `isAuthenticated()` function, which is used as route middleware to ensure users are authenticated before they visit parts of your application.
+
+```javascript
+function isAuthenticated(req, res, next) {
+  if (req.user.authenticated) {
+    return next();
+  }
+  res.redirect('/')
+};
+```
+To implement the middleware, apply it to your route.
+
+```javascript
+app.get('/dashboard', isAuthenticated, function(req, res) {
+  res.send('User authenticated!')
+  })
 ```
 
 ## Strategies
@@ -155,7 +173,7 @@ that build upon or integrate with Passport.
 
 ## Supporters
 
-This project is supported by ![](http://passportjs.org/images/supported_logo.svg) [Auth0](https://auth0.com) 
+This project is supported by ![](http://passportjs.org/images/supported_logo.svg) [Auth0](https://auth0.com)
 
 ## License
 
