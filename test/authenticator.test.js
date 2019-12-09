@@ -52,7 +52,7 @@ describe('Authenticator', function() {
         expect(authenticator._strategies['default']).to.be.undefined;
       });
     });
-    
+
     it('should throw if lacking a name', function() {
       function Strategy() {
       }
