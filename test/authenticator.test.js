@@ -1,8 +1,7 @@
 /* global describe, it, expect, before */
 /* jshint expr: true, sub: true */
 
-var Authenticator = require('../lib/authenticator'),
-    chai = require('chai');
+var Authenticator = require('../lib/authenticator');
 
 
 describe('Authenticator', function() {
@@ -51,54 +50,6 @@ describe('Authenticator', function() {
       it('should register strategy', function() {
         expect(authenticator._strategies['bar']).to.be.an('object');
         expect(authenticator._strategies['default']).to.be.undefined;
-      });
-    });
-
-    describe('with object strategy', function() {
-      function Strategy() {
-      }
-      Strategy.prototype.authenticate = function(req) {
-        var user = { id: '1', username: 'jaredhanson' };
-        this.success(user);
-      };
-
-      var passport = new Authenticator();
-
-      var request, error;
-
-      before(function(done) {
-        chai.connect.use(passport.authorize(new Strategy()))
-            .req(function(req) {
-              request = req;
-
-              req.logIn = function(user, options, done) {
-                this.user = user;
-                done();
-              };
-            })
-            .next(function(err) {
-              error = err;
-              done();
-            })
-            .dispatch();
-      });
-
-      it('should not error', function() {
-        expect(error).to.be.undefined;
-      });
-
-      it('should not set user', function() {
-        expect(request.user).to.be.undefined;
-      });
-
-      it('should set account', function() {
-        expect(request.account).to.be.an('object');
-        expect(request.account.id).to.equal('1');
-        expect(request.account.username).to.equal('jaredhanson');
-      });
-
-      it('should not set authInfo', function() {
-        expect(request.authInfo).to.be.undefined;
       });
     });
 
