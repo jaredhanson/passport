@@ -153,12 +153,8 @@ The [modules](https://github.com/jaredhanson/passport/wiki/Modules) page on the
 [wiki](https://github.com/jaredhanson/passport/wiki) lists other useful modules
 that build upon or integrate with Passport.
 
-## Supporters
-
-This project is supported by ![](http://passportjs.org/images/supported_logo.svg) [Auth0](https://auth0.com) 
-
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2011-2015 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2011-2019 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
