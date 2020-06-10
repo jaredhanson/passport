@@ -17,7 +17,7 @@ hooks for controlling what occurs when authentication succeeds or fails.
 <p align="center">
   <sup>Advertisement</sup>
   <br>
-  <a href="https://click.linksynergy.com/link?id=D*o7yui4/NM&offerid=507388.922484&type=2&murl=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Fthe-complete-nodejs-developer-course-2%2F&u1=14vIm40WB4Acg6OIqudjvAOsdlOg7B40l">The Complete Node. js Developer Course</a><br>Learn Node. js by building real-world applications with Node, Express, MongoDB, Jest, and more!
+  <a href="https://click.linksynergy.com/link?id=D*o7yui4/NM&offerid=507388.922484&type=2&murl=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Fthe-complete-nodejs-developer-course-2%2F&u1=14vIm40WB4Acg6OIqudjvAOsdlOg7B40l">The Complete Node.js Developer Course</a><br>Learn Node. js by building real-world applications with Node, Express, MongoDB, Jest, and more!
 </p>
 
 ---
