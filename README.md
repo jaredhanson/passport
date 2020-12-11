@@ -17,7 +17,7 @@ hooks for controlling what occurs when authentication succeeds or fails.
 <p align="center">
   <sup>Sponsors</sup>
   <br>
-  <a href="https://www.loginradius.com/?utm_source=sponsership&utm_medium=github&utm_campaign=jaredhanson"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/loginradius.png"></a>
+  <a href="https://www.loginradius.com/?utm_source=sponsership&utm_medium=github&utm_campaign=jaredhanson"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/loginradius.png" width="450" height="93"></a><br/>
   <a href="https://www.loginradius.com/?utm_source=jaredhanson&utm_medium=github&utm_campaign=passportjs">LoginRadius</a> is built for the developer community to integrate robust Authentication and Single Sign-On in just a few lines of code.<br/><a href="https://accounts.loginradius.com/auth.aspx?action=register?utm_source=sponsership&utm_medium=github&utm_campaign=jaredhanson">FREE Signup</a>
 </p>
 
