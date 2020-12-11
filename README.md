@@ -15,9 +15,10 @@ hooks for controlling what occurs when authentication succeeds or fails.
 ---
 
 <p align="center">
-  <sup>Advertisement</sup>
+  <sup>Sponsors</sup>
   <br>
-  <a href="https://click.linksynergy.com/link?id=D*o7yui4/NM&offerid=507388.922484&type=2&murl=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Fthe-complete-nodejs-developer-course-2%2F&u1=14vIm40WB4Acg6OIqudjvAOsdlOg7B40l">The Complete Node.js Developer Course</a><br>Learn Node. js by building real-world applications with Node, Express, MongoDB, Jest, and more!
+  <a href="https://www.loginradius.com/?utm_source=sponsership&utm_medium=github&utm_campaign=jaredhanson"><img src="https://github.com/jaredhanson/passport/tree/master/sponsors/loginradius.png"></a>
+  <a href="https://www.loginradius.com/?utm_source=jaredhanson&utm_medium=github&utm_campaign=passportjs">LoginRadius</a> is built for the developer community to integrate robust Authentication and Single Sign-On in just a few lines of code.<br/><a href="https://accounts.loginradius.com/auth.aspx?action=register?utm_source=sponsership&utm_medium=github&utm_campaign=jaredhanson">FREE Signup</a>
 </p>
 
 ---
