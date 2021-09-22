@@ -1,14 +1,14 @@
 /* global describe, it, expect, before */
 /* jshint expr: true */
 
-var http = require('http')
+var request = require('../../lib/http/request')
   , Passport = require('../..').Passport;
-
-require('../../lib/framework/connect').__monkeypatchNode();
 
 
 describe('http.ServerRequest', function() {
   
+  // TODO: Test that these are extended by initialize/authenticate
+  /*
   describe('prototoype', function() {
     var req = new http.IncomingMessage();
     
@@ -30,13 +30,17 @@ describe('http.ServerRequest', function() {
       expect(req.isUnauthenticated).to.be.an('function');
     });
   });
+  */
   
   describe('#login', function() {
     
     describe('not establishing a session', function() {
       var passport = new Passport();
       
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.login = request.login;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -76,7 +80,10 @@ describe('http.ServerRequest', function() {
       var passport = new Passport();
       passport._userProperty = 'currentUser';
       
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.login = request.login;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -119,7 +126,10 @@ describe('http.ServerRequest', function() {
     describe('not establishing a session and invoked without a callback', function() {
       var passport = new Passport();
       
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.login = request.login;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -144,7 +154,10 @@ describe('http.ServerRequest', function() {
     });
     
     describe('not establishing a session, without passport.initialize() middleware', function() {
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.login = request.login;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       
       var error;
       
@@ -179,7 +192,10 @@ describe('http.ServerRequest', function() {
         done(null, user.id);
       });
       
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.login = request.login;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -222,7 +238,10 @@ describe('http.ServerRequest', function() {
       });
       passport._userProperty = 'currentUser';
       
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.login = request.login;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -268,7 +287,10 @@ describe('http.ServerRequest', function() {
         done(new Error('something went wrong'));
       });
       
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.login = request.login;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -304,7 +326,8 @@ describe('http.ServerRequest', function() {
     });
     
     describe('establishing a session, without passport.initialize() middleware', function() {
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.login = request.login;
       var user = { id: '1', username: 'root' };
       
       it('should throw an exception', function() {
@@ -320,7 +343,8 @@ describe('http.ServerRequest', function() {
         done(null, user.id);
       });
       
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.login = request.login;
       req._passport = {};
       req._passport.instance = passport;
       req._passport.session = {};
@@ -342,7 +366,10 @@ describe('http.ServerRequest', function() {
     describe('existing session', function() {
       var passport = new Passport();
       
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.logout = request.logout;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       req.user = { id: '1', username: 'root' };
       req._passport = {};
       req._passport.instance = passport;
@@ -368,7 +395,10 @@ describe('http.ServerRequest', function() {
     describe('existing session and clearing custom user property', function() {
       var passport = new Passport();
       
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.logout = request.logout;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       req.currentUser = { id: '1', username: 'root' };
       req._passport = {};
       req._passport.instance = passport;
@@ -393,7 +423,10 @@ describe('http.ServerRequest', function() {
     });
     
     describe('existing session, without passport.initialize() middleware', function() {
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.logout = request.logout;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       req.user = { id: '1', username: 'root' };
       
       req.logout();
@@ -414,7 +447,9 @@ describe('http.ServerRequest', function() {
   describe('#isAuthenticated', function() {
     
     describe('with a user', function() {
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       req.user = { id: '1', username: 'root' };
       
       it('should be authenticated', function() {
@@ -424,7 +459,9 @@ describe('http.ServerRequest', function() {
     });
     
     describe('with a user set on custom property', function() {
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       req.currentUser = { id: '1', username: 'root' };
       req._passport = {};
       req._passport.instance = {};
@@ -437,7 +474,9 @@ describe('http.ServerRequest', function() {
     });
     
     describe('without a user', function() {
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       
       it('should not be authenticated', function() {
         expect(req.isAuthenticated()).to.be.false;
@@ -446,7 +485,9 @@ describe('http.ServerRequest', function() {
     });
     
     describe('with a null user', function() {
-      var req = new http.IncomingMessage();
+      var req = new Object();
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
       req.user = null;
       
       it('should not be authenticated', function() {
