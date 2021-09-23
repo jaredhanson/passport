@@ -178,7 +178,7 @@ describe('SessionStrategy', function() {
           
           req._passport = {};
           req._passport.instance = {};
-          req._passport.instance._userProperty = 'currentUser';
+          req._userProperty = 'currentUser';
           req.session = {};
           req.session['passport'] = {};
           req.session['passport'].user = '123456';

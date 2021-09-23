@@ -79,7 +79,6 @@ describe('http.ServerRequest', function() {
     
     describe('not establishing a session and setting custom user property', function() {
       var passport = new Passport();
-      passport._userProperty = 'currentUser';
       
       var req = new Object();
       req.login = request.login;
@@ -89,6 +88,7 @@ describe('http.ServerRequest', function() {
       req._passport.instance = passport;
       req.session = {};
       req.session['passport'] = {};
+      req._userProperty = 'currentUser';
       
       var error;
       
@@ -239,7 +239,6 @@ describe('http.ServerRequest', function() {
       passport.serializeUser(function(user, done) {
         done(null, user.id);
       });
-      passport._userProperty = 'currentUser';
       
       var req = new Object();
       req.login = request.login;
@@ -248,6 +247,7 @@ describe('http.ServerRequest', function() {
       req._passport = {};
       req._passport.instance = passport;
       req.session = {};
+      req._userProperty = 'currentUser';
       
       var error;
       
@@ -408,7 +408,7 @@ describe('http.ServerRequest', function() {
       req.currentUser = { id: '1', username: 'root' };
       req._passport = {};
       req._passport.instance = passport;
-      req._passport.instance._userProperty = 'currentUser';
+      req._userProperty = 'currentUser';
       req.session = {};
       req.session['passport'] = {};
       req.session['passport'].user = '1';
@@ -472,7 +472,7 @@ describe('http.ServerRequest', function() {
       req.currentUser = { id: '1', username: 'root' };
       req._passport = {};
       req._passport.instance = {};
-      req._passport.instance._userProperty = 'currentUser';
+      req._userProperty = 'currentUser';
       
       it('should be authenticated', function() {
         expect(req.isAuthenticated()).to.be.true;
