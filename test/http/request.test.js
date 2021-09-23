@@ -43,7 +43,8 @@ describe('http.ServerRequest', function() {
       req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
-      req._passport.session = {};
+      req.session = {};
+      req.session['passport'] = {};
       
       var error;
       
@@ -72,7 +73,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should not serialize user', function() {
-        expect(req._passport.session.user).to.be.undefined;
+        expect(req.session['passport'].user).to.be.undefined;
       });
     });
     
@@ -86,7 +87,8 @@ describe('http.ServerRequest', function() {
       req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
-      req._passport.session = {};
+      req.session = {};
+      req.session['passport'] = {};
       
       var error;
       
@@ -119,7 +121,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should not serialize user', function() {
-        expect(req._passport.session.user).to.be.undefined;
+        expect(req.session['passport'].user).to.be.undefined;
       });
     });
     
@@ -132,7 +134,8 @@ describe('http.ServerRequest', function() {
       req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
-      req._passport.session = {};
+      req.session = {};
+      req.session['passport'] = {};
       
       var user = { id: '1', username: 'root' };
       req.login(user, { session: false });
@@ -149,7 +152,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should not serialize user', function() {
-        expect(req._passport.session.user).to.be.undefined;
+        expect(req.session['passport'].user).to.be.undefined;
       });
     });
     
@@ -293,7 +296,8 @@ describe('http.ServerRequest', function() {
       req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
-      req._passport.session = {};
+      req.session = {};
+      req.session['passport'] = {};
       
       var error;
       
@@ -321,7 +325,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should not serialize user', function() {
-        expect(req._passport.session.user).to.be.undefined;
+        expect(req.session['passport'].user).to.be.undefined;
       });
     });
     
@@ -347,7 +351,8 @@ describe('http.ServerRequest', function() {
       req.login = request.login;
       req._passport = {};
       req._passport.instance = passport;
-      req._passport.session = {};
+      req.session = {};
+      req.session['passport'] = {};
       
       var user = { id: '1', username: 'root' };
       

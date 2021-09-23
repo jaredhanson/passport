@@ -48,10 +48,6 @@ describe('Authenticator', function() {
         expect(request._passport.instance).to.be.an.instanceOf(Authenticator);
         expect(request._passport.instance).to.equal(passport);
       });
-    
-      it('should not expose session storage on internal request property', function() {
-        expect(request._passport.session).to.be.undefined;
-      });
     });
     
     describe('handling a request with custom user property', function() {
@@ -87,10 +83,6 @@ describe('Authenticator', function() {
         expect(request._passport).to.be.an('object');
         expect(request._passport.instance).to.be.an.instanceOf(Authenticator);
         expect(request._passport.instance).to.equal(passport);
-      });
-    
-      it('should not expose session storage on internal request property', function() {
-        expect(request._passport.session).to.be.undefined;
       });
     });
     
