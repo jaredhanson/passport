@@ -37,10 +37,6 @@ describe('middleware/initialize', function() {
       expect(request._passport.instance).to.be.an.instanceOf(Passport);
       expect(request._passport.instance).to.equal(passport);
     });
-    
-    it('should not expose empty object as session storage on internal request property', function() {
-      expect(request._passport.session).to.be.undefined;
-    });
   });
   
   describe('handling a request with a new session', function() {
@@ -73,10 +69,6 @@ describe('middleware/initialize', function() {
       expect(request._passport).to.be.an('object');
       expect(request._passport.instance).to.be.an.instanceOf(Passport);
       expect(request._passport.instance).to.equal(passport);
-    });
-    
-    it('should not expose session storage on internal request property', function() {
-      expect(request._passport.session).to.be.undefined;
     });
   });
   
@@ -115,12 +107,6 @@ describe('middleware/initialize', function() {
       expect(request._passport.instance).to.be.an.instanceOf(Passport);
       expect(request._passport.instance).to.equal(passport);
     });
-    
-    it('should expose session storage on internal request property', function() {
-      expect(request._passport.session).to.be.an('object');
-      expect(Object.keys(request._passport.session)).to.have.length(1);
-      expect(request._passport.session.user).to.equal('123456');
-    });
   });
   
   describe('handling a request with an existing session using custom session key', function() {
@@ -158,12 +144,6 @@ describe('middleware/initialize', function() {
       expect(request._passport).to.be.an('object');
       expect(request._passport.instance).to.be.an.instanceOf(Passport);
       expect(request._passport.instance).to.equal(passport);
-    });
-    
-    it('should expose session storage on internal request property', function() {
-      expect(request._passport.session).to.be.an('object');
-      expect(Object.keys(request._passport.session)).to.have.length(1);
-      expect(request._passport.session.user).to.equal('123456');
     });
   });
   
