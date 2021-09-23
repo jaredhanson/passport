@@ -22,6 +22,10 @@
   "bugs": {
     "url": "http://github.com/jaredhanson/passport/issues"
   },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/jaredhanson"
+  },
   "license": "MIT",
   "licenses": [
     {
