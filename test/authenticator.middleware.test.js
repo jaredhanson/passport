@@ -35,8 +35,8 @@ describe('Authenticator', function() {
         expect(error).to.be.undefined;
       });
       
-      it('should set user property on authenticator', function() {
-        expect(passport._userProperty).to.equal('user');
+      it('should not set user property on request', function() {
+        expect(request._userProperty).to.be.undefined;
       });
     
       it('should not initialize namespace within session', function() {
@@ -71,8 +71,8 @@ describe('Authenticator', function() {
         expect(error).to.be.undefined;
       });
       
-      it('should set user property on authenticator', function() {
-        expect(passport._userProperty).to.equal('currentUser');
+      it('should set user property on request', function() {
+        expect(request._userProperty).to.equal('currentUser');
       });
     
       it('should not initialize namespace within session', function() {
