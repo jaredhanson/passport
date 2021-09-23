@@ -198,7 +198,7 @@ describe('http.ServerRequest', function() {
       req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
-      req._passport.session = {};
+      req.session = {};
       
       var error;
       
@@ -227,7 +227,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should serialize user', function() {
-        expect(req._passport.session.user).to.equal('1');
+        expect(req.session['passport'].user).to.equal('1');
       });
     });
     
@@ -244,7 +244,7 @@ describe('http.ServerRequest', function() {
       req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
-      req._passport.session = {};
+      req.session = {};
       
       var error;
       
@@ -277,7 +277,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should serialize user', function() {
-        expect(req._passport.session.user).to.equal('1');
+        expect(req.session['passport'].user).to.equal('1');
       });
     });
     
