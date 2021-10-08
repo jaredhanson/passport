@@ -7,5 +7,6 @@
 ## Sponsors
 
 - [CodePilot.ai](https://codepilot.ai/)
+- [Gadget](https://gadget.dev/)
 - Kelly Burke
 - [Matt Miller](https://mmiller.me/)
