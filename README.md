@@ -15,9 +15,13 @@ hooks for controlling what occurs when authentication succeeds or fails.
 ---
 
 <p align="center">
-  <sup>Advertisement</sup>
+  <sup>Sponsors</sup>
   <br>
-  <a href="https://click.linksynergy.com/link?id=D*o7yui4/NM&offerid=507388.922484&type=2&murl=https%3A%2F%2Fwww.udemy.com%2Fcourse%2Fthe-complete-nodejs-developer-course-2%2F&u1=14vIm40WB4Acg6OIqudjvAOsdlOg7B40l">The Complete Node.js Developer Course</a><br>Learn Node. js by building real-world applications with Node, Express, MongoDB, Jest, and more!
+  <a href="https://www.loginradius.com/?utm_source=sponsership&utm_medium=github&utm_campaign=jaredhanson"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/loginradius.png"></a><br/>
+  <a href="https://accounts.loginradius.com/auth.aspx?action=register?utm_source=sponsership&utm_medium=github&utm_campaign=jaredhanson">LoginRadius</a> is built for the developer community to integrate robust Authentication and Single Sign-On in just a few lines of code.<br/><a href="https://accounts.loginradius.com/auth.aspx?action=register?utm_source=sponsership&utm_medium=github&utm_campaign=jaredhanson">FREE Signup</a>
+  <br><br>
+  <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/workos.png"></a><br/>
+  <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><b>Your app, enterprise-ready.</b><br/>Start selling to enterprise customers with just a few lines of code. Add Single Sign-On (and more) in minutes instead of months.</a>
 </p>
 
 ---
