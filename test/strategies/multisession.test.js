@@ -87,4 +87,107 @@ describe('MultiSessionStrategy', function() {
     });
   });
   
+  describe('handling a request with multiple login sessions', function() {
+    var strategy = new MultiSessionStrategy(function(user, req, done) {
+      done(null, user);
+    });
+    
+    var request, pass = false;
+  
+    before(function(done) {
+      chai.passport.use(strategy)
+        .pass(function() {
+          pass = true;
+          done();
+        })
+        .req(function(req) {
+          request = req;
+          
+          req._passport = {};
+          req._passport.instance = {};
+          req.session = {};
+          req.session['passport'] = {};
+          req.session['passport'][0] = {};
+          req.session['passport'][0].user = { id: '123456', displayName: 'Alice' };
+          req.session['passport'][1] = {};
+          req.session['passport'][1].user = { id: '123457', displayName: 'Bob' };
+        })
+        .authenticate();
+    });
+  
+    it('should pass', function() {
+      expect(pass).to.be.true;
+    });
+    
+    it('should set user on request', function() {
+      expect(request.user).to.deep.equal({
+        id: '123456',
+        displayName: 'Alice'
+      });
+    });
+    
+    it('should maintain session', function() {
+      expect(request.session['passport']).to.deep.equal({
+        0: {
+          user: { id: '123456', displayName: 'Alice' }
+        },
+        1: {
+          user: { id: '123457', displayName: 'Bob' }
+        }
+      });
+    });
+  });
+  
+  describe('handling a request with multiple login sessions and select query parameter', function() {
+    var strategy = new MultiSessionStrategy(function(user, req, done) {
+      done(null, user);
+    });
+    
+    var request, pass = false;
+  
+    before(function(done) {
+      chai.passport.use(strategy)
+        .pass(function() {
+          pass = true;
+          done();
+        })
+        .req(function(req) {
+          request = req;
+          req.query = { au: '1' };
+          
+          req._passport = {};
+          req._passport.instance = {};
+          req.session = {};
+          req.session['passport'] = {};
+          req.session['passport'][0] = {};
+          req.session['passport'][0].user = { id: '123456', displayName: 'Alice' };
+          req.session['passport'][1] = {};
+          req.session['passport'][1].user = { id: '123457', displayName: 'Bob' };
+        })
+        .authenticate();
+    });
+  
+    it('should pass', function() {
+      expect(pass).to.be.true;
+    });
+    
+    it('should set user on request', function() {
+      expect(request.user).to.deep.equal({
+        id: '123457',
+        displayName: 'Bob'
+      });
+    });
+    
+    it('should maintain session', function() {
+      expect(request.session['passport']).to.deep.equal({
+        0: {
+          user: { id: '123456', displayName: 'Alice' }
+        },
+        1: {
+          user: { id: '123457', displayName: 'Bob' }
+        }
+      });
+    });
+  });
+  
 });
