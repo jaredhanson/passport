@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `authenticate()` middleware, rather than `initialize()` middleware, extends
 request with `login()`, `logIn()`, `logout()`, `logOut()`, `isAuthenticated()`,
 and `isUnauthenticated()` functions.
+- Session strategy errors with informative message if session support is not
+available.
 
 ## [0.5.0] - 2021-09-23
 ### Changed
