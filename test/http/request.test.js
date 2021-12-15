@@ -201,7 +201,7 @@ describe('http.ServerRequest', function() {
       req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
-      req.sessionManager = passport._sm;
+      req._sessionManager = passport._sm;
       req.session = {};
       
       var error;
@@ -247,7 +247,7 @@ describe('http.ServerRequest', function() {
       req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
-      req.sessionManager = passport._sm;
+      req._sessionManager = passport._sm;
       req.session = {};
       req._userProperty = 'currentUser';
       
@@ -298,7 +298,7 @@ describe('http.ServerRequest', function() {
       req.isUnauthenticated = request.isUnauthenticated;
       req._passport = {};
       req._passport.instance = passport;
-      req.sessionManager = passport._sm;
+      req._sessionManager = passport._sm;
       req.session = {};
       req.session['passport'] = {};
       
@@ -354,7 +354,7 @@ describe('http.ServerRequest', function() {
       req.login = request.login;
       req._passport = {};
       req._passport.instance = passport;
-      req.sessionManager = passport._sm;
+      req._sessionManager = passport._sm;
       req.session = {};
       req.session['passport'] = {};
       
@@ -382,7 +382,7 @@ describe('http.ServerRequest', function() {
       req.user = { id: '1', username: 'root' };
       req._passport = {};
       req._passport.instance = passport;
-      req.sessionManager = passport._sm;
+      req._sessionManager = passport._sm;
       req.session = {};
       req.session['passport'] = {};
       req.session['passport'].user = '1';
@@ -414,7 +414,7 @@ describe('http.ServerRequest', function() {
       req._passport = {};
       req._passport.instance = passport;
       req._userProperty = 'currentUser';
-      req.sessionManager = passport._sm;
+      req._sessionManager = passport._sm;
       req.session = {};
       req.session['passport'] = {};
       req.session['passport'].user = '1';
