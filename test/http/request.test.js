@@ -340,7 +340,7 @@ describe('http.ServerRequest', function() {
       it('should throw an exception', function() {
         expect(function() {
           req.login(user, function(err) {});
-        }).to.throw(Error, 'passport.initialize() middleware not in use');
+        }).to.throw(Error, 'Login sessions require a session manager');
       });
     });
     
@@ -354,6 +354,7 @@ describe('http.ServerRequest', function() {
       req.login = request.login;
       req._passport = {};
       req._passport.instance = passport;
+      req.sessionManager = passport._sm;
       req.session = {};
       req.session['passport'] = {};
       
