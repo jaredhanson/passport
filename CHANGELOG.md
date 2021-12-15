@@ -32,3 +32,5 @@ request, rather than all requests processed via singleton Passport instance,
 eliminating a race condition in situations where `initialize()` middleware is
 used multiple times in an application with `userProperty` set to different
 values.
+
+[Unreleased]: https://github.com/jaredhanson/passport/compare/v0.5.0...HEAD
