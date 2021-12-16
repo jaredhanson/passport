@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.2] - 2021-12-16
+### Fixed
+- Introduced a compatibility layer for strategies that depend directly on
+`passport@0.4.x` or earlier (such as `passport-azure-ad`), which were
+broken by the removal of private variables in `passport@0.5.1`.
+
 ## [0.5.1] - 2021-12-15
 ### Added
 - Informative error message in session strategy if session support is not
@@ -37,5 +43,6 @@ eliminating a race condition in situations where `initialize()` middleware is
 used multiple times in an application with `userProperty` set to different
 values.
 
-[Unreleased]: https://github.com/jaredhanson/passport/compare/v0.5.1...HEAD
+[Unreleased]: https://github.com/jaredhanson/passport/compare/v0.5.2...HEAD
+[0.5.2]: https://github.com/jaredhanson/passport/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/jaredhanson/passport/compare/v0.5.0...v0.5.1
