@@ -20,7 +20,7 @@ hooks for controlling what occurs when authentication succeeds or fails.
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/workos.png"></a><br/>
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><b>Your app, enterprise-ready.</b><br/>Start selling to enterprise customers with just a few lines of code. Add Single Sign-On (and more) in minutes instead of months.</a>
   <br>
-  <a href="https://snyk.io/"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/snyk.png" width="301" height="171"></a><br/>
+  <a href="https://snyk.co/passport"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/snyk.png" width="301" height="171"></a><br/>
 </p>
 
 ---
