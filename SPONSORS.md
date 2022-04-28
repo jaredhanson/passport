@@ -2,7 +2,7 @@
 
 [![WorkOS](https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/workos.png)](https://workos.com/)
 <br>
-[![Snyk](https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/snyk.png)](https://snyk.co/passport)
+[![Snyk](https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/snyk.png)](https://snyk.io/)
 
 ## Sponsors
 
