@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.5.3] - 2022-05-16
 ### Fixed
 
 - `initialize()` middleware extends request with `login()`, `logIn()`,
@@ -48,6 +50,7 @@ eliminating a race condition in situations where `initialize()` middleware is
 used multiple times in an application with `userProperty` set to different
 values.
 
-[Unreleased]: https://github.com/jaredhanson/passport/compare/v0.5.2...HEAD
+[Unreleased]: https://github.com/jaredhanson/passport/compare/v0.5.3...HEAD
+[0.5.3]: https://github.com/jaredhanson/passport/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/jaredhanson/passport/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/jaredhanson/passport/compare/v0.5.0...v0.5.1
