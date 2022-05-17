@@ -202,7 +202,11 @@ describe('http.ServerRequest', function() {
       req._passport = {};
       req._passport.instance = passport;
       req._sessionManager = passport._sm;
-      req.session = {};
+      req.session = { id: '1' };
+      req.session.regenerate = function(cb) {
+        req.session = { id: '2' };
+        process.nextTick(cb);
+      }
       
       var error;
       
@@ -222,6 +226,10 @@ describe('http.ServerRequest', function() {
       it('should be authenticated', function() {
         expect(req.isAuthenticated()).to.be.true;
         expect(req.isUnauthenticated()).to.be.false;
+      });
+      
+      it('should regenerate session', function() {
+        expect(req.session.id).to.equal('2');
       });
       
       it('should set user', function() {
@@ -248,7 +256,11 @@ describe('http.ServerRequest', function() {
       req._passport = {};
       req._passport.instance = passport;
       req._sessionManager = passport._sm;
-      req.session = {};
+      req.session = { id: '1' };
+      req.session.regenerate = function(cb) {
+        req.session = { id: '2' };
+        process.nextTick(cb);
+      }
       req._userProperty = 'currentUser';
       
       var error;
@@ -269,6 +281,10 @@ describe('http.ServerRequest', function() {
       it('should be authenticated', function() {
         expect(req.isAuthenticated()).to.be.true;
         expect(req.isUnauthenticated()).to.be.false;
+      });
+      
+      it('should regenerate session', function() {
+        expect(req.session.id).to.equal('2');
       });
       
       it('should not set user', function() {
@@ -299,8 +315,13 @@ describe('http.ServerRequest', function() {
       req._passport = {};
       req._passport.instance = passport;
       req._sessionManager = passport._sm;
-      req.session = {};
+      req.session = { id: '1' };
       req.session['passport'] = {};
+      req.session.regenerate = function(cb) {
+        req.session = { id: '2' };
+        req.session['passport'] = {};
+        process.nextTick(cb);
+      }
       
       var error;
       
@@ -321,6 +342,10 @@ describe('http.ServerRequest', function() {
       it('should not be authenticated', function() {
         expect(req.isAuthenticated()).to.be.false;
         expect(req.isUnauthenticated()).to.be.true;
+      });
+      
+      it('should regenerate session', function() {
+        expect(req.session.id).to.equal('2');
       });
       
       it('should not set user', function() {
