@@ -410,11 +410,26 @@ describe('http.ServerRequest', function() {
       req._passport = {};
       req._passport.instance = passport;
       req._sessionManager = passport._sm;
-      req.session = {};
+      req.session = { id: '1' };
       req.session['passport'] = {};
       req.session['passport'].user = '1';
+      req.session.regenerate = function(cb) {
+        req.session = { id: '2' };
+        process.nextTick(cb);
+      }
       
-      req.logout();
+      var error;
+      
+      before(function(done) {
+        req.logout(function(err) {
+          error = err;
+          done();
+        });
+      });
+      
+      it('should not error', function() {
+        expect(error).to.be.undefined;
+      });
       
       it('should not be authenticated', function() {
         expect(req.isAuthenticated()).to.be.false;
@@ -426,7 +441,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should clear serialized user', function() {
-        expect(req.session['passport'].user).to.be.undefined;
+        expect(req.session['passport']).to.be.undefined;
       });
     });
     
@@ -442,11 +457,26 @@ describe('http.ServerRequest', function() {
       req._passport.instance = passport;
       req._userProperty = 'currentUser';
       req._sessionManager = passport._sm;
-      req.session = {};
+      req.session = { id: '1' };
       req.session['passport'] = {};
       req.session['passport'].user = '1';
+      req.session.regenerate = function(cb) {
+        req.session = { id: '2' };
+        process.nextTick(cb);
+      }
       
-      req.logout();
+      var error;
+      
+      before(function(done) {
+        req.logout(function(err) {
+          error = err;
+          done();
+        });
+      });
+      
+      it('should not error', function() {
+        expect(error).to.be.undefined;
+      });
       
       it('should not be authenticated', function() {
         expect(req.isAuthenticated()).to.be.false;
@@ -458,7 +488,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should clear serialized user', function() {
-        expect(req.session['passport'].user).to.be.undefined;
+        expect(req.session['passport']).to.be.undefined;
       });
     });
     
