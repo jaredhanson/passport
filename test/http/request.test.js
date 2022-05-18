@@ -205,8 +205,11 @@ describe('http.ServerRequest', function() {
       req.session = { id: '1' };
       req.session.regenerate = function(cb) {
         req.session = { id: '2' };
+        req.session.save = function(cb) {
+          process.nextTick(cb);
+        };
         process.nextTick(cb);
-      }
+      };
       
       var error;
       
@@ -259,6 +262,9 @@ describe('http.ServerRequest', function() {
       req.session = { id: '1' };
       req.session.regenerate = function(cb) {
         req.session = { id: '2' };
+        req.session.save = function(cb) {
+          process.nextTick(cb);
+        };
         process.nextTick(cb);
       }
       req._userProperty = 'currentUser';
