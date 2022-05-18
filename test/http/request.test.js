@@ -419,10 +419,14 @@ describe('http.ServerRequest', function() {
       req.session = { id: '1' };
       req.session['passport'] = {};
       req.session['passport'].user = '1';
+      req.session.save = function(cb) {
+        expect(req.session['passport'].user).to.be.undefined;
+        process.nextTick(cb);
+      };
       req.session.regenerate = function(cb) {
         req.session = { id: '2' };
         process.nextTick(cb);
-      }
+      };
       
       var error;
       
@@ -466,10 +470,14 @@ describe('http.ServerRequest', function() {
       req.session = { id: '1' };
       req.session['passport'] = {};
       req.session['passport'].user = '1';
+      req.session.save = function(cb) {
+        expect(req.session['passport'].user).to.be.undefined;
+        process.nextTick(cb);
+      };
       req.session.regenerate = function(cb) {
         req.session = { id: '2' };
         process.nextTick(cb);
-      }
+      };
       
       var error;
       
