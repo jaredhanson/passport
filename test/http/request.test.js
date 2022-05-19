@@ -525,6 +525,36 @@ describe('http.ServerRequest', function() {
       });
     });
     
+    describe('existing session, without passport.initialize() middleware, and invoked with a callback', function() {
+      var req = new Object();
+      req.logout = request.logout;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
+      req.user = { id: '1', username: 'root' };
+      
+      var error;
+      
+      before(function(done) {
+        req.logout(function(err) {
+          error = err;
+          done();
+        });
+      });
+      
+      it('should not error', function() {
+        expect(error).to.be.undefined;
+      });
+      
+      it('should not be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.false;
+        expect(req.isUnauthenticated()).to.be.true;
+      });
+      
+      it('should clear user', function() {
+        expect(req.user).to.be.null;
+      });
+    });
+    
     describe('existing session, but not passing a callback argument', function() {
       var passport = new Passport();
       passport.serializeUser(function(user, done) {
