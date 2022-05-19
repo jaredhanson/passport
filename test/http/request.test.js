@@ -418,6 +418,66 @@ describe('http.ServerRequest', function() {
       });
     });
     
+    describe('encountering an error when saving session', function() {
+      var passport = new Passport();
+      passport.serializeUser(function(user, done) {
+        done(null, user.id);
+      });
+      
+      var req = new Object();
+      req.login = request.login;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
+      req._passport = {};
+      req._passport.instance = passport;
+      req._sessionManager = passport._sm;
+      req.session = { id: '1' };
+      req.session['passport'] = {};
+      req.session.regenerate = function(cb) {
+        req.session = { id: '2' };
+        req.session['passport'] = {};
+        req.session.save = function(cb) {
+          process.nextTick(function(){
+            cb(new Error('something went wrong'));
+          });
+        };
+        process.nextTick(cb);
+      }
+      
+      var error;
+      
+      before(function(done) {
+        var user = { id: '1', username: 'root' };
+        
+        req.login(user, function(err) {
+          error = err;
+          done();
+        });
+      });
+      
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('something went wrong');
+      });
+      
+      it('should not be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.false;
+        expect(req.isUnauthenticated()).to.be.true;
+      });
+      
+      it('should not regenerate session', function() {
+        expect(req.session.id).to.equal('2');
+      });
+      
+      it('should not set user', function() {
+        expect(req.user).to.be.null;
+      });
+      
+      it('should not serialize user', function() {
+        expect(req.session['passport'].user).to.equal('1');
+      });
+    });
+    
     /*
     describe('establishing a session, without passport.initialize() middleware', function() {
       var req = new Object();
