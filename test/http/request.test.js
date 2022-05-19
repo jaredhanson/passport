@@ -525,6 +525,28 @@ describe('http.ServerRequest', function() {
       });
     });
     
+    describe('existing session, but not passing a callback argument', function() {
+      var passport = new Passport();
+      passport.serializeUser(function(user, done) {
+        done(null, user.id);
+      });
+      
+      var req = new Object();
+      req.logout = request.logout;
+      req._passport = {};
+      req._passport.instance = passport;
+      req._sessionManager = passport._sm;
+      req.session = {};
+      req.session['passport'] = {};
+      req.session['passport'].user = '1';
+      
+      it('should throw an exception', function() {
+        expect(function() {
+          req.logout();
+        }).to.throw(Error, 'req#logout requires a callback function');
+      });
+    });
+    
   });
   
   
