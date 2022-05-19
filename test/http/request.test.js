@@ -380,7 +380,6 @@ describe('http.ServerRequest', function() {
       req.session['passport'] = {};
       req.session.regenerate = function(cb) {
         req.session = { id: '2' };
-        req.session['passport'] = {};
         process.nextTick(cb);
       }
       
@@ -414,7 +413,7 @@ describe('http.ServerRequest', function() {
       });
       
       it('should not serialize user', function() {
-        expect(req.session['passport'].user).to.be.undefined;
+        expect(req.session['passport']).to.be.undefined;
       });
     });
     
@@ -435,7 +434,6 @@ describe('http.ServerRequest', function() {
       req.session['passport'] = {};
       req.session.regenerate = function(cb) {
         req.session = { id: '2' };
-        req.session['passport'] = {};
         req.session.save = function(cb) {
           process.nextTick(function(){
             cb(new Error('something went wrong'));
