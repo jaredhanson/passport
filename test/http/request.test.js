@@ -824,6 +824,33 @@ describe('http.ServerRequest', function() {
       });
     });
     
+    describe('without session support', function() {
+      var passport = new Passport();
+      passport.serializeUser(function(user, done) {
+        done(null, user.id);
+      });
+      
+      var req = new Object();
+      req.logout = request.logout;
+      req._passport = {};
+      req._passport.instance = passport;
+      req._sessionManager = passport._sm;
+      
+      var error;
+      
+      before(function(done) {
+        req.logout(function(err) {
+          error = err;
+          done();
+        });
+      });
+      
+      it('should error', function() {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal('Login sessions require session support. Did you forget to use `express-session` middleware?');
+      });
+    });
+    
   });
   
   
