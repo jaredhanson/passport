@@ -336,7 +336,7 @@ describe('http.ServerRequest', function() {
       before(function(done) {
         var user = { id: '1', username: 'root' };
         
-        req.login(user, { keepSessionData: true }, function(err) {
+        req.login(user, { keepSessionInfo: true }, function(err) {
           error = err;
           done();
         });
@@ -803,7 +803,7 @@ describe('http.ServerRequest', function() {
       var error;
       
       before(function(done) {
-        req.logout({ keepSessionData: true }, function(err) {
+        req.logout({ keepSessionInfo: true }, function(err) {
           error = err;
           done();
         });
