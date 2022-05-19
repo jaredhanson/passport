@@ -246,6 +246,130 @@ describe('http.ServerRequest', function() {
       });
     });
     
+    describe('establishing a session and not keeping previous session data', function() {
+      var passport = new Passport();
+      passport.serializeUser(function(user, done) {
+        done(null, user.id);
+      });
+      
+      var req = new Object();
+      req.login = request.login;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
+      req._passport = {};
+      req._passport.instance = passport;
+      req._sessionManager = passport._sm;
+      req.session = { cart: [ '1', '2', ] };
+      Object.defineProperty(req.session, 'id', { value: '1' });
+      req.session.regenerate = function(cb) {
+        req.session = { id: '2' };
+        req.session.save = function(cb) {
+          process.nextTick(cb);
+        };
+        process.nextTick(cb);
+      };
+      
+      var error;
+      
+      before(function(done) {
+        var user = { id: '1', username: 'root' };
+        
+        req.login(user, function(err) {
+          error = err;
+          done();
+        });
+      });
+      
+      it('should not error', function() {
+        expect(error).to.be.undefined;
+      });
+      
+      it('should be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.true;
+        expect(req.isUnauthenticated()).to.be.false;
+      });
+      
+      it('should regenerate session', function() {
+        expect(req.session.id).to.equal('2');
+      });
+      
+      it('should keep session data', function() {
+        expect(req.session.cart).to.be.undefined;
+      });
+      
+      it('should set user', function() {
+        expect(req.user).to.be.an('object');
+        expect(req.user.id).to.equal('1');
+        expect(req.user.username).to.equal('root');
+      });
+      
+      it('should serialize user', function() {
+        expect(req.session['passport'].user).to.equal('1');
+      });
+    });
+    
+    describe('establishing a session and keeping previous session data', function() {
+      var passport = new Passport();
+      passport.serializeUser(function(user, done) {
+        done(null, user.id);
+      });
+      
+      var req = new Object();
+      req.login = request.login;
+      req.isAuthenticated = request.isAuthenticated;
+      req.isUnauthenticated = request.isUnauthenticated;
+      req._passport = {};
+      req._passport.instance = passport;
+      req._sessionManager = passport._sm;
+      req.session = { cart: [ '1', '2', ] };
+      Object.defineProperty(req.session, 'id', { value: '1' });
+      req.session.regenerate = function(cb) {
+        req.session = { id: '2' };
+        req.session.save = function(cb) {
+          process.nextTick(cb);
+        };
+        process.nextTick(cb);
+      };
+      
+      var error;
+      
+      before(function(done) {
+        var user = { id: '1', username: 'root' };
+        
+        req.login(user, { keepSessionData: true }, function(err) {
+          error = err;
+          done();
+        });
+      });
+      
+      it('should not error', function() {
+        expect(error).to.be.undefined;
+      });
+      
+      it('should be authenticated', function() {
+        expect(req.isAuthenticated()).to.be.true;
+        expect(req.isUnauthenticated()).to.be.false;
+      });
+      
+      it('should regenerate session', function() {
+        expect(req.session.id).to.equal('2');
+      });
+      
+      it('should keep session data', function() {
+        expect(req.session.cart).to.deep.equal([ '1', '2' ]);
+      });
+      
+      it('should set user', function() {
+        expect(req.user).to.be.an('object');
+        expect(req.user.id).to.equal('1');
+        expect(req.user.username).to.equal('root');
+      });
+      
+      it('should serialize user', function() {
+        expect(req.session['passport'].user).to.equal('1');
+      });
+    });
+    
     describe('establishing a session and setting custom user property', function() {
       var passport = new Passport();
       passport.serializeUser(function(user, done) {
