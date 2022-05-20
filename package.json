@@ -36,7 +36,8 @@
   "main": "./lib",
   "dependencies": {
     "passport-strategy": "1.x.x",
-    "pause": "0.0.1"
+    "pause": "0.0.1",
+    "utils-merge": "^1.0.1"
   },
   "devDependencies": {
     "make-node": "0.3.x",
