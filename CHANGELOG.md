@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2022-05-20
+### Security
+
+- Improved robustness against session fixation attacks in cases where there is
+physical access to the same system or the application is susceptible to
+cross-site scripting (XSS).
+
 ## [0.5.3] - 2022-05-16
 ### Fixed
 
@@ -50,7 +57,8 @@ eliminating a race condition in situations where `initialize()` middleware is
 used multiple times in an application with `userProperty` set to different
 values.
 
-[Unreleased]: https://github.com/jaredhanson/passport/compare/v0.5.3...HEAD
+[Unreleased]: https://github.com/jaredhanson/passport/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/jaredhanson/passport/compare/v0.5.3...v0.6.0
 [0.5.3]: https://github.com/jaredhanson/passport/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/jaredhanson/passport/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/jaredhanson/passport/compare/v0.5.0...v0.5.1
