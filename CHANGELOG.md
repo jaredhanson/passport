@@ -14,10 +14,10 @@ the session.
 
 ### Changed
 
-- `req#logout()` is now an asynchronous function and requires a callback
-function as the last argument.
 - `req#login()` and `req#logout()` regenerate the the session and clear session
 information by default.
+- `req#logout()` is now an asynchronous function and requires a callback
+function as the last argument.
 
 ### Security
 
