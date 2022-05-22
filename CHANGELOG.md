@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [0.6.0] - 2022-05-20
+### Added
+- `authenticate()`, `req#login`, and `req#logout` accept a
+`keepSessionInfo: true` option to keep session information after regenerating
+the session.
+
+### Changed
+
+- `req#logout()` is now an asynchronous function and requires a callback
+function as the last argument.
+- `req#login()` and `req#logout()` regenerate the the session and clear session
+information by default.
+
 ### Security
 
 - Improved robustness against session fixation attacks in cases where there is
