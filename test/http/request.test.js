@@ -203,9 +203,9 @@ describe('http.ServerRequest', function() {
       req._passport.instance = passport;
       req._sessionManager = passport._sm;
       req.session = { id: '1' };
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         req.session = { id: '2' };
-        req.session.save = function(cb) {
+        req._sessionManager._delegate.save = function(req, cb) {
           process.nextTick(cb);
         };
         process.nextTick(cb);
@@ -261,9 +261,9 @@ describe('http.ServerRequest', function() {
       req._sessionManager = passport._sm;
       req.session = { cart: [ '1', '2', ] };
       Object.defineProperty(req.session, 'id', { value: '1' });
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         req.session = { id: '2' };
-        req.session.save = function(cb) {
+        req._sessionManager._delegate.save = function(req, cb) {
           process.nextTick(cb);
         };
         process.nextTick(cb);
@@ -323,9 +323,9 @@ describe('http.ServerRequest', function() {
       req._sessionManager = passport._sm;
       req.session = { cart: [ '1', '2', ] };
       Object.defineProperty(req.session, 'id', { value: '1' });
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         req.session = { id: '2' };
-        req.session.save = function(cb) {
+        req._sessionManager._delegate.save = function(req, cb) {
           process.nextTick(cb);
         };
         process.nextTick(cb);
@@ -384,9 +384,9 @@ describe('http.ServerRequest', function() {
       req._passport.instance = passport;
       req._sessionManager = passport._sm;
       req.session = { id: '1' };
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         req.session = { id: '2' };
-        req.session.save = function(cb) {
+        req._sessionManager._delegate.save = function(req, cb) {
           process.nextTick(cb);
         };
         process.nextTick(cb);
@@ -447,7 +447,7 @@ describe('http.ServerRequest', function() {
       req._sessionManager = passport._sm;
       req.session = { id: '1' };
       req.session['passport'] = {};
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         process.nextTick(function(){
           cb(new Error('something went wrong'));
         })
@@ -502,7 +502,7 @@ describe('http.ServerRequest', function() {
       req._sessionManager = passport._sm;
       req.session = { id: '1' };
       req.session['passport'] = {};
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         req.session = { id: '2' };
         process.nextTick(cb);
       }
@@ -556,9 +556,9 @@ describe('http.ServerRequest', function() {
       req._sessionManager = passport._sm;
       req.session = { id: '1' };
       req.session['passport'] = {};
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         req.session = { id: '2' };
-        req.session.save = function(cb) {
+        req._sessionManager._delegate.save = function(req, cb) {
           process.nextTick(function(){
             cb(new Error('something went wrong'));
           });
@@ -685,11 +685,11 @@ describe('http.ServerRequest', function() {
       req.session = { id: '1' };
       req.session['passport'] = {};
       req.session['passport'].user = '1';
-      req.session.save = function(cb) {
+      req._sessionManager._delegate.save = function(req, cb) {
         expect(req.session['passport'].user).to.be.undefined;
         process.nextTick(cb);
       };
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         req.session = { id: '2' };
         process.nextTick(cb);
       };
@@ -736,11 +736,11 @@ describe('http.ServerRequest', function() {
       Object.defineProperty(req.session, 'id', { value: '1' });
       req.session['passport'] = {};
       req.session['passport'].user = '1';
-      req.session.save = function(cb) {
+      req._sessionManager._delegate.save = function(req, cb) {
         expect(req.session['passport'].user).to.be.undefined;
         process.nextTick(cb);
       };
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         req.session = { id: '2' };
         process.nextTick(cb);
       };
@@ -791,11 +791,11 @@ describe('http.ServerRequest', function() {
       Object.defineProperty(req.session, 'id', { value: '1' });
       req.session['passport'] = {};
       req.session['passport'].user = '1';
-      req.session.save = function(cb) {
+      req._sessionManager._delegate.save = function(req, cb) {
         expect(req.session['passport'].user).to.be.undefined;
         process.nextTick(cb);
       };
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         req.session = { id: '2' };
         process.nextTick(cb);
       };
@@ -846,11 +846,11 @@ describe('http.ServerRequest', function() {
       req.session = { id: '1' };
       req.session['passport'] = {};
       req.session['passport'].user = '1';
-      req.session.save = function(cb) {
+      req._sessionManager._delegate.save = function(req, cb) {
         expect(req.session['passport'].user).to.be.undefined;
         process.nextTick(cb);
       };
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         req.session = { id: '2' };
         process.nextTick(cb);
       };
@@ -945,13 +945,13 @@ describe('http.ServerRequest', function() {
       req.session = { id: '1' };
       req.session['passport'] = {};
       req.session['passport'].user = '1';
-      req.session.save = function(cb) {
+      req._sessionManager._delegate.save = function(req, cb) {
         expect(req.session['passport'].user).to.be.undefined;
         process.nextTick(function() {
           cb(new Error('something went wrong'));
         });
       };
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         req.session = { id: '2' };
         process.nextTick(cb);
       };
@@ -998,11 +998,11 @@ describe('http.ServerRequest', function() {
       req.session = { id: '1' };
       req.session['passport'] = {};
       req.session['passport'].user = '1';
-      req.session.save = function(cb) {
+      req._sessionManager._delegate.save = function(req, cb) {
         expect(req.session['passport'].user).to.be.undefined;
         process.nextTick(cb);
       };
-      req.session.regenerate = function(cb) {
+      req._sessionManager._delegate.regenerate = function(req, cb) {
         process.nextTick(function() {
           cb(new Error('something went wrong'));
         });
