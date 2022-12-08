@@ -22,7 +22,7 @@ clobber: clean
 	-rm -r node_modules
 
 html:
-	jsdoc -c etc/conf.json -d ./doc $(SOURCES)
+	jsdoc -c etc/jsdoc.json -d ./doc $(SOURCES)
 
 
 .PHONY: clean clobber
