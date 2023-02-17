@@ -20,7 +20,7 @@ hooks for controlling what occurs when authentication succeeds or fails.
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/workos.png"></a><br/>
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><b>Your app, enterprise-ready.</b><br/>Start selling to enterprise customers with just a few lines of code. Add Single Sign-On (and more) in minutes instead of months.</a>
   <br>
-  <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.png" width="301"></a><br/>
+  <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg" width="301"></a><br/>
   <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship"><b>Drag and drop your auth</b><br/>Add authentication and user management to your consumer and business apps with a few lines of code.</a>
 </p>
 
