@@ -23,6 +23,9 @@ hooks for controlling what occurs when authentication succeeds or fails.
   <br>
   <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg" width="275"></a><br/>
   <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship"><b>Drag and drop your auth</b><br/>Add authentication and user management to your consumer and business apps with a few lines of code.</a>
+  <br>
+  <br>
+  <a href="https://fusionauth.io/"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/fusionauth.svg" width="275"></a><br/>
 </p>
 
 ---
