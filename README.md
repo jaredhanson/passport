@@ -21,7 +21,13 @@ hooks for controlling what occurs when authentication succeeds or fails.
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><b>Your app, enterprise-ready.</b><br/>Start selling to enterprise customers with just a few lines of code. Add Single Sign-On (and more) in minutes instead of months.</a>
   <br>
   <br>
-  <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg" width="275"></a><br/>
+  <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg">
+      <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg" width="275">
+    </picture>
+  </a><br/>
   <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship"><b>Drag and drop your auth</b><br/>Add authentication and user management to your consumer and business apps with a few lines of code.</a>
   <br>
   <br>
