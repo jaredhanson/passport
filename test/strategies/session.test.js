@@ -257,7 +257,7 @@ describe('SessionStrategy', function() {
   
     it('should error', function() {
       expect(error).to.be.an.instanceOf(Error);
-      expect(error.message).to.equal('passport.initialize() middleware not in use');
+      expect(error.message).to.equal('Login sessions require session support. Did you forget to use `express-session` middleware?');
     });
     
     it('should not set user on request', function() {

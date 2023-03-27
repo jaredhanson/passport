@@ -36,6 +36,8 @@ describe('middleware/initialize', function() {
       expect(request._passport).to.be.an('object');
       expect(request._passport.instance).to.be.an.instanceOf(Passport);
       expect(request._passport.instance).to.equal(passport);
+      expect(request._passport.instance._sm).to.be.an('object');
+      expect(request._passport.instance._userProperty).to.equal('user');
     });
   });
   
@@ -69,6 +71,8 @@ describe('middleware/initialize', function() {
       expect(request._passport).to.be.an('object');
       expect(request._passport.instance).to.be.an.instanceOf(Passport);
       expect(request._passport.instance).to.equal(passport);
+      expect(request._passport.instance._sm).to.be.an('object');
+      expect(request._passport.instance._userProperty).to.equal('user');
     });
   });
   
@@ -106,6 +110,8 @@ describe('middleware/initialize', function() {
       expect(request._passport).to.be.an('object');
       expect(request._passport.instance).to.be.an.instanceOf(Passport);
       expect(request._passport.instance).to.equal(passport);
+      expect(request._passport.instance._sm).to.be.an('object');
+      expect(request._passport.instance._userProperty).to.equal('user');
     });
   });
   
@@ -144,6 +150,39 @@ describe('middleware/initialize', function() {
       expect(request._passport).to.be.an('object');
       expect(request._passport.instance).to.be.an.instanceOf(Passport);
       expect(request._passport.instance).to.equal(passport);
+      expect(request._passport.instance._sm).to.be.an('object');
+      expect(request._passport.instance._userProperty).to.equal('user');
+    });
+  });
+  
+  describe('handling a request with a new session without compat mode', function() {
+    var passport = new Passport();
+    var request, error;
+
+    before(function(done) {
+      chai.connect.use(initialize(passport, { compat: false }))
+        .req(function(req) {
+          request = req;
+          
+          req.session = {};
+        })
+        .next(function(err) {
+          error = err;
+          done();
+        })
+        .dispatch();
+    });
+    
+    it('should not error', function() {
+      expect(error).to.be.undefined;
+    });
+    
+    it('should not initialize namespace within session', function() {
+      expect(request.session.passport).to.be.undefined;
+    });
+    
+    it('should expose authenticator on internal request property', function() {
+      expect(request._passport).to.be.undefined;
     });
   });
   

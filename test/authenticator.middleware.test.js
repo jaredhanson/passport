@@ -42,11 +42,13 @@ describe('Authenticator', function() {
       it('should not initialize namespace within session', function() {
         expect(request.session.passport).to.be.undefined;
       });
-    
+      
       it('should expose authenticator on internal request property', function() {
         expect(request._passport).to.be.an('object');
         expect(request._passport.instance).to.be.an.instanceOf(Authenticator);
         expect(request._passport.instance).to.equal(passport);
+        expect(request._passport.instance._sm).to.be.an('object');
+        expect(request._passport.instance._userProperty).to.equal('user');
       });
     });
     
@@ -78,11 +80,13 @@ describe('Authenticator', function() {
       it('should not initialize namespace within session', function() {
         expect(request.session.passport).to.be.undefined;
       });
-    
+      
       it('should expose authenticator on internal request property', function() {
         expect(request._passport).to.be.an('object');
         expect(request._passport.instance).to.be.an.instanceOf(Authenticator);
         expect(request._passport.instance).to.equal(passport);
+        expect(request._passport.instance._sm).to.be.an('object');
+        expect(request._passport.instance._userProperty).to.equal('currentUser');
       });
     });
     
