@@ -14,8 +14,9 @@ the session.
 
 ### Changed
 
-- `req#login()` and `req#logout()` regenerate the the session and clear session
+- `req#login()` and `req#logout()` regenerate the session and clear session
 information by default.
+- `authenticate()` now requires `req.session` to exist unless `session` is explicitly set to `false`. See [Sessions docs](https://www.passportjs.org/concepts/authentication/sessions/) for using session support. Failure to address this change may result in a error after upgrading, "Error: Login sessions require session support. Did you forget to use express-session middleware?". See #939 for discussion of that error.
 - `req#logout()` is now an asynchronous function and requires a callback
 function as the last argument.
 
