@@ -367,5 +367,61 @@ describe('middleware/authenticate', function() {
       expect(request.user).to.be.undefined;
     });
   });
+
+  describe('with multiple strategies, all of which fail, should not attemp next layer multiple times', function() {
+    let count1 = 0;
+    let count2 = 0;
+    function BasicStrategy() {
+    }
+    BasicStrategy.prototype.authenticate = function(req) {
+      this.fail('BASIC challenge');
+      this.fail('BASIC challenge');
+    };
+    
+    function DigestStrategy() {
+    }
+    DigestStrategy.prototype.authenticate = function(req) {
+      count1++;
+      this.fail('DIGEST challenge');
+      this.fail('DIGEST challenge');
+    };
+    
+    function NoChallengeStrategy() {
+    }
+    NoChallengeStrategy.prototype.authenticate = function(req) {
+      count2++
+      this.fail();
+    };
+    
+    var passport = new Passport();
+    passport.use('basic', new BasicStrategy());
+    passport.use('digest', new DigestStrategy());
+    passport.use('no-challenge', new NoChallengeStrategy());
+    
+    var request, response;
+
+    before(function(done) {
+      chai.connect.use(authenticate(passport, ['basic', 'no-challenge', 'digest']))
+        .req(function(req) {
+          request = req;
+          
+          req.flash = function(type, msg) {
+            this.message = { type: type, msg: msg };
+          };
+        })
+        .end(function(res) {
+          response = res;
+          done();
+        })
+        .dispatch();
+    });
+    
+    it('expect following strategy only attempt once', function() {
+      expect(request.user).to.be.undefined;
+      expect(count1).to.equal(1);
+      expect(count2).to.equal(1);
+    });
+
+  });
   
 });
