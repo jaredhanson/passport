@@ -17,11 +17,22 @@ hooks for controlling what occurs when authentication succeeds or fails.
 <p align="center">
   <sup>Sponsors</sup>
   <br>
-  <a href="https://www.loginradius.com/?utm_source=sponsership&utm_medium=github&utm_campaign=jaredhanson"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/loginradius.png"></a><br/>
-  <a href="https://accounts.loginradius.com/auth.aspx?action=register?utm_source=sponsership&utm_medium=github&utm_campaign=jaredhanson">LoginRadius</a> is built for the developer community to integrate robust Authentication and Single Sign-On in just a few lines of code.<br/><a href="https://accounts.loginradius.com/auth.aspx?action=register?utm_source=sponsership&utm_medium=github&utm_campaign=jaredhanson">FREE Signup</a>
-  <br><br>
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/workos.png"></a><br/>
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><b>Your app, enterprise-ready.</b><br/>Start selling to enterprise customers with just a few lines of code. Add Single Sign-On (and more) in minutes instead of months.</a>
+  <br>
+  <br>
+  <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg">
+      <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg" width="275">
+    </picture>
+  </a><br/>
+  <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship"><b>Drag and drop your auth</b><br/>Add authentication and user management to your consumer and business apps with a few lines of code.</a>
+  <br>
+  <br>
+  <a href="https://fusionauth.io/?utm_source=passportjs&utm_medium=referral&utm_campaign=sponsorship"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/fusionauth.png" width="275"></a><br/>
+  <a href="https://fusionauth.io/?utm_source=passportjs&utm_medium=referral&utm_campaign=sponsorship"><b>Auth. Built for Devs, by Devs</b><br/>Add login, registration, SSO, MFA, and a bazillion other features to your app in minutes. Integrates with any codebase and installs on any server, anywhere in the world.</a>
 </p>
 
 ---
@@ -171,4 +182,4 @@ that build upon or integrate with Passport.
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2011-2019 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2011-2021 Jared Hanson <[https://www.jaredhanson.me/](https://www.jaredhanson.me/)>
