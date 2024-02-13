@@ -21,5 +21,8 @@ clean: clean-docs clean-cov
 clobber: clean
 	-rm -r node_modules
 
+html:
+	jsdoc -c etc/jsdoc.json -d ./doc $(SOURCES)
+
 
 .PHONY: clean clobber

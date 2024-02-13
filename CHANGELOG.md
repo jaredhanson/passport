@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2023-11-27
+### Changed
+- Set `req.authInfo` by default when using the `assignProperty` option to
+`authenticate()` middleware.  This makes the behavior the same as when not using
+the option, and can be disabled by setting `authInfo` option to `false`.
+
 ## [0.6.0] - 2022-05-20
 ### Added
 - `authenticate()`, `req#login`, and `req#logout` accept a

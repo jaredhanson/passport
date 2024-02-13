@@ -20,7 +20,29 @@ hooks for controlling what occurs when authentication succeeds or fails.
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/workos.png"></a><br/>
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><b>Your app, enterprise-ready.</b><br/>Start selling to enterprise customers with just a few lines of code. Add Single Sign-On (and more) in minutes instead of months.</a>
   <br>
-  <a href="https://snyk.co/passport"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/snyk.png" width="301" height="171"></a><br/>
+  <br>
+  <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg">
+      <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg" width="275">
+    </picture>
+  </a><br/>
+  <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship"><b>Drag and drop your auth</b><br/>Add authentication and user management to your consumer and business apps with a few lines of code.</a>
+  <br>
+  <br>
+  <a href="https://fusionauth.io/?utm_source=passportjs&utm_medium=referral&utm_campaign=sponsorship"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/fusionauth.png" width="275"></a><br/>
+  <a href="https://fusionauth.io/?utm_source=passportjs&utm_medium=referral&utm_campaign=sponsorship"><b>Auth. Built for Devs, by Devs</b><br/>Add login, registration, SSO, MFA, and a bazillion other features to your app in minutes. Integrates with any codebase and installs on any server, anywhere in the world.</a>
+  <br>
+  <br>
+  <a href="https://stytch.com?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_campaign=passportjs">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch-dark.png">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch.png">
+      <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch.png" width="275">
+    </picture>
+  </a><br/>
+  <a href="https://stytch.com?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_campaign=passportjs"><b>API-first AuthN, AuthZ, and Fraud Prevention</b><br/>The most powerful identity platform built for developers. Easily build and secure a modern auth flow with user & org management, multi-tenant SSO, MFA, RBAC, device fingerprinting, and more.</a>
 </p>
 
 ---
