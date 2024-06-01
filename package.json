@@ -40,6 +40,7 @@
     "utils-merge": "^1.0.1"
   },
   "devDependencies": {
+    "jsdoc": "4.0.x",
     "make-node": "0.3.x",
     "mocha": "2.x.x",
     "chai": "2.x.x",
