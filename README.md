@@ -56,7 +56,7 @@ Status:
 ## Install
 
 ```
-$ npm install passport
+$ npm install passport --save
 ```
 
 ## Usage
