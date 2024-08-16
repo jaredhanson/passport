@@ -47,6 +47,7 @@ hooks for controlling what occurs when authentication succeeds or fails.
     </a>
   </div>
   <br>
+  <!-- Descope -->
   <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope-dark.svg">
