@@ -48,15 +48,20 @@ hooks for controlling what occurs when authentication succeeds or fails.
   </div>
   <br>
   <!-- Descope -->
-  <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg">
-      <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg" width="275">
-    </picture>
-  </a><br/>
-  <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship"><b>Drag and drop your auth</b><br/>Add authentication and user management to your consumer and business apps with a few lines of code.</a>
-  <br>
+  <div>
+    <a href="https://www.descope.com/?utm_source=PassportJS&utm_medium=referral&utm_campaign=oss-sponsorship">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope-dark.svg">
+        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg">
+        <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/descope.svg" width="275">
+      </picture>
+      <p>
+        <b>Drag and drop your auth</b>
+        <br>
+        Add authentication and user management to your consumer and business apps with a few lines of code.
+      </p>
+    </a>
+  </div>
   <br>
   <a href="https://fusionauth.io/?utm_source=passportjs&utm_medium=referral&utm_campaign=sponsorship"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/fusionauth.png" width="275"></a><br/>
   <a href="https://fusionauth.io/?utm_source=passportjs&utm_medium=referral&utm_campaign=sponsorship"><b>Auth. Built for Devs, by Devs</b><br/>Add login, registration, SSO, MFA, and a bazillion other features to your app in minutes. Integrates with any codebase and installs on any server, anywhere in the world.</a>
