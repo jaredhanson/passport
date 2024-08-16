@@ -16,6 +16,7 @@ hooks for controlling what occurs when authentication succeeds or fails.
 
 <p align="center">
   <sup>Sponsors</sup>
+  <br>
   <a href="https://auth0.com/">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0-dark.png">
