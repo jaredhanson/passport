@@ -18,20 +18,22 @@ hooks for controlling what occurs when authentication succeeds or fails.
   <sup>Sponsors</sup>
   <br>
   <!-- Auth0 -->
-  <a href="https://auth0.com/">
-    <picture>
-      <source srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0.png" media="(prefers-color-scheme: light)">
-      <source srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0-dark.png" media="(prefers-color-scheme: dark)">
-      <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0.svg" width="275">
-    </picture>
-    <p>
-      <b>Simple Authentication</b>
-      <br/>
-      Make login our problem. Not yours.
-    </p>
+  <div>
+    <a href="https://auth0.com/">
+      <picture>
+        <source srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0.png" media="(prefers-color-scheme: light)">
+        <source srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0-dark.png" media="(prefers-color-scheme: dark)">
+        <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0.svg" width="275">
+      </picture>
+      <p>
+        <b>Simple Authentication</b>
+        <br/>
+        Make login our problem. Not yours.
+      </p>
+    </a>
     <p>Auth0 by Okta provides a simple and customizable login page to authenticate your users. You can dynamically add new capabilities to it - including social login, multi-factor authentication, or passkeys - without making changes to your app’s code.</p>
     <p>We help protect your app and your users from attacks - defending your application from bot attacks and detecting runtime anomalies based on suspicious IPs, breached credentials, user context, and more.</p>
-  </a>
+  </div>
   <br/>
   <br>
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/workos.png"></a><br/>
