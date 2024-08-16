@@ -27,7 +27,7 @@ hooks for controlling what occurs when authentication succeeds or fails.
       </picture>
       <p>
         <b>Simple Authentication</b>
-        <br/>
+        <br>
         Make login our problem. Not yours.
       </p>
     </a>
@@ -35,7 +35,7 @@ hooks for controlling what occurs when authentication succeeds or fails.
     <p>We help protect your app and your users from attacks - defending your application from bot attacks and detecting runtime anomalies based on suspicious IPs, breached credentials, user context, and more.</p>
   </div>
   <br/>
-  <br>
+  <!-- WorkOS -->
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/workos.png"></a><br/>
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><b>Your app, enterprise-ready.</b><br/>Start selling to enterprise customers with just a few lines of code. Add Single Sign-On (and more) in minutes instead of months.</a>
   <br>
