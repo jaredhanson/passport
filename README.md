@@ -17,16 +17,20 @@ hooks for controlling what occurs when authentication succeeds or fails.
 <p align="center">
   <sup>Sponsors</sup>
   <br>
+  <!-- Write your comments here -->
   <a href="https://auth0.com/">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0-dark.png">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0.png">
+      <source srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0.png" media="(prefers-color-scheme: light)">
+      <source srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0-dark.png" media="(prefers-color-scheme: dark)">
       <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0.svg" width="275">
     </picture>
-  </a><br/>
-  <a href="https://auth0.com/"><b>Simple Authentication</b><br/>Make login our problem. Not yours.
+  </a>
+  <br/>
+  <a href="https://auth0.com/">
+    <b>Simple Authentication</b><p>Make login our problem. Not yours.</p>
 Auth0 by Okta provides a simple and customizable login page to authenticate your users. You can dynamically add new capabilities to it - including social login, multi-factor authentication, or passkeys - without making changes to your app’s code.
-We help protect your app and your users from attacks - defending your application from bot attacks and detecting runtime anomalies based on suspicious IPs, breached credentials, user context, and more.</a>
+We help protect your app and your users from attacks - defending your application from bot attacks and detecting runtime anomalies based on suspicious IPs, breached credentials, user context, and more.
+  </a>
   <br/>
   <br>
   <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/workos.png"></a><br/>
