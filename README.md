@@ -24,8 +24,11 @@ hooks for controlling what occurs when authentication succeeds or fails.
       <source srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0-dark.png" media="(prefers-color-scheme: dark)">
       <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/auth0.svg" width="275">
     </picture>
-    <p>Simple Authentication</p>
-    <p>Make login our problem. Not yours.</p>
+    <p>
+      <b>Simple Authentication</b>
+      <br/>
+      Make login our problem. Not yours.
+    </p>
     <p>Auth0 by Okta provides a simple and customizable login page to authenticate your users. You can dynamically add new capabilities to it - including social login, multi-factor authentication, or passkeys - without making changes to your app’s code.
     We help protect your app and your users from attacks - defending your application from bot attacks and detecting runtime anomalies based on suspicious IPs, breached credentials, user context, and more.</p>
   </a>
