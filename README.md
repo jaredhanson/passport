@@ -28,8 +28,8 @@ hooks for controlling what occurs when authentication succeeds or fails.
   <br/>
   <a href="https://auth0.com/">
     <b>Simple Authentication</b><p>Make login our problem. Not yours.</p>
-Auth0 by Okta provides a simple and customizable login page to authenticate your users. You can dynamically add new capabilities to it - including social login, multi-factor authentication, or passkeys - without making changes to your app’s code.
-We help protect your app and your users from attacks - defending your application from bot attacks and detecting runtime anomalies based on suspicious IPs, breached credentials, user context, and more.
+<p>Auth0 by Okta provides a simple and customizable login page to authenticate your users. You can dynamically add new capabilities to it - including social login, multi-factor authentication, or passkeys - without making changes to your app’s code.
+We help protect your app and your users from attacks - defending your application from bot attacks and detecting runtime anomalies based on suspicious IPs, breached credentials, user context, and more.</p>
   </a>
   <br/>
   <br>
