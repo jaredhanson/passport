@@ -79,8 +79,8 @@ hooks for controlling what occurs when authentication succeeds or fails.
   <div>
     <a href="https://stytch.com?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_campaign=passportjs">
       <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch-dark.png">
-        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch.png">
+        <source srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch.png" media="(prefers-color-scheme: light)">
+        <source srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch-dark.png" media="(prefers-color-scheme: dark)">
         <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch.png" width="275">
       </picture>
       <p>
