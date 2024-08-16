@@ -38,7 +38,7 @@ hooks for controlling what occurs when authentication succeeds or fails.
   <!-- WorkOS -->
   <div>
     <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=passport_js&utm_source=github">
-      <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/workos.png"></a>
+      <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/workos.png">
       <p>
         <b>Your app, enterprise-ready.</b>
         <br>
