@@ -75,15 +75,21 @@ hooks for controlling what occurs when authentication succeeds or fails.
     </a>
   </div>
   <br>
-  <br>
-  <a href="https://stytch.com?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_campaign=passportjs">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch-dark.png">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch.png">
-      <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch.png" width="275">
-    </picture>
-  </a><br/>
-  <a href="https://stytch.com?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_campaign=passportjs"><b>API-first AuthN, AuthZ, and Fraud Prevention</b><br/>The most powerful identity platform built for developers. Easily build and secure a modern auth flow with user & org management, multi-tenant SSO, MFA, RBAC, device fingerprinting, and more.</a>
+  <!-- Stytch -->
+  <div>
+    <a href="https://stytch.com?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_campaign=passportjs">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch-dark.png">
+        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch.png">
+        <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/stytch.png" width="275">
+      </picture>
+      <p>
+        <b>API-first AuthN, AuthZ, and Fraud Prevention</b>
+        <br>
+        The most powerful identity platform built for developers. Easily build and secure a modern auth flow with user & org management, multi-tenant SSO, MFA, RBAC, device fingerprinting, and more.
+      </p>
+    </a>
+  </div>
 </div>
 
 ---
