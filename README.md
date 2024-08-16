@@ -14,7 +14,7 @@ hooks for controlling what occurs when authentication succeeds or fails.
 
 ---
 
-<p align="center">
+<div align="center">
   <sup>Sponsors</sup>
   <br>
   <!-- Write your comments here -->
@@ -58,7 +58,7 @@ We help protect your app and your users from attacks - defending your applicatio
     </picture>
   </a><br/>
   <a href="https://stytch.com?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_campaign=passportjs"><b>API-first AuthN, AuthZ, and Fraud Prevention</b><br/>The most powerful identity platform built for developers. Easily build and secure a modern auth flow with user & org management, multi-tenant SSO, MFA, RBAC, device fingerprinting, and more.</a>
-</p>
+</div>
 
 ---
 
