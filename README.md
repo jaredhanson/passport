@@ -63,8 +63,17 @@ hooks for controlling what occurs when authentication succeeds or fails.
     </a>
   </div>
   <br>
-  <a href="https://fusionauth.io/?utm_source=passportjs&utm_medium=referral&utm_campaign=sponsorship"><img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/fusionauth.png" width="275"></a><br/>
-  <a href="https://fusionauth.io/?utm_source=passportjs&utm_medium=referral&utm_campaign=sponsorship"><b>Auth. Built for Devs, by Devs</b><br/>Add login, registration, SSO, MFA, and a bazillion other features to your app in minutes. Integrates with any codebase and installs on any server, anywhere in the world.</a>
+  <!-- FusionAuth -->
+  <div>
+    <a href="https://fusionauth.io/?utm_source=passportjs&utm_medium=referral&utm_campaign=sponsorship">
+      <img src="https://raw.githubusercontent.com/jaredhanson/passport/master/sponsors/fusionauth.png" width="275">
+      <p>
+        <b>Auth. Built for Devs, by Devs</b>
+        <br>
+        Add login, registration, SSO, MFA, and a bazillion other features to your app in minutes. Integrates with any codebase and installs on any server, anywhere in the world.
+      </p>
+    </a>
+  </div>
   <br>
   <br>
   <a href="https://stytch.com?utm_source=oss-sponsorship&utm_medium=paid_sponsorship&utm_campaign=passportjs">
