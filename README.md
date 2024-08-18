@@ -188,6 +188,27 @@ app.post('/login',
   });
 ```
 
+#### Protect Routes When Using Sessions
+
+Passport provides an `isAuthenticated()` function on the request object, which 
+is used to determine if the user has been authenticated and stored in the 
+session.
+
+```javascript
+app.post('/some/protected/route', 
+  function(req, res, next) {
+    if(req.isAuthenticated()){
+      next();
+    } else {
+      next(new Error('Unauthorized'));
+    }
+  });
+```
+
+For a more complete solution to handling unauthenticated users, see 
+[connect-ensure-login](https://github.com/jaredhanson/connect-ensure-login), a
+middleware to ensure login sessions.
+
 ## Strategies
 
 Passport has a comprehensive set of **over 480** authentication strategies
