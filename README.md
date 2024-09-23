@@ -116,14 +116,18 @@ authentication using [OAuth](http://oauth.net/) (for example, via [Facebook](htt
 or [Twitter](http://twitter.com/)), or federated authentication using [OpenID](http://openid.net/).
 
 Before authenticating requests, the strategy (or strategies) used by an
-application must be configured.
+application must be configured. The configuration should be modified to fit your database system/driver. Below is the mongoose implementation.
 
 ```javascript
 passport.use(new LocalStrategy(
   function(username, password, done) {
+  // Find the user from the database ()
     User.findOne({ username: username }, function (err, user) {
+      // Handle database error
       if (err) { return done(err); }
+      // Handle user not in database
       if (!user) { return done(null, false); }
+      // Verify supplied password
       if (!user.verifyPassword(password)) { return done(null, false); }
       return done(null, user);
     });
