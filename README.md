@@ -120,13 +120,15 @@ application must be configured.
 
 ```javascript
 passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
-      if (err) { return done(err); }
+  async function(username, password, done) {
+    try {
+      const user = await User.findOne({ username: username });
       if (!user) { return done(null, false); }
       if (!user.verifyPassword(password)) { return done(null, false); }
       return done(null, user);
-    });
+    } catch (err) {
+      return done(err);
+    }
   }
 ));
 ```
@@ -150,10 +152,13 @@ passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user);
-  });
+passport.deserializeUser(async function(id, done) {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
 });
 ```
 
