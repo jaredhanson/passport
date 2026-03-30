@@ -13,7 +13,7 @@ to the relevant discussion along with the pull request.
 
 Do not open pull requests that might have security implications.  Potential
 security vulnerabilities should be reported privately to jaredhanson@gmail.com.
-Once any vulerabilities have been repaired, the details will be disclosed
+Once any vulnerabilities have been repaired, the details will be disclosed
 publicly in a responsible manner.  This also allows time for coordinating with
 affected parties in order to mitigate negative consequences.
 
