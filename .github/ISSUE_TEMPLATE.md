@@ -6,7 +6,7 @@ Reminder: The issue tracker is not a support forum.
 
 Issues should only be filed in this project once they are able to be reproduced
 and confirmed as a flaw in the software or incorrect information in associated
-documention.
+documentation.
 
 If you are encountering problems integrating this module into your application,
 please post a question on the [discussion forum](https://github.com/passport/discuss)
@@ -16,7 +16,7 @@ rather than filing an issue.
 
 Do not open issues that might have security implications.  Potential security
 vulnerabilities should be reported privately to jaredhanson@gmail.com.  Once any
-vulerabilities have been repaired, the details will be disclosed publicly in a
+vulnerabilities have been repaired, the details will be disclosed publicly in a
 responsible manner.  This also allows time for coordinating with affected parties
 in order to mitigate negative consequences.
 
