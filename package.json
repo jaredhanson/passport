@@ -36,16 +36,18 @@
   "main": "./lib",
   "dependencies": {
     "passport-strategy": "1.x.x",
-    "pause": "0.0.1",
     "utils-merge": "^1.0.1"
   },
   "devDependencies": {
-    "make-node": "0.3.x",
-    "mocha": "2.x.x",
     "chai": "2.x.x",
     "chai-connect-middleware": "0.3.x",
     "chai-passport-strategy": "0.2.x",
-    "proxyquire": "1.4.x"
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "make-node": "0.3.x",
+    "mocha": "2.x.x",
+    "proxyquire": "1.4.x",
+    "supertest": "^7.2.2"
   },
   "engines": {
     "node": ">= 0.4.0"
