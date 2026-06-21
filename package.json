@@ -17,7 +17,7 @@
   "homepage": "https://www.passportjs.org/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jaredhanson/passport.git"
+    "url": "git+https://github.com/jaredhanson/passport.git"
   },
   "bugs": {
     "url": "https://github.com/jaredhanson/passport/issues"
