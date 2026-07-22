@@ -1,9 +1,9 @@
-[![passport banner](http://cdn.auth0.com/img/passport-banner-github.png)](http://passportjs.org)
+[![passport banner](https://cdn.auth0.com/img/passport-banner-github.png)](https://passportjs.org)
 
 # Passport
 
-Passport is [Express](http://expressjs.com/)-compatible authentication
-middleware for [Node.js](http://nodejs.org/).
+Passport is [Express](https://expressjs.com/)-compatible authentication
+middleware for [Node.js](https://nodejs.org/).
 
 Passport's sole purpose is to authenticate requests, which it does through an
 extensible set of plugins known as _strategies_.  Passport does not mount
@@ -112,8 +112,8 @@ $ npm install passport
 
 Passport uses the concept of strategies to authenticate requests.  Strategies
 can range from verifying username and password credentials, delegated
-authentication using [OAuth](http://oauth.net/) (for example, via [Facebook](http://www.facebook.com/)
-or [Twitter](http://twitter.com/)), or federated authentication using [OpenID](http://openid.net/).
+authentication using [OAuth](https://oauth.net/) (for example, via [Facebook](https://www.facebook.com/)
+or [Twitter](https://twitter.com/)), or federated authentication using [OpenID](https://openid.net/).
 
 Before authenticating requests, the strategy (or strategies) used by an
 application must be configured.
@@ -131,7 +131,7 @@ passport.use(new LocalStrategy(
 ));
 ```
 
-There are 480+ strategies. Find the ones you want at: [passportjs.org](http://passportjs.org)
+There are 480+ strategies. Find the ones you want at: [passportjs.org](https://passportjs.org)
 
 #### Sessions
 
@@ -159,8 +159,8 @@ passport.deserializeUser(function(id, done) {
 
 #### Middleware
 
-To use Passport in an [Express](http://expressjs.com/) or
-[Connect](http://senchalabs.github.com/connect/)-based application, configure it
+To use Passport in an [Express](https://expressjs.com/) or
+[Connect](https://senchalabs.github.com/connect/)-based application, configure it
 with the required `passport.initialize()` middleware.  If your application uses
 persistent login sessions (recommended, but not required), `passport.session()`
 middleware must also be used.
@@ -195,7 +195,7 @@ covering social networking, enterprise integration, API services, and more.
 
 ## Search all strategies
 
-There is a **Strategy Search** at [passportjs.org](http://passportjs.org)
+There is a **Strategy Search** at [passportjs.org](https://passportjs.org)
 
 The following table lists commonly used strategies:
 
@@ -216,13 +216,13 @@ The following table lists commonly used strategies:
 that uses [passport-local](https://github.com/jaredhanson/passport-local).
 - **Local Strategy**: Refer to the following tutorials for setting up user authentication via LocalStrategy (`passport-local`):
     - Mongo
-      - Express v3x - [Tutorial](http://mherman.org/blog/2016/09/25/node-passport-and-postgres/#.V-govpMrJE5) / [working example](https://github.com/mjhea0/passport-local-knex)
-      - Express v4x - [Tutorial](http://mherman.org/blog/2015/01/31/local-authentication-with-passport-and-express-4/) / [working example](https://github.com/mjhea0/passport-local-express4)
+      - Express v3x - [Tutorial](https://mherman.org/blog/2016/09/25/node-passport-and-postgres/#.V-govpMrJE5) / [working example](https://github.com/mjhea0/passport-local-knex)
+      - Express v4x - [Tutorial](https://mherman.org/blog/2015/01/31/local-authentication-with-passport-and-express-4/) / [working example](https://github.com/mjhea0/passport-local-express4)
     - Postgres
-      - [Tutorial](http://mherman.org/blog/2015/01/31/local-authentication-with-passport-and-express-4/) / [working example](https://github.com/mjhea0/passport-local-express4)
+      - [Tutorial](https://mherman.org/blog/2015/01/31/local-authentication-with-passport-and-express-4/) / [working example](https://github.com/mjhea0/passport-local-express4)
 - **Social Authentication**: Refer to the following tutorials for setting up various social authentication strategies:
-    - Express v3x - [Tutorial](http://mherman.org/blog/2013/11/10/social-authentication-with-passport-dot-js/) / [working example](https://github.com/mjhea0/passport-examples)
-    - Express v4x - [Tutorial](http://mherman.org/blog/2015/09/26/social-authentication-in-node-dot-js-with-passport) / [working example](https://github.com/mjhea0/passport-social-auth)
+    - Express v3x - [Tutorial](https://mherman.org/blog/2013/11/10/social-authentication-with-passport-dot-js/) / [working example](https://github.com/mjhea0/passport-examples)
+    - Express v4x - [Tutorial](https://mherman.org/blog/2015/09/26/social-authentication-in-node-dot-js-with-passport) / [working example](https://github.com/mjhea0/passport-social-auth)
 
 ## Related Modules
 
@@ -237,6 +237,6 @@ that build upon or integrate with Passport.
 
 ## License
 
-[The MIT License](http://opensource.org/licenses/MIT)
+[The MIT License](https://opensource.org/licenses/MIT)
 
 Copyright (c) 2011-2021 Jared Hanson <[https://www.jaredhanson.me/](https://www.jaredhanson.me/)>
